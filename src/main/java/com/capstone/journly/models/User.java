@@ -22,8 +22,9 @@ public class User {
     @Column(nullable = false)
     private String img_file_path;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GratitudeEntry> posts;
+
 
     public User(){
 

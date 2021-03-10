@@ -5,6 +5,9 @@ package com.capstone.journly.models;
 import javax.persistence.*;
 import javax.persistence.*;
 import java.security.Timestamp;
+import java.sql.Time;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "gratitude_entry")
@@ -14,7 +17,7 @@ public class GratitudeEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
-    private Timestamp created_at;
+    private Date created_at;
     @Column(nullable = false)
     private Boolean is_public;
     @Column(nullable = true)
@@ -30,7 +33,7 @@ public class GratitudeEntry {
     public GratitudeEntry() {
     }
 
-    public GratitudeEntry(Timestamp created_at, String body, long id, User user,Boolean is_public) {
+    public GratitudeEntry(Date created_at, String body, long id, User user,Boolean is_public) {
         this.created_at = created_at;
         this.body = body;
         this.id = id;
@@ -46,11 +49,11 @@ public class GratitudeEntry {
         this.user = user;
     }
 
-    public Timestamp getCreated_at() {
+    public DATETIME getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Timestamp created_at) {
+    public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
 
