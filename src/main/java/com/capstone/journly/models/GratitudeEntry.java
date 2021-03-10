@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.persistence.*;
 import java.security.Timestamp;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -14,10 +15,10 @@ import java.util.Date;
 public class GratitudeEntry {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(nullable = false)
-    private Date created_at;
+    private LocalDateTime created_at;
     @Column(nullable = false)
     private Boolean is_public;
     @Column(nullable = true)
@@ -33,7 +34,7 @@ public class GratitudeEntry {
     public GratitudeEntry() {
     }
 
-    public GratitudeEntry(Date created_at, String body, long id, User user,Boolean is_public) {
+    public GratitudeEntry(LocalDateTime created_at, String body, long id, User user,Boolean is_public) {
         this.created_at = created_at;
         this.body = body;
         this.id = id;
@@ -49,7 +50,7 @@ public class GratitudeEntry {
         this.user = user;
     }
 
-    public DATETIME getCreated_at() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
