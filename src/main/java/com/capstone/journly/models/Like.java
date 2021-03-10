@@ -1,28 +1,28 @@
 package com.capstone.journly.models;
 
-import org.springframework.context.annotation.Configuration;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name ="likes")
-public class Likes {
+public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    // one user can have many likes
+    @OneToMany(mappedBy = "like", cascade = CascadeType.ALL)
     private User user;
 
-    @OneToMany(mappedBy = "gratitude_entry")
-    private List<Likes> likes;
+    // one post can have many likes
+    // will need a join column if we do ManyToOne
+    @OneToMany(mappedBy = "gratitude_entry_id")
+    private List<Like> likes;
 
 
-    public Likes(){}
+    public Like(){}
 
-    public Likes(long id, User user, List<Likes>likes){
+    public Like(long id, User user, List<Like>likes){
     this.id = id;
     this.user = user;
     this.likes = likes;
@@ -44,11 +44,11 @@ public class Likes {
         this.user = user;
     }
 
-    public List<Likes> getLikes() {
+    public List<Like> getLikes() {
         return likes;
     }
 
-    public void setLikes(List<Likes> likes) {
+    public void setLikes(List<Like> likes) {
         this.likes = likes;
     }
 }
