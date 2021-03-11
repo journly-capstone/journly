@@ -2,6 +2,8 @@ package com.capstone.journly.models;
 
 
 
+import org.apache.tomcat.jni.Local;
+
 import javax.persistence.*;
 import javax.persistence.*;
 import java.security.Timestamp;
@@ -15,7 +17,7 @@ import java.util.Date;
 public class GratitudeEntry {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
     private LocalDateTime created_at;
@@ -54,7 +56,7 @@ public class GratitudeEntry {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 

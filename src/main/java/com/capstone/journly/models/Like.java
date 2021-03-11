@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name ="likes")
 public class Like {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     // one user can have many likes
