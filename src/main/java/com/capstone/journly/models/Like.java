@@ -11,21 +11,23 @@ public class Like {
     private long id;
 
     // one user can have many likes
-    @OneToMany(mappedBy = "like", cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
-    // one post can have many likes
+    // one gratitude_entry can have many likes
     // will need a join column if we do ManyToOne
-    @OneToMany(mappedBy = "gratitude_entry_id")
-    private List<Like> likes;
+    @ManyToOne
+    @JoinColumn(name = "gratitude_entry_id")
+    private GratitudeEntry gratitudeEntry;
 
 
     public Like(){}
 
-    public Like(long id, User user, List<Like>likes){
+    public Like(long id, User user, GratitudeEntry gratitudeEntry){
     this.id = id;
     this.user = user;
-    this.likes = likes;
+    this.gratitudeEntry = gratitudeEntry;
 }
 
     public long getId() {
@@ -44,11 +46,11 @@ public class Like {
         this.user = user;
     }
 
-    public List<Like> getLikes() {
-        return likes;
+    public GratitudeEntry getGratitudeEntry() {
+        return gratitudeEntry;
     }
 
-    public void setLikes(List<Like> likes) {
-        this.likes = likes;
+    public void setGratitudeEntry(GratitudeEntry gratitudeEntry) {
+        this.gratitudeEntry = gratitudeEntry;
     }
 }
