@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header-links"></head>
+<body>
+<nav th:replace="partials/navbar :: navbar"><</nav>
+
+<h1 class="text-center">Sign Up!</h1>
+
+<form class="container" th:action="@{/sign-up}" method="post" th:object="${user}">
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" type="text" id="username" th:field="*{username}" />
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" id="email" name="email" th:field="*{email}" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" id="password" name="password" th:field="*{password}" />
+    </div>
+
+    <input class="btn btn-block btn-primary" type="submit" value="Sign Up!" />
+    <div class="form-group">
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Have an account? Log in!</a>
+        </li>
+    </div>
+</form>
+<footer th:replace="partials/footer :: header-links"></footer>
+</body>
+</html>
