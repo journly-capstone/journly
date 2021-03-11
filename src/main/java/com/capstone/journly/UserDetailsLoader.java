@@ -1,4 +1,4 @@
-package com.capstone.journly.services;
+package com.capstone.journly;
 
 
 import com.capstone.journly.models.User;

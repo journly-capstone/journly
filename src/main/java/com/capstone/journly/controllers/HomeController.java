@@ -29,7 +29,7 @@ public class HomeController {
     @GetMapping("/sign-up")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
-        return "sign-up";
+        return "users/sign-up";
     }
 
     @PostMapping("/sign-up")
@@ -43,7 +43,7 @@ public class HomeController {
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("title", "Login");
-        return "login";
+        return "users/login";
     }
 
 }
