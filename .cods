@@ -1,0 +1,2 @@
+BUILD_COMMAND='./mvnw package'
+JAR_FILE=target/journly-0.0.1-SNAPSHOT.jar
