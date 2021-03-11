@@ -46,4 +46,9 @@ public class HomeController {
         return "users/login";
     }
 
+    @GetMapping("/books")
+    public String booksSearchPage() {
+        return "bookSearch";
+    }
+
 }
