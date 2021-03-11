@@ -15,8 +15,9 @@ public class Book {
     private long api_id;
 
     @ManyToOne
-    @JoinColumn(name = "bookshelf")
+    @JoinColumn(name = "bookshelf_id")
     private Bookshelf bookshelf;
+
     public Book() {}
 
     public Book(long id, long api_id) {

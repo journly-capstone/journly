@@ -1,6 +1,7 @@
 package com.capstone.journly.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "prompts")
@@ -12,15 +13,11 @@ public class Prompt {
     @Column(nullable = false, unique = true)
     private String prompt;
 
-    @OneToOne
-    private GratitudeEntry gratitudeEntry;
+
+    @OneToMany(mappedBy = "prompt")
+    private List<GratitudeEntry> gratitudeEntries;
 
     public Prompt() {}
-
-    public Prompt(Prompt copy) {
-        this.id = copy.id;
-        this.prompt = copy.prompt;
-    }
 
     public long getId() {
         return id;
@@ -38,12 +35,11 @@ public class Prompt {
         this.prompt = prompt;
     }
 
-    public GratitudeEntry getGratitudeEntry() {
-        return gratitudeEntry;
+    public List<GratitudeEntry> getGratitudeEntries() {
+        return gratitudeEntries;
     }
 
-    public void setGratitudeEntry(GratitudeEntry gratitudeEntry) {
-        this.gratitudeEntry = gratitudeEntry;
+    public void setGratitudeEntries(List<GratitudeEntry> gratitudeEntries) {
+        this.gratitudeEntries = gratitudeEntries;
     }
-
 }

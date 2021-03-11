@@ -2,46 +2,45 @@ package com.capstone.journly.models;
 
 
 
-import org.apache.tomcat.jni.Local;
-
 import javax.persistence.*;
-import javax.persistence.*;
-import java.security.Timestamp;
-import java.sql.Time;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "gratitude_entry")
 public class GratitudeEntry {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(nullable = false)
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
+
     @Column(nullable = false)
-    private Boolean is_public;
+    private Boolean isPublic;
+
     @Column(nullable = true)
-    private String img_file_path;
+    private String imgFilePath;
+
     @Column(nullable = false)
     private String body;
-
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "prompt_id")
+    private Prompt prompt;
+
     public GratitudeEntry() {
     }
 
-    public GratitudeEntry(LocalDateTime created_at, String body, long id, User user,Boolean is_public) {
-        this.created_at = created_at;
+    public GratitudeEntry(LocalDateTime createdAt, String body, long id, User user,Boolean isPublic) {
+        this.createdAt = createdAt;
         this.body = body;
         this.id = id;
         this.user = user;
-        this.is_public = is_public;
+        this.isPublic = isPublic;
     }
 
     public User getUser() {
@@ -52,28 +51,28 @@ public class GratitudeEntry {
         this.user = user;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Boolean getIs_public() {
-        return is_public;
+    public Boolean getIsPublic() {
+        return isPublic;
     }
 
-    public void setIs_public(Boolean is_public) {
-        this.is_public = is_public;
+    public void setIsPublic(Boolean isPublic) {
+        this.isPublic = isPublic;
     }
 
-    public String getImg_file_path() {
-        return img_file_path;
+    public String getImgFilePath() {
+        return imgFilePath;
     }
 
-    public void setImg_file_path(String img_file_path) {
-        this.img_file_path = img_file_path;
+    public void setImgFilePath(String imgFilePath) {
+        this.imgFilePath = imgFilePath;
     }
 
     public String getBody() {
@@ -90,5 +89,13 @@ public class GratitudeEntry {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Prompt getPrompt() {
+        return prompt;
+    }
+
+    public void setPrompt(Prompt prompt) {
+        this.prompt = prompt;
     }
 }
