@@ -1,4 +1,7 @@
 package com.capstone.journly.repositories;
 
-public interface GratitudeEntryRepository {
+import com.capstone.journly.models.GratitudeEntry;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GratitudeEntryRepository extends JpaRepository<GratitudeEntry, Long> {
 }
