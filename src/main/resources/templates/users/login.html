@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head"></head>
+
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
 <!--<head th:replace="partials/head :: header-links"></head>-->
 
 <!--<head th:replace="partials/head :: head"></head>-->
@@ -30,12 +33,13 @@
     <input class="btn btn-block btn-primary" type="submit" value="Log In" />
 
     <div class="form-group">
-        <li class="nav-item">
-            <a class="nav-link" href="/sign-up">Need an account? Signup!</a>
-        </li>
+        <a class="nav-link" href="/sign-up">Need an account? Signup!</a>
     </div>
 </form>
 
 <!--<footer th:replace="partials/footer :: header-links"></footer>-->
+
+<div th:replace="partials/scripts :: assets"></div>
+
 </body>
 </html>
