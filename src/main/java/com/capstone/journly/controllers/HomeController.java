@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
-    private final UserRepository userDao;
-    private final PasswordEncoder encoder;
-    public HomeController(UserRepository userDao, PasswordEncoder encoder) {
-        this.userDao = userDao;
-        this.encoder = encoder;
+//    private final UserRepository userDao;
+//    private final PasswordEncoder encoder;
+//    public HomeController(UserRepository userDao, PasswordEncoder encoder) {
+//        this.userDao = userDao;
+//        this.encoder = encoder;
+//    }
+
+    @GetMapping("/")
+    public String index(Model model){
+        model.addAttribute("title", "Journly");
+        return "index";
     }
+
     @GetMapping("/home")
     public String welcome(Model model) {
         model.addAttribute("title", "Home");
