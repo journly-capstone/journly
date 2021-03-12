@@ -20,23 +20,7 @@ public class HomeController {
         model.addAttribute("title", "Home");
         return "home";
     }
-    @GetMapping("/sign-up")
-    public String showSignUpForm(Model model){
-        model.addAttribute("user", new User());
-        return "users/sign-up";
-    }
-    @PostMapping("/sign-up")
-    public String signUpUser(@ModelAttribute User user) {
-        String hash = encoder.encode(user.getPassword());
-        user.setPassword(hash);
-        userDao.save(user);
-        return "redirect:/login";
-    }
-    @GetMapping("/login")
-    public String showLoginForm(Model model) {
-        model.addAttribute("title", "Login");
-        return "users/login";
-    }
+
 //    @GetMapping("/books")
 //    public String booksSearchPage() {
 //        return "books";
