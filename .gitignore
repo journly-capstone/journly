@@ -3,10 +3,11 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+src/main/resources/static/js/keys.js
 
 #APPLICATION.PROPERTIES
 src/main/resources/application.properties
+keys.js
 
 ### STS ###
 .apt_generated
