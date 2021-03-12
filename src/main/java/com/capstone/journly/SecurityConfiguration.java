@@ -24,28 +24,39 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsLoader)
-                .passwordEncoder(passwordEncoder());
+        auth
+                .userDetailsService(userDetailsLoader) // How to find users by their username
+                .passwordEncoder(passwordEncoder()); // How to encode and verify passwords
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
+        http
+                /* Login configuration */
+                .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .permitAll()
+                .defaultSuccessUrl("/") // user's home page, it can be any URL
+                .permitAll() // Anyone can go to the login page
+
+                /* Logout configuration */
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login?logout")
-                .and()
-                .authorizeRequests()
-                .antMatchers("/", "/sign-up", "/ads", "/posts")
-                .permitAll()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/ads/*", "/posts/*")
-                .authenticated();
+                .logoutSuccessUrl("/login?logout") // append a query string value
 
+                /* Pages that can be viewed without having to log in */
+                .and()
+                .authorizeRequests()
+                .antMatchers("/", "/sign-up", "/gratitude-entries") // anyone can see these pages
+                .permitAll()
+
+                /* Pages that require authentication */
+                .and()
+                .authorizeRequests()
+                .antMatchers(
+                        "/gratitude-entries/*", // only authenticated users can create, edit, delete etc. gratitude entries
+                        "/books/*" // only authenticated users can create, edit, delete etc. books
+                )
+                .authenticated();
     }
 
 }

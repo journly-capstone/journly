@@ -8,8 +8,8 @@ import java.util.Collection;
 
 public class UserWithRoles extends User implements UserDetails {
 
-    public UserWithRoles(User copy) {
-        super(copy);
+    public UserWithRoles(User user) {
+        super(user);
     }
 
     @Override
@@ -18,10 +18,10 @@ public class UserWithRoles extends User implements UserDetails {
         return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
-    @Override
-    public String getUsername() {
-        return null;
-    }
+//    @Override
+//    public String getUsername() {
+//        return null;
+//    }
 
     @Override
     public boolean isAccountNonExpired() {
