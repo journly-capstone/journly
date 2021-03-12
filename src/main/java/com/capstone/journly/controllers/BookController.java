@@ -4,7 +4,7 @@ import com.capstone.journly.models.Book;
 import com.capstone.journly.models.User;
 import com.capstone.journly.repositories.BookRepository;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
-import com.capstone.journly.services.EmailService;
+//import com.capstone.journly.services.EmailService;
 import com.capstone.journly.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,16 +16,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class BookController {
 
     private final GratitudeEntryRepository gratitudeEntryDao;
-    private final EmailService emailService;
+//    private final EmailService emailService;
     private final UserService userService;
     private final BookRepository bookDao;
 
-    public BookController(GratitudeEntryRepository gratitudeEntryDao,BookRepository bookDao, EmailService emailService, UserService userService) {
+    public BookController(GratitudeEntryRepository gratitudeEntryDao,BookRepository bookDao,  UserService userService) {
         this.gratitudeEntryDao = gratitudeEntryDao;
-        this.emailService = emailService;
         this.userService = userService;
         this.bookDao = bookDao;
     }
+
+//    public BookController(GratitudeEntryRepository gratitudeEntryDao,BookRepository bookDao, EmailService emailService, UserService userService) {
+//        this.gratitudeEntryDao = gratitudeEntryDao;
+//        this.emailService = emailService;
+//        this.userService = userService;
+//        this.bookDao = bookDao;
+//    }
 
     @GetMapping("/books")
     public String postForm(Model model){
