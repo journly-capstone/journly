@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsLoader implements UserDetailsService {
+
     private final UserRepository userDao;
 
     public UserDetailsLoader(UserRepository userDao) {
@@ -20,10 +21,11 @@ public class UserDetailsLoader implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDao.findByUsername(username);
+
         if (user == null) {
             throw new UsernameNotFoundException("No user found for " + username);
         }
-        UserDetails enhancedUser = new UserWithRoles(user);
-        return enhancedUser;
+
+        return new UserWithRoles(user);
     }
 }
