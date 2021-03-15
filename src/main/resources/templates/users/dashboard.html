@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header-links"></head>
+<head th:replace="partials/head :: head"></head>
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+<div th:replace="partials/navbar :: navbar"></div>
 
 <form class="container" th:action="@{/dashboard}" method="get" th:object="${home}">
 
@@ -23,6 +23,6 @@
 </form>
 
 
-<div th:replace="fragments/footer :: footer"></div>
+<!--<div th:replace="partials/footer :: footer"></div>-->
 </body>
 </html>
