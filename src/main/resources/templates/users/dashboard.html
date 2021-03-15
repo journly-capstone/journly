@@ -5,6 +5,8 @@
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
+<form class="container" th:action="@{/dashboard}" method="get" th:object="${home}">
+
 <div id="container">
     <h2>Welcome, User</h2>
     <div id="quoteContainer">
@@ -17,9 +19,10 @@
     </div><!--end quoteContainer-->
 
 </div><!--end container-->
+</div>
+</form>
 
 
 <div th:replace="fragments/footer :: footer"></div>
-</div>
 </body>
 </html>

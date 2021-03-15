@@ -34,6 +34,14 @@ public class HomeController {
         return "about-us";
     }
 
+    @GetMapping("/dashboard")
+    public String dashboard(Model model){
+        model.addAttribute("title", "Dashboard");
+        return "users/dashboard";
+    }
+
+
+
 //    @GetMapping("/books")
 //    public String booksSearchPage() {
 //        return "books";
