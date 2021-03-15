@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="partials/head :: header-links"></head>-->
-
-<!--<head th:replace="partials/head :: head"></head>-->
-
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-<h1 class="text-center">Log In!</h1>
 
-<div th:if="${param.error}">
-    Invalid Username and Password.
+<div class="container text-center">
+    <div th:if="${param.error}">
+        <h3 class="error-msg"><strong>Invalid Username and Password.</strong></h3>
+    </div>
+
+    <div th:if="${param.logout}">
+        <h3><strong>Success! You have been logged out.</strong></h3>
+    </div>
 </div>
 
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
+<h1 class="text-center">Log In</h1>
 
 <form class="container" th:action="@{/login}" method="post">
     <div class="form-group">
@@ -33,7 +30,7 @@
     <input class="btn btn-block btn-primary" type="submit" value="Log In" />
 
     <div class="form-group">
-        <a class="nav-link" href="/sign-up">Need an account? Signup!</a>
+        <a class="nav-link" href="/sign-up">Need an account? Sign up here!</a>
     </div>
 </form>
 

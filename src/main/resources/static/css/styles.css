@@ -137,11 +137,11 @@ and (-webkit-device-pixel-ratio: 3) {
 }
 
 /*Navbar Login Button*/
-#nav-login-btn {
+#nav-login-btn, #nav-logout-btn {
     color: var(--blush-color);
 }
 
-#nav-login-btn:hover {
+#nav-login-btn:hover, #nav-logout-btn:hover {
     color: black;
 }
 
@@ -203,4 +203,9 @@ and (-webkit-device-pixel-ratio: 3) {
 
 .software-developer-title {
     font-family: var(--developer-title-font);
+}
+
+/*STYLING THAT GOES ACROSS THE APPLICATION*/
+.error-msg {
+    color: red;
 }

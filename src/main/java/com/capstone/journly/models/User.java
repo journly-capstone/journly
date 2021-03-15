@@ -1,6 +1,8 @@
 package com.capstone.journly.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -10,17 +12,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank(message ="*A username cannot be empty")
+    @Column(nullable = false, unique = true, length = 20)
     private String username;
 
+    @Email(message = "*Invalid email address")
+    @NotBlank(message ="*An email cannot be empty")
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotBlank(message = "*A password cannot be empty")
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String img_file_path;
+    // Update to nullable = false when we include a default image in the code
+    @Column(nullable = true)
+    private String imgFilePath;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GratitudeEntry> posts;
@@ -35,7 +42,7 @@ public class User {
         this.username = copy.username;
         this.password = copy.password;
         this.email = copy.email;
-        this.img_file_path = copy.img_file_path;
+        this.imgFilePath = copy.imgFilePath;
 
     }
 
@@ -71,11 +78,11 @@ public class User {
         this.password = password;
     }
 
-    public String getImg_file_path() {
-        return img_file_path;
+    public String getImgFilepath() {
+        return imgFilePath;
     }
 
-    public void setImg_file_path(String img_file_path) {
-        this.img_file_path = img_file_path;
+    public void setImgFilePath(String imgFilePath) {
+        this.imgFilePath = imgFilePath;
     }
 }
