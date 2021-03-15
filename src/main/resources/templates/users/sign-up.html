@@ -11,12 +11,14 @@
             <label for="username">Username</label>
             <input class="form-control" type="text" id="username" th:field="*{username}" />
             <p class="error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+            <p class="error-msg" th:if="${username != null}" th:text="'*Username already in use'"></p>
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
             <input class="form-control" type="text" id="email" name="email" th:field="*{email}" />
             <p class="error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <p class="error-msg" th:if="${email != null}" th:text="'*Email Address already in use'"></p>
         </div>
 
         <div class="form-group">
