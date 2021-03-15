@@ -21,7 +21,6 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-//    public String saveUser(Model model, @Validated @ModelAttribute User user, Error validation){
     public String saveUser(Model model, @Validated User user, Errors validation){
 
         String hash = encoder.encode(user.getPassword());
@@ -38,5 +37,4 @@ public class UserController {
         model.addAttribute("title", user.getUsername());
         return "redirect:/login";
     }
-
 }
