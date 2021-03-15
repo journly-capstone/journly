@@ -5,23 +5,16 @@
 
 <div th:replace="partials/navbar :: navbar"></div>
 
-<form class="container" th:action="@{/dashboard}" method="get" th:object="${home}">
+<!--<div class="container" th:action="@{/dashboard}" method="get" th:object="${home}">-->
 
 <div id="container">
     <h2>Welcome, User</h2>
-    <div id="quoteContainer">
 
-        <div th:each=" quote : ${quotes}">
-        <p th:text="${quotes.quote}"></p>
-        <p th:text="${quotes.author}"></p>
+    <p th:text="${quotes.quote}"></p>
+    <p th:text="${quotes.author}"></p>
 
-        <p id="quoteGenius"></p>
-    </div><!--end quoteContainer-->
 
 </div><!--end container-->
-</div>
-</form>
-
 
 <!--<div th:replace="partials/footer :: footer"></div>-->
 </body>
