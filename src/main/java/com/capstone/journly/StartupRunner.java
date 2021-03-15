@@ -1,2 +1,3 @@
-package com.capstone.journly;public class StartupRunner {
+package com.capstone.journly;
+public class StartupRunner {
 }
