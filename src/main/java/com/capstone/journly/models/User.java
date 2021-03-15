@@ -3,6 +3,7 @@ package com.capstone.journly.models;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -12,16 +13,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message ="*A username cannot be empty")
+    @NotBlank(message ="*Required")
     @Column(nullable = false, unique = true, length = 20)
     private String username;
 
-    @Email(message = "*Invalid email address")
-    @NotBlank(message ="*An email cannot be empty")
+    @Email(message = "Invalid email address")
+    @NotBlank(message ="*Required")
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotBlank(message = "*A password cannot be empty")
+    @Size(min = 8, message = "Password must be at least 8 characters in length")
+    @NotBlank(message = "*Required")
     @Column(nullable = false)
     private String password;
 

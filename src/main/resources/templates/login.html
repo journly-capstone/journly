@@ -4,17 +4,18 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
+
+<h1 class="text-center">Log In</h1>
+
 <div class="container text-center">
-    <div th:if="${param.error}">
-        <h3 class="error-msg"><strong>Invalid Username and Password.</strong></h3>
+    <div th:if="${param.error}" class="container text-center">
+        <h4 class="error-msg"><strong>Invalid username or password. Please try again.</strong></h4>
     </div>
 
     <div th:if="${param.logout}">
-        <h3><strong>Success! You have been logged out.</strong></h3>
+        <h4 class="text-success"><strong>You have been successfully logged out.</strong></h4>
     </div>
 </div>
-
-<h1 class="text-center">Log In</h1>
 
 <form class="container" th:action="@{/login}" method="post">
     <div class="form-group">
