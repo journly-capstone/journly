@@ -1,16 +1,22 @@
 package com.capstone.journly.controllers;
 
 import com.capstone.journly.models.Book;
+import com.capstone.journly.models.Quote;
 import com.capstone.journly.models.User;
 import com.capstone.journly.repositories.BookRepository;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
 //import com.capstone.journly.services.EmailService;
 import com.capstone.journly.services.UserService;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 @Controller
 public class BookController {

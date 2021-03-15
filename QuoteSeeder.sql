@@ -1,5 +1,6 @@
 
-CREATE TABLE quotes (
+DROP TABLE IF EXISTS quotes;
+CREATE TABLE IF NOT EXISTS quotes (
                         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
                         quote TEXT NOT NULL,
                         author VARCHAR(255) NOT NULL,
@@ -46,17 +47,6 @@ INSERT INTO quotes(id, quote, author) VALUES
 (37, 'The only person you are destined to become is the person you decide to be.', 'Ralph Waldo Emerson'),
 (38, 'Go confidently in the direction of your dreams.  Live the life you have imagined.', 'Henry David Thoreau'),
 (39, 'When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.', 'Erma Bombeck'),
-(40, 'Few things can help an individual more than to place responsibility on him, and to let him know that you trust him', 'Booker T. Washington'),
-(41, 'Certain things catch your eye, but pursue only those that capture the heart.', 'Ancient Indian Proverb'),
-(42, 'Believe you can and you’re halfway there.', 'Theodore Roosevelt'),
-(43, 'Everything you’ve ever wanted is on the other side of fear.', 'George Addair'),
-(44, 'We can easily forgive a child who is afraid of the dark; the real tragedy of life is when men are afraid of the light.', 'Plato'),
-(45, 'Teach thy tongue to say, "I do not know," and thous shalt progress.', 'Maimonides'),
-(46, 'Start where you are. Use what you have.  Do what you can.', 'Arthur Ashe'),
-(47, 'When I was 5 years old, my mother always told me that happiness was the key to life.  When I went to school, they asked me what I wanted to be when I grew up.  I wrote down ‘happy’.  They told me I didn’t understand the assignment, and I told them they didn’t understand life.', 'John Lennon'),
-(48, 'Fall seven times and stand up eight. ', 'Japanese Proverb'),
-(49, ' When one door of happiness closes, another opens, but often we look so long at the closed door that we do not see the one that has been opened for us.', 'Helen Keller'),
-(50, 'Everything has beauty, but not everyone can see.', 'Confucius'),
 (40, 'Few things can help an individual more than to place responsibility on him, and to let him know that you trust him', 'Booker T. Washington'),
 (41, 'Certain things catch your eye, but pursue only those that capture the heart.', 'Ancient Indian Proverb'),
 (42, 'Believe you can and you’re halfway there.', 'Theodore Roosevelt'),
@@ -120,3 +110,4 @@ INSERT INTO quotes(id, quote, author) VALUES
 (100, 'Nothing is impossible, the word itself says, “I’m possible!”', 'Audrey Hepburn'),
 (101, 'The only way to do great work is to love what you do.', 'Steve Jobs'),
 (102, 'If you can dream it, you can achieve it.', 'Zig Ziglar');
+

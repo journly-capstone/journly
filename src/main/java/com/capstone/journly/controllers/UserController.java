@@ -38,4 +38,5 @@ public class UserController {
         model.addAttribute("title", user.getUsername());
         return "redirect:/login";
     }
+
 }

@@ -5,23 +5,21 @@
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<body>
 <div id="container">
-    <h2>Get Your Daily Quote</h2>
+    <h2>Welcome, User</h2>
     <div id="quoteContainer">
-        <p></p>
+
+        <div th:each=" quote : ${quotes}">
+        <p th:text="${quotes.quote}"></p>
+        <p th:text="${quotes.author}"></p>
+
         <p id="quoteGenius"></p>
     </div><!--end quoteContainer-->
-
-    <div id="buttonContainer">
-        <a href="#" id="quoteButton">Quote Me</a>
-    </div><!--end buttonContainer-->
-
 
 </div><!--end container-->
 
 
 <div th:replace="fragments/footer :: footer"></div>
-
+</div>
 </body>
 </html>
