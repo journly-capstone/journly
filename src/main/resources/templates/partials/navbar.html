@@ -12,8 +12,9 @@
 <body>
 <nav th:fragment="navbar" id="main-navbar" class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand" th:href="@{/gratitude-entries}">
-            <img src="/img/journly-logo.png" height="45" width="45" /></a>
+        <a class="navbar-brand" th:href="@{/}">
+            <img src="/img/journly-logo.png" width="70" height="70" />
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,14 +22,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/gratitude-entries}">Gratitude Board</a>
+                    <!--NOTE: Gratitude Board href will need to be updated-->
+                    <a class="nav-link" href="#">Gratitude Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about-us}">About Us</a>
                 </li>
             </ul>
+
             <form class="form-inline m-md-1" th:action="@{/login}" method="get">
-                <input id="login-btn" class="btn btn-block btn-outline-dark my-2 my-sm-0 m-1" type="submit" value="Log In" />
+                <input id="nav-login-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log In" />
             </form>
+
             <form class="form-inline m-md-1" th:action="@{/sign-up}" method="get">
-                <input id="signup-btn" class="btn btn-block btn-dark my-2 my-sm-0 m-1" type="submit" value="Sign Up" />
+                <input id="nav-signup-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Sign Up" />
             </form>
         </div>
     </div>
