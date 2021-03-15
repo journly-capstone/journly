@@ -1,0 +1,53 @@
+<!doctype html>
+<html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head"></head>
+
+<body class="guest-view-body">
+    <img src="/svg/left-landing-page.svg" id="left-svg">
+    <img src="/svg/right-landing-page.svg" id="right-svg">
+
+    <nav th:replace="partials/navbar :: navbar"></nav>
+
+    <div class="container justify-content-center text-center">
+        <div class="row mb-5">
+            <div class="col text-center">
+                <h1 id="meet-the-team-header" class="mb-2">Meet the Team</h1>
+            </div>
+        </div>
+
+        <div class="row pb-5 justify-content-center text-center">
+            <div class="col-12 col-md-6">
+                <img src="/img/elvira-valadez.jpg" alt="Elvira Valadez" class="about-us-avatar m-3">
+                <h2 class="developer-names">Elvira Valadez</h2>
+<!--                <h3 class="developer-names">Elvira Valadez</h3>-->
+                <p class="software-developer-title">Software Developer</p>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <img src="https://via.placeholder.com/150" alt="Ethan Tumbocon" class="about-us-avatar m-3">
+<!--                <img src="/img/ethan-tumbocon.jpg" alt="Ethan Tumbocon" class="about-us-avatar m-3">-->
+                <h2 class="developer-names">Ethan Tumbocon</h2>
+<!--                <h3 class="developer-names">Ethan Tumbocon</h3>-->
+                <p class="software-developer-title">Software Developer</p>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <img src="/img/ryan-phillips.jpg" alt="Ryan Phillips" class="about-us-avatar m-3">
+                <h2 class="developer-names">Ryan Phillips</h2>
+<!--                <h3 class="developer-names">Ryan Phillips</h3>-->
+                <p class="software-developer-title">Software Developer</p>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <img src="https://via.placeholder.com/150" alt="Kristen Collier" class="about-us-avatar m-3">
+<!--                <img src="/img/kristen-collier.jpg" alt="Kristen Collier" class="about-us-avatar m-3">-->
+                <h2 class="developer-names">Kristen Collier</h2>
+                <p class="software-developer-title">Software Developer</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div th:replace="partials/scripts :: assets"></div>
+</body>
+</html>

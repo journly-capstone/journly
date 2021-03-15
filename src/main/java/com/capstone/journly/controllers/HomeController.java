@@ -18,7 +18,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("title", "Journly");
+        model.addAttribute("title", "Journly - Gratitude for Teachers");
         return "index";
     }
 
@@ -26,6 +26,12 @@ public class HomeController {
     public String welcome(Model model) {
         model.addAttribute("title", "Home");
         return "home";
+    }
+
+    @GetMapping("/about-us")
+    public String aboutUs(Model model) {
+        model.addAttribute("title", "About Us");
+        return "about-us";
     }
 
 //    @GetMapping("/books")

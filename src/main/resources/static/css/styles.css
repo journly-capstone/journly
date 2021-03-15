@@ -1,3 +1,206 @@
-html,body{
-    height: 100%
+:root{
+    /*Variables that can be applied to any html file within the application*/
+    --default-font-family:'Nunito', sans-serif;
+    --blush-color: #ff5e93;
+    --dark-blush-color: #ed3478;
+
+    /*Landing Page Specific Variables */
+    --feature-heading-font-family: 'Montserrat', sans-serif;
+    --landing-page-background: url("../svg/landing-page-background.svg") no-repeat;
+    --landing-page-avatar-border: 3px solid #F7A09E;
+
+    /*About Us Page Variables*/
+    --meet-the-team-header-font: 'Montserrat', sans-serif;
+    --developer-names-font: 'Nunito', sans-serif;
+    --developer-title-font: 'Open Sans', sans-serif;
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: var(--default-font-family);
+    scroll-behavior: smooth;
+}
+
+/* LANDING PAGE (INDEX.HTML) STYLING */
+
+/*Default XS Screen Landing Page Background Styling*/
+#index-html, #index-body {
+    height:105vh !important;
+    margin: 0 !important;
+}
+
+#index-body {
+    background: var(--landing-page-background);
+    background-size: cover;
+    padding-bottom: 500px;
+}
+
+#left-svg {
+    position: absolute;
+    top: 60%;
+}
+
+#right-svg {
+    position: absolute;
+    top: 20%;
+    right: 0;
+}
+
+/*MEDIA QUERIES FOR LANDING PAGE*/
+@media screen and (min-width:375px) {
+    #index-html, #index-body {
+        height:100vh !important;
+        margin: 0 !important;
+    }
+}
+
+/* iphone X , XS, 11 Pro, 12 Mini */
+@media only screen
+/*and (device-width : 375px)*/
+/*and (device-height : 812px)*/
+and (min-width : 375px)
+and (min-height : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+    #index-html, #index-body {
+        height:80vh !important;
+        margin: 0 !important;
+    }
+}
+
+/* iphone 12, 12 Pro */
+@media only screen
+/*and (device-width: 390px)*/
+/*and (device-height: 844px)*/
+and (min-width: 390px)
+and (min-height: 844px)
+and (-webkit-device-pixel-ratio: 3) {
+    #index-html, #index-body {
+        height:80vh !important;
+        margin: 0 !important;
+    }
+}
+
+@media screen and (min-width:411px) {
+    #index-html, #index-body {
+        height:100vh !important;
+        margin: 0 !important;
+    }
+}
+
+/* Medium Screen Landing Page Background Styling (tablets, 768px and up) */
+@media screen and (min-width:768px) {
+    #index-html, #index-body {
+        height:35vh !important;
+        margin: 0 !important;
+    }
+}
+
+/*!* Large devices (desktops, 992px and up) *!*/
+/*@media screen and (min-width:992px) {*/
+/*    #index-html, #index-body {*/
+/*        height:100vh !important;*/
+/*        !*height:5vh !important;*!*/
+/*        margin: 0 !important;*/
+/*    }*/
+
+/*    .landing-pg-avatar {*/
+/*        vertical-align: middle;*/
+/*        width: 110px !important;*/
+/*        height: 110px !important;*/
+/*        border: var(--landing-page-avatar-border);*/
+/*        border-radius: 50%;*/
+/*    }*/
+/*}*/
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) {
+    #index-html, #index-body {
+        /*height:1vh !important;*/
+        height:100vh !important;
+        margin: 0 !important;
+    }
+
+    #landing-page-msg {
+        height: 50vh;
+    }
+}
+
+/* Buttons */
+.btn {
+    border-radius: 28px !important;
+}
+
+.nav-link {
+    font-weight: bolder !important;
+}
+
+/*Navbar Login Button*/
+#nav-login-btn {
+    color: var(--blush-color);
+}
+
+#nav-login-btn:hover {
+    color: black;
+}
+
+/*Navbar Sign Up and Join Today Buttons*/
+#nav-signup-btn, .join-today-btn {
+    background-color: var(--blush-color) !important;
+    color: white !important;
+}
+
+#join-today-top-btn, .join-today-btn {
+    width: 200px;
+}
+
+#join-today-top-btn {
+    background-color: white !important;
+    color: var(--blush-color) !important;
+}
+
+#join-today-btn:hover {
+    background-color: whitesmoke !important;
+}
+
+#nav-signup-btn:hover, .join-today-btn:hover {
+    background-color: var(--dark-blush-color) !important;
+}
+
+/*Styling for Feature Headings on index.html*/
+.feature-headings {
+    font-family: var(--feature-heading-font-family)
+}
+
+/*Avatars (Styling User Images to Display as Circles on Landing Page)*/
+.landing-pg-avatar {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border: var(--landing-page-avatar-border);
+    border-radius: 50%;
+}
+
+
+/* ABOUT US PAGE STYLING */
+.about-us-avatar {
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border: var(--landing-page-avatar-border);
+    border-radius: 50%;
+}
+
+#meet-the-team-header {
+    font-family: var(--meet-the-team-header-font);
+}
+
+.developer-names {
+    font-family: var(--developer-names-font);
+    font-weight: bolder;
+}
+
+.software-developer-title {
+    font-family: var(--developer-title-font);
 }
