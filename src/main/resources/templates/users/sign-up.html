@@ -11,14 +11,14 @@
             <label for="username">Username</label>
             <input class="form-control" type="text" id="username" th:field="*{username}" />
             <p class="error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-            <p class="error-msg" th:if="${username != null}" th:text="'*Username already in use'"></p>
+            <p class="error-msg" th:if="${username != null}" th:text="'Username already exists'"></p>
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
             <input class="form-control" type="text" id="email" name="email" th:field="*{email}" />
             <p class="error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-            <p class="error-msg" th:if="${email != null}" th:text="'*Email Address already in use'"></p>
+            <p class="error-msg" th:if="${email != null}" th:text="'Email address already in use'"></p>
         </div>
 
         <div class="form-group">
@@ -27,9 +27,9 @@
             <p class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
         </div>
 
-        <input class="btn btn-block btn-primary" type="submit" value="Sign Up!" />
+        <input class="btn btn-block btn-primary" type="submit" value="Sign Up" />
         <div class="form-group">
-            <a class="nav-link" href="/login">Have an account? Log in!</a>
+            <a class="nav-link" href="/login">Have an account? Log in here!</a>
         </div>
 
     </form>
