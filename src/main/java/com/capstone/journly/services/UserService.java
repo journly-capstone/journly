@@ -20,6 +20,5 @@ public class UserService {
         long userId = user.getId();
         return usersDao.findById(userId).get();
     }
-
 }
 

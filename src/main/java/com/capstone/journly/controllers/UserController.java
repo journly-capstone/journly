@@ -5,8 +5,8 @@ import com.capstone.journly.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -20,17 +20,22 @@ public class UserController {
         this.encoder = encoder;
     }
 
-    @GetMapping("/sign-up")
-    public String showSignUpForm(Model model){
-        model.addAttribute("user", new User());
-        return "users/sign-up";
-    }
-
     @PostMapping("/sign-up")
-    public String signUpUser(@ModelAttribute User user) {
+//    public String saveUser(Model model, @Validated @ModelAttribute User user, Error validation){
+    public String saveUser(Model model, @Validated User user, Errors validation){
+
         String hash = encoder.encode(user.getPassword());
+
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("user", user);
+            return "users/sign-up";
+        }
+
         user.setPassword(hash);
         userDao.save(user);
+
+        model.addAttribute("title", user.getUsername());
         return "redirect:/login";
     }
 }

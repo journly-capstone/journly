@@ -24,12 +24,12 @@ public class AuthenticationController {
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("title", "Login");
-        return "users/login";
+        return "login";
     }
 
-    @GetMapping("/register")
-    public String showForm(Model m){
-        m.addAttribute("user", new User());
-        return "users/create";
+    @GetMapping("/sign-up")
+    public String showSignUpForm(Model model){
+        model.addAttribute("user", new User());
+        return "users/sign-up";
     }
 }
