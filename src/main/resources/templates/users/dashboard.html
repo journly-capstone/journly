@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header-links"></head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<body>
+<div id="container">
+    <h2>Get Your Daily Quote</h2>
+    <div id="quoteContainer">
+        <p></p>
+        <p id="quoteGenius"></p>
+    </div><!--end quoteContainer-->
+
+    <div id="buttonContainer">
+        <a href="#" id="quoteButton">Quote Me</a>
+    </div><!--end buttonContainer-->
+
+
+</div><!--end container-->
+
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
