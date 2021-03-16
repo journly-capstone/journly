@@ -44,9 +44,19 @@
 
             <a sec:authorize="isAuthenticated()" class="nav-link btn btn-outline-secondary" href="#" role="button">Create Gratitude Entry</a>
 
-            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
-                <input id="nav-logout-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log Out" />
-            </form>
+            <div sec:authorize="isAuthenticated()" class="dropdown mr-1">
+                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                    Profile
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                    <a class="dropdown-item" th:href="@{/dashboard}">View Dashboard</a>
+                    <a class="dropdown-item" th:href="@{/profile-settings}">Profile Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
+                        <input id="nav-logout-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log Out" />
+                    </form>
+                </div>
+            </div>
 
             <form sec:authorize="isAnonymous()" class="form-inline m-md-1" th:action="@{/login}" method="get">
                 <input id="nav-login-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log In" />
