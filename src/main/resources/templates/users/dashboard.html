@@ -5,16 +5,13 @@
 
 <div th:replace="partials/navbar :: navbar"></div>
 
-<!--<div class="container" th:action="@{/dashboard}" method="get" th:object="${home}">-->
-
-<div id="container">
-    <h2>Welcome, User</h2>
-
-    <p th:text="${quotes.quote}"></p>
-    <p th:text="${quotes.author}"></p>
-
-
-</div><!--end container-->
+<div class="jumbotron">
+    <div>
+        <h1 class="display-4">Welcome, ${SessionScope.}!</h1>
+        <p th:text="${quotes.quote}"></p>
+        <p th:text="${quotes.author}"></p>
+    </div>
+</div>
 
 <!--<div th:replace="partials/footer :: footer"></div>-->
 </body>
