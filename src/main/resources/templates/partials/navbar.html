@@ -12,66 +12,49 @@
 <body>
 <nav th:fragment="navbar" id="main-navbar" class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <th:block sec:authorize="!isAuthenticated()">
-            <a class="navbar-brand" th:href="@{/}">
-                <img src="/img/journly-logo.png" width="70" height="70" />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </th:block>
+        <a sec:authorize="isAnonymous()" class="navbar-brand" th:href="@{/}">
+            <img src="/img/journly-logo.png" width="70" height="70" />
+        </a>
+        <button sec:authorize="isAnonymous()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <th:block sec:authorize="isAuthenticated()">
-            <a class="navbar-brand" th:href="@{/dashboard}">
-                <img src="/img/journly-logo.png" width="70" height="70" />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </th:block>
+        <a sec:authorize="isAuthenticated()" class="navbar-brand" th:href="@{/dashboard}">
+            <img src="/img/journly-logo.png" width="70" height="70" />
+        </a>
+        <button sec:authorize="isAuthenticated()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <th:block sec:authorize="!isAuthenticated()">
-                    <li class="nav-item">
-                        <!--NOTE: Gratitude Board href will need to be updated-->
-                        <a class="nav-link" th:href="@{/gratitude-board}">Gratitude Board</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/about-us}">About Us</a>
-                    </li>
-                </th:block>
-                <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/dashboard}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <!--NOTE: Gratitude Board href will need to be updated-->
-                        <a class="nav-link" th:href="@{/gratitude-board}">Gratitude Board</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/books}">Books</a>
-                    </li>
-                </th:block>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/dashboard}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/gratitude-board}">Gratitude Board</a>
+                </li>
+                <li sec:authorize="isAnonymous()" class="nav-item">
+                    <a class="nav-link" th:href="@{/about-us}">About Us</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/books}">Books</a>
+                </li>
             </ul>
 
-            <th:block sec:authorize="isAuthenticated()">
-                <a class="nav-link btn btn-outline-secondary" href="#" role="button">Create Gratitude Entry</a>
+            <a sec:authorize="isAuthenticated()" class="nav-link btn btn-outline-secondary" href="#" role="button">Create Gratitude Entry</a>
 
-                <form th:action="@{/logout}" th:method="post">
-                    <input id="nav-logout-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log Out" />
-                </form>
-            </th:block>
+            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
+                <input id="nav-logout-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log Out" />
+            </form>
 
-            <th:block sec:authorize="!isAuthenticated()">
-                <form class="form-inline m-md-1" th:action="@{/login}" method="get">
-                    <input id="nav-login-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log In" />
-                </form>
+            <form sec:authorize="isAnonymous()" class="form-inline m-md-1" th:action="@{/login}" method="get">
+                <input id="nav-login-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log In" />
+            </form>
 
-                <form class="form-inline m-md-1" th:action="@{/sign-up}" method="get">
-                    <input id="nav-signup-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Sign Up" />
-                </form>
-            </th:block>
+            <form sec:authorize="isAnonymous()" class="form-inline m-md-1" th:action="@{/sign-up}" method="get">
+                <input id="nav-signup-btn" class="btn btn-block my-2 my-sm-0 m-1" type="submit" value="Sign Up" />
+            </form>
         </div>
     </div>
 </nav>
