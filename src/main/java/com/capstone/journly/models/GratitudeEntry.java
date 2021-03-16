@@ -2,8 +2,11 @@ package com.capstone.journly.models;
 
 
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "gratitude_entry")
@@ -13,12 +16,13 @@ public class GratitudeEntry {
     private long id;
 
     @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
     @Column(nullable = false)
     private Boolean isPublic;
 
     @Column(nullable = true)
+    @Value("${file-upload-path}")
     private String imgFilePath;
 
     @Column(nullable = false)
@@ -35,7 +39,7 @@ public class GratitudeEntry {
     public GratitudeEntry() {
     }
 
-    public GratitudeEntry(LocalDateTime createdAt, String body, long id, User user,Boolean isPublic) {
+    public GratitudeEntry(Date createdAt, String body, long id, User user,Boolean isPublic) {
         this.createdAt = createdAt;
         this.body = body;
         this.id = id;
@@ -51,11 +55,11 @@ public class GratitudeEntry {
         this.user = user;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
