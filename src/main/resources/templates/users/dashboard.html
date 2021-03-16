@@ -6,12 +6,16 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 <div class="jumbotron">
-    <div>
-        <h1 class="display-4">Welcome, ${SessionScope.}!</h1>
+    <div class="justify-content-center">
+        <h1 class="display-4">Welcome, User!</h1>
         <p th:text="${quotes.quote}"></p>
         <p th:text="${quotes.author}"></p>
     </div>
 </div>
+<div class="form-inline justify-content-center">
+    <button type="button" class="btn btn-primary my-2 my-sm-0">Create Gratitude Entry</button>
+</div>
+
 
 <!--<div th:replace="partials/footer :: footer"></div>-->
 </body>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head"></head>
+<body>
+
+<div th:replace="partials/navbar :: navbar"></div>
+
+<div class="container">
+
+
+    <div class="col-md-6">
+        <h1>${gratitude.title}</h1>
+        <h4>${gratitude.description}</h4>
+        <form action="/ads/delete?id=${ad.id}" method="post">
+            <input value="delete" type="submit" class="btn btn-block btn-primary">
+        </form>
+    </div>
+
+    <!--<div th:replace="partials/footer :: footer"></div>-->
+</div>
+</body>
+</html>
