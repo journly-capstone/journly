@@ -12,7 +12,12 @@ public class Book {
     private long id;
 
     @Column(nullable=false)
-    private long api_id;
+    private String api_id;
+
+    @Column(nullable = false)
+    private String author;
+    @Column(nullable = false)
+    private String title;
 
     @ManyToOne
     @JoinColumn(name = "bookshelf_id")
@@ -20,9 +25,11 @@ public class Book {
 
     public Book() {}
 
-    public Book(long id, long api_id) {
+    public Book(long id, String api_id, String author, String title) {
         this.id = id;
         this.api_id = api_id;
+        this.author = author;
+        this.title = title;
     }
 
     public long getId() {
@@ -33,11 +40,35 @@ public class Book {
         this.id = id;
     }
 
-    public long getApi_id() {
-        return api_id;
+    public String getApi_id() {
+        return this.api_id;
     }
 
-    public void setApi_id(long api_id) {
+    public void setApi_id(String api_id) {
         this.api_id = api_id;
+    }
+
+    public Bookshelf getBookshelf() {
+        return bookshelf;
+    }
+
+    public void setBookshelf(Bookshelf bookshelf) {
+        this.bookshelf = bookshelf;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

@@ -40,6 +40,12 @@
 </main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var _csrf_token = /*[[${_csrf.token}]]*/ '';
+    var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '';
+    /*]]>*/
+</script>
 <script>
     $(document).ready(function() {
 
@@ -53,7 +59,7 @@
                 let img = "";
                 let title = "";
                 let author = "";
-
+                let button = "";
                 //*********************************************************************
                 //******** WHEN USER "ADDS TO BOOKSHELF" STORE BOOK ID WITH THAT BOOKSHELF
                 //*********IN USERS BOOKSHELF USE STORED BOOK ID'S AS SEARCH CRITERIA
@@ -65,12 +71,14 @@
                         title = $('<h5 class="center-align white-text">' + response.items[i].volumeInfo.title + '</h5>');
                         author = $('<h5 class="center-align white-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
                         img = $('<img class="aligning card z-depth-5" id="dynamic" alt="image"><br><a href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>');
+                        button = $('<button type="submit" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" data-bookid="'+ response.items[i].id +'" class="addBook">Add Book</button>');
                         url = response.items[i].volumeInfo.imageLinks.thumbnail;
                         img.attr('src', url);
                         title.appendTo('#result');
                         author.appendTo('#result');
                         img.appendTo('#result');
-                        console.log(title, author)
+                        button.appendTo('#result')
+                        console.log(response.items[i])
                     }
                 });
 
@@ -78,8 +86,27 @@
             return false;
         })
     })
-
+$(document).on("click",".addBook",function (){
+    console.log("Add book clicked");
+    let bookid = $(this).attr("data-bookid");
+    let author = $(this).attr("data-author");
+    let title = $(this).attr("data-title");
+    console.log(bookid + author + title);
+    let requestData = {"id" : bookid,
+                        "author" : author,
+                        "title" : title}
+    requestData[_csrf_param_name] = _csrf_token; // Adds the token
+    $.ajax("/addbook", {
+        type: "POST",
+        data: requestData
+    }).done(function (data, status, jqXhr){
+        console.log("done")
+    }).fail(function (jqXhr, status, error){
+        console.log(status + error)
+    })
+})
 </script>
+
 <!--<div th:replace="partials/scripts :: assets"></div>-->
 </body>
 </html>
