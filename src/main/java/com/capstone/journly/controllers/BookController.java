@@ -1,22 +1,19 @@
 package com.capstone.journly.controllers;
 
 import com.capstone.journly.models.Book;
-import com.capstone.journly.models.Quote;
+import com.capstone.journly.models.Bookshelf;
 import com.capstone.journly.models.User;
 import com.capstone.journly.repositories.BookRepository;
+import com.capstone.journly.repositories.BookshelfRepository;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
 //import com.capstone.journly.services.EmailService;
 import com.capstone.journly.services.UserService;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Controller
 public class BookController {
@@ -25,11 +22,13 @@ public class BookController {
 //    private final EmailService emailService;
     private final UserService userService;
     private final BookRepository bookDao;
+    private final BookshelfRepository bookshelfDao;
 
-    public BookController(GratitudeEntryRepository gratitudeEntryDao,BookRepository bookDao,  UserService userService) {
+    public BookController(GratitudeEntryRepository gratitudeEntryDao, BookRepository bookDao, UserService userService, BookshelfRepository bookshelfDao) {
         this.gratitudeEntryDao = gratitudeEntryDao;
         this.userService = userService;
         this.bookDao = bookDao;
+        this.bookshelfDao = bookshelfDao;
     }
 
 //    public BookController(GratitudeEntryRepository gratitudeEntryDao,BookRepository bookDao, EmailService emailService, UserService userService) {
@@ -62,6 +61,23 @@ public class BookController {
     public String getBookshelf(Model model){
         model.addAttribute("title", "My Bookshelf");
         return "bookshelf";
+    }
+
+    @PostMapping("/addbook")
+    public String addBook(@RequestParam("id")String id, @RequestParam("author")String author, @RequestParam("title")String title){
+        System.out.println(id);
+        User user = userService.getLoggedInUser();
+        Bookshelf bookshelf = bookshelfDao.findByUser(user);
+        Book book = new Book();
+        book.setApi_id(id);
+        book.setAuthor(author);
+        book.setTitle(title);
+        book.setBookshelf(bookshelf);
+        List<Book> books = new ArrayList<>();
+        books.add(book);
+        bookshelf.setBooks(books);
+        bookshelfDao.save(bookshelf);
+        return"redirect:/bookshelf";
     }
 
 

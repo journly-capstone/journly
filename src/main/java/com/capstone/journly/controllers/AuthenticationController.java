@@ -1,6 +1,8 @@
 package com.capstone.journly.controllers;
 
+import com.capstone.journly.models.Bookshelf;
 import com.capstone.journly.models.User;
+import com.capstone.journly.repositories.BookshelfRepository;
 import com.capstone.journly.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,10 +18,12 @@ import javax.validation.Valid;
 public class AuthenticationController {
     private final UserRepository userDao;
     private final PasswordEncoder encoder;
+    private final BookshelfRepository bookshelfDao;
 
-    public AuthenticationController(UserRepository userDao, PasswordEncoder encoder) {
+    public AuthenticationController(UserRepository userDao, PasswordEncoder encoder, BookshelfRepository bookshelfDao) {
         this.userDao = userDao;
         this.encoder = encoder;
+        this.bookshelfDao = bookshelfDao;
     }
 
     //Show User the Login Form
@@ -60,6 +64,10 @@ public class AuthenticationController {
 
         user.setPassword(hash);
         userDao.save(user);
+        Bookshelf bookshelf = new Bookshelf();
+        bookshelf.setUser(user);
+        bookshelf.setId(user.getId());
+        bookshelfDao.save(bookshelf);
 
         model.addAttribute("title", user.getUsername());
         return "redirect:/login";
