@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head"></head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+
+
+
+
+<h1 class="text-center">My Bookshelf</h1>
+<div class="col-4">
+<!--<div class="col-4" th:each="book : ${books}">-->
+<!--            <h3 th:text="${book.title}"></h3>-->
+<!--            <p th:text="${book.author}"></p>-->
+<!--    ^^^^^ This will show each book stored in the users bookshelf will need to edit the ${} with proper path-->
+
+
+
+<!--    \/ this may need the  title or ID added at the end of the API for a more info button pull
+        A POSSIBLE CLICK EVENT TO PING API WITH BOOK DETAILS-->
+    <a class="btn btn-info btn-sm" th:href="@{'https://www.googleapis.com/books/v1/volumes?q='}">View more info.</a>
+
+<!--    NEED the remove funtionality for current book on shelf
+        A POSSIBLE CLICK EVENT DELETING BOOK FROM SHELF-->
+    <a class="btn btn-danger btn-sm" th:href="@{}">Remove from bookshelf</a>
+</div>
+
+<!--<footer th:replace="partials/footer :: header-links"></footer>-->
+
+<div th:replace="partials/scripts :: assets"></div>
+
+</body>
+</html>

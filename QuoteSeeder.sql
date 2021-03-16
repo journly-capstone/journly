@@ -1,4 +1,4 @@
-
+USE journly_db;
 DROP TABLE IF EXISTS quotes;
 CREATE TABLE IF NOT EXISTS quotes (
                         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS quotes (
                         PRIMARY KEY (id)
 
 );
+
 INSERT INTO quotes(id, quote, author) VALUES
 (1, 'Life is about making an impact, not making an income.', 'Kevin Kruse'),
 (2, 'Whatever the mind of man can conceive and believe, it can achieve.', 'Napoleon Hill'),
