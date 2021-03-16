@@ -42,7 +42,7 @@
                 </li>
             </ul>
 
-            <a sec:authorize="isAuthenticated()" class="nav-link btn btn-outline-secondary" href="#" role="button">Create Gratitude Entry</a>
+            <a sec:authorize="isAuthenticated()" class="nav-link btn btn-outline-secondary" th:href="@{/gratitude-board/create}" role="button">Create Gratitude Entry</a>
 
             <div sec:authorize="isAuthenticated()" class="dropdown mr-1">
                 <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
