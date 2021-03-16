@@ -35,7 +35,7 @@
                 <th:block sec:authorize="!isAuthenticated()">
                     <li class="nav-item">
                         <!--NOTE: Gratitude Board href will need to be updated-->
-                        <a class="nav-link" href="#">Gratitude Board</a>
+                        <a class="nav-link" th:href="@{/gratitude-board}">Gratitude Board</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/about-us}">About Us</a>
@@ -47,7 +47,7 @@
                     </li>
                     <li class="nav-item">
                         <!--NOTE: Gratitude Board href will need to be updated-->
-                        <a class="nav-link" href="#">Gratitude Board</a>
+                        <a class="nav-link" th:href="@{/gratitude-board}">Gratitude Board</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/books}">Books</a>
