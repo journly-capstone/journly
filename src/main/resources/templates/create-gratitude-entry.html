@@ -1,0 +1,23 @@
+<!doctype html>
+<html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head"></head>
+
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<div class="search-header">
+    <p>This is the create posts page!</p>
+</div>
+
+<!-- this is where our loop will go to list all *public* entries -->
+
+<form th:action="@{/gratitude-board/create}" th:method="post" th:object="${newEntry}">
+    <!-- prompt needs to go here -->
+
+    <label for="body">Body: </label>
+    <input type="text" id="body" th:field="*{body}"></textarea>
+    <hr>
+    <input type="submit"></input>
+</form>
+</body>
+</html>
