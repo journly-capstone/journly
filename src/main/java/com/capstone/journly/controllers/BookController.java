@@ -58,6 +58,11 @@ public class BookController {
         return "redirect:/books";
     }
 
+    @GetMapping("/bookshelf")
+    public String getBookshelf(Model model){
+        model.addAttribute("title", "My Bookshelf");
+        return "bookshelf";
+    }
 
 
 }
