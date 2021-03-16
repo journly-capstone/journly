@@ -22,18 +22,21 @@ public class AuthenticationController {
         this.encoder = encoder;
     }
 
+    //Show User the Login Form
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("title", "Login");
         return "login";
     }
 
+    //Show User the Sign Up Form
     @GetMapping("/sign-up")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
         return "users/sign-up";
     }
 
+    //Save User to Database
     @PostMapping("/sign-up")
     public String saveUser(Model model, @Valid @ModelAttribute User user, Errors validation){
 

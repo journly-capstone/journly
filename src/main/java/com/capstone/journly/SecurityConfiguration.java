@@ -54,6 +54,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/dashboard",
+                        "/profile-settings",
+                        "/profile-settings/*",
                         "/gratitude-entries/*", // only authenticated users can create, edit, delete etc. gratitude entries
                         "/books/*" // only authenticated users can create, edit, delete etc. books
                 )

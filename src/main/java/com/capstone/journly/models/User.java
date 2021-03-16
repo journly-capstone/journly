@@ -13,6 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Size(min = 3, message = "Username must be at least 3 characters in length")
     @NotBlank(message ="*Required")
     @Column(nullable = false, unique = true, length = 20)
     private String username;
