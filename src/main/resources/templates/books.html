@@ -71,7 +71,7 @@
                         title = $('<h5 class="center-align white-text">' + response.items[i].volumeInfo.title + '</h5>');
                         author = $('<h5 class="center-align white-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
                         img = $('<img class="aligning card z-depth-5" id="dynamic" alt="image"><br><a href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>');
-                        button = $('<button type="submit" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" data-bookid="'+ response.items[i].id +'" class="addBook">Add Book</button>');
+                        button = $('<button type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" data-bookid="'+ response.items[i].id +'" class="addBook">Add Book</button>');
                         url = response.items[i].volumeInfo.imageLinks.thumbnail;
                         img.attr('src', url);
                         title.appendTo('#result');
@@ -91,10 +91,12 @@ $(document).on("click",".addBook",function (){
     let bookid = $(this).attr("data-bookid");
     let author = $(this).attr("data-author");
     let title = $(this).attr("data-title");
+    let bookThumbnail = $(this).attr("data-thumbnail")
     console.log(bookid + author + title);
     let requestData = {"id" : bookid,
                         "author" : author,
-                        "title" : title}
+                        "title" : title,
+                        "bookThumbnail": bookThumbnail}
     requestData[_csrf_param_name] = _csrf_token; // Adds the token
     $.ajax("/addbook", {
         type: "POST",

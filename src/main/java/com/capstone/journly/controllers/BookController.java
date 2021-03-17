@@ -64,7 +64,7 @@ public class BookController {
     }
 
     @PostMapping("/addbook")
-    public String addBook(@RequestParam("id")String id, @RequestParam("author")String author, @RequestParam("title")String title){
+    public String addBook(@RequestParam("bookThumbnail")String bookThumbnail, @RequestParam("id")String id, @RequestParam("author")String author, @RequestParam("title")String title){
         System.out.println(id);
         User user = userService.getLoggedInUser();
         Bookshelf bookshelf = bookshelfDao.findByUser(user);
@@ -72,6 +72,7 @@ public class BookController {
         book.setApi_id(id);
         book.setAuthor(author);
         book.setTitle(title);
+        book.setBookThumbnail(bookThumbnail);
         book.setBookshelf(bookshelf);
         List<Book> books = new ArrayList<>();
         books.add(book);

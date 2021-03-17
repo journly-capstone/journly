@@ -19,17 +19,21 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = true)
+    private String bookThumbnail;
+
     @ManyToOne
     @JoinColumn(name = "bookshelf_id")
     private Bookshelf bookshelf;
 
     public Book() {}
 
-    public Book(long id, String api_id, String author, String title) {
+    public Book(long id, String api_id, String author, String title, String bookThumbnail) {
         this.id = id;
         this.api_id = api_id;
         this.author = author;
         this.title = title;
+        this.bookThumbnail = bookThumbnail;
     }
 
     public long getId() {
@@ -70,5 +74,13 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getBookThumbnail() {
+        return bookThumbnail;
+    }
+
+    public void setBookThumbnail(String bookThumbnail) {
+        this.bookThumbnail = bookThumbnail;
     }
 }
