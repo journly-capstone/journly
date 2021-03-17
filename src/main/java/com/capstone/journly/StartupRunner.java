@@ -47,10 +47,25 @@ public class StartupRunner implements CommandLineRunner {
         gratitudeEntry.setBody("lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ");
         gratitudeEntry.setImgFilePath("/Users/kristencollier/IdeaProjects/journly/src/main/resources/static/uploads/default.jpeg");
         gratitudeEntry.setIsPublic(true);
-
         gratitudeEntryDao.save(gratitudeEntry);
 
+        GratitudeEntry gratitudeEntry2 = new GratitudeEntry();
+        gratitudeEntry2.setUser(user);
+        gratitudeEntry2.setCreatedAt(new Date(System.currentTimeMillis()));
+        gratitudeEntry2.setPrompt(promptDao.findRandomPrompt());
+        gratitudeEntry2.setBody("Here is an example of a journal post.");
+        gratitudeEntry2.setImgFilePath("/Users/kristencollier/IdeaProjects/journly/src/main/resources/static/uploads/default2.jpeg");
+        gratitudeEntry2.setIsPublic(true);
+        gratitudeEntryDao.save(gratitudeEntry2);
 
+        GratitudeEntry gratitudeEntry3 = new GratitudeEntry();
+        gratitudeEntry3.setUser(user);
+        gratitudeEntry3.setCreatedAt(new Date(System.currentTimeMillis()));
+        gratitudeEntry3.setPrompt(promptDao.findRandomPrompt());
+        gratitudeEntry3.setBody("I am so hap!");
+        gratitudeEntry3.setImgFilePath("/Users/kristencollier/IdeaProjects/journly/src/main/resources/static/uploads/default3.jpg");
+        gratitudeEntry3.setIsPublic(false);
+        gratitudeEntryDao.save(gratitudeEntry3);
 
     }
 }

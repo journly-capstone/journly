@@ -3,25 +3,34 @@
 <head th:replace="partials/head :: head"></head>
 <body>
 
-<div th:replace="partials/navbar :: navbar"></div>
+    <div th:replace="partials/navbar :: navbar"></div>
 
-<div class="jumbotron">
-    <div class="justify-content-center">
-        <h1 class="display-4">Welcome, User!</h1>
-        <p th:text="${quotes.quote}"></p>
-        <p th:text="${quotes.author}"></p>
+    <div class="jumbotron">
+        <div class="justify-content-center">
+            <h1 class="display-4">Welcome, User!</h1>
+            <p th:text="${quotes.quote}"></p>
+            <p th:text="${quotes.author}"></p>
+        </div>
     </div>
-</div>
-<div class="form-inline justify-content-center">
-    <a th:href="@{/gratitude-board/create}">
-        <button type="button" class="btn btn-primary my-2 my-sm-0">Create Gratitude Entry</button>
-    </a>
-</div>
+    <div class="form-inline justify-content-center">
+        <a th:href="@{/gratitude-board/create}">
+            <button type="button" class="btn btn-primary my-2 my-sm-0">Create Gratitude Entry</button>
+        </a>
+    </div>
+
+<!--    <div class="user-gratitude-entries" th:each="entry : ${userEntries}">-->
+<!--        <p th:text="${userEntries.imgFilePath}"></p>-->
+<!--        <p th:text="${userEntries.prompt}"></p>-->
+<!--        <p th:text="${userEntries.body}"></p>-->
+<!--        <p th:text="${userEntries.createdAt}"></p>-->
+<!--        <p th:text="${userEntries.user}"></p>-->
+<!--        <p th:text="${userEntries.isPublic}"></p>-->
+<!--    </div>-->
 
 
-<div th:replace="partials/scripts :: assets"></div>
+    <div th:replace="partials/scripts :: assets"></div>
 
 
-<!--<div th:replace="partials/footer :: footer"></div>-->
+    <!--<div th:replace="partials/footer :: footer"></div>-->
 </body>
 </html>
