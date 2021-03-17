@@ -88,6 +88,16 @@ public class BookController {
         bookshelfDao.save(bookshelf);
         return"redirect:/bookshelf";
     }
+    @PostMapping("/deletebook")
+    public String deleteBook(@RequestParam("deleteID")long deleteID){
+        System.out.println(deleteID);
+        User user = userService.getLoggedInUser();
+        Bookshelf bookshelf = bookshelfDao.findByUser(user);
+        Book book = bookDao.getOne(deleteID);
+        bookDao.delete(book);
+        bookshelfDao.save(bookshelf);
+        return"redirect:/bookshelf";
+    }
 
 
 }

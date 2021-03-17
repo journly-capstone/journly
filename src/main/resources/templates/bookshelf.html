@@ -26,12 +26,29 @@
 <!--    NEED the remove funtionality for current book on shelf
         A POSSIBLE CLICK EVENT DELETING BOOK FROM SHELF-->
 <!--    <a class="btn btn-danger btn-sm" th:href="@{}">Remove from bookshelf</a>-->
-       <a class="btn btn-danger btn-sm">Remove from bookshelf</a>
+       <a class="btn btn-danger btn-sm deleteBook" data-deleteID= + th:${book.id}>Remove from bookshelf</a>
 </div>
-
+</div>
 <!--<footer th:replace="partials/footer :: header-links"></footer>-->
 
 <div th:replace="partials/scripts :: assets"></div>
+<script>
+    $(document).on("click",".deleteBook",function (){
+        console.log("Delete clicked");
 
+        let deleteId = $(this).attr("data-deleteID")
+        let requestData = {
+            "deleteID": deleteId}
+        requestData[_csrf_param_name] = _csrf_token; // Adds the token
+        $.ajax("/deletebook", {
+            type: "POST",
+            data: requestData
+        }).done(function (data, status, jqXhr){
+            console.log("done")
+        }).fail(function (jqXhr, status, error){
+            console.log(status + error)
+        })
+    })
+</script>
 </body>
 </html>
