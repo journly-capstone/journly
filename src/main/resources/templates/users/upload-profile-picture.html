@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head"></head>
+<body>
+    <div th:replace="partials/navbar :: navbar"></div>
+
+    <main class="container text-center">
+
+        <div class="jumbotron jumbotron-fluid text-center">
+            <div class="container">
+                <h1 class="display-4">Profile Settings</h1>
+            </div>
+        </div>
+
+        <form action="/upload-profile-picture" method="post" enctype="multipart/form-data">
+            <label for="file">Update Profile Picture</label>
+            <input id="file" name="file" type="file" />
+            <br />
+            <input type="submit" value="upload" />
+        </form>
+
+
+        <div th:object="${user}">
+            <div th:if="${user.image != null}">
+                <img th:src="@{'' + ${user.image}}" style="max-height: 200px"/>
+            </div>
+            <label for="user-profile-img-edit">Profile Image</label>
+            <input type="hidden" name="current-image" th:value="${user.image}">
+            <input id="user-profile-img-edit" name="user-profile-img-edit" type="file" />
+        </div>
+        <button class="btn" type="submit" name="action">Save Changes
+        </button>
+
+    </main>
+
+
+    <div th:replace="partials/scripts :: assets"></div>
+
+</body>
+</html>
