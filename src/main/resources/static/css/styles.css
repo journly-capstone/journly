@@ -146,9 +146,12 @@ and (-webkit-device-pixel-ratio: 3) {
 }
 
 /*Navbar Sign Up and Join Today Buttons*/
-#nav-signup-btn, .join-today-btn {
+#nav-signup-btn, .join-today-btn, .pink-btn {
     background-color: var(--blush-color) !important;
     color: white !important;
+}
+#nav-signup-btn:hover, .join-today-btn:hover, .pink-btn:hover {
+    background-color: var(--dark-blush-color) !important;
 }
 
 #join-today-top-btn, .join-today-btn {
@@ -164,9 +167,6 @@ and (-webkit-device-pixel-ratio: 3) {
     background-color: whitesmoke !important;
 }
 
-#nav-signup-btn:hover, .join-today-btn:hover {
-    background-color: var(--dark-blush-color) !important;
-}
 
 /*Styling for Feature Headings on index.html*/
 .feature-headings {
@@ -208,4 +208,24 @@ and (-webkit-device-pixel-ratio: 3) {
 /*STYLING THAT GOES ACROSS THE APPLICATION*/
 .error-msg {
     color: red;
+}
+
+/*ERROR PAGE STYLING*/
+.error-container, .error-404-container, .error-4xx-container {
+    height: 50vh;
+    width: 100%;
+}
+
+.error-404-container, .error-4xx-container {
+    background-image: url("/img/error-404.png") !important;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+}
+
+.error-container {
+    background-image: url("/img/error.png") !important;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
 }

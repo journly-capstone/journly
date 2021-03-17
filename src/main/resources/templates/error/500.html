@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head"></head>
+<body>
+    <div th:replace="partials/navbar :: navbar"></div>
+
+    <main class="container text-center">
+        <div class="container text-center pb-5">
+            <div class="container">
+                <h1 class="pt-5">It's not you, it's me. Be back soon!</h1>
+            </div>
+
+            <div class="error-container container"></div>
+
+            <a class="btn btn-lg pink-btn return-home-btn" th:href="@{|/|}" role="button">Return Home</a><br><br>
+        </div>
+
+    </main>
+
+    <div th:replace="partials/scripts :: assets"></div>
+</body>
+</html>

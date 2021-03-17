@@ -3,6 +3,7 @@
 <head th:replace="partials/head :: head"></head>
 <body>
     <div th:replace="partials/navbar :: navbar"></div>
+
     <main class="container text-center">
         <div class="jumbotron jumbotron-fluid text-center">
             <div class="container">
@@ -10,29 +11,100 @@
             </div>
         </div>
 
-        <div class="container">
-            <h4>Update Profile Information</h4>
+        <!--Profile Settings Navbar-->
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+<!--                <a class="nav-item nav-link active" id="nav-account-information-tab" data-toggle="tab" href="#account-information" role="tab" aria-controls="nav-account-information" aria-selected="true">Account Information</a>-->
+<!--                <a class="nav-item nav-link" id="nav-update-profile-information-tab" data-toggle="tab" href="#update-profile-information" role="tab" aria-controls="nav-update-profile-information" aria-selected="false">Update Profile Information</a>-->
+<!--                <a class="nav-item nav-link" id="nav-change-password-tab" data-toggle="tab" href="#change-password" role="tab" aria-controls="nav-change-password" aria-selected="false">Change Password</a>-->
+                <a class="nav-item nav-link active" id="nav-account-information-tab" data-toggle="tab" th:href="@{#account-information}" role="tab" aria-controls="nav-account-information" aria-selected="true">Account Information</a>
+                <a class="nav-item nav-link" id="nav-update-profile-information-tab" data-toggle="tab" th:href="@{#update-profile-information}" role="tab" aria-controls="nav-update-profile-information" aria-selected="false">Update Profile Information</a>
+                <a class="nav-item nav-link" id="nav-change-password-tab" data-toggle="tab" th:href="@{#change-password}" role="tab" aria-controls="nav-change-password" aria-selected="false">Change Password</a>
+            </div>
+        </nav>
 
-            <div class="container">
-                <form class="container" th:action="@{/profile-settings}" method="post" th:object="${user}">
+        <!--Profile Settings Navbar Content-->
+        <div class="tab-content" id="nav-tabContent">
 
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input class="form-control" type="text" id="username" th:field="*{username}" />
-                    </div>
+            <!--Account Information-->
+            <div class="tab-pane fade show active" id="account-information" role="tabpanel" aria-labelledby="nav-account-information-tab">
+                <div class="card" th:object="${user}">
 
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input class="form-control" type="text" id="email" name="email" th:field="*{email}" />
-                    </div>
+                    <h5 class="card-header"><strong>Profile Information</strong></h5>
 
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><h6><strong>Username: </strong><span class="text-secondary" th:text="${user.getUsername()}"></span></h6></li>
+                        <li class="list-group-item"><h6><strong>Email: </strong><span class="text-secondary" th:text="${user.getEmail()}"></span></h6></li>
+                    </ul>
+
+<!--                    <a class="btn btn-primary" th:href="@{/update-account-information}">Update Account Information</a>-->
+<!--                    <a class="btn btn-primary" th:href="@{/profile-settings/change-password}">Change Password</a>-->
+
+                </div>
+            </div>
+
+            <!--Update Account Information-->
+            <div class="tab-pane fade" id="update-profile-information" role="tabpanel" aria-labelledby="nav-update-profile-information-tab">
+                <div class="card">
+                    <h5 class="card-header"><strong>Update Profile Information</strong></h5>
+                    <form class="container" th:action="@{/profile-settings/update-profile-information}" method="post" th:object="${user}">
+
+                        <div class="form-group">
+                            <label for="username"><strong>Username</strong></label>
+                            <input class="form-control" type="text" id="username" th:field="*{username}" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><strong>Email</strong></label>
+                            <input class="form-control" type="text" id="email" name="email" th:field="*{email}" />
+                        </div>
+
+                        <button type="submit" class="btn btn-secondary mb-3">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <!--Change Password-->
+            <div class="tab-pane fade" id="change-password" role="tabpanel" aria-labelledby="nav-change-password-tab">
+                <div class="card">
+                    <h5 class="card-header"><strong>Change Password</strong></h5>
+
+                    <form class="container" th:action="@{/profile-settings/change-password}" method="post" th:object="${user}">
+
+                        <div class="form-group">
+                            <label for="password"><strong>New Password</strong></label>
+                            <input class="form-control" type="password" id="password" th:field="*{password}" />
+                            <p class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm"><strong>Re-Type New Password</strong></label>
+                            <input class="form-control" id="confirm" name="confirm" type="password">
+                            <input class="form-control" name="id" type="hidden" th:value="${user.getId()}">
+                        </div>
+
+                        <button type="submit" class="btn btn-secondary mb-3">Save Changes</button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
 
 
     <div th:replace="partials/scripts :: assets"></div>
+
+    <script>
+        $(function(){
+            var hash = window.location.hash;
+            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+            $('.nav-tabs a').click(function (e) {
+                $(this).tab('show');
+                var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+                window.location.hash = this.hash;
+                $('html,body').scrollTop(scrollmem);
+            });
+        });
+    </script>
 </body>
 </html>

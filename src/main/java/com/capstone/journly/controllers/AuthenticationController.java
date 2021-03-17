@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -42,9 +43,17 @@ public class AuthenticationController {
 
     //Save User to Database
     @PostMapping("/sign-up")
-    public String saveUser(Model model, @Valid @ModelAttribute User user, Errors validation){
+    public String saveUser(Model model, @Valid @ModelAttribute User user, Errors validation, @RequestParam(name = "confirm") String confirm){
 
         String hash = encoder.encode(user.getPassword());
+
+        if(!user.getPassword().equals(confirm)){
+            validation.rejectValue(
+                    "password",
+                    "user.password",
+                    "Passwords do not match"
+            );
+        }
 
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
