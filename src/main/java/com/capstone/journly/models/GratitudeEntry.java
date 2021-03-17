@@ -2,6 +2,7 @@ package com.capstone.journly.models;
 
 
 
+import net.bytebuddy.implementation.bind.annotation.Default;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;

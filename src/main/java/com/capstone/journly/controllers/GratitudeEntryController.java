@@ -1,8 +1,8 @@
 package com.capstone.journly.controllers;
 
 import com.capstone.journly.models.GratitudeEntry;
-import com.capstone.journly.models.User;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
+import com.capstone.journly.repositories.PromptRepository;
 import com.capstone.journly.repositories.UserRepository;
 import com.capstone.journly.services.UserService;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,16 +26,18 @@ public class GratitudeEntryController {
     private final GratitudeEntryRepository gratitudeEntryDao;
     private final UserRepository userDao;
     private final UserService userService;
+    private final PromptRepository promptDao;
 //    private final EmailService emailService;
 
     @Value("${file-upload-path}")
     private String uploadPath;
 
 
-    public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, GratitudeEntryRepository gratitudeEntryDao1, UserRepository userDao, UserService userService) {
+    public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, GratitudeEntryRepository gratitudeEntryDao1, UserRepository userDao, UserService userService, PromptRepository promptDao) {
         this.gratitudeEntryDao = gratitudeEntryDao;
         this.userDao = userDao;
         this.userService = userService;
+        this.promptDao = promptDao;
     }
 
     @GetMapping("/gratitude-board")
@@ -53,6 +55,7 @@ public class GratitudeEntryController {
 //        User user = userService.getLoggedInUser();
 //        User loggedInUser = userDao.getOne(user.getId());
         model.addAttribute("newEntry", new GratitudeEntry());
+        model.addAttribute("prompt", promptDao.findRandomPrompt());
         return "gratitudes/create-gratitude-entry";
     }
 

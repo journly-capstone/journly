@@ -15,7 +15,7 @@
         <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${newEntry}">
             <!-- prompt needs to go here -->
             <div id="gratitude-entry-prompt">
-                <h4>~PROMPT WILL GO HERE~</h4>
+                <p th:text="${prompt.prompt}"></p>
             </div>
 
 
