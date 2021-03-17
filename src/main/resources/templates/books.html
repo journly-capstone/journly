@@ -50,7 +50,7 @@
     $(document).ready(function() {
 
         $("#myform").submit(function () {
-
+            $("#result").html("");
             let search = $("#books").val();
             if (search === "") {
                 alert("Please enter something in the field");
@@ -67,6 +67,7 @@
                 //*********************************************************************
                 $.get("https://www.googleapis.com/books/v1/volumes?q=" + search, function (response) {
                     //     $.get("https://www.googleapis.com/books/v1/volumes?q=" + search + "&key=" + $[keys], function (response){
+
                     for (let i = 0; i < response.items.length; i++) {
                         title = $('<h5 class="center-align white-text">' + response.items[i].volumeInfo.title + '</h5>');
                         author = $('<h5 class="center-align white-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
@@ -92,7 +93,6 @@ $(document).on("click",".addBook",function (){
     let author = $(this).attr("data-author");
     let title = $(this).attr("data-title");
     let bookThumbnail = $(this).attr("data-thumbnail")
-    console.log(bookid + author + title);
     let requestData = {"id" : bookid,
                         "author" : author,
                         "title" : title,

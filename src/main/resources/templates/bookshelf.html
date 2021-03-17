@@ -9,17 +9,19 @@
 
 
 <h1 class="text-center">My Bookshelf</h1>
-<div class="col-4">
-<!--<div class="col-4" th:each="book : ${books}">-->
-<!--            <h3 th:text="${book.title}"></h3>-->
-<!--            <p th:text="${book.author}"></p>-->
+<div class="col-6">
+<div class="col-6" th:each="book : ${books}">
+    <img class="aligning card z-depth-5" id="dynamic" alt="image" th:src="${book.getBookThumbnail()}"></img>
+    <h3 th:text="${book.getTitle()}"></h3>
+    <h5>Author:</h5>
+            <p th:text="${book.getAuthor()}"></p>
 <!--    ^^^^^ This will show each book stored in the users bookshelf will need to edit the ${} with proper path-->
 
 
 
 <!--    \/ this may need the  title or ID added at the end of the API for a more info button pull
         A POSSIBLE CLICK EVENT TO PING API WITH BOOK DETAILS-->
-    <a class="btn btn-info btn-sm" th:href="@{'https://www.googleapis.com/books/v1/volumes?q='}">View more info.</a>
+    <a class="btn btn-info btn-sm" th:href="@{'https://www.googleapis.com/books/v1/volumes?q=' + ${book.api_id}} ">View more info.</a>
 
 <!--    NEED the remove funtionality for current book on shelf
         A POSSIBLE CLICK EVENT DELETING BOOK FROM SHELF-->
