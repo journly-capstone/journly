@@ -2,38 +2,39 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
+    <nav th:replace="partials/navbar :: navbar"></nav>
 
+    <main class="container">
+        <h1 class="text-center">Log In</h1>
 
-<h1 class="text-center">Log In</h1>
+        <div class="container text-center">
+            <div th:if="${param.error}" class="container text-center">
+                <h4 class="error-msg"><strong>Invalid username or password. Please try again.</strong></h4>
+            </div>
 
-<div class="container text-center">
-    <div th:if="${param.error}" class="container text-center">
-        <h4 class="error-msg"><strong>Invalid username or password. Please try again.</strong></h4>
-    </div>
+            <div th:if="${param.logout}">
+                <h4 class="text-success"><strong>You have been successfully logged out.</strong></h4>
+            </div>
+        </div>
 
-    <div th:if="${param.logout}">
-        <h4 class="text-success"><strong>You have been successfully logged out.</strong></h4>
-    </div>
-</div>
+        <form class="container" th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" id="username" name="username" />
+            </div>
 
-<form class="container" th:action="@{/login}" method="post">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" />
-    </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" id="password" name="password" />
+            </div>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password" />
-    </div>
+            <input class="btn btn-block btn-primary" type="submit" value="Log In" />
 
-    <input class="btn btn-block btn-primary" type="submit" value="Log In" />
-
-    <div class="form-group">
-        <a class="nav-link" href="/sign-up">Need an account? Sign up here!</a>
-    </div>
-</form>
+            <div class="form-group">
+                <a class="nav-link" href="/sign-up">Need an account? Sign up here!</a>
+            </div>
+        </form>
+    </main>
 
 <!--<footer th:replace="partials/footer :: header-links"></footer>-->
 
