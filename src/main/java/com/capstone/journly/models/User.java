@@ -35,10 +35,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GratitudeEntry> posts;
 
-    // Might be the fix we need to give the user a bookshelf on sign-up
-    @OneToOne
-    private Bookshelf bookshelf;
-
 
     public User(){
 
