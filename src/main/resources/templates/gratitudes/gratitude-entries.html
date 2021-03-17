@@ -9,6 +9,23 @@
         <p>This is the all posts page!</p>
     </div>
 
+    <div class="all-public-posts border border-warning" th:each="entry : ${entries}">
+        <div>
+            <p th:value="${entry.imgFilePath}"></p>
+        </div>
+        <div>
+            <p th:text="${entry.prompt}"></p>
+            <p th:text="${entry.body}"></p>
+        </div>
+        <div>
+            <p th:text="${entry.user.getUsername()}"></p>
+            <p th:text="${entry.createdAt}"></p>
+        </div>
+        <div>
+            <p th:text="${entry.isPublic}"></p>
+        </div>
+    </div>
+
  <!-- this is where our loop will go to list all *public* entries -->
 
 </body>
