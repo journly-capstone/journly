@@ -12,10 +12,10 @@
 
 <!-- this is where our loop will go to list all *public* entries -->
     <div class="gratitude-entry-form px-3 text-center">
-        <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${newEntry}">
+        <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${newEntry}" enctype="multipart/form-data">
             <!-- prompt needs to go here -->
             <div id="gratitude-entry-prompt">
-                <p th:text="${prompt.prompt}"></p>
+                <p name="currentPrompt" th:text="${prompt}"></p>
             </div>
 
 
@@ -30,8 +30,8 @@
             <div id="gratitude-entry-image-upload">
                 <label for="image" class="font-weight-bold">Image for Gratitude Entry (optional, a default will be set for you if left blank):</label>
                 <br>
-                <input class="text-center" type="hidden" name="current-image" th:value="${newEntry.imgFilePath}">
-                <input class="text-center" id="image" name="image" type="file" />
+                <input type="hidden" name="image" th:value="${newEntry.imgFilePath}">
+                <input id="image" name="image" type="file">
             </div>
 
             <hr>
@@ -40,7 +40,7 @@
                 <!-- if true, will be public
                      if false, will only show on profile -->
                 <p class="font-weight-bold">Click this box if you would like your post to be displayed on the community Gratitude Board:</p>
-                <input type="checkbox" th:value="${newEntry.isPublic}"/>
+                <input type="checkbox" name="isPublic" th:value="${newEntry.isPublic}"/>
     <!--            <input type="submit" value="Submit">-->
             </div>
 
