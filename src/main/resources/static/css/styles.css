@@ -182,6 +182,12 @@ and (-webkit-device-pixel-ratio: 3) {
     border-radius: 50%;
 }
 
+.user-profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
 
 /* ABOUT US PAGE STYLING */
 .about-us-avatar {
@@ -208,6 +214,17 @@ and (-webkit-device-pixel-ratio: 3) {
 /*STYLING THAT GOES ACROSS THE APPLICATION*/
 .error-msg {
     color: red;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.plus-sign-circle {
+    font-size: 2em;
+    padding-left: 10px;
 }
 
 /*ERROR PAGE STYLING*/

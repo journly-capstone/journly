@@ -54,12 +54,13 @@
 
             </ul>
 
-            <a sec:authorize="isAuthenticated()" class="nav-link btn btn-outline-secondary" th:href="@{/gratitude-board/create}" role="button">Create Gratitude Entry</a>
+            <a sec:authorize="isAuthenticated()" class="nav-link plus-sign-circle text-secondary" th:href="@{/gratitude-board/create}"><i class="fas fa-plus-circle"></i></a>
 
             <div sec:authorize="isAuthenticated()" class="dropdown mr-1">
-                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-                    Profile
-                </button>
+                <a class="dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20" >
+                    <img th:src="@{'' + ${#authentication.principal.imgFilePath}}" class="avatar"/>
+                </a>
+
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                     <a class="dropdown-item" th:href="@{/dashboard}">View Dashboard</a>
                     <a class="dropdown-item" th:href="@{/profile-settings}">Profile Settings</a>

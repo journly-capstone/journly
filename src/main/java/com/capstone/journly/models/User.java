@@ -81,7 +81,7 @@ public class User {
         this.password = password;
     }
 
-    public String getImgFilepath() {
+    public String getImgFilePath() {
         return imgFilePath;
     }
 
