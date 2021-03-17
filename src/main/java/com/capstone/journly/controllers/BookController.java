@@ -7,6 +7,7 @@ import com.capstone.journly.repositories.BookRepository;
 import com.capstone.journly.repositories.BookshelfRepository;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
 //import com.capstone.journly.services.EmailService;
+import com.capstone.journly.repositories.UserRepository;
 import com.capstone.journly.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class BookController {
@@ -23,12 +25,14 @@ public class BookController {
     private final UserService userService;
     private final BookRepository bookDao;
     private final BookshelfRepository bookshelfDao;
+    private final UserRepository userDao;
 
-    public BookController(GratitudeEntryRepository gratitudeEntryDao, BookRepository bookDao, UserService userService, BookshelfRepository bookshelfDao) {
+    public BookController(GratitudeEntryRepository gratitudeEntryDao, BookRepository bookDao, UserService userService, BookshelfRepository bookshelfDao, UserRepository userDao) {
         this.gratitudeEntryDao = gratitudeEntryDao;
         this.userService = userService;
         this.bookDao = bookDao;
         this.bookshelfDao = bookshelfDao;
+        this.userDao = userDao;
     }
 
 //    public BookController(GratitudeEntryRepository gratitudeEntryDao,BookRepository bookDao, EmailService emailService, UserService userService) {
@@ -60,6 +64,10 @@ public class BookController {
     @GetMapping("/bookshelf")
     public String getBookshelf(Model model){
         model.addAttribute("title", "My Bookshelf");
+        User user = userService.getLoggedInUser();
+        Bookshelf bookshelf = bookshelfDao.findByUser(user);
+        List<Book> books = bookshelf.getBooks();
+        model.addAttribute("books", books);
         return "bookshelf";
     }
 
