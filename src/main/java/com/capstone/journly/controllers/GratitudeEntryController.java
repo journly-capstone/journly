@@ -29,8 +29,8 @@ public class GratitudeEntryController {
     private final PromptRepository promptDao;
 //    private final EmailService emailService;
 
-    @Value("${file-upload-path}")
-    private String uploadPath;
+//    @Value("${file-upload-path}")
+//    private String uploadPath;
 
 
     public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, GratitudeEntryRepository gratitudeEntryDao1, UserRepository userDao, UserService userService, PromptRepository promptDao) {
@@ -60,30 +60,30 @@ public class GratitudeEntryController {
     }
 
 
-    @PostMapping(path = "/gratitude-board/create")
-    public String upload(Model model, @RequestParam(name = "image") MultipartFile file, @ModelAttribute GratitudeEntry gratitudeEntry) {
-        String filename = file.getOriginalFilename();
-        String filepath = Paths.get(uploadPath, filename).toString();
-        File destinationFile = new File(filepath);
-        gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
-        gratitudeEntry.setImgFilePath(filepath);
-        gratitudeEntry.setUser(userService.getLoggedInUser());
-        // need to include logic from the create-gratitude-entries template's checkbox
-        // if checkbox is checked --> isPublic == true
-        // if checkbox is NOT checked --> isPublic == false
-//        gratitudeEntry.setIsPublic();
-
-        try {
-            file.transferTo(destinationFile);
-            gratitudeEntryDao.save(gratitudeEntry);
-            model.addAttribute("userResponse", "Upload successful.");
-        } catch(IOException e) {
-            e.printStackTrace();
-            model.addAttribute("userResponse", "Upload unsuccessful.");
-        }
-
-        return "redirect:/gratitudes/create-gratitude-entry";
-    }
+//    @PostMapping(path = "/gratitude-board/create")
+//    public String upload(Model model, @RequestParam(name = "image") MultipartFile file, @ModelAttribute GratitudeEntry gratitudeEntry) {
+//        String filename = file.getOriginalFilename();
+//        String filepath = Paths.get(uploadPath, filename).toString();
+//        File destinationFile = new File(filepath);
+//        gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
+//        gratitudeEntry.setImgFilePath(filepath);
+//        gratitudeEntry.setUser(userService.getLoggedInUser());
+//        // need to include logic from the create-gratitude-entries template's checkbox
+//        // if checkbox is checked --> isPublic == true
+//        // if checkbox is NOT checked --> isPublic == false
+////        gratitudeEntry.setIsPublic();
+//
+//        try {
+//            file.transferTo(destinationFile);
+//            gratitudeEntryDao.save(gratitudeEntry);
+//            model.addAttribute("userResponse", "Upload successful.");
+//        } catch(IOException e) {
+//            e.printStackTrace();
+//            model.addAttribute("userResponse", "Upload unsuccessful.");
+//        }
+//
+//        return "redirect:/gratitudes/create-gratitude-entry";
+//    }
 
 
 //    @GetMapping("/gratitude-board/create")

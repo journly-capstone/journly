@@ -23,7 +23,7 @@ public class GratitudeEntry {
     private Boolean isPublic;
 
     @Column(nullable = true)
-    @Value("${file-upload-path}")
+//    @Value("${file-upload-path}")
     private String imgFilePath;
 
     @Column(nullable = false)
