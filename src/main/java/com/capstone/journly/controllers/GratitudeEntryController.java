@@ -1,6 +1,7 @@
 package com.capstone.journly.controllers;
 
 import com.capstone.journly.models.GratitudeEntry;
+import com.capstone.journly.models.Prompt;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
 import com.capstone.journly.repositories.PromptRepository;
 import com.capstone.journly.repositories.UserRepository;
@@ -26,8 +27,6 @@ public class GratitudeEntryController {
     private final PromptRepository promptDao;
 //    private final EmailService emailService;
 
-//    @Value("${file-upload-path}")
-//    private String uploadPath;
 
 
     public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, GratitudeEntryRepository gratitudeEntryDao1, UserRepository userDao, UserService userService, PromptRepository promptDao) {
@@ -37,74 +36,71 @@ public class GratitudeEntryController {
         this.promptDao = promptDao;
     }
 
+    @Value("${file-upload-path}")
+    private String uploadPath;
+
     @GetMapping("/gratitude-board")
     public String gratitudeBoard(Model model) {
         List<GratitudeEntry> entries = gratitudeEntryDao.findAll();
         model.addAttribute("entries", entries);
 
-        return "gratitudes/gratitude-entries";
-    }
-
-    // edit URL in below method later?
-    @GetMapping(path ="/gratitude-board/create")
-    public String createGratitudeEntryGET(Model model) {
-        // use below methods for logged in user later
-//        User user = userService.getLoggedInUser();
-//        User loggedInUser = userDao.getOne(user.getId());
-        model.addAttribute("newEntry", new GratitudeEntry());
-        model.addAttribute("prompt", promptDao.findRandomPrompt());
-        return "gratitudes/create-gratitude-entry";
+        return "gratitudes/gratitude-board";
     }
 
     @GetMapping("/gratitude-board/{id}")
-    public String viewPost(Model model, @PathVariable long id) {
-        GratitudeEntry entry = gratitudeEntryDao.getOne(id);
-        model.addAttribute("singleEntry", entry);
-        return "gratitudes/individual-gratitude-post";
+    public String singleEntryViewMore (Model model, @PathVariable long id) {
+        GratitudeEntry singleEntry = gratitudeEntryDao.getOne(id);
+        model.addAttribute("singleEntry", singleEntry);
+        return "gratitudes/individual-gratitude-entry";
+    }
+
+    @GetMapping(path ="/gratitude-board/create")
+    public String createGratitudeEntryGET(Model model) {
+        model.addAttribute("newEntry", new GratitudeEntry());
+        Prompt prompt = promptDao.findRandomPrompt();
+        model.addAttribute("prompt", prompt.getPrompt());
+        return "gratitudes/create-gratitude-entry";
     }
 
 
-//    @PostMapping(path = "/gratitude-board/create")
-//    public String upload(Model model, @RequestParam(name = "image") MultipartFile file, @ModelAttribute GratitudeEntry gratitudeEntry) {
-//        String filename = file.getOriginalFilename();
-//        String filepath = Paths.get(uploadPath, filename).toString();
-//        File destinationFile = new File(filepath);
-//        gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
-//        gratitudeEntry.setImgFilePath(filepath);
-//        gratitudeEntry.setUser(userService.getLoggedInUser());
-//        // need to include logic from the create-gratitude-entries template's checkbox
-//        // if checkbox is checked --> isPublic == true
-//        // if checkbox is NOT checked --> isPublic == false
-////        gratitudeEntry.setIsPublic();
-//
-//        try {
-//            file.transferTo(destinationFile);
-//            gratitudeEntryDao.save(gratitudeEntry);
-//            model.addAttribute("userResponse", "Upload successful.");
-//        } catch(IOException e) {
-//            e.printStackTrace();
-//            model.addAttribute("userResponse", "Upload unsuccessful.");
-//        }
-//
-//        return "redirect:/gratitudes/create-gratitude-entry";
-//    }
+    @PostMapping(path = "/gratitude-board/create")
+    public String upload(Model model,
+                         @RequestParam(name = "image") MultipartFile image,
+                         @RequestParam(name = "isPublic") Boolean isPublic,
+                         @RequestParam(name = "currentPrompt") Prompt currentPrompt,
+                         @ModelAttribute GratitudeEntry gratitudeEntry) {
 
+        if (image != null) {
+            String filename = image.getOriginalFilename();
+            String filepath = Paths.get(uploadPath, filename).toString();
+            File destinationFile = new File(filepath);
+            try {
+                image.transferTo(destinationFile);
+                gratitudeEntry.setImgFilePath("/uploads" + filename);
+                model.addAttribute("userResponse", "Upload successful.");
+            } catch (IOException e) {
+                e.printStackTrace();
+                model.addAttribute("userResponse", "Upload unsuccessful.");
+            }
+        } else {
+            gratitudeEntry.setImgFilePath("/uploads/default-profile-picture.png");
+        }
 
-//    @GetMapping("/gratitude-board/create")
-//    public String showUploadFileForm(Model model) {
-//        User currentUser = userService.getLoggedInUser();
-//        User user = userDao.getOne(currentUser.getId());
-//        model.addAttribute("newEntry", new GratitudeEntry());
-//        return "gratitudes/create-gratitude-entry";
-//    }
+        // working on the logic for the isPublic checkbox
+        // need to include logic from the create-gratitude-entries template's checkbox
+        // if checkbox is checked --> isPublic == true
+        // if checkbox is NOT checked --> isPublic == false
+        if (isPublic != true) {
+            gratitudeEntry.setIsPublic(false);
+        } else {
+            gratitudeEntry.setIsPublic(true);
+        }
+        gratitudeEntry.setUser(userService.getLoggedInUser());
+        gratitudeEntry.setPrompt(currentPrompt);
+        gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
+        gratitudeEntryDao.save(gratitudeEntry);
 
-//    @PostMapping(path = "/gratitude-board/create")
-//    public String createGratitudeEntryPOST (@ModelAttribute GratitudeEntry entry) {
-//        User user = userService.getLoggedInUser();
-//        entry.setUser(user);
-//        GratitudeEntry savedEntry = gratitudeEntryDao.save(entry);
-//
-//        // map to single post view or profile view, etc
-//        return "redirect:/gratitude-board";
-//    }
+        return "redirect:/gratitudes/gratitude-board";
+    }
+
 }
