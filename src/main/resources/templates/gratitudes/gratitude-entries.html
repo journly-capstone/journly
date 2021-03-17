@@ -24,6 +24,10 @@
         <div>
             <p th:text="${entry.isPublic}"></p>
         </div>
+        <div>
+            <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
+
+        </div>
     </div>
 
  <!-- this is where our loop will go to list all *public* entries -->

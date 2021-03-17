@@ -88,4 +88,5 @@ public class User {
     public void setImgFilePath(String imgFilePath) {
         this.imgFilePath = imgFilePath;
     }
+
 }
