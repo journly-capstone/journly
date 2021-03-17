@@ -72,6 +72,9 @@ public class AuthenticationController {
         }
 
         user.setPassword(hash);
+        user.setImgFilePath("/uploads/default-profile-picture.png");
+
+
         userDao.save(user);
         Bookshelf bookshelf = new Bookshelf();
         bookshelf.setUser(user);
