@@ -9,11 +9,13 @@
 
 
     <div class="col-md-6">
-        <h1>${gratitude.title}</h1>
-        <h4>${gratitude.description}</h4>
-        <form action="/ads/delete?id=${ad.id}" method="post">
-            <input value="delete" type="submit" class="btn btn-block btn-primary">
-        </form>
+        <h1 th:text="${singleEntry.prompt}"></h1>
+        <h1 th:text="${singleEntry.body}"></h1>
+        <h1 th:text="${singleEntry.createdAt}"></h1>
+        <h1 th:text="${singleEntry.user.getUsername()}"></h1>
+<!--        <form action="/ads/delete?id=${ad.id}" method="post">-->
+<!--            <input value="delete" type="submit" class="btn btn-block btn-primary">-->
+<!--        </form>-->
     </div>
 
     <!--<div th:replace="partials/footer :: footer"></div>-->
