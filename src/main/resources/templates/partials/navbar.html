@@ -37,9 +37,21 @@
                 <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" th:href="@{/about-us}">About Us</a>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{/books}">Books</a>
-                </li>
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Books
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
+                            <a class="nav-link" th:href="@{/books}">Books</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
+                            <a class="nav-link" th:href="@{/bookshelf}">Bookshelf</a>
+                        </li>
+                    </div>
+                </div>
+
             </ul>
 
             <a sec:authorize="isAuthenticated()" class="nav-link btn btn-outline-secondary" th:href="@{/gratitude-board/create}" role="button">Create Gratitude Entry</a>
