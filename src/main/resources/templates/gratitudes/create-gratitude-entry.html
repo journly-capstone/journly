@@ -12,17 +12,17 @@
 
 <!-- this is where our loop will go to list all *public* entries -->
     <div class="gratitude-entry-form px-3 text-center">
-        <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${newEntry}" enctype="multipart/form-data">
+        <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${gratitudeEntry}" enctype="multipart/form-data">
             <!-- prompt needs to go here -->
-            <div id="gratitude-entry-prompt">
-                <p name="currentPrompt" th:text="${prompt}"></p>
+            <div id="gratitude-entry-prompt" th:object="${prompt}">
+                <h4 name="currentPrompt" th:field="*{prompt}" th:text="${prompt.prompt}"></h4>
             </div>
 
 
             <div id="gratitude-entry-body">
                 <label for="body" class="font-weight-bold">Body: </label>
                 <br>
-                <textarea type="text" id="body" th:value="${newEntry.body}"></textarea>
+                <textarea id="body" th:field="*{body}"></textarea>
             </div>
 
             <hr>
@@ -30,7 +30,7 @@
             <div id="gratitude-entry-image-upload">
                 <label for="image" class="font-weight-bold">Image for Gratitude Entry (optional, a default will be set for you if left blank):</label>
                 <br>
-                <input type="hidden" name="image" th:value="${newEntry.imgFilePath}">
+                <input type="hidden" name="image" th:field="*{imgFilePath}">
                 <input id="image" name="image" type="file">
             </div>
 
@@ -40,7 +40,7 @@
                 <!-- if true, will be public
                      if false, will only show on profile -->
                 <p class="font-weight-bold">Click this box if you would like your post to be displayed on the community Gratitude Board:</p>
-                <input type="checkbox" name="isPublic" th:value="${newEntry.isPublic}"/>
+                <input type="checkbox" name="isPublic" th:field="*{isPublic}"/>
     <!--            <input type="submit" value="Submit">-->
             </div>
 
