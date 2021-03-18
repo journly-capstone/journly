@@ -5,6 +5,7 @@ import com.capstone.journly.models.Prompt;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
 import com.capstone.journly.repositories.PromptRepository;
 import com.capstone.journly.repositories.UserRepository;
+import com.capstone.journly.services.EmailService;
 import com.capstone.journly.services.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Email;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -25,7 +27,6 @@ public class GratitudeEntryController {
     private final UserRepository userDao;
     private final UserService userService;
     private final PromptRepository promptDao;
-//    private final EmailService emailService;
 
 
 
@@ -36,8 +37,11 @@ public class GratitudeEntryController {
         this.promptDao = promptDao;
     }
 
+
+
     @Value("${file-upload-path}")
     private String uploadPath;
+
 
     @GetMapping("/gratitude-board")
     public String gratitudeBoard(Model model) {
