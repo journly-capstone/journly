@@ -182,12 +182,22 @@ and (-webkit-device-pixel-ratio: 3) {
     border-radius: 50%;
 }
 
-.user-profile-avatar {
+/*img.profile-pic {*/
+img.user-profile-picture {
     width: 150px;
     height: 150px;
+    object-fit: cover;
+    object-position: center;
     border-radius: 50%;
 }
 
+img.user-profile-avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
 
 /* ABOUT US PAGE STYLING */
 .about-us-avatar {
