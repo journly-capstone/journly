@@ -10,14 +10,12 @@
 
 <h1 class="text-center">My Bookshelf</h1>
 <div class="col-6">
-<div class="col-6" th:each="book : ${books}">
+<div class="col-6" id="bookshelf" th:each="book : ${books}">
     <img class="aligning card z-depth-5" id="dynamic" alt="image" th:src="${book.getBookThumbnail()}"></img>
     <h3 th:text="${book.getTitle()}"></h3>
     <h5>Author:</h5>
             <p th:text="${book.getAuthor()}"></p>
 <!--    ^^^^^ This will show each book stored in the users bookshelf will need to edit the ${} with proper path-->
-
-
 
 <!--    \/ this may need the  title or ID added at the end of the API for a more info button pull
         A POSSIBLE CLICK EVENT TO PING API WITH BOOK DETAILS-->
@@ -26,12 +24,40 @@
 <!--    NEED the remove funtionality for current book on shelf
         A POSSIBLE CLICK EVENT DELETING BOOK FROM SHELF-->
 <!--    <a class="btn btn-danger btn-sm" th:href="@{}">Remove from bookshelf</a>-->
-       <a class="btn btn-danger btn-sm">Remove from bookshelf</a>
+       <a class="btn btn-danger btn-sm deleteBook" th:attr="data-deleteID=${book.id}">Remove from bookshelf</a>
 </div>
 
+</div>
 <!--<footer th:replace="partials/footer :: header-links"></footer>-->
 
 <div th:replace="partials/scripts :: assets"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var _csrf_token = /*[[${_csrf.token}]]*/ '';
+    var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '';
+    /*]]>*/
+</script>
+<script>
+    $(document).on("click",".deleteBook",function (){
+        console.log("Delete clicked");
 
+        let deleteId = $(this).attr("data-deleteID")
+        console.log(deleteId);
+        let requestData = {
+            "deleteID": deleteId}
+        requestData[_csrf_param_name] = _csrf_token; // Adds the token
+        $.ajax("/deletebook", {
+            type: "POST",
+            data: requestData
+        }).done(function (fragment){
+            // window.location.reload();
+            console.log("done")
+            $("#bookshelf").replaceWith(fragment)
+        }).fail(function (jqXhr, status, error){
+            console.log(status + error)
+        })
+    })
+</script>
 </body>
 </html>
