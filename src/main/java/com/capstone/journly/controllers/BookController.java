@@ -12,6 +12,7 @@ import com.capstone.journly.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.model.IModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,11 +69,17 @@ public class BookController {
         Bookshelf bookshelf = bookshelfDao.findByUser(user);
         List<Book> books = bookshelf.getBooks();
         model.addAttribute("books", books);
+
         return "bookshelf";
     }
 
     @PostMapping("/addbook")
-    public String addBook(@RequestParam("bookThumbnail")String bookThumbnail, @RequestParam("id")String id, @RequestParam("author")String author, @RequestParam("title")String title){
+    public String addBook(
+            @RequestParam("bookThumbnail")String bookThumbnail,
+            @RequestParam("id")String id,
+            @RequestParam("author")String author,
+            @RequestParam("title")String title){
+
         System.out.println(id);
         User user = userService.getLoggedInUser();
         Bookshelf bookshelf = bookshelfDao.findByUser(user);
@@ -89,15 +96,29 @@ public class BookController {
         return"redirect:/bookshelf";
     }
     @PostMapping("/deletebook")
-    public String deleteBook(@RequestParam("deleteID")long deleteID){
+    public String deleteBook(@RequestParam("deleteID")long deleteID, Model model){
         System.out.println(deleteID);
+        System.out.println("*******************************************");
         User user = userService.getLoggedInUser();
         Bookshelf bookshelf = bookshelfDao.findByUser(user);
         Book book = bookDao.getOne(deleteID);
         bookDao.delete(book);
         bookshelfDao.save(bookshelf);
-        return"redirect:/bookshelf";
+        Bookshelf updatedBookshelf = bookshelfDao.findByUser(user);
+        List<Book> books = updatedBookshelf.getBooks();
+        model.addAttribute("books", books);
+        return "partials/updateBookshelf :: #updatedBooks";
     }
+
+//    @GetMapping("/loadbookshelf")
+//    public String loadBookshelf(Model model){
+//        User user = userService.getLoggedInUser();
+//        Bookshelf bookshelf = bookshelfDao.findByUser(user);
+//        List<Book> books = bookshelf.getBooks();
+//        model.addAttribute("books", books);
+//        return "bookshelf";
+//    }
+
 
 
 }
