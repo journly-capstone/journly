@@ -14,9 +14,6 @@
         <!--Profile Settings Navbar-->
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-<!--                <a class="nav-item nav-link active" id="nav-account-information-tab" data-toggle="tab" href="#account-information" role="tab" aria-controls="nav-account-information" aria-selected="true">Account Information</a>-->
-<!--                <a class="nav-item nav-link" id="nav-update-profile-information-tab" data-toggle="tab" href="#update-profile-information" role="tab" aria-controls="nav-update-profile-information" aria-selected="false">Update Profile Information</a>-->
-<!--                <a class="nav-item nav-link" id="nav-change-password-tab" data-toggle="tab" href="#change-password" role="tab" aria-controls="nav-change-password" aria-selected="false">Change Password</a>-->
                 <a class="nav-item nav-link active" id="nav-account-information-tab" data-toggle="tab" th:href="@{#account-information}" role="tab" aria-controls="nav-account-information" aria-selected="true">Account Information</a>
                 <a class="nav-item nav-link" id="nav-update-profile-information-tab" data-toggle="tab" th:href="@{#update-profile-information}" role="tab" aria-controls="nav-update-profile-information" aria-selected="false">Update Profile Information</a>
                 <a class="nav-item nav-link" id="nav-change-password-tab" data-toggle="tab" th:href="@{#change-password}" role="tab" aria-controls="nav-change-password" aria-selected="false">Change Password</a>
@@ -38,23 +35,21 @@
                                 <img th:src="@{'' + ${user.getImgFilePath()}}" alt="avatar" class="user-profile-picture"/>
                             </div>
                         </li>
+
                         <li class="list-group-item"><h6><strong>Username: </strong><span class="text-secondary" th:text="${user.getUsername()}"></span></h6></li>
+
                         <li class="list-group-item"><h6><strong>Email: </strong><span class="text-secondary" th:text="${user.getEmail()}"></span></h6></li>
                     </ul>
-
-<!--                    <a class="btn btn-primary" th:href="@{/update-account-information}">Update Account Information</a>-->
-<!--                    <a class="btn btn-primary" th:href="@{/profile-settings/change-password}">Change Password</a>-->
-
                 </div>
             </div>
 
             <!--Update Profile Information-->
             <div class="tab-pane fade" id="update-profile-information" role="tabpanel" aria-labelledby="nav-update-profile-information-tab">
+                <h6 th:text="${message}" class="text-danger text-center"></h6>
+
                 <div class="card">
-                    <!-- NEW LINE OF CODE -->
-                    <h6 th:text="${message}" class="text-danger text-center"></h6>
-                    <!--/////////////-->
                     <h5 class="card-header"><strong>Update Profile Information</strong></h5>
+
                     <form class="container" th:action="@{/profile-settings/update-profile-information}" method="post" th:object="${user}" enctype="multipart/form-data">
 
                         <div class="form-group">
@@ -111,19 +106,6 @@
 
 
     <div th:replace="partials/scripts :: assets"></div>
-
-    <script>
-        $(function(){
-            var hash = window.location.hash;
-            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-
-            $('.nav-tabs a').click(function (e) {
-                $(this).tab('show');
-                var scrollmem = $('body').scrollTop() || $('html').scrollTop();
-                window.location.hash = this.hash;
-                $('html,body').scrollTop(scrollmem);
-            });
-        });
-    </script>
+    <div th:replace="partials/scripts :: profile-settings-script"></div>
 </body>
 </html>

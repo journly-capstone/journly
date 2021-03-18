@@ -1,9 +1,15 @@
 package com.capstone.journly.controllers;
 
 import com.capstone.journly.models.User;
+import com.capstone.journly.models.UserWithRoles;
 import com.capstone.journly.repositories.UserRepository;
 import com.capstone.journly.services.UserService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,22 +79,17 @@ public class UserController {
         user.setPassword(updatedUser.getPassword());
         userDao.save(user);
 
+        UserDetails userDetails = new UserWithRoles(user);
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(auth);
+
         return "redirect:/profile-settings/#account-information";
     }
-
-
-//    //Show Change Password View to User
-//    @GetMapping("profile-settings/change-password")
-//    public String showChangePassword(Model model) {
-//        model.addAttribute("title", "Profile Settings - Change Password");
-//
-//        User sessionUser = userService.getLoggedInUser();
-//        User user = userDao.getOne(sessionUser.getId());
-//        model.addAttribute("user", user);
-//
-//        return "users/change-password";
-//    }
-
 
     //Allow Users to Update Password
     @PostMapping("/profile-settings/change-password")
@@ -101,57 +102,7 @@ public class UserController {
             userDao.save(user);
             return "login";
         }
-//        return showChangePassword(model);
 
         return "users/change-password";
     }
-
-//    //Allow Users to Update Password
-//    @PostMapping("/profile-settings/change-password")
-//    public String changePassword(Model model, @Valid @ModelAttribute User user, Errors validation, @RequestParam(name = "confirm") String confirm, @RequestParam(name = "password")String password){
-//
-//        model.addAttribute("title", "Profile Settings - Change Password");
-////        model.addAttribute("user", user);
-//
-//        String hash = encoder.encode(user.getPassword());
-//
-//        if(!user.getPassword().equals(confirm)){
-//            validation.rejectValue(
-//                    "password",
-//                    "user.password",
-//                    "Passwords do not match"
-//            );
-//        }
-//
-//        if(validation.hasErrors()) {
-//            model.addAttribute("errors", validation);
-//            model.addAttribute("user", user);
-//
-//            return "users/profile-settings";
-//            //takes me straight to the profile-settings page (with account information tab open) although the url is as follows: profile-settings/change-password#change-password
-//            //but, does save changes on #change-password tab. just not the other tabs.
-//        }
-//
-//        if (password.equals(confirm)){
-//            user.setId(user.getId());
-//            user.setPassword(hash);
-//            userDao.save(user);
-//
-//            return "redirect:/login";
-//        }
-//
-////        if (password.equals(confirm)){
-////            user.setId(user.getId());
-////            String hash = encoder.encode(password);
-////            user.setPassword(hash);
-////            userDao.save(user);
-////
-////            return "redirect:/login";
-////        }
-//
-//        return "redirect:/profile-settings";
-//    }
-
-
-
 }
