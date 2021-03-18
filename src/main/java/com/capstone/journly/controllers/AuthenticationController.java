@@ -4,6 +4,7 @@ import com.capstone.journly.models.Bookshelf;
 import com.capstone.journly.models.User;
 import com.capstone.journly.repositories.BookshelfRepository;
 import com.capstone.journly.repositories.UserRepository;
+import com.capstone.journly.services.EmailService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +21,13 @@ public class AuthenticationController {
     private final UserRepository userDao;
     private final PasswordEncoder encoder;
     private final BookshelfRepository bookshelfDao;
+    private final EmailService emailService;
 
-    public AuthenticationController(UserRepository userDao, PasswordEncoder encoder, BookshelfRepository bookshelfDao) {
+    public AuthenticationController(UserRepository userDao, PasswordEncoder encoder, BookshelfRepository bookshelfDao, EmailService emailService) {
         this.userDao = userDao;
         this.encoder = encoder;
         this.bookshelfDao = bookshelfDao;
+        this.emailService = emailService;
     }
 
     //Show User the Login Form
@@ -82,6 +85,11 @@ public class AuthenticationController {
         bookshelfDao.save(bookshelf);
 
         model.addAttribute("title", user.getUsername());
+        String subject = "Welcome " + user.getUsername() + "!";
+        String body = "Dear " + user.getUsername()
+                + ". Thank you for sigining up with us.";
+
+        emailService.prepareAndSend(user, subject, body);
         return "redirect:/login";
     }
 }
