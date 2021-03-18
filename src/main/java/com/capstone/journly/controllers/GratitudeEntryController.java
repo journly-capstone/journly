@@ -56,18 +56,20 @@ public class GratitudeEntryController {
 
     @GetMapping(path ="/gratitude-board/create")
     public String createGratitudeEntryGET(Model model) {
-        model.addAttribute("newEntry", new GratitudeEntry());
+        model.addAttribute("gratitudeEntry", new GratitudeEntry());
         Prompt prompt = promptDao.findRandomPrompt();
-        model.addAttribute("prompt", prompt.getPrompt());
+        model.addAttribute("prompt", prompt);
+        System.out.println(prompt);
         return "gratitudes/create-gratitude-entry";
     }
 
 
     @PostMapping(path = "/gratitude-board/create")
-    public String upload(Model model,
+    public String newGratitudeEntry(Model model,
                          @RequestParam(name = "image") MultipartFile image,
-                         @RequestParam(name = "isPublic") Boolean isPublic,
-                         @RequestParam(name = "currentPrompt") Prompt currentPrompt,
+                         @RequestParam(name = "isPublic", defaultValue = "false") boolean isPublic,
+                         // ********************** //
+                         @RequestParam(name = "promptId") long promptId,
                          @ModelAttribute GratitudeEntry gratitudeEntry) {
 
         if (image != null) {
@@ -76,7 +78,7 @@ public class GratitudeEntryController {
             File destinationFile = new File(filepath);
             try {
                 image.transferTo(destinationFile);
-                gratitudeEntry.setImgFilePath("/uploads" + filename);
+                gratitudeEntry.setImgFilePath("/uploads/" + filename);
                 model.addAttribute("userResponse", "Upload successful.");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -86,21 +88,13 @@ public class GratitudeEntryController {
             gratitudeEntry.setImgFilePath("/uploads/default-profile-picture.png");
         }
 
-        // working on the logic for the isPublic checkbox
-        // need to include logic from the create-gratitude-entries template's checkbox
-        // if checkbox is checked --> isPublic == true
-        // if checkbox is NOT checked --> isPublic == false
-        if (isPublic != true) {
-            gratitudeEntry.setIsPublic(false);
-        } else {
-            gratitudeEntry.setIsPublic(true);
-        }
         gratitudeEntry.setUser(userService.getLoggedInUser());
-        gratitudeEntry.setPrompt(currentPrompt);
+        gratitudeEntry.setIsPublic(isPublic);
+        gratitudeEntry.setPrompt(promptDao.getOne(promptId));
         gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
         gratitudeEntryDao.save(gratitudeEntry);
 
-        return "redirect:/gratitudes/gratitude-board";
+        return "/gratitudes/gratitude-board";
     }
 
 }
