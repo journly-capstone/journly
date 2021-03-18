@@ -33,7 +33,11 @@
                     <h5 class="card-header"><strong>Profile Information</strong></h5>
 
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><img th:src="@{'' + ${user.getImgFilePath()}}" class="user-profile-avatar"/></li>
+                        <li class="list-group-item">
+                            <div class="image-cropper">
+                                <img th:src="@{'' + ${user.getImgFilePath()}}" alt="avatar" class="user-profile-picture"/>
+                            </div>
+                        </li>
                         <li class="list-group-item"><h6><strong>Username: </strong><span class="text-secondary" th:text="${user.getUsername()}"></span></h6></li>
                         <li class="list-group-item"><h6><strong>Email: </strong><span class="text-secondary" th:text="${user.getEmail()}"></span></h6></li>
                     </ul>
@@ -44,11 +48,14 @@
                 </div>
             </div>
 
-            <!--Update Account Information-->
+            <!--Update Profile Information-->
             <div class="tab-pane fade" id="update-profile-information" role="tabpanel" aria-labelledby="nav-update-profile-information-tab">
                 <div class="card">
+                    <!-- NEW LINE OF CODE -->
+                    <h6 th:text="${message}" class="text-danger text-center"></h6>
+                    <!--/////////////-->
                     <h5 class="card-header"><strong>Update Profile Information</strong></h5>
-                    <form class="container" th:action="@{/profile-settings/update-profile-information}" method="post" th:object="${user}">
+                    <form class="container" th:action="@{/profile-settings/update-profile-information}" method="post" th:object="${user}" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label for="username"><strong>Username</strong></label>
@@ -58,6 +65,17 @@
                         <div class="form-group">
                             <label for="email"><strong>Email</strong></label>
                             <input class="form-control" type="text" id="email" name="email" th:field="*{email}" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="update-user-profile-picture"><strong>Profile Picture</strong></label>
+
+                            <div th:if="${user.imgFilePath != null}">
+                                <img th:src="@{'' + ${user.imgFilePath}}" style="max-height: 200px" class="user-profile-picture user-update-profile-picture"/>
+                            </div>
+
+                            <input type="hidden" name="current-profile-picture" th:value="${user.imgFilePath}">
+                            <input id="update-user-profile-picture" name="update-user-profile-picture" type="file" class="text-center"/>
                         </div>
 
                         <button type="submit" class="btn btn-secondary mb-3">Save Changes</button>

@@ -58,7 +58,7 @@
 
             <div sec:authorize="isAuthenticated()" class="dropdown mr-1">
                 <a class="dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20" >
-                    <img th:src="@{'' + ${#authentication.principal.imgFilePath}}" class="avatar"/>
+                    <img th:src="@{'' + ${#authentication.principal.imgFilePath}}" class="user-profile-avatar"/>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
