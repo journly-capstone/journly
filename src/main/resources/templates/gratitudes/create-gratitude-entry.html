@@ -14,8 +14,9 @@
     <div class="gratitude-entry-form px-3 text-center">
         <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${gratitudeEntry}" enctype="multipart/form-data">
             <!-- prompt needs to go here -->
-            <div id="gratitude-entry-prompt" th:object="${prompt}">
-                <h4 name="currentPrompt" th:field="*{prompt}" th:text="${prompt.prompt}"></h4>
+            <div id="gratitude-entry-prompt">
+                <h4 th:text="${prompt.prompt}"></h4>
+                <input type="hidden" name="promptId" th:value="${prompt.id}">
             </div>
 
 

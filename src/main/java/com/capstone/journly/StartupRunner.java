@@ -4,6 +4,7 @@
 //
 //import com.capstone.journly.models.Bookshelf;
 //import com.capstone.journly.models.GratitudeEntry;
+//import com.capstone.journly.models.Prompt;
 //import com.capstone.journly.models.User;
 //import com.capstone.journly.repositories.GratitudeEntryRepository;
 //import com.capstone.journly.repositories.PromptRepository;
@@ -45,7 +46,7 @@
 //        GratitudeEntry gratitudeEntry = new GratitudeEntry();
 //        gratitudeEntry.setUser(user);
 //        gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
-//        gratitudeEntry.setPrompt(promptDao.findRandomPrompt());
+//        gratitudeEntry.setPrompt(promptDao.getOne(1L));
 //        gratitudeEntry.setBody("lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ");
 //        gratitudeEntry.setImgFilePath("/uploads/default3.jpg");
 //        gratitudeEntry.setIsPublic(true);
@@ -54,7 +55,7 @@
 //        GratitudeEntry gratitudeEntry2 = new GratitudeEntry();
 //        gratitudeEntry2.setUser(user);
 //        gratitudeEntry2.setCreatedAt(new Date(System.currentTimeMillis()));
-//        gratitudeEntry2.setPrompt(promptDao.findRandomPrompt());
+//        gratitudeEntry2.setPrompt(promptDao.getOne(3L));
 //        gratitudeEntry2.setBody("Here is an example of a journal post.");
 //        gratitudeEntry2.setImgFilePath("/uploads/default2.jpeg");
 //        gratitudeEntry2.setIsPublic(true);
@@ -63,7 +64,7 @@
 //        GratitudeEntry gratitudeEntry3 = new GratitudeEntry();
 //        gratitudeEntry3.setUser(user);
 //        gratitudeEntry3.setCreatedAt(new Date(System.currentTimeMillis()));
-//        gratitudeEntry3.setPrompt(promptDao.findRandomPrompt());
+//        gratitudeEntry3.setPrompt(promptDao.getOne(4L));
 //        gratitudeEntry3.setBody("I am so hap!");
 //        gratitudeEntry3.setImgFilePath("/uploads/default.jpeg");
 //        gratitudeEntry3.setIsPublic(false);

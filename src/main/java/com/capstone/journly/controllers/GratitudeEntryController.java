@@ -59,6 +59,7 @@ public class GratitudeEntryController {
         model.addAttribute("gratitudeEntry", new GratitudeEntry());
         Prompt prompt = promptDao.findRandomPrompt();
         model.addAttribute("prompt", prompt);
+        System.out.println(prompt);
         return "gratitudes/create-gratitude-entry";
     }
 
@@ -67,7 +68,8 @@ public class GratitudeEntryController {
     public String newGratitudeEntry(Model model,
                          @RequestParam(name = "image") MultipartFile image,
                          @RequestParam(name = "isPublic", defaultValue = "false") boolean isPublic,
-                         @RequestParam(name = "currentPrompt") Prompt currentPrompt,
+                         // ********************** //
+                         @RequestParam(name = "promptId") long promptId,
                          @ModelAttribute GratitudeEntry gratitudeEntry) {
 
         if (image != null) {
@@ -76,7 +78,7 @@ public class GratitudeEntryController {
             File destinationFile = new File(filepath);
             try {
                 image.transferTo(destinationFile);
-                gratitudeEntry.setImgFilePath("/uploads" + filename);
+                gratitudeEntry.setImgFilePath("/uploads/" + filename);
                 model.addAttribute("userResponse", "Upload successful.");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -86,19 +88,9 @@ public class GratitudeEntryController {
             gratitudeEntry.setImgFilePath("/uploads/default-profile-picture.png");
         }
 
-        // working on the logic for the isPublic checkbox
-        // need to include logic from the create-gratitude-entries template's checkbox
-        // if checkbox is checked --> isPublic == true
-        // if checkbox is NOT checked --> isPublic == false
-        // starts unchecked, so it starts as false/private
-        if (isPublic) {
-            gratitudeEntry.setIsPublic(true);
-        } else {
-            gratitudeEntry.setIsPublic(false);
-        }
-
         gratitudeEntry.setUser(userService.getLoggedInUser());
-        gratitudeEntry.setPrompt(currentPrompt);
+        gratitudeEntry.setIsPublic(isPublic);
+        gratitudeEntry.setPrompt(promptDao.getOne(promptId));
         gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
         gratitudeEntryDao.save(gratitudeEntry);
 
