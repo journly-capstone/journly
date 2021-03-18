@@ -8,14 +8,19 @@
     <title>Document</title>
 </head>
 <body>
-<div class="col-6" th:fragment="updatedBooks" th:each="book : ${books}">
-    <img class="aligning card z-depth-5" id="dynamic" alt="image" th:src="${book.getBookThumbnail()}"></img>
-    <h3 th:text="${book.getTitle()}"></h3>
-    <h5>Author:</h5>
-    <p th:text="${book.getAuthor()}"></p>
-    <a class="btn btn-info btn-sm" th:href="@{'https://www.googleapis.com/books/v1/volumes?q=' + ${book.api_id}} ">View more info.</a>
-
-    <a class="btn btn-danger btn-sm deleteBook" th:attr="data-deleteID=${book.id}">Remove from bookshelf</a>
+<div class="container">
+    <th:block th:fragment="updatedBooks">
+        <div class="row" id="bookshelf">
+            <div class="col-4"  th:each="book : ${books}">
+                <img class="aligning card z-depth-5" id="dynamic" alt="image" th:src="${book.getBookThumbnail()}"></img>
+                <h3 th:text="${book.getTitle()}"></h3>
+                <h5>Author:</h5>
+                <p th:text="${book.getAuthor()}"></p>
+                <a class="btn btn-info btn-sm" th:href="@{'https://www.googleapis.com/books/v1/volumes?q=' + ${book.api_id}} ">View more info.</a>
+                <a class="btn btn-danger btn-sm deleteBook" th:attr="data-deleteID=${book.id}">Remove from bookshelf</a>
+            </div>
+        </div>
+    </th:block>
 </div>
 </body>
 </html>
