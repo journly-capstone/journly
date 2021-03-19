@@ -31,6 +31,7 @@ public class GratitudeEntry {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+
     private User user;
 
     @ManyToOne

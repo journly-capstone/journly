@@ -118,4 +118,12 @@ public class GratitudeEntryController {
         likeDao.save(like);
         return"gratitudes/gratitude-board";
     }
+
+    @PostMapping("/dashboard/{id}/delete")
+    public String deleteGratitudeEntry(@PathVariable long id, Model model) {
+        gratitudeEntryDao.deleteById(id);
+        model.addAttribute("deleted", "Gratitude Entry removed.");
+
+        return "redirect:/dashboard";
+    }
 }

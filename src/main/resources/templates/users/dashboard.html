@@ -5,6 +5,7 @@
 
     <div th:replace="partials/navbar :: navbar"></div>
 
+
     <div class="jumbotron">
         <div class="justify-content-center">
             <h1 class="display-4">Welcome, User!</h1>
@@ -18,14 +19,22 @@
         </a>
     </div>
 
-    <div class="user-gratitude-entries" th:each="entry : ${userEntries}">
-        <p th:text="${userEntries.getImgFilePath()}"></p>
-        <p th:text="${userEntries.prompt}"></p>
-        <p th:text="${userEntries.body}"></p>
-        <p th:text="${userEntries.createdAt}"></p>
+    <div class="user-gratitude-entries" th:each="entry : ${user.userGratitudeEntries}">
+<!--        th:if="${entry.getId() == user.getId()}"-->
+        <p th:text="${entry.getImgFilePath()}"></p>
+        <p th:text="${entry.getPrompt().prompt}"></p>
+        <p th:text="${entry.body}"></p>
+        <p th:text="${entry.createdAt}"></p>
 <!--        <p th:text="${userEntries.user}"></p>-->
-        <p th:if="${userEntries.isPublic}">Public</p>
-        <p th:if="${!userEntries.isPublic}">Private</p>
+        <p th:if="${entry.isPublic}">Public</p>
+        <p th:if="${!entry.isPublic}">Private</p>
+        <hr>
+        <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
+<!--        <a th:href="@{|/gratitude-board/${entry.id}/update|}" class="montserrat">Edit Entry</a>-->
+        <a th:href="@{|/gratitude-board/${entry.id}/delete|}" class="montserrat">Delete Entry</a>
+<!--        <div th:object="${deleted}" th:if="${success}"></div>-->
+
+
     </div>
 
 
