@@ -40,19 +40,19 @@ public class UserController {
     //Show Profile Settings to User
     @GetMapping("/profile-settings")
     public String showProfileSettings(Model model) {
-        model.addAttribute("title", "Profile Settings");
-
         User sessionUser = userService.getLoggedInUser();
         User user = userDao.getOne(sessionUser.getId());
+
+        model.addAttribute("title", "Profile Settings");
         model.addAttribute("user", user);
 
         return "users/profile-settings";
     }
 
-    //Allow Users to Update Profile Information
+    //Allow Users to Update Profile Information (username, email, profile picture)
     @PostMapping("/profile-settings/update-profile-information")
     public String updateProfileInformation(@ModelAttribute User user,
-                                           @RequestParam(name = "update-user-profile-picture")MultipartFile uploadedFile,
+                                           @RequestParam(name = "update-user-profile-picture", required = false) MultipartFile uploadedFile,
                                            @RequestParam(name = "current-profile-picture") String imgFilePath,
                                            Model model) {
 
@@ -60,10 +60,11 @@ public class UserController {
         User updatedUser = userDao.getOne(sessionUser.getId());
         user.setImgFilePath(imgFilePath);
 
-        if(uploadedFile != null) {
+        if(!uploadedFile.isEmpty()) {
             String fileName = uploadedFile.getOriginalFilename();
             String filePath = Paths.get(uploadPath, fileName).toString();
             File destinationFile = new File(filePath);
+
             try {
                 uploadedFile.transferTo(destinationFile);
                 user.setImgFilePath("/uploads/" + fileName);
