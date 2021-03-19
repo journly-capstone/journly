@@ -47,10 +47,10 @@ public class HomeController {
 
     @GetMapping("/dashboard")
     public String dashboard(Model model){
-//        User user = userService.getLoggedInUser();
+        User user = userService.getLoggedInUser();
         model.addAttribute("title", "Dashboard");
         model.addAttribute("quotes", quoteDao.findRandomQuote());
-//        model.addAttribute("userEntries", gratitudeEntryDao.findAll(user.getId()));
+        model.addAttribute("userEntries", gratitudeEntryDao.findAll(user.getId()));
         return "users/dashboard";
     }
 

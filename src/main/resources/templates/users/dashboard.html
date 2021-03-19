@@ -18,14 +18,15 @@
         </a>
     </div>
 
-<!--    <div class="user-gratitude-entries" th:each="entry : ${userEntries}">-->
-<!--        <p th:text="${userEntries.imgFilePath}"></p>-->
-<!--        <p th:text="${userEntries.prompt}"></p>-->
-<!--        <p th:text="${userEntries.body}"></p>-->
-<!--        <p th:text="${userEntries.createdAt}"></p>-->
+    <div class="user-gratitude-entries" th:each="entry : ${userEntries}">
+        <p th:text="${userEntries.getImgFilePath()}"></p>
+        <p th:text="${userEntries.prompt}"></p>
+        <p th:text="${userEntries.body}"></p>
+        <p th:text="${userEntries.createdAt}"></p>
 <!--        <p th:text="${userEntries.user}"></p>-->
-<!--        <p th:text="${userEntries.isPublic}"></p>-->
-<!--    </div>-->
+        <p th:if="${userEntries.isPublic}">Public</p>
+        <p th:if="${!userEntries.isPublic}">Private</p>
+    </div>
 
 
     <div th:replace="partials/scripts :: assets"></div>
