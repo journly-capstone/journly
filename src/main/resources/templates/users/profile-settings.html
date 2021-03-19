@@ -32,7 +32,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="image-cropper">
-                                <img th:src="@{'' + ${user.getImgFilePath()}}" alt="avatar" class="user-profile-picture"/>
+                                <img th:src="@{'' + ${user.getImgFilePath()}}" th:alt="${user.getUsername()}" class="user-profile-picture"/>
                             </div>
                         </li>
                         <li class="list-group-item"><h6><strong>Username: </strong><span class="text-secondary" th:text="${user.getUsername()}"></span></h6></li>
@@ -79,12 +79,12 @@
 
                         <div class="form-group">
                             <label for="password"><strong>New Password</strong></label>
-                            <input class="form-control" type="password" id="password" th:field="*{password}" />
+                            <input class="form-control" name="password" type="password" id="password" th:field="*{password}" />
                             <p class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                         </div>
 
                         <div class="form-group">
-                            <label for="confirm"><strong>Re-Type New Password</strong></label>
+                            <label for="confirm"><strong>Confirm New Password</strong></label>
                             <input class="form-control" id="confirm" name="confirm" type="password">
                             <input class="form-control" name="id" type="hidden" th:value="${user.getId()}">
                         </div>
@@ -99,5 +99,18 @@
 
     <div th:replace="partials/scripts :: assets"></div>
     <div th:replace="partials/scripts :: profile-settings-script"></div>
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+        var hasErrors = /*[[${hasErrors}]]*/ false;
+        /*]]>*/
+
+        $(document).ready(function() {
+            if(hasErrors) {
+                $('.nav-tabs a[href="#change-password"]').tab("show")
+            }
+        });
+
+    </script>
 </body>
 </html>
