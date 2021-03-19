@@ -102,7 +102,7 @@ public class GratitudeEntryController {
         gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
         gratitudeEntryDao.save(gratitudeEntry);
 
-        return "/gratitudes/gratitude-board";
+        return "redirect:/gratitude-board";
     }
 
     @PostMapping("/like_gratitude_entry")
