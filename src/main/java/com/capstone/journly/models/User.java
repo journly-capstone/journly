@@ -32,8 +32,9 @@ public class User {
     @Column(nullable = true)
     private String imgFilePath;
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<GratitudeEntry> posts;
+    private List<GratitudeEntry> userGratitudeEntries;
 
 
     public User(){
@@ -87,6 +88,14 @@ public class User {
 
     public void setImgFilePath(String imgFilePath) {
         this.imgFilePath = imgFilePath;
+    }
+
+    public List<GratitudeEntry> getUserGratitudeEntries() {
+        return userGratitudeEntries;
+    }
+
+    public void setUserGratitudeEntries(List<GratitudeEntry> userGratitudeEntries) {
+        this.userGratitudeEntries = userGratitudeEntries;
     }
 
 }

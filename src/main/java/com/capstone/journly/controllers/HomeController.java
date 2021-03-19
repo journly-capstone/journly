@@ -1,4 +1,5 @@
 package com.capstone.journly.controllers;
+import com.capstone.journly.models.GratitudeEntry;
 import com.capstone.journly.models.User;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
 import com.capstone.journly.repositories.QuoteRepository;
@@ -47,10 +48,12 @@ public class HomeController {
 
     @GetMapping("/dashboard")
     public String dashboard(Model model){
-//        User user = userService.getLoggedInUser();
+        User user = userService.getLoggedInUser();
+        User currentUser = userDao.getOne(user.getId());
+        model.addAttribute("user", currentUser);
         model.addAttribute("title", "Dashboard");
         model.addAttribute("quotes", quoteDao.findRandomQuote());
-//        model.addAttribute("userEntries", gratitudeEntryDao.findAll(user.getId()));
+        model.addAttribute("userEntries", currentUser.getUserGratitudeEntries());
         return "users/dashboard";
     }
 
