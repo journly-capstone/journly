@@ -31,6 +31,9 @@ public class HomeController {
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("title", "Journly - Gratitude for Teachers");
+        model.addAttribute("firstUser", userDao.findRandomUser());
+        model.addAttribute("secondUser", userDao.findRandomUser());
+        model.addAttribute("thirdUser", userDao.findRandomUser());
         return "index";
     }
 
