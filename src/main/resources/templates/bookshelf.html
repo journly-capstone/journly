@@ -11,6 +11,10 @@
             <h3 th:text="${book.getTitle()}"></h3>
             <h5>Author:</h5>
             <p th:text="${book.getAuthor()}"></p>
+            <div class="like_button">
+                <button>Like</button>
+                <span class="count">0</span>
+            </div>
             <!--    ^^^^^ This will show each book stored in the users bookshelf will need to edit the ${} with proper path-->
             <!--    \/ this may need the  title or ID added at the end of the API for a more info button pull
                     A POSSIBLE CLICK EVENT TO PING API WITH BOOK DETAILS-->
@@ -21,6 +25,7 @@
             <a class="btn btn-danger btn-sm deleteBook" th:attr="data-deleteID=${book.id}">Remove from bookshelf</a>
         </div>
     </div>
+</div>
     <!--<footer th:replace="partials/footer :: header-links"></footer>-->
     <div th:replace="partials/scripts :: assets"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -30,6 +35,12 @@
         var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '';
         /*]]>*/
     </script>
+<script>
+    $(".like_button button").on("click", function() {
+        var $count = $(this).parent().find('.count');
+        $count.html($count.html() * 1 + 1);
+    });
+</script>
     <script>
         $(document).on("click",".deleteBook",function (){
             console.log("Delete clicked");

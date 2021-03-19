@@ -18,8 +18,50 @@
 <!--            <input value="delete" type="submit" class="btn btn-block btn-primary">-->
 <!--        </form>-->
     </div>
-
+    <div class="like_button">
+        <button>Like</button>
+        <span class="count" th:text="${numOfLikes}"></span>
+    </div>
     <!--<div th:replace="partials/footer :: footer"></div>-->
 </div>
+<div th:replace="partials/scripts :: assets"></div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var _csrf_token = /*[[${_csrf.token}]]*/ '';
+    var _csrf_param_name =  /*[[${_csrf.parameterName}]]*/ '';
+    var hasLiked = /*[[${hasLiked}]]*/ false;
+    var gratitudeEntryId = /*[[${singleEntry.id}]]*/ '';
+    /*]]>*/
+
+
+    $(".like_button button").on("click", function() {
+        if (hasLiked === true){
+            return;
+        }
+
+        var $count = $(this).parent().find('.count');
+        $count.html($count.html() * 1 + 1);
+    });
+
+    $(document).on("click",".like_button",function (){
+        if (hasLiked === true){
+            return;
+        }
+        console.log("Like button clicked");
+        let requestData = {
+            "gratitudeId" : gratitudeEntryId
+            }
+        requestData[_csrf_param_name] = _csrf_token; // Adds the token
+        $.ajax("/like_gratitude_entry", {
+            type: "POST",
+            data: requestData
+        }).done(function (data, status, jqXhr){
+            console.log("done")
+        }).fail(function (jqXhr, status, error){
+            console.log(status + error)
+        })
+    })
+</script>
 </body>
 </html>
