@@ -1,11 +1,10 @@
 package com.capstone.journly.controllers;
 
-import com.capstone.journly.models.GratitudeEntry;
-import com.capstone.journly.models.Prompt;
+import com.capstone.journly.models.*;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
+import com.capstone.journly.repositories.LikeRepository;
 import com.capstone.journly.repositories.PromptRepository;
 import com.capstone.journly.repositories.UserRepository;
-import com.capstone.journly.services.EmailService;
 import com.capstone.journly.services.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.Email;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -27,14 +25,15 @@ public class GratitudeEntryController {
     private final UserRepository userDao;
     private final UserService userService;
     private final PromptRepository promptDao;
+    private final LikeRepository likeDao;
 
 
-
-    public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, GratitudeEntryRepository gratitudeEntryDao1, UserRepository userDao, UserService userService, PromptRepository promptDao) {
+    public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, GratitudeEntryRepository gratitudeEntryDao1, UserRepository userDao, UserService userService, PromptRepository promptDao, LikeRepository likeDao) {
         this.gratitudeEntryDao = gratitudeEntryDao;
         this.userDao = userDao;
         this.userService = userService;
         this.promptDao = promptDao;
+        this.likeDao = likeDao;
     }
 
 
@@ -55,6 +54,11 @@ public class GratitudeEntryController {
     public String singleEntryViewMore (Model model, @PathVariable long id) {
         GratitudeEntry singleEntry = gratitudeEntryDao.getOne(id);
         model.addAttribute("singleEntry", singleEntry);
+        List<Like> likes = likeDao.findByGratitudeEntry(singleEntry);
+        model.addAttribute("numOfLikes", likes.size());
+        User user = userService.getLoggedInUser();
+        List<Like> hasLiked = likeDao.findByGratitudeEntryAndUser(singleEntry, user);
+        model.addAttribute("hasLiked", hasLiked.size()>0);
         return "gratitudes/individual-gratitude-entry";
     }
 
@@ -101,4 +105,17 @@ public class GratitudeEntryController {
         return "/gratitudes/gratitude-board";
     }
 
+    @PostMapping("/like_gratitude_entry")
+    public String likeEntry(@RequestParam("gratitudeId")long gratitudeId){
+        System.out.println("***************************");
+        System.out.println(gratitudeId);
+        System.out.println("***************************");
+        User user = userService.getLoggedInUser();
+        GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(gratitudeId);
+        Like like = new Like();
+        like.setUser(user);
+        like.setGratitudeEntry(gratitudeEntry);
+        likeDao.save(like);
+        return"gratitudes/gratitude-board";
+    }
 }
