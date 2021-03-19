@@ -11,21 +11,21 @@
 
     <div class="container">
         <div class="all-public-posts border border-warning row" th:each="entry : ${entries}">
-            <div class="col-sm">
+            <div class="col-sm" th:if="${entry.isPublic}">
                 <div>
                     <img class="img-thumbnail" th:src="${entry.getImgFilePath()}"></img>
                 </div>
                 <div>
-                    <p th:text="${entry.prompt}"></p>
+                    <p th:text="${entry.getPrompt().prompt}"></p>
                     <p th:text="${entry.body}"></p>
                 </div>
                 <div>
                     <p th:text="${entry.user.getUsername()}"></p>
                     <p th:text="${entry.createdAt}"></p>
                 </div>
-                <div>
-                    <p th:text="${entry.isPublic}"></p>
-                </div>
+<!--                <div>-->
+<!--                    <p th:text="${entry.isPublic}"></p>-->
+<!--                </div>-->
                 <div>
                     <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
 
