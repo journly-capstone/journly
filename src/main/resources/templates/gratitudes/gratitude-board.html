@@ -16,7 +16,7 @@
                     <img class="img-thumbnail" th:src="${entry.getImgFilePath()}"></img>
                 </div>
                 <div>
-                    <p th:text="${entry.prompt}"></p>
+                    <p th:text="${entry.getPrompt().prompt}"></p>
                     <p th:text="${entry.body}"></p>
                 </div>
                 <div>
