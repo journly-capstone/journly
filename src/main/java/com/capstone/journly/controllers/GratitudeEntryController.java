@@ -76,10 +76,7 @@ public class GratitudeEntryController {
                          @RequestParam(name = "promptId") long promptId,
                          @ModelAttribute GratitudeEntry gratitudeEntry) {
 
-        if (image == null) {
-            gratitudeEntry.setImgFilePath("/uploads/default.png");
-
-        } else {
+        if (image != null) {
             String filename = image.getOriginalFilename();
             String filepath = Paths.get(uploadPath, filename).toString();
             File destinationFile = new File(filepath);
@@ -91,6 +88,8 @@ public class GratitudeEntryController {
                 e.printStackTrace();
                 model.addAttribute("userResponse", "Upload unsuccessful.");
             }
+        } else {
+            gratitudeEntry.setImgFilePath("/uploads/default.png");
         }
 
         gratitudeEntry.setUser(userService.getLoggedInUser());
