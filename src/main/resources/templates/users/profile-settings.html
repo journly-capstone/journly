@@ -35,9 +35,7 @@
                                 <img th:src="@{'' + ${user.getImgFilePath()}}" alt="avatar" class="user-profile-picture"/>
                             </div>
                         </li>
-
                         <li class="list-group-item"><h6><strong>Username: </strong><span class="text-secondary" th:text="${user.getUsername()}"></span></h6></li>
-
                         <li class="list-group-item"><h6><strong>Email: </strong><span class="text-secondary" th:text="${user.getEmail()}"></span></h6></li>
                     </ul>
                 </div>
@@ -45,7 +43,6 @@
 
             <!--Update Profile Information-->
             <div class="tab-pane fade" id="update-profile-information" role="tabpanel" aria-labelledby="nav-update-profile-information-tab">
-                <h6 th:text="${message}" class="text-danger text-center"></h6>
 
                 <div class="card">
                     <h5 class="card-header"><strong>Update Profile Information</strong></h5>
@@ -64,11 +61,6 @@
 
                         <div class="form-group">
                             <label for="update-user-profile-picture"><strong>Profile Picture</strong></label>
-
-                            <div th:if="${user.imgFilePath != null}">
-                                <img th:src="@{'' + ${user.imgFilePath}}" style="max-height: 200px" class="user-profile-picture user-update-profile-picture"/>
-                            </div>
-
                             <input type="hidden" name="current-profile-picture" th:value="${user.imgFilePath}">
                             <input id="update-user-profile-picture" name="update-user-profile-picture" type="file" class="text-center"/>
                         </div>
