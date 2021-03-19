@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.View;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -100,22 +102,41 @@ public class UserController {
 
     //Allow Users to Update Password
     @PostMapping("/profile-settings/change-password")
-    public String changePassword(@RequestParam(name="password")String password,
+    public String changePassword(@ModelAttribute User user,
+                                 Errors validation,
+                                 @RequestParam(name="password")String password,
                                  @RequestParam(name="confirm")String confirm,
-                                 @RequestParam(name="id")Long id, Model model,
+                                 @RequestParam(name="id")Long id,
+                                 Model model,
                                  HttpServletRequest request){
-        User user = userDao.getOne(id);
 
-        if (password.equals(confirm)){
-            String hash = encoder.encode(password);
-            user.setPassword(hash);
-            userDao.save(user);
+        User updatedUser = userDao.getOne(id);
 
-            request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
+        String hash = encoder.encode(password);
 
-            return "redirect:/logout";
+        if(!password.equals(confirm)){
+            validation.rejectValue(
+                    "password",
+                    "user.password",
+                    "Passwords do not match"
+            );
         }
 
-        return "users/change-password";
+
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("hasErrors", true);
+            model.addAttribute("user", updatedUser);
+            return "users/profile-settings";
+        }
+
+
+        updatedUser.setPassword(hash);
+        userDao.save(updatedUser);
+
+        request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.PERMANENT_REDIRECT);
+
+        return "redirect:/logout";
+
     }
 }
