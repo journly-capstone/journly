@@ -10,7 +10,7 @@
 
     <div class="col-md-6">
         <img class="img-thumbnail img-fluid" th:src="${singleEntry.getImgFilePath()}"></img>
-        <h1 th:text="${singleEntry.prompt}"></h1>
+        <h1 th:text="${singleEntry.getPrompt().prompt}"></h1>
         <h1 th:text="${singleEntry.body}"></h1>
         <h1 th:text="${singleEntry.createdAt}"></h1>
         <h1 th:text="${singleEntry.user.getUsername()}"></h1>
