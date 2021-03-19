@@ -28,7 +28,7 @@ public class GratitudeEntryController {
     private final LikeRepository likeDao;
 
 
-    public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, GratitudeEntryRepository gratitudeEntryDao1, UserRepository userDao, UserService userService, PromptRepository promptDao, LikeRepository likeDao) {
+    public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, UserRepository userDao, UserService userService, PromptRepository promptDao, LikeRepository likeDao) {
         this.gratitudeEntryDao = gratitudeEntryDao;
         this.userDao = userDao;
         this.userService = userService;
@@ -120,10 +120,10 @@ public class GratitudeEntryController {
     }
 
     @PostMapping("/dashboard/{id}/delete")
-    public String deleteGratitudeEntry(@PathVariable long id, Model model) {
+    public String deleteGratitudeEntry(@PathVariable(name="id") long id, Model model) {
         gratitudeEntryDao.deleteById(id);
         model.addAttribute("deleted", "Gratitude Entry removed.");
 
-        return "redirect:/dashboard";
+        return "redirect:/users/dashboard";
     }
 }

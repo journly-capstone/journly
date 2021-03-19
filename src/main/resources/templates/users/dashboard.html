@@ -30,8 +30,10 @@
         <p th:if="${!entry.isPublic}">Private</p>
         <hr>
         <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
-<!--        <a th:href="@{|/gratitude-board/${entry.id}/update|}" class="montserrat">Edit Entry</a>-->
-        <a th:href="@{|/gratitude-board/${entry.id}/delete|}" class="montserrat">Delete Entry</a>
+        <br>
+        <a th:href="@{|/gratitude-board/${entry.id}/update|}" class="montserrat">Edit Entry</a>
+        <br>
+        <a th:href="@{'/dashboard/' + ${entry.id} + '/delete/'}" class="montserrat">Delete Entry</a>
 <!--        <div th:object="${deleted}" th:if="${success}"></div>-->
 
 
