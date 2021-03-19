@@ -19,7 +19,7 @@
 <!--        </form>-->
     </div>
     <div class="like_button">
-        <button>Like</button>
+        <button id="like_button" name=myButton value="enable" >Like</button>
         <span class="count" th:text="${numOfLikes}"></span>
     </div>
     <!--<div th:replace="partials/footer :: footer"></div>-->
@@ -39,7 +39,8 @@
         if (hasLiked === true){
             return;
         }
-
+        document.querySelector('#like_button').innerHTML = 'Liked!';
+        document.getElementById("like_button").disabled = true;
         var $count = $(this).parent().find('.count');
         $count.html($count.html() * 1 + 1);
     });
