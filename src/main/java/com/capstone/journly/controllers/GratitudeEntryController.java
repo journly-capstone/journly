@@ -119,11 +119,28 @@ public class GratitudeEntryController {
         return"gratitudes/gratitude-board";
     }
 
-    @PostMapping("/dashboard/{id}/delete")
-    public String deleteGratitudeEntry(@PathVariable long id) {
-        gratitudeEntryDao.deleteById(id);
-//        model.addAttribute("deleted", "Gratitude Entry removed.");
+    @PostMapping("/dashboard/{id}/delete/")
+    public String deleteGratitudeEntry(@PathVariable long deleteEntry, Model model) {
+        gratitudeEntryDao.deleteById(deleteEntry);
 
         return "redirect:/dashboard";
     }
+
+    @GetMapping("/gratitude-board/{id}/update")
+    public String updateApplicationGET(@PathVariable long entryId, Model model) {
+        User user = userService.getLoggedInUser();
+        User current = userDao.getOne(user.getId());
+        GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(entryId);
+        model.addAttribute("gratitudeEntry", gratitudeEntry);
+        return "gratitudes/update-gratitude-entry";
+    }
+
+
 }
+
+//    User user = userService.getLoggedInUser();
+//    GratitudeEntry userGratitudeEntries = gratitudeEntryDao.findByUser(user);
+//    GratitudeEntry deletedEntry = gratitudeEntryDao.getOne(deleteEntry);
+//    gratitudeEntryDao.delete(deletedEntry);
+//    gratitudeEntryDao.save(userGratitudeEntries);
+//    model.addAttribute("deleted", "Gratitude Entry removed.");
