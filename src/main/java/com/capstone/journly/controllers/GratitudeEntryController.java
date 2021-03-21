@@ -67,7 +67,6 @@ public class GratitudeEntryController {
         model.addAttribute("gratitudeEntry", new GratitudeEntry());
         Prompt prompt = promptDao.findRandomPrompt();
         model.addAttribute("prompt", prompt);
-        System.out.println(prompt);
         return "gratitudes/create-gratitude-entry";
     }
 
@@ -120,19 +119,52 @@ public class GratitudeEntryController {
     }
 
     @PostMapping("/dashboard/{id}/delete/")
-    public String deleteGratitudeEntry(@RequestParam(name = "entryId") Long entryId, Model model) {
+    public String deleteGratitudeEntry(@RequestParam(name = "entryId") long entryId, Model model) {
         gratitudeEntryDao.deleteById(entryId);
 
         return "redirect:/dashboard";
     }
 
-    @GetMapping("/gratitude-board/{id}/update")
-    public String updateApplicationGET(@PathVariable long entryId, Model model) {
-        User user = userService.getLoggedInUser();
-        User current = userDao.getOne(user.getId());
-        GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(entryId);
+    @GetMapping("/dashboard/{id}/update")
+    public String updateEntryGET(@PathVariable(name="id") long id, Model model) {
+        User current = userDao.getOne(userService.getLoggedInUser().getId());
+        GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(id);
         model.addAttribute("gratitudeEntry", gratitudeEntry);
         return "gratitudes/update-gratitude-entry";
+    }
+
+    @PostMapping("/dashboard/{id}/update")
+    public String updateEntryPOST(
+            @RequestParam(name = "image") MultipartFile image,
+            @RequestParam(name = "isPublic", defaultValue = "false") boolean isPublic,
+            @RequestParam(name = "id") long id,
+            // constraint set here to keep prompt assigned to entry at creation
+//            @RequestParam(name = "promptId") long promptId,
+            @ModelAttribute GratitudeEntry originalEntry) {
+        if (image != null) {
+            String filename = image.getOriginalFilename();
+            String filepath = Paths.get(uploadPath, filename).toString();
+            File destinationFile = new File(filepath);
+            try {
+                image.transferTo(destinationFile);
+                originalEntry.setImgFilePath("/uploads/" + filename);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            originalEntry.setImgFilePath("/uploads/default.jpeg");
+        }
+
+        GratitudeEntry updatedEntry = gratitudeEntryDao.getOne(id);
+        updatedEntry.setUser(userService.getLoggedInUser());
+        updatedEntry.setPrompt(originalEntry.getPrompt());
+        updatedEntry.setIsPublic(isPublic);
+        updatedEntry.setCreatedAt(originalEntry.getCreatedAt());
+        gratitudeEntryDao.save(updatedEntry);
+
+        return "redirect:/dashboard";
+
+
     }
 
 
