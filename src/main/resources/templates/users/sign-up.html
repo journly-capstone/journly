@@ -1,45 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="sign-up-bg">
 <head th:replace="partials/head :: head"></head>
-<body>
+<body class="sign-up-bg">
     <nav th:replace="partials/navbar :: navbar"></nav>
 
-    <main class="container">
-        <h1 class="text-center">Sign Up</h1>
+    <main class="sign-up-main-container container pb-5">
+        <div class="card sign-up-card sign-up-container">
+            <div class="row d-flex no-gutters">
+                <div class="col-md-6">
+                    <div class="card-body p-0 pb-3 pr-md-4">
+                        <h1 class="text-center"><strong>Sign Up</strong></h1>
 
-        <form class="container" th:action="@{/sign-up}" method="post" th:object="${user}">
+                        <h6 class="text-center">Already have an account? <a class="text-center pt-0" href="/login">Log In</a></h6>
 
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input class="form-control" type="text" id="username" th:field="*{username}" />
-                <p class="error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-                <p class="error-msg" th:if="${username != null}" th:text="'Username already exists'"></p>
+                        <form class="container p-0" th:action="@{/sign-up}" method="post" th:object="${user}">
+                            <div class="form-group">
+                                <input class="form-control sign-up-input" type="text" id="username" th:field="*{username}" placeholder="Username" />
+                                <p class="error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                                <p class="error-msg" th:if="${username != null}" th:text="'Username already exists'"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control sign-up-input" type="text" id="email" name="email" th:field="*{email}" placeholder="Email"/>
+                                <p class="error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                                <p class="error-msg" th:if="${email != null}" th:text="'Email address already in use'"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control sign-up-input" type="password" id="password" name="password" th:field="*{password}" placeholder="Password" />
+                                <p class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control sign-up-input" id="confirm" name="confirm" type="password" placeholder="Confirm Password" />
+                                <input class="form-control sign-up-input" name="id" type="hidden" th:value="${user.getId()}">
+                            </div>
+
+                            <input class="btn sign-up-btn btn-block" type="submit" value="Sign Up" />
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-6 welcome-card-col-2">
+                    <video class="img-fluid welcome-video pb-0" playsinline autoplay muted loop>
+                        <source src="/video/welcome.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" type="text" id="email" name="email" th:field="*{email}" />
-                <p class="error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-                <p class="error-msg" th:if="${email != null}" th:text="'Email address already in use'"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input class="form-control" type="password" id="password" name="password" th:field="*{password}" />
-                <p class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="confirm">Confirm Password</label>
-                <input class="form-control" id="confirm" name="confirm" type="password">
-                <input class="form-control" name="id" type="hidden" th:value="${user.getId()}">
-            </div>
-
-            <input class="btn btn-block btn-primary" type="submit" value="Sign Up" />
-            <div class="form-group">
-                <a class="nav-link" href="/login">Have an account? Log in here!</a>
-            </div>
-        </form>
+        </div>
     </main>
 
 <!--    <footer th:replace="partials/footer :: header-links"></footer>-->

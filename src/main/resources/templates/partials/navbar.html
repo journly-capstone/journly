@@ -10,20 +10,20 @@
     <title>Navbar</title>
 </head>
 <body>
-<nav th:fragment="navbar" id="main-navbar" class="navbar navbar-expand-lg navbar-light">
+<nav th:fragment="navbar" id="main-navbar" class="navbar navbar-expand-lg">
     <div class="container">
         <a sec:authorize="isAnonymous()" class="navbar-brand" th:href="@{/}">
             <img src="/img/journly-logo.png" width="70" height="70" />
         </a>
-        <button sec:authorize="isAnonymous()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button sec:authorize="isAnonymous()" class="navbar-toggler hamburger-btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger-animated-icon"><span></span><span></span><span></span></div>
         </button>
 
         <a sec:authorize="isAuthenticated()" class="navbar-brand" th:href="@{/dashboard}">
             <img src="/img/journly-logo.png" width="70" height="70" />
         </a>
-        <button sec:authorize="isAuthenticated()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button sec:authorize="isAuthenticated()" class="navbar-toggler hamburger-btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger-animated-icon"><span></span><span></span><span></span></div>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -35,25 +35,22 @@
                     <a class="nav-link" th:href="@{/gratitude-board}">Gratitude Board</a>
                 </li>
                 <li sec:authorize="isAnonymous()" class="nav-item">
+                    <a class="nav-link" th:href="@{/books}">Books</a>
+                </li>
+                <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" th:href="@{/about-us}">About Us</a>
                 </li>
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div sec:authorize="isAuthenticated()" class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Books
                     </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li sec:authorize="isAuthenticated()" class="nav-item">
-                            <a class="nav-link" th:href="@{/books}">Books</a>
-                        </li>
-                        <li sec:authorize="isAuthenticated()" class="nav-item">
-                            <a class="nav-link" th:href="@{/bookshelf}">Bookshelf</a>
-                        </li>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                        <a class="dropdown-item" th:href="@{/books}">Search Books</a>
+                        <a class="dropdown-item" th:href="@{/bookshelf}">View Bookshelf</a>
                     </div>
                 </div>
             </ul>
-<!--            <a  class="nav-link plus-sign-circle text-secondary" th:href="@{/login}"><i class="fas fa-plus-circle"></i></a>-->
-
 
             <a sec:authorize="isAuthenticated()" class="nav-link plus-sign-circle text-secondary" th:href="@{/gratitude-board/create}"><i class="fas fa-plus-circle"></i></a>
 

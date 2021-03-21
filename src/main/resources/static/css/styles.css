@@ -3,16 +3,28 @@
     --default-font-family:'Nunito', sans-serif;
     --blush-color: #ff5e93;
     --dark-blush-color: #ed3478;
+    --grey-color: #52514e;;
+    --hamburger-icon-color: #3d3e40;
+    --default-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    --error-msg-color: red;
+    --default-background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 
     /*Landing Page Specific Variables */
-    --feature-heading-font-family: 'Montserrat', sans-serif;
+    --feature-heading-font-family: 'Work Sans', sans-serif;
     --landing-page-background: url("../svg/landing-page-background.svg") no-repeat;
     --landing-page-avatar-border: 3px solid #F7A09E;
+    --giving-thanks-font-family: 'Nunito', sans-serif;
+    --gratitude-for-teachers-font: 'Nunito', sans-serif;
 
     /*About Us Page Variables*/
-    --meet-the-team-header-font: 'Montserrat', sans-serif;
+    --meet-the-team-header-font: 'Work Sans', sans-serif;
     --developer-names-font: 'Nunito', sans-serif;
     --developer-title-font: 'Open Sans', sans-serif;
+
+    /*Sign Up Variables*/
+    --sign-up-btn-color: #ff5e93;
+    --sign-up-btn-hover-color: #ed3478;
+    --sign-up-page-font: 'Work Sans', sans-serif;
 }
 
 
@@ -24,6 +36,12 @@ html, body {
 }
 
 /* LANDING PAGE (INDEX.HTML) STYLING */
+#gratitude-for-teachers-header {
+    font-family: var(--gratitude-for-teachers-font);
+}
+.giving-thanks-text {
+    font-family: var(--giving-thanks-font-family);
+}
 
 /*Default XS Screen Landing Page Background Styling*/
 #index-html, #index-body {
@@ -95,9 +113,22 @@ and (-webkit-device-pixel-ratio: 3) {
         height:35vh !important;
         margin: 0 !important;
     }
+
+    /*Adding dropdown hover feature*/
+    .navbar .nav-item:not(:last-child) {
+        margin-right: 35px;
+    }
+
+    .dropdown-toggle::after {
+        transition: transform 0.15s linear;
+    }
+
+    .show.dropdown .dropdown-toggle::after {
+        transform: translateY(3px);
+    }
 }
 
-/*!* Large devices (desktops, 992px and up) *!*/
+/* !*Large devices (desktops, 992px and up) *!*/
 /*@media screen and (min-width:992px) {*/
 /*    #index-html, #index-body {*/
 /*        height:100vh !important;*/
@@ -117,7 +148,6 @@ and (-webkit-device-pixel-ratio: 3) {
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width:1200px) {
     #index-html, #index-body {
-        /*height:1vh !important;*/
         height:100vh !important;
         margin: 0 !important;
     }
@@ -128,7 +158,7 @@ and (-webkit-device-pixel-ratio: 3) {
 }
 
 /* Buttons */
-.btn {
+.btn, input {
     border-radius: 28px !important;
 }
 
@@ -221,22 +251,6 @@ img.user-profile-avatar {
     font-family: var(--developer-title-font);
 }
 
-/*STYLING THAT GOES ACROSS THE APPLICATION*/
-.error-msg {
-    color: red;
-}
-
-.avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.plus-sign-circle {
-    font-size: 2em;
-    padding-left: 10px;
-}
-
 /*ERROR PAGE STYLING*/
 .error-container, .error-404-container, .error-4xx-container {
     height: 50vh;
@@ -255,4 +269,176 @@ img.user-profile-avatar {
     background-repeat:no-repeat;
     background-size:contain;
     background-position:center;
+}
+
+/*STYLING THAT GOES ACROSS THE APPLICATION*/
+.error-msg {
+    color: var(--error-msg-color);
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.plus-sign-circle {
+    font-size: 2em;
+    padding-left: 10px;
+}
+
+/*Styling nav link anchor tags*/
+a.nav-link {
+    color: var(--grey-color);
+}
+
+a.nav-link:hover {
+    color: var(--blush-color);
+}
+
+/*Dropdown Menu Stying*/
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/*Removing box around hamburger icon when it is clicked*/
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Navbar Hamburger Styling */
+.hamburger-animated-icon {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    margin: 0px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+.hamburger-animated-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+}
+
+
+.hamburger-animated-icon span {
+    background: var(--hamburger-icon-color);
+}
+
+
+.hamburger-animated-icon span:nth-child(1) {
+    top: 0px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+}
+
+.hamburger-animated-icon span:nth-child(2) {
+    top: 10px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+}
+
+.hamburger-animated-icon span:nth-child(3) {
+    top: 20px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+}
+
+.hamburger-animated-icon.open span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 0px;
+    left: 8px;
+}
+
+.hamburger-animated-icon.open span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.hamburger-animated-icon.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 21px;
+    left: 8px;
+}
+
+.login-container, .sign-up-container {
+    padding: 2em;
+    border: none;
+    border-radius: 28px !important;
+    background-color: white;
+    margin: auto 1em;
+    box-shadow: var(--default-box-shadow);
+}
+
+/*SIGN UP PAGE STYLING*/
+main.sign-up-main-container {
+    font-family: var(--sign-up-page-font);
+    font-weight: 400 !important;
+}
+.sign-up-bg {
+    background-image: var(--default-background);
+}
+
+.sign-up-card {
+    border-radius: 28px !important;
+    border: none;
+}
+
+.welcome-video {
+    border-radius: 20px;
+}
+
+.sign-up-btn {
+    background-color: var(--sign-up-btn-color);
+    color: white;
+    font-weight: bold;
+}
+
+.sign-up-btn:hover {
+    background-color: var(--sign-up-btn-hover-color);
+    color: white;
+    font-weight: bold;
+}
+
+.sign-up-input {
+    /*font-weight: bold;*/
+    background-color: #eaeaea;
+    border: none;
 }
