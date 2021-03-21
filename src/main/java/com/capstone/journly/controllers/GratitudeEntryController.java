@@ -120,8 +120,8 @@ public class GratitudeEntryController {
     }
 
     @PostMapping("/dashboard/{id}/delete/")
-    public String deleteGratitudeEntry(@PathVariable long deleteEntry, Model model) {
-        gratitudeEntryDao.deleteById(deleteEntry);
+    public String deleteGratitudeEntry(@RequestParam(name = "entryId") Long entryId, Model model) {
+        gratitudeEntryDao.deleteById(entryId);
 
         return "redirect:/dashboard";
     }

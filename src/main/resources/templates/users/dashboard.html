@@ -34,7 +34,10 @@
             <br>
             <a th:href="@{|/gratitude-board/${entry.id}/update|}" class="montserrat">Edit Entry</a>
             <br>
-            <a th:href="@{|/dashboard/${id}/delete/|}" class="montserrat">Delete Entry</a>
+            <form th:action="@{|/dashboard/${id}/delete/|}" method="post" class="montserrat">
+                <input type="hidden" name="entryId" id="buyerId" th:value="${entry.id}">
+                <input type="submit" value="Delete Entry">
+            </form>
 <!--        <div th:object="${deleted}" th:if="${success}"></div>-->
         </div>
 
