@@ -29,11 +29,17 @@
         <p th:if="${entry.isPublic}">Public</p>
         <p th:if="${!entry.isPublic}">Private</p>
         <hr>
-        <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
-<!--        <a th:href="@{|/gratitude-board/${entry.id}/update|}" class="montserrat">Edit Entry</a>-->
-        <a th:href="@{|/gratitude-board/${entry.id}/delete|}" class="montserrat">Delete Entry</a>
+        <div sec:authorize="isAuthenticated()">
+            <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
+            <br>
+            <a th:href="@{|/gratitude-board/${entry.id}/update|}" class="montserrat">Edit Entry</a>
+            <br>
+            <form th:action="@{|/dashboard/${id}/delete/|}" method="post" class="montserrat">
+                <input type="hidden" name="entryId" id="buyerId" th:value="${entry.id}">
+                <input type="submit" value="Delete Entry">
+            </form>
 <!--        <div th:object="${deleted}" th:if="${success}"></div>-->
-
+        </div>
 
     </div>
 

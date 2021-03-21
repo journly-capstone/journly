@@ -28,7 +28,7 @@ public class GratitudeEntryController {
     private final LikeRepository likeDao;
 
 
-    public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, GratitudeEntryRepository gratitudeEntryDao1, UserRepository userDao, UserService userService, PromptRepository promptDao, LikeRepository likeDao) {
+    public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, UserRepository userDao, UserService userService, PromptRepository promptDao, LikeRepository likeDao) {
         this.gratitudeEntryDao = gratitudeEntryDao;
         this.userDao = userDao;
         this.userService = userService;
@@ -119,11 +119,28 @@ public class GratitudeEntryController {
         return"gratitudes/gratitude-board";
     }
 
-    @PostMapping("/dashboard/{id}/delete")
-    public String deleteGratitudeEntry(@PathVariable long id, Model model) {
-        gratitudeEntryDao.deleteById(id);
-        model.addAttribute("deleted", "Gratitude Entry removed.");
+    @PostMapping("/dashboard/{id}/delete/")
+    public String deleteGratitudeEntry(@RequestParam(name = "entryId") Long entryId, Model model) {
+        gratitudeEntryDao.deleteById(entryId);
 
         return "redirect:/dashboard";
     }
+
+    @GetMapping("/gratitude-board/{id}/update")
+    public String updateApplicationGET(@PathVariable long entryId, Model model) {
+        User user = userService.getLoggedInUser();
+        User current = userDao.getOne(user.getId());
+        GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(entryId);
+        model.addAttribute("gratitudeEntry", gratitudeEntry);
+        return "gratitudes/update-gratitude-entry";
+    }
+
+
 }
+
+//    User user = userService.getLoggedInUser();
+//    GratitudeEntry userGratitudeEntries = gratitudeEntryDao.findByUser(user);
+//    GratitudeEntry deletedEntry = gratitudeEntryDao.getOne(deleteEntry);
+//    gratitudeEntryDao.delete(deletedEntry);
+//    gratitudeEntryDao.save(userGratitudeEntries);
+//    model.addAttribute("deleted", "Gratitude Entry removed.");
