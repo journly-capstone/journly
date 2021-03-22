@@ -21,7 +21,7 @@
 
     <div class="user-gratitude-entries" th:each="entry : ${user.userGratitudeEntries}">
 <!--        th:if="${entry.getId() == user.getId()}"-->
-        <p th:text="${entry.getImgFilePath()}"></p>
+        <p th:src="${entry.getImgFilePath()}"></p>
         <p th:text="${entry.getPrompt().prompt}"></p>
         <p th:text="${entry.body}"></p>
         <p th:text="${entry.createdAt}"></p>

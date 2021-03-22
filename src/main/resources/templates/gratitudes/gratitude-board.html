@@ -13,7 +13,7 @@
         <div class="all-public-posts border border-warning row" th:each="entry : ${entries}">
             <div class="col-sm" th:if="${entry.isPublic}">
                 <div>
-                    <img class="img-thumbnail" th:src="${entry.getImgFilePath()}"></img>
+                    <img class="img-thumbnail" th:src="${entry.imgFilePath}"></img>
                 </div>
                 <div>
                     <p th:text="${entry.getPrompt().prompt}"></p>
@@ -23,12 +23,8 @@
                     <p th:text="${entry.user.getUsername()}"></p>
                     <p th:text="${entry.createdAt}"></p>
                 </div>
-<!--                <div>-->
-<!--                    <p th:text="${entry.isPublic}"></p>-->
-<!--                </div>-->
                 <div>
                     <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
-
                 </div>
             </div>
         </div>
