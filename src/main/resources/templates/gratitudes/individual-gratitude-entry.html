@@ -2,7 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
 <body>
-
+<script>
+    document.body.onload = function() {
+        if (hasLiked === true){
+            document.querySelector('#like_button').innerHTML = 'Unlike!';
+            // document.querySelector('#unlike_button').hidden = false;
+    }}
+</script>
 <div th:replace="partials/navbar :: navbar"></div>
 
 <div class="container">
@@ -19,8 +25,9 @@
 <!--        </form>-->
     </div>
     <div class="like_button">
-        <button id="like_button" name=myButton value="enable" >Like</button>
+        <button id="like_button" value="Like" >Like</button>
         <span class="count" th:text="${numOfLikes}"></span>
+<!--        <button id="unlike_button" value="unlike" >UnLike</button>-->
     </div>
     <!--<div th:replace="partials/footer :: footer"></div>-->
 </div>
@@ -34,35 +41,101 @@
     var gratitudeEntryId = /*[[${singleEntry.id}]]*/ '';
     /*]]>*/
 
+        $(".like_button button").on("click", function () {
+            if (hasLiked === true) {
+                // document.querySelector('#like_button').innerHTML = 'Already Liked!';
+                var $count = $(this).parent().find('.count');
+                $count.html($count.html() * 1 - 1);
+                document.querySelector('#like_button').innerHTML = 'Like!';
+                console.log("unLike button clicked");
+                let requestData = {
+                    "gratitudeId": gratitudeEntryId
+                }
+                requestData[_csrf_param_name] = _csrf_token; // Adds the token
+                $.ajax("/unlike_gratitude_entry", {
+                    type: "POST",
+                    data: requestData
+                }).done(function (data, status, jqXhr) {
+                    console.log("done")
+                }).fail(function (jqXhr, status, error) {
+                    console.log(status + error)
+                })
+                hasLiked = false;
+                return;
+            }else {
+                    // document.querySelector('#like_button').innerHTML = 'Already Liked!';
+                    var $count = $(this).parent().find('.count');
+                    $count.html($count.html() * 1 + 1);
+                    document.querySelector('#like_button').innerHTML = 'Unlike!';
+                    console.log("Like button clicked");
+                    let requestData = {
+                        "gratitudeId": gratitudeEntryId
+                    }
+                    requestData[_csrf_param_name] = _csrf_token; // Adds the token
+                    $.ajax("/like_gratitude_entry", {
+                        type: "POST",
+                        data: requestData
+                    }).done(function (data, status, jqXhr) {
+                        console.log("done")
+                    }).fail(function (jqXhr, status, error) {
+                        console.log(status + error)
+                    })
+                hasLiked = true;
+                    return;
+            }});
+    //         document.querySelector('#like_button').innerHTML = 'Liked!';
+    //         // document.getElementById("like_button").disabled = true;
+    //         var $count = $(this).parent().find('.count');
+    //         $count.html($count.html() * 1 + 1);
+    //     })
+    //
+    //     $(document).on("click", ".like_button", function () {
+    //         if (hasLiked === true) {
+    //             return;
+    //         }
+    //         console.log("Like button clicked");
+    //         let requestData = {
+    //             "gratitudeId": gratitudeEntryId
+    //         }
+    //         requestData[_csrf_param_name] = _csrf_token; // Adds the token
+    //         $.ajax("/like_gratitude_entry", {
+    //             type: "POST",
+    //             data: requestData
+    //         }).done(function (data, status, jqXhr) {
+    //             console.log("done")
+    //         }).fail(function (jqXhr, status, error) {
+    //             console.log(status + error)
+    //         })
+    //     })
+    //
+    // $(".unlike_button button").on("click", function() {
+    //     console.log("unliked clicked");
+    //     document.querySelector('#unlike_button').innerHTML = 'Unliked!';
+    //     document.getElementById("unlike_button").disabled = true;
+    //     var $count = $(this).parent().find('.count');
+    //     $count.html($count.html() * 1 - 1);
+    //     return;
+    // });
+    // // }});
+    // $(document).on("click", ".unlike_button", function () {
+    //     if (hasLiked === false) {
+    //         return;
+    //     }
+    //     console.log("unLike button clicked");
+    //     let requestData = {
+    //         "gratitudeId": gratitudeEntryId
+    //     }
+    //     requestData[_csrf_param_name] = _csrf_token; // Adds the token
+    //     $.ajax("/unlike_gratitude_entry", {
+    //         type: "POST",
+    //         data: requestData
+    //     }).done(function (data, status, jqXhr) {
+    //         console.log("done")
+    //     }).fail(function (jqXhr, status, error) {
+    //         console.log(status + error)
+    //     })
+    // })
 
-    $(".like_button button").on("click", function() {
-        if (hasLiked === true){
-            return;
-        }
-        document.querySelector('#like_button').innerHTML = 'Liked!';
-        document.getElementById("like_button").disabled = true;
-        var $count = $(this).parent().find('.count');
-        $count.html($count.html() * 1 + 1);
-    });
-
-    $(document).on("click",".like_button",function (){
-        if (hasLiked === true){
-            return;
-        }
-        console.log("Like button clicked");
-        let requestData = {
-            "gratitudeId" : gratitudeEntryId
-            }
-        requestData[_csrf_param_name] = _csrf_token; // Adds the token
-        $.ajax("/like_gratitude_entry", {
-            type: "POST",
-            data: requestData
-        }).done(function (data, status, jqXhr){
-            console.log("done")
-        }).fail(function (jqXhr, status, error){
-            console.log(status + error)
-        })
-    })
 </script>
 </body>
 </html>

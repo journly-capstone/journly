@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
-    <title>Home</title>
-<!--    <head th:replace="partials/head :: head"></head>-->
-</head>
+<head th:replace="partials/head :: head"></head>
 <body>
 <!--<nav th:replace="partials/navbar :: navbar"></nav>-->
-<nav th:include="partials/navbar" :: navbar></nav>
+<<nav th:replace="partials/navbar :: navbar"></nav>
 
 <main>
     <h1 class="flex justify-center montserrat">Search for Career-Related Books</h1>

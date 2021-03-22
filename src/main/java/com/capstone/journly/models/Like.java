@@ -12,13 +12,13 @@ public class Like {
 
     // one user can have many likes
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     // one gratitude_entry can have many likes
     // will need a join column if we do ManyToOne
     @ManyToOne
-    @JoinColumn(name = "gratitude_entry_id")
+    @JoinColumn(name = "gratitude_entry_id", unique = true)
     private GratitudeEntry gratitudeEntry;
 
 
