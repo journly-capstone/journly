@@ -57,7 +57,7 @@ public class GratitudeEntryController {
         List<Like> likes = likeDao.findByGratitudeEntry(singleEntry);
         model.addAttribute("numOfLikes", likes.size());
         User user = userService.getLoggedInUser();
-        List<Like> hasLiked = likeDao.findByGratitudeEntryAndUser(singleEntry, user);
+        List<Like> hasLiked = likeDao.findAllByGratitudeEntryAndUser(singleEntry, user);
         model.addAttribute("hasLiked", hasLiked.size()>0);
         return "gratitudes/individual-gratitude-entry";
     }
@@ -115,6 +115,18 @@ public class GratitudeEntryController {
         like.setUser(user);
         like.setGratitudeEntry(gratitudeEntry);
         likeDao.save(like);
+        return"gratitudes/gratitude-board";
+    }
+    @PostMapping("/unlike_gratitude_entry")
+    public String unlikeEntry(@RequestParam("gratitudeId")long gratitudeId,
+                              Model model){
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println(gratitudeId);
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        User user = userService.getLoggedInUser();
+        GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(gratitudeId);
+        Like like = likeDao.findByGratitudeEntryAndUser(gratitudeEntry, user);
+        likeDao.delete(like);
         return"gratitudes/gratitude-board";
     }
 

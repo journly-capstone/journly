@@ -10,5 +10,6 @@ import java.util.List;
 public interface LikeRepository extends JpaRepository<Like, Long> {
     List<Like> findByGratitudeEntry(GratitudeEntry gratitudeEntry);
     List<Like> findByUser(User user);
-    List<Like> findByGratitudeEntryAndUser(GratitudeEntry gratitudeEntry, User user);
+    List<Like> findAllByGratitudeEntryAndUser(GratitudeEntry gratitudeEntry, User user);
+    Like findByGratitudeEntryAndUser(GratitudeEntry gratitudeEntry, User user);
 }
