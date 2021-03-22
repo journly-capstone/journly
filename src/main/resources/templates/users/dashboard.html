@@ -8,7 +8,7 @@
 
     <div class="jumbotron">
         <div class="justify-content-center">
-            <h1 class="display-4">Welcome, User!</h1>
+            <h1 class="display-4">Welcome, <span th:text="${user.getUsername()}"></span> ! </h1>
             <p th:text="${quotes.quote}"></p>
             <p th:text="${quotes.author}"></p>
         </div>
