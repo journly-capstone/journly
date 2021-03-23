@@ -1,4 +1,5 @@
 package com.capstone.journly.controllers;
+
 import com.capstone.journly.models.*;
 import com.capstone.journly.repositories.GratitudeEntryRepository;
 import com.capstone.journly.repositories.LikeRepository;
@@ -17,6 +18,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 @Controller
 public class GratitudeEntryController {
     private final GratitudeEntryRepository gratitudeEntryDao;
@@ -24,6 +26,7 @@ public class GratitudeEntryController {
     private final UserService userService;
     private final PromptRepository promptDao;
     private final LikeRepository likeDao;
+
     public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, UserRepository userDao, UserService userService, PromptRepository promptDao, LikeRepository likeDao) {
         this.gratitudeEntryDao = gratitudeEntryDao;
         this.userDao = userDao;
@@ -31,14 +34,17 @@ public class GratitudeEntryController {
         this.promptDao = promptDao;
         this.likeDao = likeDao;
     }
+
     @Value("${file-upload-path}")
     private String uploadPath;
+
     @GetMapping("/gratitude-board")
     public String gratitudeBoard(Model model) {
         List<GratitudeEntry> entries = gratitudeEntryDao.findAll();
         model.addAttribute("entries", entries);
         return "gratitudes/gratitude-board";
     }
+
     @GetMapping("/gratitude-board/{id}")
     public String singleEntryViewMore (Model model, @PathVariable long id) {
         GratitudeEntry singleEntry = gratitudeEntryDao.getOne(id);
@@ -46,10 +52,11 @@ public class GratitudeEntryController {
         List<Like> likes = likeDao.findByGratitudeEntry(singleEntry);
         model.addAttribute("numOfLikes", likes.size());
         User user = userService.getLoggedInUser();
-        List<Like> hasLiked = likeDao.findByGratitudeEntryAndUser(singleEntry, user);
+        List<Like> hasLiked = likeDao.findAllByGratitudeEntryAndUser(singleEntry, user);
         model.addAttribute("hasLiked", hasLiked.size()>0);
         return "gratitudes/individual-gratitude-entry";
     }
+
     @GetMapping(path ="/gratitude-board/create")
     public String createGratitudeEntryGET(Model model) {
         model.addAttribute("gratitudeEntry", new GratitudeEntry());
@@ -57,6 +64,7 @@ public class GratitudeEntryController {
         model.addAttribute("prompt", prompt);
         return "gratitudes/create-gratitude-entry";
     }
+
     @PostMapping(path = "/gratitude-board/create")
     public String newGratitudeEntry(Model model,
                                     @RequestParam(name = "image") MultipartFile image,
@@ -103,6 +111,20 @@ public class GratitudeEntryController {
         likeDao.save(like);
         return"gratitudes/gratitude-board";
     }
+
+    @PostMapping("/unlike_gratitude_entry")
+    public String unlikeEntry(@RequestParam("gratitudeId")long gratitudeId,
+                              Model model){
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println(gratitudeId);
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        User user = userService.getLoggedInUser();
+        GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(gratitudeId);
+        Like like = likeDao.findByGratitudeEntryAndUser(gratitudeEntry, user);
+        likeDao.delete(like);
+        return"gratitudes/gratitude-board";
+    }
+
     @PostMapping("/dashboard/{id}/delete/")
     public String deleteGratitudeEntry(@RequestParam(name = "entryId") long entryId, Model model) {
         gratitudeEntryDao.deleteById(entryId);
