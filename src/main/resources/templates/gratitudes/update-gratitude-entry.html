@@ -1,76 +1,59 @@
 <!doctype html>
 <html id="update-entry" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
-
 <div class="text-center mb-2">
     <h1>Edit Entry:</h1>
 </div>
 <hr>
-
 <div class="gratitude-entry-form px-3 text-center">
     <form th:action="@{/dashboard/{id}/update(id=*{id})}" th:method="post" th:object="${gratitudeEntry}" enctype="multipart/form-data">
         <div id="update-entry-prompt">
             <h3>Prompt: </h3>
             <h4 th:text="${gratitudeEntry.getPrompt().prompt}"></h4>
         </div>
-
         <div id="update-entry-body">
             <h3>Body: </h3>
             <textarea th:text="${gratitudeEntry.getBody()}" th:field="*{body}"></textarea>
         </div>
-
         <div id="update-entry-privacy">
             <h3>Privacy: </h3>
             <p class="font-weight-bold">Public: <input type="checkbox" name="isPublic" th:field="*{isPublic}"/></p>
             <p class="font-weight-bold">Post to Gratitude Board: <input type="checkbox" name="isPublic" th:field="*{!isPublic}"/></p>
         </div>
         <!-- this may make the values become opposite of what the user wants -->
-
         <div id="update-entry-image">
             <p class="font-weight-bold">Image for Gratitude Entry (optional):</p>
             <br>
-<!--            <input type="hidden" name="image" th:field="*{imgFilePath}">-->
+            <!--            <input type="hidden" name="image" th:field="*{imgFilePath}">-->
             <input type="file" name="image">
-<!--            <input name="imgFilePath" type="file">-->
-<!--            <div th:if="${gratitudeEntry.getImgFilePath() != null}">-->
-<!--                <img th:src="@{'' + ${gratitudeEntry.getImgFilePath()}}">-->
-<!--            </div>-->
+            <!--            <input name="imgFilePath" type="file">-->
+            <!--            <div th:if="${gratitudeEntry.getImgFilePath() != null}">-->
+            <!--                <img th:src="@{'' + ${gratitudeEntry.getImgFilePath()}}">-->
+            <!--            </div>-->
         </div>
-
-
-
-<!--        <div id="gratitude-entry-body">-->
-<!--            <label for="body" class="font-weight-bold">Body: </label>-->
-<!--            <br>-->
-<!--            <textarea id="body" th:field="*{body}"></textarea>-->
-<!--        </div>-->
-
-<!--        <hr>-->
-
-<!--        <div id="gratitude-entry-image-upload">-->
-<!--            <label for="image" class="font-weight-bold">Image for Gratitude Entry (optional, a default will be set for you if left blank):</label>-->
-<!--            <br>-->
-<!--            <input type="hidden" name="image" th:field="*{imgFilePath}">-->
-<!--            <input id="image" name="image" type="file">-->
-<!--        </div>-->
-
-<!--        <hr>-->
-
-<!--        <div id="gratitude-entry-privacy">-->
-<!--            <p class="font-weight-bold">Click this box if you would like your post to be displayed on the community Gratitude Board:</p>-->
-<!--            <input type="checkbox" name="isPublic" th:field="*{isPublic}"/>-->
-<!--        </div>-->
-
-<!--        <hr>-->
-
+        <!--        <div id="gratitude-entry-body">-->
+        <!--            <label for="body" class="font-weight-bold">Body: </label>-->
+        <!--            <br>-->
+        <!--            <textarea id="body" th:field="*{body}"></textarea>-->
+        <!--        </div>-->
+        <!--        <hr>-->
+        <!--        <div id="gratitude-entry-image-upload">-->
+        <!--            <label for="image" class="font-weight-bold">Image for Gratitude Entry (optional, a default will be set for you if left blank):</label>-->
+        <!--            <br>-->
+        <!--            <input type="hidden" name="image" th:field="*{imgFilePath}">-->
+        <!--            <input id="image" name="image" type="file">-->
+        <!--        </div>-->
+        <!--        <hr>-->
+        <!--        <div id="gratitude-entry-privacy">-->
+        <!--            <p class="font-weight-bold">Click this box if you would like your post to be displayed on the community Gratitude Board:</p>-->
+        <!--            <input type="checkbox" name="isPublic" th:field="*{isPublic}"/>-->
+        <!--        </div>-->
+        <!--        <hr>-->
         <input type="submit" placeholder="Update Gratitude Entry">
     </form>
-
-        <footer th:replace="partials/footer :: footer"></footer>
-
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
 </body>
 </html>

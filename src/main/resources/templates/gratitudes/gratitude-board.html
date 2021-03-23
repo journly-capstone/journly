@@ -1,37 +1,31 @@
 <!doctype html>
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-
 <body>
-    <nav th:replace="partials/navbar :: navbar"></nav>
-
-    <div class="search-header">
-        <p>This is the all posts page!</p>
-    </div>
-
-    <div class="container">
-        <div class="all-public-posts border border-warning row" th:each="entry : ${entries}">
-            <div class="col-sm" th:if="${entry.isPublic}">
-                <div>
-                    <img class="img-thumbnail" th:src="${entry.imgFilePath}"></img>
-                </div>
-                <div>
-                    <p th:text="${entry.getPrompt().prompt}"></p>
-                    <p th:text="${entry.body}"></p>
-                </div>
-                <div>
-                    <p th:text="${entry.user.getUsername()}"></p>
-                    <p th:text="${updatedEntry}"></p>
-                </div>
-                <div>
-                    <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
-                </div>
+<nav th:replace="partials/navbar :: navbar"></nav>
+<div class="search-header">
+    <p>This is the all posts page!</p>
+</div>
+<div class="container">
+    <div class="all-public-posts border border-warning row" th:each="entry : ${entries}">
+        <div class="col-sm" th:if="${entry.isPublic}">
+            <div>
+                <img class="img-thumbnail" th:src="${entry.imgFilePath}"></img>
+            </div>
+            <div>
+                <p th:text="${entry.getPrompt().prompt}"></p>
+                <p th:text="${entry.body}"></p>
+            </div>
+            <div>
+                <p th:text="${entry.user.getUsername()}"></p>
+                <p th:text="${updatedEntry}"></p>
+            </div>
+            <div>
+                <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
             </div>
         </div>
     </div>
-
-
- <!-- this is where our loop will go to list all *public* entries -->
-
+</div>
+<!-- this is where our loop will go to list all *public* entries -->
 </body>
 </html>
