@@ -14,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -85,15 +83,11 @@ public class GratitudeEntryController {
                 model.addAttribute("userResponse", "Upload unsuccessful.");
             }
         } else {
-            gratitudeEntry.setImgFilePath("/uploads/default.png");
+            gratitudeEntry.setImgFilePath("/uploads/default.jpeg");
         }
         gratitudeEntry.setUser(userService.getLoggedInUser());
         gratitudeEntry.setIsPublic(isPublic);
         gratitudeEntry.setPrompt(promptDao.getOne(promptId));
-//        Date date = new Date();
-//        DateFormat formatter = new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm");
-//        String updatedDate = formatter.format(date);
-//        model.addAttribute("updatedDate", updatedDate);
         gratitudeEntry.setCreatedAt(new Date());
         gratitudeEntryDao.save(gratitudeEntry);
         return "redirect:/gratitude-board";

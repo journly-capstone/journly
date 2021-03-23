@@ -16,30 +16,37 @@
     </a>
 </div>
 <div class="user-gratitude-entries" th:each="entry : ${user.userGratitudeEntries}">
-    <!--        th:if="${entry.getId() == user.getId()}"-->
     <p th:src="${entry.getImgFilePath()}"></p>
     <p th:text="${entry.getPrompt().prompt}"></p>
     <p th:text="${entry.body}"></p>
-    <p th:text="${entry.createdAt}"></p>
-    <!--        <p th:text="${userEntries.user}"></p>-->
+    <p class="createdAt" th:text="${entry.createdAt}"></p>
     <p th:if="${entry.isPublic}">Public</p>
     <p th:if="${!entry.isPublic}">Private</p>
     <hr>
     <div sec:authorize="isAuthenticated()">
-        <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
-        <!--            <a th:action="@{/dashboard/${id}/update/(id=${gratitudeEntry.id})}" class="montserrat">Update Entry</a>-->
-        <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get" class="montserrat">Edit Entry
+        <a th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
+        <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry
             <input type="hidden" name="entryId" th:value="${entry.id}">
             <input type="submit" value="Edit Entry">
         </form>
-        <form th:action="@{|/dashboard/${id}/delete/|}" method="post" class="montserrat">
+        <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
             <input type="hidden" name="entryId" th:value="${entry.id}">
             <input type="submit" value="Delete Entry">
         </form>
-        <!--        <div th:object="${deleted}" th:if="${success}"></div>-->
     </div>
 </div>
 <div th:replace="partials/scripts :: assets"></div>
 <!--<div th:replace="partials/footer :: footer"></div>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script th:inline="javascript">
+    "use strict";
+    $(function() {
+
+        const dates = document.querySelectorAll(".createdAt");
+        for (let date of dates) {
+            date.innerText = moment(date.innerText).format("LLLL");
+        }
+    });
+</script>
 </body>
 </html>

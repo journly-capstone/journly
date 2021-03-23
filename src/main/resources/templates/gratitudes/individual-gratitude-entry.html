@@ -20,9 +20,6 @@
         <h1 th:text="${singleEntry.body}"></h1>
         <h1 class="createdAt" th:text="${singleEntry.createdAt}"></h1>
         <h1 th:text="${singleEntry.user.getUsername()}"></h1>
-<!--        <form action="/ads/delete?id=${ad.id}" method="post">-->
-<!--            <input value="delete" type="submit" class="btn btn-block btn-primary">-->
-<!--        </form>-->
     </div>
     <div class="like_button">
         <button id="like_button" value="Like" >Like</button>
@@ -33,14 +30,22 @@
 </div>
 <div th:replace="partials/scripts :: assets"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-<script src="/static/js/moment.js"></script>
 <script th:inline="javascript">
-    /*<![CDATA[*/
-    var _csrf_token = /*[[${_csrf.token}]]*/ '';
-    var _csrf_param_name =  /*[[${_csrf.parameterName}]]*/ '';
-    var hasLiked = /*[[${hasLiked}]]*/ false;
-    var gratitudeEntryId = /*[[${singleEntry.id}]]*/ '';
-    /*]]>*/
+
+    "use strict";
+    $(function() {
+
+        const dates = document.querySelectorAll(".createdAt");
+        for (let date of dates) {
+            date.innerText = moment(date.innerText).format("LLLL");
+        }
+
+        /*<![CDATA[*/
+        let _csrf_token = /*[[${_csrf.token}]]*/ '';
+        let _csrf_param_name =  /*[[${_csrf.parameterName}]]*/ '';
+        let hasLiked = /*[[${hasLiked}]]*/ false;
+        let gratitudeEntryId = /*[[${singleEntry.id}]]*/ '';
+        /*]]>*/
 
         $(".like_button button").on("click", function () {
             if (hasLiked === true) {
@@ -63,27 +68,30 @@
                 })
                 hasLiked = false;
                 return;
-            }else {
-                    // document.querySelector('#like_button').innerHTML = 'Already Liked!';
-                    var $count = $(this).parent().find('.count');
-                    $count.html($count.html() * 1 + 1);
-                    document.querySelector('#like_button').innerHTML = 'Unlike!';
-                    console.log("Like button clicked");
-                    let requestData = {
-                        "gratitudeId": gratitudeEntryId
-                    }
-                    requestData[_csrf_param_name] = _csrf_token; // Adds the token
-                    $.ajax("/like_gratitude_entry", {
-                        type: "POST",
-                        data: requestData
-                    }).done(function (data, status, jqXhr) {
-                        console.log("done")
-                    }).fail(function (jqXhr, status, error) {
-                        console.log(status + error)
-                    })
+            } else {
+                // document.querySelector('#like_button').innerHTML = 'Already Liked!';
+                var $count = $(this).parent().find('.count');
+                $count.html($count.html() * 1 + 1);
+                document.querySelector('#like_button').innerHTML = 'Unlike!';
+                console.log("Like button clicked");
+                let requestData = {
+                    "gratitudeId": gratitudeEntryId
+                }
+                requestData[_csrf_param_name] = _csrf_token; // Adds the token
+                $.ajax("/like_gratitude_entry", {
+                    type: "POST",
+                    data: requestData
+                }).done(function (data, status, jqXhr) {
+                    console.log("done")
+                }).fail(function (jqXhr, status, error) {
+                    console.log(status + error)
+                })
                 hasLiked = true;
-                    return;
-            }});
+                return;
+            }
+        });
+
+    });
     //         document.querySelector('#like_button').innerHTML = 'Liked!';
     //         // document.getElementById("like_button").disabled = true;
     //         var $count = $(this).parent().find('.count');
