@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +29,6 @@ public class GratitudeEntryController {
     private final PromptRepository promptDao;
     private final LikeRepository likeDao;
 
-
     public GratitudeEntryController(GratitudeEntryRepository gratitudeEntryDao, UserRepository userDao, UserService userService, PromptRepository promptDao, LikeRepository likeDao) {
         this.gratitudeEntryDao = gratitudeEntryDao;
         this.userDao = userDao;
@@ -35,8 +36,6 @@ public class GratitudeEntryController {
         this.promptDao = promptDao;
         this.likeDao = likeDao;
     }
-
-
 
     @Value("${file-upload-path}")
     private String uploadPath;
@@ -98,7 +97,11 @@ public class GratitudeEntryController {
         gratitudeEntry.setUser(userService.getLoggedInUser());
         gratitudeEntry.setIsPublic(isPublic);
         gratitudeEntry.setPrompt(promptDao.getOne(promptId));
-        gratitudeEntry.setCreatedAt(new Date(System.currentTimeMillis()));
+//        Date date = new Date();
+//        DateFormat formatter = new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm");
+//        String updatedDate = formatter.format(date);
+//        model.addAttribute("updatedDate", updatedDate);
+        gratitudeEntry.setCreatedAt(new Date());
         gratitudeEntryDao.save(gratitudeEntry);
 
         return "redirect:/gratitude-board";
@@ -147,44 +150,29 @@ public class GratitudeEntryController {
 
     @PostMapping("/dashboard/{id}/update")
     public String updateEntryPOST(
+            @PathVariable(name = "id") long id,
             @RequestParam(name = "image") MultipartFile image,
             @RequestParam(name = "isPublic", defaultValue = "false") boolean isPublic,
-            @RequestParam(name = "id") long id,
-            // constraint set here to keep prompt assigned to entry at creation
-//            @RequestParam(name = "promptId") long promptId,
             @ModelAttribute GratitudeEntry originalEntry) {
+
+        GratitudeEntry updatedEntry = gratitudeEntryDao.getOne(id);
+
         if (image != null) {
             String filename = image.getOriginalFilename();
             String filepath = Paths.get(uploadPath, filename).toString();
             File destinationFile = new File(filepath);
             try {
                 image.transferTo(destinationFile);
-                originalEntry.setImgFilePath("/uploads/" + filename);
+                updatedEntry.setImgFilePath("/uploads/" + filename);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {
-            originalEntry.setImgFilePath("/uploads/default.jpeg");
         }
-
-        GratitudeEntry updatedEntry = gratitudeEntryDao.getOne(id);
         updatedEntry.setUser(userService.getLoggedInUser());
-        updatedEntry.setPrompt(originalEntry.getPrompt());
         updatedEntry.setIsPublic(isPublic);
-        updatedEntry.setCreatedAt(originalEntry.getCreatedAt());
+
         gratitudeEntryDao.save(updatedEntry);
 
         return "redirect:/dashboard";
-
-
     }
-
-
 }
-
-//    User user = userService.getLoggedInUser();
-//    GratitudeEntry userGratitudeEntries = gratitudeEntryDao.findByUser(user);
-//    GratitudeEntry deletedEntry = gratitudeEntryDao.getOne(deleteEntry);
-//    gratitudeEntryDao.delete(deletedEntry);
-//    gratitudeEntryDao.save(userGratitudeEntries);
-//    model.addAttribute("deleted", "Gratitude Entry removed.");

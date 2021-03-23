@@ -5,7 +5,9 @@ package com.capstone.journly.models;
 import net.bytebuddy.implementation.bind.annotation.Default;
 import org.springframework.beans.factory.annotation.Value;
 
+import javax.mail.Multipart;
 import javax.persistence.*;
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Date;
 
