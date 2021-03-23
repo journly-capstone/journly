@@ -2,19 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
 <body>
+<nav th:replace="partials/navbar :: navbar"></nav>
 <!--<nav th:replace="partials/navbar :: navbar"></nav>-->
-<<nav th:replace="partials/navbar :: navbar"></nav>
 
 <main>
-    <h1 class="flex justify-center montserrat">Search for Career-Related Books</h1>
+    <h1 class="d-flex justify-content-center">Search for Career-Related Books</h1>
 
     <div class="form">
-        <div id="search" class="#f5f5f5 grey lighten-4 z-depth-5">
+        <div id="search">
             <form id="myform">
                 <div class="input-field">
                     <input type="search" id="books">
                     <label for="search"></label>
-                    <button class="btn red">Search Books</button>
+                    <button class="btn">Search Books</button>
                 </div>
 <!--                            <button class="btn red">Search Books</button>-->
             </form>
@@ -23,14 +23,14 @@
     <br>
     <hr>
     <br>
-    <h1 class="flex justify-center montserrat">Search Results:</h1>
+    <h1 class="d-flex justify-content-center">Search Results:</h1>
 
 
-    <div class="books flex max-w-full">
-        <div class="quicksand max-w-1/3" id="result"></div>`
+    <div class="books d-flex">
+        <div id="result"></div>`
     </div>
 </main>
-
+<div th:replace="partials/scripts :: assets"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script th:inline="javascript">
     /*<![CDATA[*/
@@ -100,7 +100,6 @@ $(document).on("click",".addBook",function (){
     })
 })
 </script>
-
 <!--<div th:replace="partials/scripts :: assets"></div>-->
 </body>
 </html>
