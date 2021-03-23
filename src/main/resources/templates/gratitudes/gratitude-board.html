@@ -21,7 +21,7 @@
                 </div>
                 <div>
                     <p th:text="${entry.user.getUsername()}"></p>
-                    <p th:text="${entry.createdAt}"></p>
+                    <p th:text="${updatedEntry}"></p>
                 </div>
                 <div>
                     <a th:href="@{|/gratitude-board/${entry.id}|}" class="montserrat">View Entry</a>
