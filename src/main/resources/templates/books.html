@@ -26,8 +26,8 @@
     <h1 class="d-flex justify-content-center">Search Results:</h1>
 
 
-    <div class="books d-flex">
-        <div id="result"></div>`
+    <div class="container">
+        <div class="row" id="result"></div>`
     </div>
 </main>
 <div th:replace="partials/scripts :: assets"></div>
@@ -52,6 +52,9 @@
                 let title = "";
                 let author = "";
                 let button = "";
+                let col = "";
+                let colClose = "";
+                let html ="";
                 //*********************************************************************
                 //******** WHEN USER "ADDS TO BOOKSHELF" STORE BOOK ID WITH THAT BOOKSHELF
                 //*********IN USERS BOOKSHELF USE STORED BOOK ID'S AS SEARCH CRITERIA
@@ -59,18 +62,29 @@
                 //*********************************************************************
                 $.get("https://www.googleapis.com/books/v1/volumes?q=" + search, function (response) {
                     //     $.get("https://www.googleapis.com/books/v1/volumes?q=" + search + "&key=" + $[keys], function (response){
-
+                    let bookNumber = 1
                     for (let i = 0; i < response.items.length; i++) {
-                        title = $('<h5 class="center-align white-text">' + response.items[i].volumeInfo.title + '</h5>');
-                        author = $('<h5 class="center-align white-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
-                        img = $('<img class="aligning card z-depth-5" id="dynamic" alt="image"><br><a href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>');
-                        button = $('<button type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" data-bookid="'+ response.items[i].id +'" class="addBook">Add Book</button>');
+                        html = $('<div id="book" class="col-4 book'+bookNumber+'"><img class="" id="image" alt="image" src="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'"><h5 id="title" class=""> ' + response.items[i].volumeInfo.title + '</h5>' +
+                            '<h5 id="author" class=""> By:' + response.items[i].volumeInfo.authors + '</h5>' +
+                            '<a target="_blank" href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>' +
+                            '<button id="add_book" type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" data-bookid="'+ response.items[i].id +'" class="addBook">Add Book</button></div>');
+                        bookNumber+=1;
+                        //
+                        // title = $('<div class="col-4"><h5 class="center-align white-text">' + response.items[i].volumeInfo.title + '</h5>');
+                        // author = $('<h5 class="center-align white-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
+                        // img = $('<img class="aligning card z-depth-5" id="dynamic" alt="image"><br><a href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>');
+                        // button = $('<button type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" data-bookid="'+ response.items[i].id +'" class="addBook">Add Book</button></div>');
                         url = response.items[i].volumeInfo.imageLinks.thumbnail;
-                        img.attr('src', url);
-                        title.appendTo('#result');
-                        author.appendTo('#result');
-                        img.appendTo('#result');
-                        button.appendTo('#result')
+                        // col = $('<div id="bookResult" class="col-4">');
+                        // col.appendTo('#result')
+                        html.attr('src', url);
+                        html.appendTo('#result');
+                        // title.appendTo('#result');
+                        // author.appendTo('#result');
+                        // img.appendTo('#result');
+                        // button.appendTo('#result');
+                        // colClose = $('</div>')
+                        // colClose.appendTo('#result');
                         console.log(response.items[i])
                     }
                 });
