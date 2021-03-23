@@ -18,7 +18,7 @@
         <img class="img-thumbnail img-fluid" th:src="${singleEntry.getImgFilePath()}"></img>
         <h1 th:text="${singleEntry.getPrompt().prompt}"></h1>
         <h1 th:text="${singleEntry.body}"></h1>
-        <h1 th:text="${singleEntry.createdAt}"></h1>
+        <h1 class="createdAt" th:text="${singleEntry.createdAt}"></h1>
         <h1 th:text="${singleEntry.user.getUsername()}"></h1>
 <!--        <form action="/ads/delete?id=${ad.id}" method="post">-->
 <!--            <input value="delete" type="submit" class="btn btn-block btn-primary">-->
@@ -32,7 +32,8 @@
     <!--<div th:replace="partials/footer :: footer"></div>-->
 </div>
 <div th:replace="partials/scripts :: assets"></div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script src="/static/js/moment.js"></script>
 <script th:inline="javascript">
     /*<![CDATA[*/
     var _csrf_token = /*[[${_csrf.token}]]*/ '';
