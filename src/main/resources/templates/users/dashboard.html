@@ -15,26 +15,55 @@
         <button type="button" class="btn btn-primary my-2 my-sm-0">Create Gratitude Entry</button>
     </a>
 </div>
-<div class="user-gratitude-entries" th:each="entry : ${user.userGratitudeEntries}">
-    <p th:src="${entry.getImgFilePath()}"></p>
-    <p th:text="${entry.getPrompt().prompt}"></p>
-    <p th:text="${entry.body}"></p>
-    <p class="createdAt" th:text="${entry.createdAt}"></p>
-    <p th:if="${entry.isPublic}">Public</p>
-    <p th:if="${!entry.isPublic}">Private</p>
-    <hr>
-    <div sec:authorize="isAuthenticated()">
-        <a th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
-        <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry
-            <input type="hidden" name="entryId" th:value="${entry.id}">
-            <input type="submit" value="Edit Entry">
-        </form>
-        <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
-            <input type="hidden" name="entryId" th:value="${entry.id}">
-            <input type="submit" value="Delete Entry">
-        </form>
+<!--<div class="user-gratitude-entries" th:each="entry : ${user.userGratitudeEntries}">-->
+<!--    <p th:src="${entry.getImgFilePath()}"></p>-->
+<!--    <p th:text="${entry.getPrompt().prompt}"></p>-->
+<!--    <p th:text="${entry.body}"></p>-->
+<!--    <p class="createdAt" th:text="${entry.createdAt}"></p>-->
+<!--    <p th:if="${entry.isPublic}">Public</p>-->
+<!--    <p th:if="${!entry.isPublic}">Private</p>-->
+<!--    <hr>-->
+<!--    <div sec:authorize="isAuthenticated()">-->
+<!--        <a th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>-->
+<!--        <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry-->
+<!--            <input type="hidden" name="entryId" th:value="${entry.id}">-->
+<!--            <input type="submit" value="Edit Entry">-->
+<!--        </form>-->
+<!--        <form th:action="@{|/dashboard/${id}/delete/|}" method="post">-->
+<!--            <input type="hidden" name="entryId" th:value="${entry.id}">-->
+<!--            <input type="submit" value="Delete Entry">-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--Bootstrap Card-->
+<div class="form-inline justify-content-center">
+    <div class="card"  th:each="entry : ${user.userGratitudeEntries}" style="width: 18rem">
+        <img th:src="${entry.getImgFilePath()}" class="card-img-top"  alt="">
+        <div class="card-body">
+            <p th:text="${entry.getPrompt().prompt}"></p>
+            <p th:text="${entry.body}"></p>
+            <p class="createdAt" th:text="${entry.createdAt}"></p>
+            <p th:if="${entry.isPublic}">Public</p>
+            <p th:if="${!entry.isPublic}">Private</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
+                <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry
+                    <input type="hidden" name="entryId" th:value="${entry.id}">
+                    <input type="submit" value="Edit Entry">
+                </form>
+                <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
+                    <input type="hidden" name="entryId" th:value="${entry.id}">
+                    <input type="submit" value="Delete Entry">
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+<!--end bootstrap card-->
+
 <div th:replace="partials/scripts :: assets"></div>
 <!--<div th:replace="partials/footer :: footer"></div>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
