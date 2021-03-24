@@ -49,7 +49,7 @@
             <a href="#" class="btn btn-primary">Go somewhere</a>
 
             <div sec:authorize="isAuthenticated()">
-                <a th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
+                <a class="btn btn-primary" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
                 <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry
                     <input type="hidden" name="entryId" th:value="${entry.id}">
                     <input type="submit" value="Edit Entry">
