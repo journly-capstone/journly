@@ -95,6 +95,8 @@
     })
 $(document).on("click",".addBook",function (){
     console.log("Add book clicked");
+    document.querySelector('#add_book').innerHTML = 'Added!';
+    document.getElementById('add_book').disabled = true;
     let bookid = $(this).attr("data-bookid");
     let author = $(this).attr("data-author");
     let title = $(this).attr("data-title");
@@ -110,7 +112,8 @@ $(document).on("click",".addBook",function (){
     }).done(function (data, status, jqXhr){
         console.log("done")
     }).fail(function (jqXhr, status, error){
-        console.log(status + error)
+        console.log(error)
+        window.location.replace("https://journly.org/login")
     })
 })
 </script>
