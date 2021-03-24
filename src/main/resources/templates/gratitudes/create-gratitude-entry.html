@@ -1,34 +1,33 @@
 <!doctype html>
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-<body>
+<body class="sign-up-bg">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="text-center mb-2">
+<div class="jumbotron text-center mb-2">
     <h1>Happy Journly-ing!</h1>
 </div>
-<hr>
 <!-- this is where our loop will go to list all *public* entries -->
-<div class="gratitude-entry-form px-3 text-center">
+<div class="container w-75 gratitude-entry-form px-3 text-center bg-white opaque">
     <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${gratitudeEntry}" enctype="multipart/form-data">
         <!-- prompt needs to go here -->
-        <div id="gratitude-entry-prompt">
+        <div class="form-group" id="gratitude-entry-prompt">
             <h4 th:text="${prompt.prompt}"></h4>
             <input type="hidden" name="promptId" th:value="${prompt.id}">
         </div>
-        <div id="gratitude-entry-body">
+        <div class="form-group" id="gratitude-entry-body">
             <label for="body" class="font-weight-bold">Body: </label>
             <br>
-            <textarea id="body" th:field="*{body}"></textarea>
+            <textarea class="form-control" id="body" placeholder="Type your entry here..." th:field="*{body}"></textarea>
         </div>
         <hr>
-        <div id="gratitude-entry-image-upload">
-            <label for="image" class="font-weight-bold">Image for Gratitude Entry (optional):</label>
+        <div class="form-group" id="gratitude-entry-image-upload text-center">
+            <label for="image" class="text-center font-weight-bold">Image for Gratitude Entry (optional):</label>
             <br>
             <input type="hidden" name="image" th:field="*{imgFilePath}">
-            <input id="image" name="image" type="file">
+            <input id="image" class="form-control-file" name="image" type="file">
         </div>
         <hr>
-        <div id="gratitude-entry-privacy">
+        <div class="form-group" id="gratitude-entry-privacy">
             <!-- if true, will be public
                  if false, will only show on profile -->
             <p class="font-weight-bold">Click this box if you would like your post to be displayed on the community Gratitude Board:</p>

@@ -74,6 +74,10 @@ html, body {
     right: 0;
 }
 
+.opaque {
+    opacity: 80%;
+}
+
 /*MEDIA QUERIES FOR LANDING PAGE*/
 @media screen and (min-width:375px) {
     #index-html, #index-body {
