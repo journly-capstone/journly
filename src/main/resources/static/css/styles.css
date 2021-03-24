@@ -892,10 +892,6 @@ main.login-content {
 }
 
 /*SIGN UP STYLING*/
-.sign-up-container {
-    padding: 1.25em !important;
-}
-
 .sign-up-bg {
     background-image: var(--default-background);
 }
