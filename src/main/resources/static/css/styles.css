@@ -462,8 +462,10 @@
     --feature-heading-font-family: 'Work Sans', sans-serif;
     --landing-page-background: url("../svg/landing-page-background.svg") no-repeat;
     --landing-page-avatar-border: 3px solid #F7A09E;
-    --giving-thanks-font-family: 'Nunito', sans-serif;
-    --gratitude-for-teachers-font: 'Nunito', sans-serif;
+    /*--giving-thanks-font-family: 'Nunito', sans-serif;*/
+    --giving-thanks-font-family: 'Work Sans', sans-serif;
+    --gratitude-for-teachers-font: 'Work Sans', sans-serif;
+    /*--gratitude-for-teachers-font: 'Nunito', sans-serif;*/
     /*--nav-signup-btn-color: background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);*/
     /*--nav-signup-btn-color: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);*/
 
@@ -601,7 +603,7 @@ and (-webkit-device-pixel-ratio: 3) {
     }
 
     #landing-page-msg {
-        height: 50vh;
+        height: 40vh;
     }
 }
 
@@ -657,7 +659,6 @@ and (-webkit-device-pixel-ratio: 3) {
 
 #join-today-top-btn:hover {
     background: var(--blush-color) !important;
-    border: hidden;
     color: white !important;
 }
 
