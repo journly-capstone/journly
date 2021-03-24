@@ -1,40 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-<body>
-    <nav th:replace="partials/navbar :: navbar"></nav>
+<body class="login-wrapper">
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-    <main class="container">
-        <h1 class="text-center">Log In</h1>
+<div id="overlay"></div>
 
-        <div class="container text-center">
-            <div th:if="${param.error}" class="container text-center">
-                <h4 class="error-msg"><strong>Invalid username or password. Please try again.</strong></h4>
+<main class="login-content container pb-5">
+    <div class="card login-card">
+        <div class="card-body login-card-body pl-sm-0 pr-sm-0 p-md-5">
+            <h1 class="text-center"><strong>Login</strong></h1>
+
+            <h6 class="text-center">Need an account?<br><a class="text-center pt-0" href="/sign-up">Sign Up</a></h6>
+
+            <div class="container text-center">
+                <div th:if="${param.error}" class="container text-center">
+                    <p class="error-msg">Invalid username or password. Please try again.</p>
+                </div>
+
+                <div th:if="${param.logout}">
+                    <p class="error-msg">You have been successfully logged out.</p>
+                </div>
             </div>
 
-            <div th:if="${param.logout}">
-                <h4 class="text-success"><strong>You have been successfully logged out.</strong></h4>
-            </div>
+            <form class="container p-0" th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" id="username" name="username" placeholder="Username" />
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Password" />
+                </div>
+
+                <input class="btn btn-block login-btn" type="submit" value="Log In" />
+            </form>
         </div>
+    </div>
+</main>
 
-        <form class="container" th:action="@{/login}" method="post">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input class="form-control" type="text" id="username" name="username" />
-            </div>
+<!-- Photo Grid Login Background -->
+<div class="login-background container">
+    <div class="login-col col-12 col-md-4 p-0">
+        <img src="/img/open-book-yellow-bg.jpg" class="login-img" alt="open book">
+        <img src="/img/sunset.jpg" class="login-img" alt="hot air balloons">
+        <img src="/img/watermelon.jpg" class="login-img" alt="watermelon">
+        <img src="/img/desk-favorites.jpg" class="login-img" alt="planning">
+    </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input class="form-control" type="password" id="password" name="password" />
-            </div>
+    <div class="login-col col-md-4 d-none d-sm-block">
+        <img src="/img/rocks.jpg" class="login-img" alt="rocks">
+        <img src="/img/colorful-school-supplies.jpg" class="login-img" alt="school supplies">
+        <img src="/img/a-sunflower.jpg" class="login-img" alt="sunflower">
+        <img src="/img/beach-waves.jpg" class="login-img" alt="beach waves">
+    </div>
 
-            <input class="btn btn-block btn-primary" type="submit" value="Log In" />
-
-            <div class="form-group">
-                <a class="nav-link" href="/sign-up">Need an account? Sign up here!</a>
-            </div>
-        </form>
-    </main>
+    <div class="login-col col-md-4 d-none d-sm-block p-0">
+        <img src="/img/meal-prep.jpg" class="login-img" alt="meal prep">
+        <img src="/img/gratitude-kit.jpg" class="login-img" alt="journal">
+        <img src="/img/french-bulldog.jpg" class="login-img" alt="french bulldog">
+        <img src="/img/mother-and-child.jpg" class="login-img" alt="mother and child">
+    </div>
+</div>
 
 <!--<footer th:replace="partials/footer :: header-links"></footer>-->
 

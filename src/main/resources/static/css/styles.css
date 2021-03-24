@@ -1,12 +1,461 @@
+/*:root{*/
+/*    !*Variables that can be applied to any html file within the application*!*/
+/*    --default-font-family:'Nunito', sans-serif;*/
+/*    --blush-color: #ff5e93;*/
+/*    --dark-blush-color: #ed3478;*/
+/*    --grey-color: #52514e;;*/
+/*    --hamburger-icon-color: #3d3e40;*/
+/*    --default-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+/*    --error-msg-color: red;*/
+/*    --default-background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);*/
+
+/*    !*Landing Page Specific Variables *!*/
+/*    --feature-heading-font-family: 'Work Sans', sans-serif;*/
+/*    --landing-page-background: url("../svg/landing-page-background.svg") no-repeat;*/
+/*    --landing-page-avatar-border: 3px solid #F7A09E;*/
+/*    --giving-thanks-font-family: 'Nunito', sans-serif;*/
+/*    --gratitude-for-teachers-font: 'Nunito', sans-serif;*/
+
+/*    !*About Us Page Variables*!*/
+/*    --meet-the-team-header-font: 'Work Sans', sans-serif;*/
+/*    --developer-names-font: 'Nunito', sans-serif;*/
+/*    --developer-title-font: 'Open Sans', sans-serif;*/
+
+/*    !*Sign Up Variables*!*/
+/*    --sign-up-btn-color: #ff5e93;*/
+/*    --sign-up-btn-hover-color: #ed3478;*/
+/*    --sign-up-page-font: 'Work Sans', sans-serif;*/
+/*}*/
+
+
+/*html, body {*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    font-family: var(--default-font-family);*/
+/*    scroll-behavior: smooth;*/
+/*}*/
+
+/*!* LANDING PAGE (INDEX.HTML) STYLING *!*/
+/*#gratitude-for-teachers-header {*/
+/*    font-family: var(--gratitude-for-teachers-font);*/
+/*}*/
+/*.giving-thanks-text {*/
+/*    font-family: var(--giving-thanks-font-family);*/
+/*}*/
+
+/*!*Default XS Screen Landing Page Background Styling*!*/
+/*#index-html, #index-body {*/
+/*    height:105vh !important;*/
+/*    margin: 0 !important;*/
+/*}*/
+
+/*#index-body {*/
+/*    background: var(--landing-page-background);*/
+/*    background-size: cover;*/
+/*    padding-bottom: 500px;*/
+/*}*/
+
+/*#left-svg {*/
+/*    position: absolute;*/
+/*    top: 60%;*/
+/*}*/
+
+/*#right-svg {*/
+/*    position: absolute;*/
+/*    top: 20%;*/
+/*    right: 0;*/
+/*}*/
+
+/*!*MEDIA QUERIES FOR LANDING PAGE*!*/
+/*@media screen and (min-width:375px) {*/
+/*    #index-html, #index-body {*/
+/*        height:100vh !important;*/
+/*        margin: 0 !important;*/
+/*    }*/
+/*}*/
+
+/*!* iphone X , XS, 11 Pro, 12 Mini *!*/
+/*@media only screen*/
+/*!*and (device-width : 375px)*!*/
+/*!*and (device-height : 812px)*!*/
+/*and (min-width : 375px)*/
+/*and (min-height : 812px)*/
+/*and (-webkit-device-pixel-ratio : 3) {*/
+/*    #index-html, #index-body {*/
+/*        height:80vh !important;*/
+/*        margin: 0 !important;*/
+/*    }*/
+/*}*/
+
+/*!* iphone 12, 12 Pro *!*/
+/*@media only screen*/
+/*!*and (device-width: 390px)*!*/
+/*!*and (device-height: 844px)*!*/
+/*and (min-width: 390px)*/
+/*and (min-height: 844px)*/
+/*and (-webkit-device-pixel-ratio: 3) {*/
+/*    #index-html, #index-body {*/
+/*        height:80vh !important;*/
+/*        margin: 0 !important;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width:411px) {*/
+/*    #index-html, #index-body {*/
+/*        height:100vh !important;*/
+/*        margin: 0 !important;*/
+/*    }*/
+/*}*/
+
+/*!* Medium Screen Landing Page Background Styling (tablets, 768px and up) *!*/
+/*@media screen and (min-width:768px) {*/
+/*    #index-html, #index-body {*/
+/*        height:35vh !important;*/
+/*        margin: 0 !important;*/
+/*    }*/
+
+/*    !*Adding dropdown hover feature*!*/
+/*    .navbar .nav-item:not(:last-child) {*/
+/*        margin-right: 35px;*/
+/*    }*/
+
+/*    .dropdown-toggle::after {*/
+/*        transition: transform 0.15s linear;*/
+/*    }*/
+
+/*    .show.dropdown .dropdown-toggle::after {*/
+/*        transform: translateY(3px);*/
+/*    }*/
+/*}*/
+
+/*!* !*Large devices (desktops, 992px and up) *!*!*/
+/*!*@media screen and (min-width:992px) {*!*/
+/*!*    #index-html, #index-body {*!*/
+/*!*        height:100vh !important;*!*/
+/*!*        !*height:5vh !important;*!*!*/
+/*!*        margin: 0 !important;*!*/
+/*!*    }*!*/
+
+/*!*    .landing-pg-avatar {*!*/
+/*!*        vertical-align: middle;*!*/
+/*!*        width: 110px !important;*!*/
+/*!*        height: 110px !important;*!*/
+/*!*        border: var(--landing-page-avatar-border);*!*/
+/*!*        border-radius: 50%;*!*/
+/*!*    }*!*/
+/*!*}*!*/
+
+/*!* Extra large devices (large desktops, 1200px and up) *!*/
+/*@media screen and (min-width:1200px) {*/
+/*    #index-html, #index-body {*/
+/*        height:100vh !important;*/
+/*        margin: 0 !important;*/
+/*    }*/
+
+/*    #landing-page-msg {*/
+/*        height: 50vh;*/
+/*    }*/
+/*}*/
+
+/*!* Buttons *!*/
+/*.btn, input {*/
+/*    border-radius: 28px !important;*/
+/*}*/
+
+/*.nav-link {*/
+/*    font-weight: bolder !important;*/
+/*}*/
+
+/*!*Navbar Login Button*!*/
+/*#nav-login-btn, #nav-logout-btn {*/
+/*    color: var(--blush-color);*/
+/*}*/
+
+/*#nav-login-btn:hover, #nav-logout-btn:hover {*/
+/*    color: black;*/
+/*}*/
+
+/*!*Navbar Sign Up and Join Today Buttons*!*/
+/*#nav-signup-btn, .join-today-btn, .pink-btn {*/
+/*    background-color: var(--blush-color) !important;*/
+/*    color: white !important;*/
+/*}*/
+/*#nav-signup-btn:hover, .join-today-btn:hover, .pink-btn:hover {*/
+/*    background-color: var(--dark-blush-color) !important;*/
+/*}*/
+
+/*#join-today-top-btn, .join-today-btn {*/
+/*    width: 200px;*/
+/*}*/
+
+/*#join-today-top-btn {*/
+/*    background-color: white !important;*/
+/*    color: var(--blush-color) !important;*/
+/*}*/
+
+/*#join-today-btn:hover {*/
+/*    background-color: whitesmoke !important;*/
+/*}*/
+
+
+/*!*Styling for Feature Headings on index.html*!*/
+/*.feature-headings {*/
+/*    font-family: var(--feature-heading-font-family)*/
+/*}*/
+
+/*!*Avatars (Styling User Images to Display as Circles on Landing Page)*!*/
+/*.landing-pg-avatar {*/
+/*    vertical-align: middle;*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    border: var(--landing-page-avatar-border);*/
+/*    border-radius: 50%;*/
+/*}*/
+
+/*!*img.profile-pic {*!*/
+/*img.user-profile-picture {*/
+/*    width: 150px;*/
+/*    height: 150px;*/
+/*    object-fit: cover;*/
+/*    object-position: center;*/
+/*    border-radius: 50%;*/
+/*}*/
+
+/*img.user-profile-avatar {*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    object-fit: cover;*/
+/*    object-position: center;*/
+/*    border-radius: 50%;*/
+/*}*/
+
+/*!* ABOUT US PAGE STYLING *!*/
+/*.about-us-avatar {*/
+/*    vertical-align: middle;*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    border: var(--landing-page-avatar-border);*/
+/*    border-radius: 50%;*/
+/*}*/
+
+/*#meet-the-team-header {*/
+/*    font-family: var(--meet-the-team-header-font);*/
+/*}*/
+
+/*.developer-names {*/
+/*    font-family: var(--developer-names-font);*/
+/*    font-weight: bolder;*/
+/*}*/
+
+/*.software-developer-title {*/
+/*    font-family: var(--developer-title-font);*/
+/*}*/
+
+/*!*ERROR PAGE STYLING*!*/
+/*.error-container, .error-404-container, .error-4xx-container {*/
+/*    height: 50vh;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.error-404-container, .error-4xx-container {*/
+/*    background-image: url("/img/error-404.png") !important;*/
+/*    background-repeat:no-repeat;*/
+/*    background-size:contain;*/
+/*    background-position:center;*/
+/*}*/
+
+/*.error-container {*/
+/*    background-image: url("/img/error.png") !important;*/
+/*    background-repeat:no-repeat;*/
+/*    background-size:contain;*/
+/*    background-position:center;*/
+/*}*/
+
+/*!*STYLING THAT GOES ACROSS THE APPLICATION*!*/
+/*.error-msg {*/
+/*    color: var(--error-msg-color);*/
+/*}*/
+
+/*.avatar {*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    border-radius: 50%;*/
+/*}*/
+
+/*.plus-sign-circle {*/
+/*    font-size: 2em;*/
+/*    padding-left: 10px;*/
+/*}*/
+
+/*!*Styling nav link anchor tags*!*/
+/*a.nav-link {*/
+/*    color: var(--grey-color);*/
+/*}*/
+
+/*a.nav-link:hover {*/
+/*    color: var(--blush-color);*/
+/*}*/
+
+/*!*Dropdown Menu Stying*!*/
+/*.dropdown-menu {*/
+/*    border: none;*/
+/*    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+/*}*/
+
+/*!*Removing box around hamburger icon when it is clicked*!*/
+/*.navbar-toggler:focus,*/
+/*.navbar-toggler:active,*/
+/*.navbar-toggler-icon:focus {*/
+/*    outline: none;*/
+/*    box-shadow: none;*/
+/*}*/
+
+/*!* Navbar Hamburger Styling *!*/
+/*.hamburger-animated-icon {*/
+/*    width: 30px;*/
+/*    height: 20px;*/
+/*    position: relative;*/
+/*    margin: 0px;*/
+/*    -webkit-transform: rotate(0deg);*/
+/*    -moz-transform: rotate(0deg);*/
+/*    -o-transform: rotate(0deg);*/
+/*    transform: rotate(0deg);*/
+/*    -webkit-transition: .5s ease-in-out;*/
+/*    -moz-transition: .5s ease-in-out;*/
+/*    -o-transition: .5s ease-in-out;*/
+/*    transition: .5s ease-in-out;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.hamburger-animated-icon span {*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    height: 3px;*/
+/*    width: 100%;*/
+/*    border-radius: 9px;*/
+/*    opacity: 1;*/
+/*    left: 0;*/
+/*    -webkit-transform: rotate(0deg);*/
+/*    -moz-transform: rotate(0deg);*/
+/*    -o-transform: rotate(0deg);*/
+/*    transform: rotate(0deg);*/
+/*    -webkit-transition: .25s ease-in-out;*/
+/*    -moz-transition: .25s ease-in-out;*/
+/*    -o-transition: .25s ease-in-out;*/
+/*    transition: .25s ease-in-out;*/
+/*}*/
+
+
+/*.hamburger-animated-icon span {*/
+/*    background: var(--hamburger-icon-color);*/
+/*}*/
+
+
+/*.hamburger-animated-icon span:nth-child(1) {*/
+/*    top: 0px;*/
+/*    -webkit-transform-origin: left center;*/
+/*    -moz-transform-origin: left center;*/
+/*    -o-transform-origin: left center;*/
+/*    transform-origin: left center;*/
+/*}*/
+
+/*.hamburger-animated-icon span:nth-child(2) {*/
+/*    top: 10px;*/
+/*    -webkit-transform-origin: left center;*/
+/*    -moz-transform-origin: left center;*/
+/*    -o-transform-origin: left center;*/
+/*    transform-origin: left center;*/
+/*}*/
+
+/*.hamburger-animated-icon span:nth-child(3) {*/
+/*    top: 20px;*/
+/*    -webkit-transform-origin: left center;*/
+/*    -moz-transform-origin: left center;*/
+/*    -o-transform-origin: left center;*/
+/*    transform-origin: left center;*/
+/*}*/
+
+/*.hamburger-animated-icon.open span:nth-child(1) {*/
+/*    -webkit-transform: rotate(45deg);*/
+/*    -moz-transform: rotate(45deg);*/
+/*    -o-transform: rotate(45deg);*/
+/*    transform: rotate(45deg);*/
+/*    top: 0px;*/
+/*    left: 8px;*/
+/*}*/
+
+/*.hamburger-animated-icon.open span:nth-child(2) {*/
+/*    width: 0%;*/
+/*    opacity: 0;*/
+/*}*/
+
+/*.hamburger-animated-icon.open span:nth-child(3) {*/
+/*    -webkit-transform: rotate(-45deg);*/
+/*    -moz-transform: rotate(-45deg);*/
+/*    -o-transform: rotate(-45deg);*/
+/*    transform: rotate(-45deg);*/
+/*    top: 21px;*/
+/*    left: 8px;*/
+/*}*/
+
+/*.login-container, .sign-up-container {*/
+/*    padding: 2em;*/
+/*    border: none;*/
+/*    border-radius: 28px !important;*/
+/*    background-color: white;*/
+/*    margin: auto 1em;*/
+/*    box-shadow: var(--default-box-shadow);*/
+/*}*/
+
+/*!*SIGN UP PAGE STYLING*!*/
+/*main.sign-up-main-container {*/
+/*    font-family: var(--sign-up-page-font);*/
+/*    font-weight: 400 !important;*/
+/*}*/
+/*.sign-up-bg {*/
+/*    background-image: var(--default-background);*/
+/*}*/
+
+/*.sign-up-card {*/
+/*    border-radius: 28px !important;*/
+/*    border: none;*/
+/*}*/
+
+/*.welcome-video {*/
+/*    border-radius: 20px;*/
+/*}*/
+
+/*.sign-up-btn {*/
+/*    background-color: var(--sign-up-btn-color);*/
+/*    color: white;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.sign-up-btn:hover {*/
+/*    background-color: var(--sign-up-btn-hover-color);*/
+/*    color: white;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.sign-up-input {*/
+/*    !*font-weight: bold;*!*/
+/*    background-color: #eaeaea;*/
+/*    border: none;*/
+/*}*/
+
+
 :root{
     /*Variables that can be applied to any html file within the application*/
     --default-font-family:'Nunito', sans-serif;
     --blush-color: #ff5e93;
     --dark-blush-color: #ed3478;
-    --grey-color: #52514e;;
+    --default-pink-btn-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+
+    --grey-color: #52514e;
+    --default-navbar-link-color: #232931;
     --hamburger-icon-color: #3d3e40;
     --default-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    --error-msg-color: red;
+    --error-msg-color: #f9748f;
     --default-background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 
     /*Landing Page Specific Variables */
@@ -15,6 +464,8 @@
     --landing-page-avatar-border: 3px solid #F7A09E;
     --giving-thanks-font-family: 'Nunito', sans-serif;
     --gratitude-for-teachers-font: 'Nunito', sans-serif;
+    /*--nav-signup-btn-color: background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);*/
+    /*--nav-signup-btn-color: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);*/
 
     /*About Us Page Variables*/
     --meet-the-team-header-font: 'Work Sans', sans-serif;
@@ -22,7 +473,7 @@
     --developer-title-font: 'Open Sans', sans-serif;
 
     /*Sign Up Variables*/
-    --sign-up-btn-color: #ff5e93;
+    --sign-up-btn-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
     --sign-up-btn-hover-color: #ed3478;
     --sign-up-page-font: 'Work Sans', sans-serif;
 }
@@ -31,7 +482,8 @@
 html, body {
     height: 100%;
     margin: 0;
-    font-family: var(--default-font-family);
+    /*font-family: var(--default-font-family);*/
+    font-family: var(--feature-heading-font-family);
     scroll-behavior: smooth;
 }
 
@@ -76,8 +528,6 @@ html, body {
 
 /* iphone X , XS, 11 Pro, 12 Mini */
 @media only screen
-/*and (device-width : 375px)*/
-/*and (device-height : 812px)*/
 and (min-width : 375px)
 and (min-height : 812px)
 and (-webkit-device-pixel-ratio : 3) {
@@ -89,8 +539,6 @@ and (-webkit-device-pixel-ratio : 3) {
 
 /* iphone 12, 12 Pro */
 @media only screen
-/*and (device-width: 390px)*/
-/*and (device-height: 844px)*/
 and (min-width: 390px)
 and (min-height: 844px)
 and (-webkit-device-pixel-ratio: 3) {
@@ -167,21 +615,35 @@ and (-webkit-device-pixel-ratio: 3) {
 }
 
 /*Navbar Login Button*/
-#nav-login-btn, #nav-logout-btn {
+#nav-login-btn {
+    background-color: white;
+    font-weight: bold;
+    color: var(--default-navbar-link-color);
+}
+
+#nav-login-btn:hover {
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+
+#nav-logout-btn {
     color: var(--blush-color);
 }
 
-#nav-login-btn:hover, #nav-logout-btn:hover {
-    color: black;
+#nav-logout-btn:hover {
+    color: var(--default-navbar-link-color);
 }
 
 /*Navbar Sign Up and Join Today Buttons*/
 #nav-signup-btn, .join-today-btn, .pink-btn {
     background-color: var(--blush-color) !important;
     color: white !important;
+    font-weight: bold;
 }
 #nav-signup-btn:hover, .join-today-btn:hover, .pink-btn:hover {
     background-color: var(--dark-blush-color) !important;
+    font-weight: bold;
 }
 
 #join-today-top-btn, .join-today-btn {
@@ -189,12 +651,14 @@ and (-webkit-device-pixel-ratio: 3) {
 }
 
 #join-today-top-btn {
-    background-color: white !important;
+    background: white !important;
     color: var(--blush-color) !important;
 }
 
-#join-today-btn:hover {
-    background-color: whitesmoke !important;
+#join-today-top-btn:hover {
+    background: var(--blush-color) !important;
+    border: hidden;
+    color: white !important;
 }
 
 
@@ -274,6 +738,7 @@ img.user-profile-avatar {
 /*STYLING THAT GOES ACROSS THE APPLICATION*/
 .error-msg {
     color: var(--error-msg-color);
+    font-weight: bold;
 }
 
 .avatar {
@@ -289,7 +754,8 @@ img.user-profile-avatar {
 
 /*Styling nav link anchor tags*/
 a.nav-link {
-    color: var(--grey-color);
+    color: var(--default-navbar-link-color);
+    /*font-weight: bold;*/
 }
 
 a.nav-link:hover {
@@ -398,47 +864,150 @@ a.nav-link:hover {
     left: 8px;
 }
 
-.login-container, .sign-up-container {
+.login-container,
+.sign-up-container {
     padding: 2em;
     border: none;
     border-radius: 28px !important;
     background-color: white;
-    margin: auto 1em;
+    /*margin: auto 1em;*/
     box-shadow: var(--default-box-shadow);
 }
 
-/*SIGN UP PAGE STYLING*/
-main.sign-up-main-container {
+/*SIGN UP AND LOGIN PAGE STYLING*/
+main.sign-up-main-container,
+main.login-content {
     font-family: var(--sign-up-page-font);
     font-weight: 400 !important;
 }
-.sign-up-bg {
-    background-image: var(--default-background);
+
+.login-card,
+.sign-up-container {
+    /*padding: 0 !important;*/
+    border: none;
+    border-radius: 28px !important;
+    background-color: white;
+    /*margin: auto 1em;*/
+    box-shadow: var(--default-box-shadow);
 }
 
-.sign-up-card {
-    border-radius: 28px !important;
-    border: none;
+/*SIGN UP STYLING*/
+.sign-up-bg {
+    background-image: var(--default-background);
 }
 
 .welcome-video {
     border-radius: 20px;
 }
 
-.sign-up-btn {
-    background-color: var(--sign-up-btn-color);
+.sign-up-btn,
+.login-btn {
+    background: var(--blush-color);
     color: white;
     font-weight: bold;
 }
 
-.sign-up-btn:hover {
-    background-color: var(--sign-up-btn-hover-color);
+.sign-up-btn:hover,
+.login-btn:hover {
+    background-color: var(--dark-blush-color);
     color: white;
-    font-weight: bold;
 }
 
 .sign-up-input {
-    /*font-weight: bold;*/
     background-color: #eaeaea;
     border: none;
+}
+
+
+
+/*LOGIN PAGE STYLING*/
+/*Login Nav Links*/
+.login-wrapper a.nav-link {
+    color: white;
+}
+
+.login-wrapper a.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Login Navbar Hamburger Styling */
+.login-wrapper .hamburger-animated-icon span {
+    background: white !important;
+}
+
+/*Login Overlay*/
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: -1; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+/*Login Body*/
+.login-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+/*Login Main*/
+.login-content {
+    position: relative;
+    z-index: 100;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Login Card*/
+.login-card {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 480px;
+    padding: 0 !important;
+}
+
+/*Login Image Grid Background*/
+.login-background{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 80px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: -100;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 6px;
+}
+
+/*Faded Bottom Background*/
+.login-background:after {
+    content  : "";
+    position : absolute;
+    z-index  : 1;
+    bottom   : 0;
+    left     : 0;
+    pointer-events   : none;
+    background-image : linear-gradient(to bottom,
+    rgba(255,255,255, 0),
+    rgba(255,255,255, 1) 90%);
+    width    : 100%;
+    height   : 10em;
+}
+
+/*Login Background Image Styling*/
+.login-img {
+    border-radius: 10px;
+}
+
+.login-col img {
+    margin-top: 12px;
+    vertical-align: middle;
+    width: 100% !important;
 }
