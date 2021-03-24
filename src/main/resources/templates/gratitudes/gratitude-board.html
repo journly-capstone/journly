@@ -8,7 +8,7 @@
 </div>
 <div class="container">
     <div class="all-public-posts border border-warning row" th:each="entry : ${entries}">
-        <div class="col-sm" th:if="${entry.isPublic}">
+        <div th:if="${entry.isPublic == true}">
             <div>
                 <img class="img-thumbnail" th:src="${entry.imgFilePath}"></img>
             </div>
