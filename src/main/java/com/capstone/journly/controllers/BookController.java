@@ -70,7 +70,12 @@ public class BookController {
             @RequestParam("id")String id,
             @RequestParam("author")String author,
             @RequestParam("title")String title){
-        System.out.println(id);
+        System.out.println(userService.getLoggedInUser().getUsername()== null);
+        System.out.println(userService.getLoggedInUser().getUsername().isEmpty());
+        System.out.println(userService.getLoggedInUser().getId());
+//        if (userService.getLoggedInUser().getUsername() == null){
+//            return"redirect:/login";
+//        }
         User user = userService.getLoggedInUser();
         Bookshelf bookshelf = bookshelfDao.findByUser(user);
         Book book = new Book();
