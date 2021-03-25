@@ -3,37 +3,37 @@
 <head th:replace="partials/head :: head"></head>
 <body class="sign-up-bg">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="jumbotron text-center mb-2 pink-btn">
-    <h1>Happy Journly-ing!</h1>
-</div>
-<!-- this is where our loop will go to list all *public* entries -->
-<div class="container w-75 gratitude-entry-form px-3 text-center bg-white opaque">
+<!--<div class="jumbotron text-center mb-2 pink-btn">-->
+<!--</div>-->
+
+<div class="container w-75 gratitude-entry-form px-3 text-center">
     <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${gratitudeEntry}" enctype="multipart/form-data">
-        <!-- prompt needs to go here -->
-        <div class="form-group" id="gratitude-entry-prompt">
+        <div class="form-group col justify-content-center" id="gratitude-entry-prompt-header">
             <h4 th:text="${prompt.prompt}"></h4>
             <input type="hidden" name="promptId" th:value="${prompt.id}">
+            <br>
             <p>(Writer's block? Refresh the page for a new prompt!)</p>
         </div>
-        <div class="form-group" id="gratitude-entry-body">
-            <label for="body" class="font-weight-bold">Body: </label>
-            <br>
-            <textarea class="form-control" id="body" placeholder="Type your entry here..." th:field="*{body}"></textarea>
+        <div class="form-group row" id="gratitude-entry-body">
+            <div class="notebook">
+                <div class="notebook-content">
+                    <textarea autofocus id="body" placeholder="Type your entry here..." th:field="*{body}"></textarea>
+                </div>
+            </div>
         </div>
         <hr>
-        <div class="form-group" id="gratitude-entry-image-upload text-center">
-            <label for="image" class="text-center font-weight-bold">Image for Gratitude Entry (optional):</label>
-            <br>
-            <input class="text-center" type="hidden" name="image" th:field="*{imgFilePath}">
-            <input id="image" class="text-center form-control-file" name="image" type="file">
-        </div>
-        <hr>
-        <div class="form-group" id="gratitude-entry-privacy">
-            <!-- if true, will be public
-                 if false, will only show on profile -->
-            <p class="font-weight-bold">Click this box if you would like your post to be displayed on the community Gratitude Board:</p>
-            <input type="checkbox" name="isPublic" th:field="*{isPublic}"/>
-            <!--            <input type="submit" value="Submit">-->
+        <div class="row" id="text-center">
+            <div class="col gratitude-entry-image-upload form-group justify-content-center">
+                <label for="image" class="text-center font-weight-bold">Image for Gratitude Entry (optional):</label>
+                <br>
+                <input class="" type="hidden" name="image" th:field="*{imgFilePath}">
+                <input id="image" class="manual-center form-control-file" name="image" type="file">
+            </div>
+            <div class="col gratitude-entry-privacy form-group justify-content-center" id="gratitude-entry-privacy">
+                <p class="font-weight-bold">Post to public Gratitude Board?</p>
+                <input type="checkbox" id="privacyCheckbox" name="isPublic" th:field="*{isPublic}"/>
+                <label for="privacyCheckbox">Yes</label>
+            </div>
         </div>
         <hr>
         <input type="submit" placeholder="Submit New Gratitude Entry">
