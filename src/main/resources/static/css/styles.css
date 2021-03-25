@@ -74,6 +74,80 @@ html, body {
     right: 0;
 }
 
+/* NOTEBOOK STYLING */
+
+.notebook {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    min-width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    background: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    overflow: hidden;
+}
+.notebook:before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 30px;
+    border-right: 3px solid #D44147;
+    box-sizing: border-box;
+}
+
+.notebook-content {
+    position: absolute;
+    top: 30px; right: 0; bottom: 30px; left: 60px;
+    background: linear-gradient(transparent, transparent 28px, #91D1D3 28px);
+    background-size: 30px 30px;
+}
+
+.notebook-content textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.manual-center {
+    margin: auto;
+    text-align: center;
+}
+
+/* FOOTER STYLING */
+
+.footer-style {
+    width: 100vw;
+    background: var(--blush-color);
+}
+
+.footer-link a {
+    color: white;
+    padding: 0;
+}
+
+.footer-links {
+    padding: 0;
+    margin: 0;
+}
+
+.footer-label {
+    text-align: center;
+    align-content: center;
+}
+
 /*MEDIA QUERIES FOR LANDING PAGE*/
 @media screen and (min-width:375px) {
     #index-html, #index-body {
