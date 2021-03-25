@@ -126,6 +126,28 @@ html, body {
     text-align: center;
 }
 
+/* FOOTER STYLING */
+
+.footer-style {
+    width: 100vw;
+    background: var(--blush-color);
+}
+
+.footer-link a {
+    color: white;
+    padding: 0;
+}
+
+.footer-links {
+    padding: 0;
+    margin: 0;
+}
+
+.footer-label {
+    text-align: center;
+    align-content: center;
+}
+
 /*MEDIA QUERIES FOR LANDING PAGE*/
 @media screen and (min-width:375px) {
     #index-html, #index-body {
