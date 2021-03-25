@@ -3,7 +3,7 @@
 <head th:replace="partials/head :: head"></head>
 <body class="sign-up-bg">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="jumbotron text-center mb-2">
+<div class="jumbotron text-center mb-2 pink-btn">
     <h1>Happy Journly-ing!</h1>
 </div>
 <!-- this is where our loop will go to list all *public* entries -->
@@ -13,6 +13,7 @@
         <div class="form-group" id="gratitude-entry-prompt">
             <h4 th:text="${prompt.prompt}"></h4>
             <input type="hidden" name="promptId" th:value="${prompt.id}">
+            <p>(Writer's block? Refresh the page for a new prompt!)</p>
         </div>
         <div class="form-group" id="gratitude-entry-body">
             <label for="body" class="font-weight-bold">Body: </label>
@@ -23,8 +24,8 @@
         <div class="form-group" id="gratitude-entry-image-upload text-center">
             <label for="image" class="text-center font-weight-bold">Image for Gratitude Entry (optional):</label>
             <br>
-            <input type="hidden" name="image" th:field="*{imgFilePath}">
-            <input id="image" class="form-control-file" name="image" type="file">
+            <input class="text-center" type="hidden" name="image" th:field="*{imgFilePath}">
+            <input id="image" class="text-center form-control-file" name="image" type="file">
         </div>
         <hr>
         <div class="form-group" id="gratitude-entry-privacy">
