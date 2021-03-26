@@ -72,40 +72,6 @@ body {
 /*    !*background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*!*/
 /*}*/
 
-/*-----------------------------------------------------*/
-
-
-/*!* LANDING PAGE (INDEX.HTML) STYLING *!*/
-/*#gratitude-for-teachers-header {*/
-/*    font-family: var(--gratitude-for-teachers-font);*/
-/*}*/
-/*.giving-thanks-text {*/
-/*    font-family: var(--giving-thanks-font-family);*/
-/*}*/
-
-/*-----------------------------------------------------*/
-/*!*LANDING PAGE CIRCLE SVGs FOR BACKGROUND*!*/
-/*.landing-pg-left-svg {*/
-/*    position: absolute;*/
-/*    top: 80%;*/
-/*    z-index: -1;*/
-/*}*/
-
-/*.landing-pg-right-svg {*/
-/*    position: absolute;*/
-/*    top: 150%;*/
-/*    right: 0;*/
-/*    z-index: -1;*/
-/*}*/
-
-/*.landing-pg-circle-svg {*/
-/*    position: absolute;*/
-/*    top: 250%;*/
-/*    right: 60%;*/
-/*    z-index: -1;*/
-/*}*/
-/*-----------------------------------------------------*/
-
 
 
 /*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
@@ -123,13 +89,135 @@ body {
     z-index: -1;
 }
 
-/*SIGN UP PAGE CIRCLE SVGs FOR BACKGROUND*/
-.sign-up-pg-left-svg {
+
+/* NOTEBOOK STYLING */
+/*------------------------------------------------------------------------------------*/
+.notebook {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    min-width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    background: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    overflow: hidden;
+}
+.notebook:before {
+    content: '';
     position: absolute;
-    top: 60%;
-    z-index: -1;
+    top: 0; bottom: 0; left: 0;
+    width: 30px;
+    border-right: 3px solid #D44147;
+    box-sizing: border-box;
 }
 
+.notebook-content {
+    position: absolute;
+    top: 30px; right: 0; bottom: 30px; left: 60px;
+    background: linear-gradient(transparent, transparent 28px, #91D1D3 28px);
+    background-size: 30px 30px;
+}
+
+.notebook-content textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.manual-center {
+    margin: auto;
+    text-align: center;
+}
+
+/* FOOTER STYLING */
+/*------------------------------------------------------------------------------------*/
+.footer-style {
+    width: 100vw;
+    background: var(--blush-color);
+}
+
+.footer-link a {
+    color: white;
+    padding: 0;
+}
+
+.footer-links {
+    padding: 0;
+    margin: 0;
+}
+
+.footer-label {
+    text-align: center;
+    align-content: center;
+}
+
+
+/*MEDIA QUERIES*/
+/*------------------------------------------------------------------------------------*/
+@media screen and (min-width:375px) {
+    .notebook {
+        width: 90%;
+        max-width: 400px;
+        min-width: 350px;
+        height: 500px;
+    }
+}
+
+.card {
+    display: inline-block;
+}
+
+/* iphone X , XS, 11 Pro, 12 Mini */
+@media only screen
+and (min-width : 375px)
+and (min-height : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+    .notebook {
+        width: 90%;
+        max-width: 360px;
+        min-width: 350px;
+        height: 600px;
+    }
+}
+
+/* iphone 12, 12 Pro */
+@media only screen
+and (min-width: 390px)
+and (min-height: 844px)
+and (-webkit-device-pixel-ratio: 3) {
+    .notebook {
+        width: 90%;
+        max-width: 380px;
+        min-width: 350px;
+        height: 600px;
+    }
+}
+
+@media screen and (min-width:411px) {
+    .notebook {
+        width: 90%;
+        max-width: 400px;
+        min-width: 350px;
+        height: 500px;
+    }
+}
+
+
+/* SIGN UP PAGE SVG */
+/*------------------------------------------------------------------------------------*/
 .sign-up-pg-right-svg {
     position: absolute;
     top: 30%;

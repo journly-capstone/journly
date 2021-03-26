@@ -1,35 +1,44 @@
 <!doctype html>
 <html id="update-entry" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-<body>
+<body class="sign-up-bg">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="text-center mb-2">
-    <h1>Edit Entry:</h1>
-</div>
-<hr>
-<div class="gratitude-entry-form px-3 text-center">
+<!--<div class="jumbotron text-center mb-2 pink-btn">-->
+<!--</div>-->
+
+<div class="container w-75 gratitude-entry-update px-3 text-center">
     <form th:action="@{/dashboard/{id}/update(id=*{id})}" th:method="post" th:object="${gratitudeEntry}" enctype="multipart/form-data">
-        <div id="update-entry-prompt">
-            <h3>Prompt: </h3>
+        <div class="col form-group justify-content-center">
             <h4 th:text="${gratitudeEntry.getPrompt().prompt}"></h4>
+            <p>{This is your current prompt. For a new prompt entirely, please create a new gratitude entry.</p>
         </div>
-        <div id="update-entry-body">
-            <h3>Body: </h3>
-            <textarea th:text="${gratitudeEntry.getBody()}" th:field="*{body}"></textarea>
+        <hr>
+        <div class="form-group row">
+            <div class="notebook">
+                <div class="notebook-content">
+                    <textarea autofocus th:text="${gratitudeEntry.getBody()}" th:field="*{body}"></textarea>
+                </div>
+            </div>
         </div>
-        <div id="update-entry-privacy">
-            <h3>Privacy: </h3>
-            <p class="font-weight-bold">Public? (check box): <input type="checkbox" name="isPublic" th:field="*{isPublic}"/></p>
-        </div>
-        <div id="update-entry-image">
-            <p class="font-weight-bold">Image for Gratitude Entry (optional):</p>
-            <br>
-            <input type="file" name="image">
+        <hr>
+        <div class="row text-center">
+            <div class="col form-group justify-content-center">
+                <p class="text-center font-weight-bold">Image for Gratitude Entry (optional):</p>
+                <br>
+                <input type="file" class="manual-center" name="image">
+            </div>
+            <div class="col form-group justify-content-center">
+                <p class="font-weight-bold">Post to public Gratitude Board?</p>
+                <input type="checkbox" id="updatePrivacy" name="isPublic" th:field="*{isPublic}"/>
+                <label for="updatePrivacy">Yes</label>
+            </div>
         </div>
 
         <input type="submit" placeholder="Update Gratitude Entry">
     </form>
-    <footer th:replace="partials/footer :: footer"></footer>
 </div>
+
+<footer th:replace="partials/footer :: footer"></footer>
+
 </body>
 </html>
