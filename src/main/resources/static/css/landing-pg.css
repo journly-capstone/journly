@@ -3,72 +3,106 @@
     padding: 0;
 }
 
+/*VARIABLES*/
+/*------------------------------------------------------------------------------------*/
 :root {
-    --landing-pg-nav-login-btn-color: white;
-    --landing-pg-nav-login-btn-hover-color: lightgray;
-    --landing-pg-nav-logout-btn-color: #fc628c;
-    --landing-pg-nav-logout-btn-hover-color: #232931;
-    --landing-pg-blue-purple-gradient-color: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
-    /*--landing-pg-blue-purple-background: linear-gradient(to right, #ffc3a0, #FFAFBD); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    --landing-pg-blush-color: #fc628c;
+    --landing-pg-dark-blush-color: #ed3478;
 
-    --landing-pg-background-color:
-            linear-gradient(to top, #ffa3b3, #fff7cf);
-            /*linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*/
+    /*NAVBAR VARIABLES*/
+    --landing-pg-nav-login-btn-color: white; /* login */
+    --landing-pg-nav-login-btn-hover-color: lightgray; /* login hover */
+    --landing-pg-nav-sign-up-btn-color: #fc628c; /* signup */
+    --landing-pg-nav-sign-up-btn-hover-color: #ed3478; /*signup hover */
+    --landing-pg-nav-logout-btn-color: #fc628c; /* logout */
+    --landing-pg-nav-logout-btn-hover-color: #232931; /* logout hover */
+    --landing-pg-nav-journly-logo-hover-color: #fc628c;
 
+    --landing-pg-a-nav-link-font-family: 'Karla', sans-serif; /*Font*/
 
-    --landing-pg-nav-sign-up-btn-color: #fc628c;
-    --landing-pg-nav-sign-up-btn-hover-color: #ed3478;
+    /*BACKGROUND COLOR*/
+    --landing-pg-background-color: linear-gradient(to top, #ffa3b3, #fff7cf);
+
+    /*JOIN TODAY TOP BUTTON*/
+    --join-today-top-btn-color: white;
+    --join-today-top-btn-hover-color: #fc628c;
+    --join-today-top-btn-font-color: #fc628c;
+    --join-today-top-btn-hover-font-color: white;
+
+    /*JOIN TODAY BOTTOM BUTTON*/
+    --join-today-bottom-btn-color: #fc628c;
+    --join-today-bottom-btn-hover-color: #ed3478;
+    --join-today-bottom-btn-font-color: white;
+
+    /*FONTS*/
+    --feature-heading-font-family: 'Karla', sans-serif;
+    --giving-thanks-font-family: 'Karla', sans-serif;
+    --gratitude-for-teachers-font: 'Karla', sans-serif;
+
+    /*GRATITUDE FOR TEACHERS TEXT COLOR */
+    --gratitude-for-teachers-font-color: #020205;
+
+    /*Border for avatars on the page*/
+    --landing-page-avatar-border: 3px solid #F7A09E;
+
 }
 
-/*!*NAVBAR*!*/
-/*.landing-pg-body nav {*/
-/*    background: transparent;*/
-/*}*/
+/*NAVBAR*/
+/*------------------------------------------------------------------------------------*/
+.landing-pg-navbar-brand {
+    font-family: 'Satisfy', cursive;
+    color: #3d3e40; font-size: 2rem;
+}
+.landing-pg-navbar-brand:hover {
+    color: var(--landing-pg-nav-journly-logo-hover-color)
+}
 
 /*Nav Links*/
-/*.landing-pg-body a.nav-link {*/
-/*    color: white;*/
-/*}*/
+#landing-pg-navbar a.nav-link {
+    font-family: var(--landing-pg-a-nav-link-font-family);
+    font-weight: 300 !important;
+}
 
-/*.landing-pg-body a.nav-link:hover {*/
-/*    text-decoration: underline;*/
-/*}*/
+#landing-pg-navbar a.nav-link:hover {
+    text-decoration: underline;
+    color: black;
+}
 
-/*!*Navbar Hamburger Styling *!*/
-/*.landing-pg-body .hamburger-animated-icon span {*/
-/*    background: white;*/
-/*}*/
 
-/*!*BUTTONS*!*/
-/*.landing-pg-nav-login-btn {*/
-/*    !*background-color: var(--landing-pg-nav-login-btn-color);*!*/
-/*    !*font-weight: bold;*!*/
-/*}*/
 
-/*.landing-pg-nav-login-btn:hover {*/
-/*    background-color: var(--landing-pg-nav-login-btn-hover-color);*/
-/*    font-weight: bold;*/
-/*}*/
+/*BUTTONS*/
+/*------------------------------------------------------------------------------------*/
+.landing-pg-nav-login-btn {
+    background-color: var(--landing-pg-nav-login-btn-color);
+    /*font-weight: bold;*/
+}
+
+.landing-pg-nav-login-btn:hover {
+    background-color: var(--landing-pg-nav-login-btn-hover-color);
+    /*font-weight: bold;*/
+}
 
 .landing-pg-nav-sign-up-btn {
     background: var(--landing-pg-nav-sign-up-btn-color);
-    /*transition: 0.5s;*/
-    /*background-size: 200% auto;*/
     color: white;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .landing-pg-nav-sign-up-btn:hover {
     background: var(--landing-pg-nav-sign-up-btn-hover-color);
     color: white;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 
-/*LANDING PAGE BACKGROUND*/
+/*JUMBOTRON*/
+/*------------------------------------------------------------------------------------*/
+.landing-pg-jumbotron {
+    border-radius: 0;
+}
+
 .header {
     position:relative;
-    text-align:center;
     background: var(--landing-pg-background-color);
 }
 
@@ -144,7 +178,25 @@
     }
 }
 
+
+/*FONTS*/
+/*------------------------------------------------------------------------------------*/
+#gratitude-for-teachers-header {
+    font-family: var(--gratitude-for-teachers-font) !important;
+    color: var(--gratitude-for-teachers-font-color);
+    font-weight: 300;
+}
+.giving-thanks-text {
+    font-family: var(--giving-thanks-font-family);
+}
+
+.feature-headings {
+    font-family: var(--feature-heading-font-family)
+}
+
+
 /*HORIZONTAL RULES*/
+/*------------------------------------------------------------------------------------*/
 .first-hr-landing-pg {
     width: 80%;
     margin: 0 auto;
@@ -156,16 +208,91 @@
 }
 
 
-/*LANDING PAGE CIRCLE SVGs FOR BACKGROUND*/
-.landing-pg-left-svg {
-    position: absolute;
-    top: 90%;
-    z-index: -1;
+/*JOIN TODAY TOP BTN*/
+/*------------------------------------------------------------------------------------*/
+
+/*Join Today button Styling (Landing Page)*/
+.join-today-top-container {
+    max-width: 70%;
 }
 
-.landing-pg-right-svg {
-    position: absolute;
-    top: 150%;
-    right: 0;
-    z-index: -1;
+#join-today-top-btn {
+    background: var(--join-today-top-btn-color) !important;
+    color: var(--join-today-top-btn-font-color) !important;
 }
+
+#join-today-top-btn:hover {
+    background: var(--join-today-top-btn-hover-color) !important;
+    color: var(--join-today-top-btn-hover-font-color) !important;
+}
+
+
+/*JOIN TODAY BOTTOM BTN*/
+/*------------------------------------------------------------------------------------*/
+.join-today-bottom-btn {
+    background: var(--join-today-bottom-btn-color);
+    color: var(--join-today-bottom-btn-font-color);
+}
+
+.join-today-bottom-btn:hover {
+    background: var(--join-today-bottom-btn-hover-color);
+    color: var(--join-today-bottom-btn-font-color);
+}
+
+
+/*AVATARS (Styling User Images to Display as Circles on Landing Page)*/
+/*------------------------------------------------------------------------------------*/
+.landing-pg-avatar {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border: var(--landing-page-avatar-border);
+    border-radius: 50%;
+}
+
+
+/*MEDIA QUERIES*/
+/*------------------------------------------------------------------------------------*/
+
+/* Medium Screen Landing Page Background Styling (tablets, 768px and up) */
+@media screen and (min-width:768px) {
+    .landing-pg-jumbotron h1 {
+        font-size: 3em;
+    }
+
+    .join-today-top-container {
+        max-width: 30%;
+    }
+
+    .join-today-bottom-container {
+        max-width: 40%;
+    }
+}
+
+
+/* !*Large devices (desktops, 992px and up) *!*/
+/*@media (min-width: 992px) {*/
+/*    .landing-page-jumbotron h1 {*/
+/*        font-size: 6em;*/
+/*    }*/
+/*}*/
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .join-today-top-container {
+        max-width: 20%;
+    }
+
+    .join-today-bottom-container {
+        max-width: 25%;
+    }
+
+    .landing-pg-avatar {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+
+/*------------------------------------------------------------------------------------*/

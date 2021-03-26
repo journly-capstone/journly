@@ -1,32 +1,18 @@
 <!doctype html>
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<head th:replace="partials/head :: head"></head>-->
 <head th:replace="partials/head :: head-landing-pg"></head>
 
 <body id="index-body" class="landing-pg-body guest-view-body">
 
-<!--SVGs-->
-<!--<img src="/svg/left-landing-page.svg" class="landing-pg-left-svg">-->
-<!--<img src="/svg/right-landing-page.svg" class="landing-pg-right-svg">-->
-<!--<img src="/svg/landing-page-circle.svg" class="landing-pg-circle-svg">-->
 
-<!--<nav th:replace="partials/navbar :: navbar"></nav>-->
-
-
-<!--NEW NAVBAR-->
-<!--<nav th:replace="partials/navbar :: landing-pg-navbar"></nav>-->
-
-<div class="jumbotron text-center header p-0">
+<div class="jumbotron landing-pg-jumbotron header p-0">
     <!--Content before waves-->
-    <nav th:replace="partials/navbar :: navbar"></nav>
-<!--    <nav th:replace="partials/navbar :: landing-pg-navbar"></nav>-->
-
+    <nav th:replace="partials/navbar :: landing-pg-navbar"></nav>
 
     <div class="inner-header flex">
         <div class="container">
-
-            <h1 class="display-6">Gratitude<br> for Teachers</h1>
-            <a id="join-today-top-btn" class="btn btn-lg" th:href="@{/sign-up}" role="button">Join Today</a>
+            <h1 class="display-4">Gratitude for <br>Teachers</h1>
+            <p class="lead">Where giving thanks and reflecting daily is easy.</p>
         </div>
     </div>
 
@@ -53,22 +39,31 @@
 
 <main class="container">
     <div id="about" class="row mb-5">
-        <div class="col-12 col-md-12 col-lg-6 mt-md-2 mt-lg-0">
-            <h2 class="mt-xl-5 giving-thanks-text">Giving thanks and reflecting daily</h2>
-        </div>
         <div class="col-12">
-            <p>With the rapidly changing environment and increasingly high demands of the profession, many teachers have found themselves over stressed and in search of ways to prevent teacher burnout. That’s where Journly comes in. With Journly, teachers can practice gratitude, be inspired by daily affirmations, and browse through our library of mindfulness books.</p>
+            <p>With the rapidly changing environment and increasingly high demands of the profession, many teachers have found themselves over stressed and in search of ways to prevent teacher burnout. That’s where Journly comes in. With Journly, teachers can practice gratitude, be inspired by daily affirmations, and browse through our library of books.</p>
         </div>
     </div>
 
     <div id="features">
         <div class="row">
             <div class="col-sm mb-5">
+                <!-- Icon -->
+                <div class="landing-page-feature-icon-container container d-flex justify-content-center align-items-center" style="background: mediumpurple; color: white; height: 50px; width: 50px; border-radius: 30%;">
+                    <h4 class="text-center mb-0"><i class="fas fa-pen"></i></h4>
+                </div>
+
+                <!--Text-->
                 <h4 class="feature-headings"><strong>Daily Journaling</strong></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi cupiditate dolorum ducimus est eum eveniet excepturi fugit nesciunt, optio qui recusandae sed sequi totam voluptates! Architecto consequatur provident totam.</p>
+                <p>Create a springboard for recovery by honing in on what your are most grateful for daily</p>
             </div>
 
             <div class="col-sm mb-5">
+                <!-- Icon -->
+                <div class="landing-page-feature-icon-container container d-flex justify-content-center align-items-center" style="background: mediumpurple; color: white; height: 50px; width: 50px; border-radius: 30%;">
+                    <h4 class="text-center mb-0"><i class="fas fa-quote-right"></i></h4>
+                </div>
+
+                <!--Text-->
                 <h4 class="feature-headings"><strong>Positive Affirmations</strong></h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi cupiditate dolorum ducimus est eum eveniet excepturi fugit nesciunt, optio qui recusandae sed sequi totam voluptates! Architecto consequatur provident totam.</p>
             </div>
@@ -76,6 +71,12 @@
 
         <div class="row">
             <div class="col-sm mb-5">
+                <!-- Icon -->
+                <div class="landing-page-feature-icon-container container d-flex justify-content-center align-items-center" style="background: mediumpurple; color: white; height: 50px; width: 50px; border-radius: 30%;">
+                    <h4 class="text-center mb-0"><i class="fas fa-users"></i></h4>
+                </div>
+
+                <!--Text-->
                 <h4 class="feature-headings"><strong>Community</strong></h4>
                 <p>We are committed to cultivating a community of educators that support each other along their journey to end the teacher burnout crisis and foster gratitude. That’s why we’ve created the community gratitude board. On this board, users can share gratitude entries with others in the Journly Community. Users can then show their support and appreciation for the post by giving it a "like."
                 </p>
@@ -83,6 +84,12 @@
             </div>
 
             <div class="col-sm mb-5">
+                <!-- Icon -->
+                <div class="landing-page-feature-icon-container container d-flex justify-content-center align-items-center" style="background: mediumpurple; color: white; height: 50px; width: 50px; border-radius: 30%;">
+                    <h4 class="text-center mb-0"><i class="fas fa-book"></i></h4>
+                </div>
+
+                <!--Text-->
                 <h4 class="feature-headings"><strong>Books</strong></h4>
                 <p>Another feature Journly provides teachers is the ability to search through a library of mindfulness books and save them to a bookshelf for personal use or use in the classroom.
                 </p>
@@ -114,9 +121,9 @@
             </div>
         </div>
 
-        <div class="row pb-5">
-            <div class="col-12 text-center">
-                <a class="btn btn-lg join-today-btn" th:href="@{/sign-up}" role="button">Join Today</a>
+        <div class="row pb-5 d-flex justify-content-center">
+            <div class="col-12 text-center join-today-bottom-container">
+                <a class="btn btn-lg join-today-bottom-btn btn-block" th:href="@{/sign-up}" role="button">Join Today</a>
             </div>
         </div>
     </div>
