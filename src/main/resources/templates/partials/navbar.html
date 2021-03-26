@@ -79,5 +79,79 @@
         </div>
     </div>
 </nav>
+
+
+<!--LANDING PAGE NAVBAR-->
+<nav th:fragment="landing-pg-navbar" id="landing-pg-navbar" class="navbar navbar-expand-lg">
+    <div class="container">
+        <a sec:authorize="isAnonymous()" class="navbar-brand" th:href="@{/}">
+            <img src="/img/journly-logo.png" width="70" height="70" />
+        </a>
+        <button sec:authorize="isAnonymous()" class="navbar-toggler hamburger-btn" type="button" data-toggle="collapse" data-target="#landingPageNavbarSupportedContent" aria-controls="landingPageNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger-animated-icon"><span></span><span></span><span></span></div>
+        </button>
+
+        <a sec:authorize="isAuthenticated()" class="navbar-brand" th:href="@{/dashboard}">
+            <img src="/img/journly-logo.png" width="70" height="70" />
+        </a>
+        <button sec:authorize="isAuthenticated()" class="navbar-toggler hamburger-btn" type="button" data-toggle="collapse" data-target="#landingPageNavbarSupportedContent" aria-controls="landingPageNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger-animated-icon"><span></span><span></span><span></span></div>
+        </button>
+
+        <div class="collapse navbar-collapse" id="landingPageNavbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/dashboard}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/gratitude-board}">Gratitude Board</a>
+                </li>
+                <li sec:authorize="isAnonymous()" class="nav-item">
+                    <a class="nav-link" th:href="@{/books}">Books</a>
+                </li>
+                <li sec:authorize="isAnonymous()" class="nav-item">
+                    <a class="nav-link" th:href="@{/about-us}">About Us</a>
+                </li>
+                <div sec:authorize="isAuthenticated()" class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="landingPageDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Books
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                        <a class="dropdown-item" th:href="@{/books}">Search Books</a>
+                        <a class="dropdown-item" th:href="@{/bookshelf}">View Bookshelf</a>
+                    </div>
+                </div>
+            </ul>
+
+            <a sec:authorize="isAuthenticated()" class="nav-link plus-sign-circle text-secondary" th:href="@{/gratitude-board/create}"><i class="fas fa-plus-circle"></i></a>
+
+            <div sec:authorize="isAuthenticated()" class="dropdown mr-1">
+                <a class="dropdown-toggle text-secondary" href="#" role="button" id="landingPageDropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20" >
+                    <img th:src="@{'' + ${#authentication.principal.imgFilePath}}" class="user-profile-avatar"/>
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                    <a class="dropdown-item" th:href="@{/dashboard}">View Dashboard</a>
+                    <a class="dropdown-item" th:href="@{/profile-settings}">Profile Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
+                        <input class="landing-pg-nav-logout-btn btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log Out" />
+                    </form>
+                </div>
+            </div>
+
+            <form sec:authorize="isAnonymous()" class="form-inline m-md-1" th:action="@{/login}" method="get">
+                <input class="landing-pg-nav-login-btn btn btn-block my-2 my-sm-0 m-1 btn-outline-light" type="submit" value="Log In" />
+            </form>
+
+            <form sec:authorize="isAnonymous()" class="form-inline m-md-1" th:action="@{/sign-up}" method="get">
+                <input class="landing-pg-nav-sign-up-btn btn btn-block my-2 my-sm-0 m-1" type="submit" value="Sign Up" />
+            </form>
+        </div>
+    </div>
+</nav>
+
+
 </body>
 </html>

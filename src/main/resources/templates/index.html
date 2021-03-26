@@ -1,26 +1,57 @@
 <!doctype html>
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/head :: head"></head>
+<!--<head th:replace="partials/head :: head"></head>-->
+<head th:replace="partials/head :: head-landing-pg"></head>
 
-<body id="index-body" class="guest-view-body">
-<img src="/svg/left-landing-page.svg" id="left-svg">
-<img src="/svg/right-landing-page.svg" id="right-svg">
+<body id="index-body" class="landing-pg-body guest-view-body">
 
-<nav th:replace="partials/navbar :: navbar"></nav>
+<!--SVGs-->
+<!--<img src="/svg/left-landing-page.svg" class="landing-pg-left-svg">-->
+<!--<img src="/svg/right-landing-page.svg" class="landing-pg-right-svg">-->
+<!--<img src="/svg/landing-page-circle.svg" class="landing-pg-circle-svg">-->
 
-<main class="container">
-    <div id="landing-page-msg" class="row text-center align-items-center">
-        <div class="col-12 col-md-6">
-            <h1 id="gratitude-for-teachers-header">Gratitude<br> for Teachers</h1>
+<!--<nav th:replace="partials/navbar :: navbar"></nav>-->
+
+
+<!--NEW NAVBAR-->
+<!--<nav th:replace="partials/navbar :: landing-pg-navbar"></nav>-->
+
+<div class="jumbotron text-center header p-0">
+    <!--Content before waves-->
+    <nav th:replace="partials/navbar :: navbar"></nav>
+<!--    <nav th:replace="partials/navbar :: landing-pg-navbar"></nav>-->
+
+
+    <div class="inner-header flex">
+        <div class="container">
+
+            <h1 class="display-6">Gratitude<br> for Teachers</h1>
             <a id="join-today-top-btn" class="btn btn-lg" th:href="@{/sign-up}" role="button">Join Today</a>
-        </div>
-
-        <div class="col-12 col-md-6 mb-5">
-            <img src="/img/icons-landing-pg.png" width="100%" alt="Gratitude for Teachers"/>
         </div>
     </div>
 
-<!--    <div id="about" class="row mt-5 mb-5">-->
+    <!--Waves Container-->
+    <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+    </div>
+    <!--Waves end-->
+</div>
+<!--Header ends-->
+
+
+
+<main class="container">
     <div id="about" class="row mb-5">
         <div class="col-12 col-md-12 col-lg-6 mt-md-2 mt-lg-0">
             <h2 class="mt-xl-5 giving-thanks-text">Giving thanks and reflecting daily</h2>
@@ -59,20 +90,19 @@
             </div>
         </div>
 
-        <div class="row mb-5">
+        <hr class="first-hr-landing-pg">
+
+        <div class="row mt-5 mb-5">
             <div class="col text-center">
                 <h1 class="mb-2">Crafted for teachers just like you.</h1>
             </div>
         </div>
 
-        <div class="row pb-5 justify-content-center text-center">
+        <hr class="second-hr-landing-pg">
+
+        <div class="row mt-5 pb-5 justify-content-center text-center">
             <div class="col-6 col-md-4 text-center">
                 <img src="/img/community-member-one.png" alt="Community Member" class="landing-pg-avatar m-3">
-                <!--                    <img th:src="${(firstUser.imgFilePath == null) ? firstUser.imgFilePath : '/img/community-member-one.png'}" th:alt="${firstUser.imgFilePath}"/>-->
-
-                <!--                    <img th:if="${firstUser.getImgFilePath() == null}" src="/uploads/community-member-one.png" alt="Community Member" class="landing-pg-avatar m-3"/>-->
-                <!--                    <img th:unless="${firstUser.getImgFilePath() == null}" th:src="${firstUser.getImgFilePath().imgFilePath}" alt="Community Member" class="landing-pg-avatar m-3">-->
-
             </div>
 
             <div class="col-6 col-md-4 text-center">
