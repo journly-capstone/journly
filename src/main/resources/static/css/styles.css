@@ -154,6 +154,16 @@ html, body {
         height:100vh !important;
         margin: 0 !important;
     }
+    .notebook {
+        width: 90%;
+        max-width: 400px;
+        min-width: 350px;
+        height: 500px;
+    }
+}
+
+.card {
+    display: inline-block;
 }
 
 /* iphone X , XS, 11 Pro, 12 Mini */
@@ -164,6 +174,12 @@ and (-webkit-device-pixel-ratio : 3) {
     #index-html, #index-body {
         height:80vh !important;
         margin: 0 !important;
+    }
+    .notebook {
+        width: 90%;
+        max-width: 360px;
+        min-width: 350px;
+        height: 600px;
     }
 }
 
@@ -176,12 +192,25 @@ and (-webkit-device-pixel-ratio: 3) {
         height:80vh !important;
         margin: 0 !important;
     }
+    .notebook {
+        width: 90%;
+        max-width: 380px;
+        min-width: 350px;
+        height: 600px;
+    }
 }
 
 @media screen and (min-width:411px) {
     #index-html, #index-body {
         height:100vh !important;
         margin: 0 !important;
+    }
+
+    .notebook {
+        width: 90%;
+        max-width: 400px;
+        min-width: 350px;
+        height: 500px;
     }
 }
 
