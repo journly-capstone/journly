@@ -49,13 +49,16 @@
     --nav-logout-btn-hover-color: var(--default-navbar-link-color);
 
     /*About Us Page Variables*/
-    --meet-the-team-header-font: 'Work Sans', sans-serif;
-    --developer-names-font: 'Nunito', sans-serif;
+    --about-us-background-color: white;
+    --about-us-card-border-color: #faf3e0;
+
+    --meet-the-team-header-font: 'Karla', sans-serif;
+    --developer-names-font: 'Karla', sans-serif;
     --developer-title-font: 'Open Sans', sans-serif;
     --about-us-avatar-border: 3px solid #F7A09E;
 
     /*Sign Up Page Variables*/
-    --sign-up-page-font: 'Work Sans', sans-serif;
+    --sign-up-page-font: 'Karla', sans-serif;
 }
 
 
@@ -85,22 +88,6 @@ body {
 /*    scroll-behavior: smooth;*/
 /*    !*background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*!*/
 /*}*/
-
-
-/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
-/*------------------------------------------------------------------------------------*/
-.about-us-left-svg {
-    position: absolute;
-    top: 60%;
-    z-index: -1;
-}
-
-.about-us-right-svg {
-    position: absolute;
-    top: 30%;
-    right: 0;
-    z-index: -1;
-}
 
 
 /* NOTEBOOK STYLING */
@@ -189,9 +176,9 @@ body {
     }
 }
 
-.card {
-    display: inline-block;
-}
+/*.card {*/
+/*    display: inline-block;*/
+/*}*/
 
 /* iphone X , XS, 11 Pro, 12 Mini */
 @media only screen
@@ -309,11 +296,15 @@ img.user-profile-avatar {
 
 /* ABOUT US PAGE STYLING */
 /*------------------------------------------------------------------------------------*/
+.about-us-pg-body {
+    background: var(--about-us-background-color);
+}
+
 .about-us-avatar {
     vertical-align: middle;
-    width: 200px;
-    height: 200px;
-    border: var(--about-us-avatar-border);
+    width: 150px;
+    height: 150px;
+    /*border: var(--about-us-avatar-border);*/
     border-radius: 50%;
 }
 
@@ -321,13 +312,64 @@ img.user-profile-avatar {
     font-family: var(--meet-the-team-header-font);
 }
 
-.developer-names {
-    font-family: var(--developer-names-font);
-    font-weight: bolder;
-}
+/*.developer-names {*/
+/*    font-family: var(--developer-names-font);*/
+/*    font-weight: bolder;*/
+/*}*/
 
 .software-developer-title {
     font-family: var(--developer-title-font);
+}
+
+.about-us-pg-icons {
+    font-size: 2em;
+    margin: 10px;
+    color: black;
+}
+
+.about-us-pg-icons:hover {
+    color: var(--blush-color);
+}
+
+.about-us-card {
+    border-radius: 20px !important;
+    transition: 0.3s;
+    max-width: 400px;
+    /*border-color: var(--about-us-card-border-color);*/
+
+    /*Mobile Responsive Centering of the cards in the card deck*/
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+
+/* ABOUT US PAGE MEDIA QUERIES */
+/*------------------------------------------------------------------------------------*/
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) {
+    .about-us-card-deck {
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+
+
+/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
+/*------------------------------------------------------------------------------------*/
+.about-us-left-svg {
+    position: absolute;
+    top: 60%;
+    z-index: -1;
+}
+
+.about-us-right-svg {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    z-index: -1;
 }
 
 
