@@ -18,7 +18,7 @@
     --landing-pg-nav-logout-btn-color: var(--landing-pg-blush-color); /* logout */
     --landing-pg-nav-logout-btn-hover-color: #232931; /* logout hover */
     --landing-pg-nav-journly-logo-hover-color: var(--landing-pg-blush-color); /* brand logo hover color */
-    --landing-pg-a-nav-link-font-family: 'Karla', sans-serif; /*navbar Font*/
+    --landing-pg-a-nav-link-font-family: 'Karla', sans-serif; /*navbar font*/
 
     /*BACKGROUND COLOR*/
     --landing-pg-background-color: linear-gradient(to top, #ffa3b3, #fff7cf);
@@ -50,14 +50,17 @@
 /*------------------------------------------------------------------------------------*/
 .landing-pg-navbar-brand {
     font-family: 'Satisfy', cursive;
-    color: #3d3e40; font-size: 2rem;
+    color: #3d3e40;
+    font-size: 2rem;
 }
+
 .landing-pg-navbar-brand:hover {
-    color: var(--landing-pg-nav-journly-logo-hover-color)
+    color: var(--landing-pg-nav-journly-logo-hover-color);
 }
 
 /*Nav Links*/
 #landing-pg-navbar a.nav-link {
+    color: black;
     font-family: var(--landing-pg-a-nav-link-font-family);
     font-weight: 300 !important;
     margin-right: 2em;

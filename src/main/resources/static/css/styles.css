@@ -8,10 +8,14 @@
 
     /*App Colors*/
     /*--blush-color: #ff5e93;*/
-    --blush-color: #fc628c;
+    /*--blush-color: #fc628c;*/
+    --blush-color: #fc6d93;;
     --dark-blush-color: #ed3478;
     --error-msg-color: #f9748f;
     --purple-blue-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+
+    --pink-yellow-gradient: linear-gradient(60deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
+
     --default-pink-gradient-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
 
     /*Button Colors */
@@ -21,6 +25,14 @@
 
     /*Navbar Variables*/
     --default-navbar-link-color: #232931;
+    --navbar-brand-font: 'Satisfy', cursive;
+    --nav-journly-logo-default-hover-color: var(--blush-color);
+    --nav-journly-logo-hover-login-color: var(--blush-color);
+    --nav-journly-logo-hover-sign-up-color: var(--blush-color);
+    --default-a-nav-link-font-family: 'Karla', sans-serif; /*navbar font*/
+    --sign-up-nav-brand-color: var(--default-navbar-link-color);
+    --sign-up-a-nav-link-color: var(--default-navbar-link-color);
+    --sign-up-hamburger-icon-color: var(--hamburger-icon-color);
 
     /*Navbar Signup button colors */
     --nav-signup-btn-color: var(--blush-color);
@@ -283,6 +295,7 @@ img.user-profile-picture {
     border-radius: 50%;
 }
 
+/*Profile Avatar Styling (navbar profile picture) */
 img.user-profile-avatar {
     width: 50px;
     height: 50px;
@@ -356,13 +369,32 @@ img.user-profile-avatar {
     padding-left: 10px;
 }
 
+
+/* NAVBAR STYLING*/
+/*------------------------------------------------------------------------------------*/
+
+/* Journly Brand Logo Styling on Navbar*/
+.navbar-brand-font {
+    font-family: var(--navbar-brand-font);
+    color: #3d3e40;
+    font-size: 2rem;
+}
+
+.navbar-brand-font:hover {
+    color: var(--nav-journly-logo-default-hover-color);
+}
+
 /*Styling nav link anchor tags*/
 a.nav-link {
     color: var(--default-navbar-link-color);
+    font-family: var(--default-a-nav-link-font-family);
+    font-weight: 300 !important;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 a.nav-link:hover {
-    color: var(--blush-color);
+    text-decoration: underline;
 }
 
 /*Dropdown Menu Stying*/
@@ -379,7 +411,9 @@ a.nav-link:hover {
     box-shadow: none;
 }
 
-/* Navbar Hamburger Styling */
+
+/* NAVBAR HAMBURGER STYLING */
+/*------------------------------------------------------------------------------------*/
 .hamburger-animated-icon {
     width: 30px;
     height: 20px;
@@ -485,16 +519,6 @@ main.login-content {
     font-weight: 400 !important;
 }
 
-/*.login-card,*/
-/*.sign-up-container {*/
-.login-card {
-    border: none;
-    border-radius: 28px !important;
-    background-color: white;
-    box-shadow: var(--default-box-shadow);
-}
-
-
 /*Sign Up and Login Buttons on Login and Sign Up pages*/
 .sign-up-btn,
 .login-btn{
@@ -515,19 +539,42 @@ main.login-content {
 
 /*!*SIGN UP STYLING*!*/
 /*------------------------------------------------------------------------------------*/
-/*.sign-up-bg html{*/
-/*    height: 100%;*/
-/*}*/
-/*.sign-up-bg body {*/
-/*    height: 100%;*/
-/*    margin: 0;*/
-/*    background: var(--purple-blue-gradient);*/
-/*    background-repeat: no-repeat;*/
-/*    background-attachment: fixed;*/
-/*}*/
+.sign-up-bg html{
+    height: 100%;
+}
+
+.sign-up-bg body {
+    height: 100%;
+    margin: 0;
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
 .welcome-video {
     border-radius: 20px;
+}
+
+/*Sign Up Nav Links*/
+.sign-up-wrapper .navbar-brand-font {
+    color: var(--sign-up-nav-brand-color);
+}
+
+.sign-up-wrapper .navbar-brand-font:hover {
+    color: var(--blush-color);
+}
+
+.sign-up-wrapper a.nav-link {
+    color: var(--sign-up-a-nav-link-color);
+}
+
+.sign-up-wrapper a.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Sign Up and Login Navbar Hamburger Styling */
+.sign-up-wrapper .hamburger-animated-icon span {
+    background: var(--sign-up-hamburger-icon-color);
 }
 
 
@@ -547,6 +594,14 @@ main.login-content {
 /*}*/
 
 /*Login Nav Links*/
+.login-wrapper .navbar-brand-font {
+    color: white;
+}
+
+.login-wrapper .navbar-brand-font:hover {
+    color: var(--blush-color);
+}
+
 .login-wrapper a.nav-link {
     color: white;
 }
@@ -555,9 +610,15 @@ main.login-content {
     text-decoration: underline;
 }
 
-/* Login Navbar Hamburger Styling */
 .login-wrapper .hamburger-animated-icon span {
     background: white !important;
+}
+
+.login-card {
+    border: none;
+    border-radius: 28px !important;
+    background-color: white;
+    box-shadow: var(--default-box-shadow);
 }
 
 /*Login Overlay*/

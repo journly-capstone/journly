@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" class="sign-up-bg">
 <head th:replace="partials/head :: head"></head>
-<body class="sign-up-bg">
+<body class="sign-up-wrapper sign-up-bg">
 
 <!--<img src="/svg/left-landing-page.svg" class="sign-up-pg-left-svg">-->
 <!--<img src="/svg/right-landing-page.svg" class="sign-up-pg-right-svg">-->
 
 <nav th:replace="partials/navbar :: navbar"></nav>
-<!--<nav th:replace="partials/navbar :: landing-pg-navbar"></nav>-->
 
-<div class="overlay"></div>
+<!--<div class="overlay"></div>-->
 
 <main class="sign-up-main-container container pb-5">
     <div class="card sign-up-card sign-up-container p-3 p-md-4 p-lg-5">
@@ -58,7 +57,7 @@
 </main>
 
 
-<!--    <footer th:replace="partials/footer :: header-links"></footer>-->
+<!--<footer th:replace="partials/footer :: header-links"></footer>-->
 
 
 <div th:replace="partials/scripts :: assets"></div>
