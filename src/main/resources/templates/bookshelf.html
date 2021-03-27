@@ -4,7 +4,7 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h1 class="text-center">My Bookshelf</h1>
-<div class="container">
+<div class="container bookshelf-card">
     <div class="row" id="bookshelf">
         <div class="col-4" th:each="book : ${books}">
             <img class="aligning card z-depth-5" id="dynamic" alt="image" th:src="${book.getBookThumbnail()}"></img>
@@ -15,7 +15,7 @@
             <!--    ^^^^^ This will show each book stored in the users bookshelf will need to edit the ${} with proper path-->
             <!--    \/ this may need the  title or ID added at the end of the API for a more info button pull
                     A POSSIBLE CLICK EVENT TO PING API WITH BOOK DETAILS-->
-            <a class="btn btn-info btn-sm" th:href="@{'https://www.googleapis.com/books/v1/volumes?q=' + ${book.api_id}} ">View more info.</a>
+            <a target="_blank" class="btn btn-info btn-sm" th:href="@{${book.readMore}} ">View more info.</a>
             <!--    NEED the remove funtionality for current book on shelf
                     A POSSIBLE CLICK EVENT DELETING BOOK FROM SHELF-->
             <!--    <a class="btn btn-danger btn-sm" th:href="@{}">Remove from bookshelf</a>-->
