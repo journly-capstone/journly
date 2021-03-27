@@ -1,32 +1,45 @@
 <!doctype html>
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-<body>
+<body class="sign-up-bg">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<div class="search-header">
-    <p>This is the all posts page!</p>
+
+<div class="jumbotron flex-box justify-content-center text-center">
+    <h1>Welcome to the Gratitude Board!</h1>
+    <p>Looking for a pick-me-up, or maybe some inspiration? Read through gratitude entries created by other members of Journly.</p>
 </div>
+
 <div class="container">
-    <div class="all-public-posts border border-warning row" th:each="entry : ${entries}">
-        <div class="col-sm" th:if="${entry.isPublic}">
-            <div>
-                <img class="img-thumbnail" th:src="${entry.imgFilePath}"></img>
+    <div class="row">
+        <div th:each="entry : ${entries}">
+            <div th:if="${entry.isPublic}" class="card col-md-4">
+                <div>
+                    <div th:if="${entry.imgFilePath != null}">
+                        <img class="card-img-top" th:src="${entry.imgFilePath}">
+                    </div>
+                    <div th:unless="${entry.imgFilePath != null}">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${entry.getPrompt().prompt}"></h4>
+                    <p class="card-text" th:text="${entry.body}"></p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text" th:text="${entry.user.getUsername()}"></p>
+                    <!-- commented out while I figure out issue with date on this view -->
+    <!--                <h4 class="createdAt" th:text="${entry.createdAt}"></h4>-->
+                </div>
+                <div class="card-body">
+                    <a class="card-link" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
+                </div>
+
             </div>
-            <div>
-                <p th:text="${entry.getPrompt().prompt}"></p>
-                <p th:text="${entry.body}"></p>
-            </div>
-            <div>
-                <p th:text="${entry.user.getUsername()}"></p>
-                <!-- commented out while I figure out issue with date on this view -->
-<!--                <h4 class="createdAt" th:text="${entry.createdAt}"></h4>-->
-            </div>
-            <div>
-                <a th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
-            </div>
+
+            <div th:unless="${entry.isPublic}"></div>
         </div>
     </div>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script th:inline="javascript">
     "use strict";

@@ -52,6 +52,7 @@
                 <a class="btn btn-primary" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
                 <form class="btn" th:action="@{|/dashboard/${entry.id}/update/|}" method="get"><i class="icon-edit"></i>
 <!--                <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry-->
+
                     <input type="hidden" name="entryId" th:value="${entry.id}">
                     <input type="submit" value="Edit Entry">
                 </form>

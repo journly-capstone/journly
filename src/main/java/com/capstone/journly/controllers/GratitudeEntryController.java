@@ -151,6 +151,7 @@ public class GratitudeEntryController {
         }
         updatedEntry.setUser(userService.getLoggedInUser());
         updatedEntry.setIsPublic(isPublic);
+        updatedEntry.setBody(originalEntry.getBody());
         gratitudeEntryDao.save(updatedEntry);
         return "redirect:/dashboard";
     }
