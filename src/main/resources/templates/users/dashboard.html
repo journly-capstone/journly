@@ -37,20 +37,21 @@
 <!--</div>-->
 
 <!--Bootstrap Card-->
-<div class="form-inline justify-content-center">
-    <div class="card"  th:each="entry : ${user.userGratitudeEntries}" style="width: 18rem">
+<div class="form-inline justify-content-center" >
+    <div id="gratitude-card" class="card" th:each="entry : ${user.userGratitudeEntries}" >
         <img th:src="${entry.getImgFilePath()}" class="card-img-top"  alt="">
         <div class="card-body">
+            <img th:src="@{'' + ${user.getImgFilePath()}}"  class="card-profile-picture"/>
             <p th:text="${entry.getPrompt().prompt}"></p>
             <p th:text="${entry.body}"></p>
             <p class="createdAt" th:text="${entry.createdAt}"></p>
             <p th:if="${entry.isPublic}">Public</p>
             <p th:if="${!entry.isPublic}">Private</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
 
             <div sec:authorize="isAuthenticated()">
-                <a th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
-                <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry
+                <a class="btn btn-primary" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
+                <form class="btn" th:action="@{|/dashboard/${entry.id}/update/|}" method="get"><i class="icon-edit"></i>
+<!--                <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry-->
                     <input type="hidden" name="entryId" th:value="${entry.id}">
                     <input type="submit" value="Edit Entry">
                 </form>
@@ -63,6 +64,27 @@
     </div>
 </div>
 <!--end bootstrap card-->
+
+<!--Fancy bootstrap card-->
+<!--<div id="cards_landscape_wrap-2">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">-->
+<!--                <a href="">-->
+<!--                    <div class="card-flyer">-->
+<!--                        <div class="text-box">-->
+<!--                            <div class="image-box" th:each="entry : ${user.userGratitudeEntries}">-->
+<!--                                <img th:src="${entry.getImgFilePath()}" class="card-img-top"  alt=""  src=""/>-->
+<!--                            </div>-->
+<!--                            <img th:src="@{'' + ${user.getImgFilePath()}}" alt=""  src="" class="card-profile-picture"/>-->
+<!--                                <h6>Title 01</h6>-->
+<!--                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+
 
 <div th:replace="partials/scripts :: assets"></div>
 <!--<div th:replace="partials/footer :: footer"></div>-->
