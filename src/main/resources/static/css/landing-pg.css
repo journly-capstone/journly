@@ -6,34 +6,31 @@
 /*VARIABLES*/
 /*------------------------------------------------------------------------------------*/
 :root {
-    --landing-pg-blush-color: #fc628c;
+    --landing-pg-blush-color: #fc6d93;
     --landing-pg-dark-blush-color: #ed3478;
 
     /*NAVBAR VARIABLES*/
-    --landing-pg-nav-login-btn-color: white; /* login */
-    --landing-pg-nav-login-btn-hover-color: lightgray; /* login hover */
-    --landing-pg-nav-sign-up-btn-color: #fc628c; /* signup */
-    --landing-pg-nav-sign-up-btn-hover-color: #ed3478; /*signup hover */
-    --landing-pg-nav-logout-btn-color: #fc628c; /* logout */
+    --landing-pg-nav-login-btn-color: black; /* login */
+    --landing-pg-nav-login-btn-hover-color: black; /* login hover */
+    --landing-pg-nav-sign-up-btn-color: black; /* signup */
+    --landing-pg-nav-sign-up-btn-hover-color: var(--landing-pg-blush-color); /*signup hover */
+    --landing-pg-nav-sign-up-btn-hover-font-color: var(--landing-pg-blush-color); /*signup hover font color */
+    --landing-pg-nav-logout-btn-color: var(--landing-pg-blush-color); /* logout */
     --landing-pg-nav-logout-btn-hover-color: #232931; /* logout hover */
-    --landing-pg-nav-journly-logo-hover-color: #fc628c;
-
-    --landing-pg-a-nav-link-font-family: 'Karla', sans-serif; /*Font*/
+    --landing-pg-nav-journly-logo-hover-color: var(--landing-pg-blush-color); /* brand logo hover color */
+    --landing-pg-a-nav-link-font-family: 'Karla', sans-serif; /*navbar Font*/
 
     /*BACKGROUND COLOR*/
     --landing-pg-background-color: linear-gradient(to top, #ffa3b3, #fff7cf);
 
     /*FEATURE ICON COLOR*/
-    --feature-icon-container-color: #f5c0c0;
-
-    /*JOIN TODAY TOP BUTTON*/
-    --join-today-top-btn-color: white;
-    --join-today-top-btn-hover-color: #fc628c;
-    --join-today-top-btn-font-color: #fc628c;
-    --join-today-top-btn-hover-font-color: white;
+    --journaling-feature-icon-container-color: #ffa59e;
+    --affirmations-feature-icon-container-color: #fcd19d;
+    --community-feature-icon-container-color: #fccfb1;
+    --book-feature-icon-container-color: #fab498;
 
     /*JOIN TODAY BOTTOM BUTTON*/
-    --join-today-bottom-btn-color: #fc628c;
+    --join-today-bottom-btn-color: var(--landing-pg-blush-color);
     --join-today-bottom-btn-hover-color: #ed3478;
     --join-today-bottom-btn-font-color: white;
 
@@ -47,7 +44,6 @@
 
     /*Border for avatars on the page*/
     --landing-page-avatar-border: 3px solid #F7A09E;
-
 }
 
 /*NAVBAR*/
@@ -64,6 +60,7 @@
 #landing-pg-navbar a.nav-link {
     font-family: var(--landing-pg-a-nav-link-font-family);
     font-weight: 300 !important;
+    margin-right: 2em;
 }
 
 #landing-pg-navbar a.nav-link:hover {
@@ -75,26 +72,28 @@
 
 /*BUTTONS*/
 /*------------------------------------------------------------------------------------*/
+
+/* Login Button */
 .landing-pg-nav-login-btn {
-    background-color: var(--landing-pg-nav-login-btn-color);
-    /*font-weight: bold;*/
+    background: white;
+    color: var(--landing-pg-nav-login-btn-color);
 }
 
 .landing-pg-nav-login-btn:hover {
-    background-color: var(--landing-pg-nav-login-btn-hover-color);
-    /*font-weight: bold;*/
+    background: grey;
+    color: var(--landing-pg-nav-login-btn-hover-color);
 }
 
+/*Signup Button*/
 .landing-pg-nav-sign-up-btn {
-    background: var(--landing-pg-nav-sign-up-btn-color);
-    color: white;
-    /*font-weight: bold;*/
+    border-color: var(--landing-pg-nav-sign-up-btn-color);
+    color: var(--landing-pg-nav-sign-up-btn-color);
+
 }
 
 .landing-pg-nav-sign-up-btn:hover {
-    background: var(--landing-pg-nav-sign-up-btn-hover-color);
-    color: white;
-    /*font-weight: bold;*/
+    border-color: var(--landing-pg-nav-sign-up-btn-hover-color);
+    color: var(--landing-pg-nav-sign-up-btn-hover-font-color);
 }
 
 
@@ -198,15 +197,31 @@
 }
 
 
-/*FEATURE ICON CONTAINER STYLING*/
+/*FEATURE ICON STYLING*/
 /*------------------------------------------------------------------------------------*/
 .landing-page-feature-icon-container {
-    background: var(--feature-icon-container-color);
     color: white;
     height: 50px;
     width: 50px;
-    border-radius: 30%;"
+    border-radius: 50%;
 }
+
+.landing-page-journaling-feature-icon-container {
+    background: var(--journaling-feature-icon-container-color);
+}
+
+.landing-page-affirmations-feature-icon-container {
+    background: var(--affirmations-feature-icon-container-color);
+}
+
+.landing-page-community-feature-icon-container {
+    background: var(--community-feature-icon-container-color);
+}
+
+.landing-page-book-feature-icon-container {
+    background: var(--book-feature-icon-container-color);
+}
+
 
 /*HORIZONTAL RULES*/
 /*------------------------------------------------------------------------------------*/
@@ -221,26 +236,13 @@
 }
 
 
-/*JOIN TODAY TOP BTN*/
+/*JOIN TODAY TOP BUTTON*/
 /*------------------------------------------------------------------------------------*/
-
-/*Join Today button Styling (Landing Page)*/
 .join-today-top-container {
-    max-width: 70%;
+    max-width: 200px;
 }
 
-#join-today-top-btn {
-    background: var(--join-today-top-btn-color) !important;
-    color: var(--join-today-top-btn-font-color) !important;
-}
-
-#join-today-top-btn:hover {
-    background: var(--join-today-top-btn-hover-color) !important;
-    color: var(--join-today-top-btn-hover-font-color) !important;
-}
-
-
-/*JOIN TODAY BOTTOM BTN*/
+/*JOIN TODAY BOTTOM BUTTON*/
 /*------------------------------------------------------------------------------------*/
 .join-today-bottom-btn {
     background: var(--join-today-bottom-btn-color);
@@ -281,14 +283,6 @@
         max-width: 40%;
     }
 }
-
-
-/* !*Large devices (desktops, 992px and up) *!*/
-/*@media (min-width: 992px) {*/
-/*    .landing-page-jumbotron h1 {*/
-/*        font-size: 6em;*/
-/*    }*/
-/*}*/
 
 
 /* Extra large devices (large desktops, 1200px and up) */

@@ -100,7 +100,6 @@
 
         <div class="collapse navbar-collapse" id="landingPageNavbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-<!--            <ul class="navbar-nav mx-auto">-->
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link" th:href="@{/dashboard}">Home</a>
                 </li>
@@ -143,11 +142,11 @@
             </div>
 
             <form sec:authorize="isAnonymous()" class="form-inline m-md-1" th:action="@{/login}" method="get">
-                <input class="landing-pg-nav-login-btn btn btn-block my-2 my-sm-0 m-1" type="submit" value="Log In" />
+                <input class="btn-outline-info btn btn-block my-2 my-sm-0" type="submit" value="Log In" />
             </form>
 
             <form sec:authorize="isAnonymous()" class="form-inline m-md-1" th:action="@{/sign-up}" method="get">
-                <input class="landing-pg-nav-sign-up-btn btn btn-block my-2 my-sm-0 m-1" type="submit" value="Sign Up" />
+                <input class="btn-outline-dark btn btn-block my-2 my-sm-0" type="submit" value="Sign Up" />
             </form>
         </div>
     </div>
