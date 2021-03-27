@@ -153,6 +153,15 @@ body {
     text-align: center;
 }
 
+/* MISC CARD STYLING */
+/*------------------------------------------------------------------------------------*/
+
+.view-more-bg {
+    background-color: var(--default-pink-btn-gradient-color);
+    color: black;
+}
+
+
 /* FOOTER STYLING */
 /*------------------------------------------------------------------------------------*/
 .footer-style {
