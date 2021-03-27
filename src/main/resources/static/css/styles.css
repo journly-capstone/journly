@@ -14,7 +14,7 @@
     --error-msg-color: #f9748f;
     --purple-blue-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
 
-    --pink-yellow-gradient: linear-gradient(60deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
+    --pink-yellow-gradient: linear-gradient(360deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
 
     --default-pink-gradient-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
 
@@ -33,6 +33,8 @@
     --sign-up-nav-brand-color: var(--default-navbar-link-color);
     --sign-up-a-nav-link-color: var(--default-navbar-link-color);
     --sign-up-hamburger-icon-color: var(--hamburger-icon-color);
+    --login-pg-login-nav-btn-color: #69f0ea;
+    --login-pg-login-nav-btn-hover-color: #5dd9d3;
 
     /*Navbar Signup button colors */
     --nav-signup-btn-color: var(--blush-color);
@@ -546,9 +548,10 @@ main.login-content {
 .sign-up-bg body {
     height: 100%;
     margin: 0;
-    background: var(--pink-yellow-gradient);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /*background: var(--pink-yellow-gradient);*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    background: white;
 }
 
 .welcome-video {
@@ -592,6 +595,14 @@ main.login-content {
 /*    background-repeat: no-repeat;*/
 /*    background-attachment: fixed;*/
 /*}*/
+
+.login-pg-login-nav-btn {
+    background: var(--login-pg-login-nav-btn-color);
+}
+
+.login-pg-login-nav-btn:hover {
+    background: var(--login-pg-login-nav-btn-hover-color);
+}
 
 /*Login Nav Links*/
 .login-wrapper .navbar-brand-font {
