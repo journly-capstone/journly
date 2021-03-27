@@ -67,7 +67,8 @@
                         html = $('<div id="book" class="col-4 book'+bookNumber+'"><img class="" id="image" alt="image" src="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'"><h5 id="title" class=""> ' + response.items[i].volumeInfo.title + '</h5>' +
                             '<h5 id="author" class=""> By:' + response.items[i].volumeInfo.authors + '</h5>' +
                             '<a target="_blank" href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>' +
-                            '<button id="add_book" type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" data-bookid="'+ response.items[i].id +'" class="addBook">Add Book</button></div>');
+                            '<button id="add_book" type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" ' +
+                            'data-bookid="'+ response.items[i].id +'" data-read-more="'+ response.items[i].volumeInfo.infoLink +'" class="addBook">Add Book</button></div>');
                         bookNumber+=1;
                         //
                         // title = $('<div class="col-4"><h5 class="center-align white-text">' + response.items[i].volumeInfo.title + '</h5>');
@@ -100,11 +101,13 @@ $(document).on("click",".addBook",function (){
     let bookid = $(this).attr("data-bookid");
     let author = $(this).attr("data-author");
     let title = $(this).attr("data-title");
+    let readMore = $(this).attr("data-read-more");
     let bookThumbnail = $(this).attr("data-thumbnail")
     let requestData = {"id" : bookid,
                         "author" : author,
                         "title" : title,
-                        "bookThumbnail": bookThumbnail}
+                        "bookThumbnail": bookThumbnail,
+                        "readMore": readMore}
     requestData[_csrf_param_name] = _csrf_token; // Adds the token
     $.ajax("/addbook", {
         type: "POST",

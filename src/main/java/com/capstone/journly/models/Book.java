@@ -19,6 +19,9 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    private String readMore;
+
     @Column(nullable = true)
     private String bookThumbnail;
 
@@ -28,12 +31,13 @@ public class Book {
 
     public Book() {}
 
-    public Book(long id, String api_id, String author, String title, String bookThumbnail) {
+    public Book(long id, String api_id, String author, String title, String bookThumbnail, String readMore) {
         this.id = id;
         this.api_id = api_id;
         this.author = author;
         this.title = title;
         this.bookThumbnail = bookThumbnail;
+        this.readMore = readMore;
     }
 
     public long getId() {
@@ -82,5 +86,13 @@ public class Book {
 
     public void setBookThumbnail(String bookThumbnail) {
         this.bookThumbnail = bookThumbnail;
+    }
+
+    public String getReadMore() {
+        return readMore;
+    }
+
+    public void setReadMore(String readMore) {
+        this.readMore = readMore;
     }
 }
