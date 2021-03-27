@@ -72,42 +72,6 @@ body {
 /*    !*background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*!*/
 /*}*/
 
-/*-----------------------------------------------------*/
-
-
-/*!* LANDING PAGE (INDEX.HTML) STYLING *!*/
-/*#gratitude-for-teachers-header {*/
-/*    font-family: var(--gratitude-for-teachers-font);*/
-/*}*/
-/*.giving-thanks-text {*/
-/*    font-family: var(--giving-thanks-font-family);*/
-/*}*/
-
-/*-----------------------------------------------------*/
-/*!*LANDING PAGE CIRCLE SVGs FOR BACKGROUND*!*/
-/*.landing-pg-left-svg {*/
-/*    position: absolute;*/
-/*    top: 80%;*/
-/*    z-index: -1;*/
-/*}*/
-
-/*.landing-pg-right-svg {*/
-/*    position: absolute;*/
-/*    top: 150%;*/
-/*    right: 0;*/
-/*    z-index: -1;*/
-/*}*/
-
-/*.landing-pg-circle-svg {*/
-/*    position: absolute;*/
-/*    top: 250%;*/
-/*    right: 60%;*/
-/*    z-index: -1;*/
-/*}*/
-/*-----------------------------------------------------*/
-
-
-
 /*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
 /*------------------------------------------------------------------------------------*/
 .about-us-left-svg {
@@ -123,18 +87,128 @@ body {
     z-index: -1;
 }
 
-/*SIGN UP PAGE CIRCLE SVGs FOR BACKGROUND*/
-.sign-up-pg-left-svg {
+/* NOTEBOOK STYLING */
+/*------------------------------------------------------------------------------------*/
+.notebook {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    min-width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    background: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    overflow: hidden;
+}
+.notebook:before {
+    content: '';
     position: absolute;
-    top: 60%;
-    z-index: -1;
+    top: 0; bottom: 0; left: 0;
+    width: 30px;
+    border-right: 3px solid #D44147;
+    box-sizing: border-box;
 }
 
-.sign-up-pg-right-svg {
+.notebook-content {
     position: absolute;
-    top: 30%;
-    right: 0;
-    z-index: -1;
+    top: 30px; right: 0; bottom: 30px; left: 60px;
+    background: linear-gradient(transparent, transparent 28px, #91D1D3 28px);
+    background-size: 30px 30px;
+}
+
+.notebook-content textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.manual-center {
+    margin: auto;
+    text-align: center;
+}
+
+/* FOOTER STYLING */
+/*------------------------------------------------------------------------------------*/
+.footer-style {
+    width: 100vw;
+    background: var(--blush-color);
+}
+
+.footer-link a {
+    color: white;
+    padding: 0;
+}
+
+.footer-links {
+    padding: 0;
+    margin: 0;
+}
+
+.footer-label {
+    text-align: center;
+    align-content: center;
+}
+
+/*MEDIA QUERIES*/
+/*------------------------------------------------------------------------------------*/
+@media screen and (min-width:375px) {
+    .notebook {
+        width: 90%;
+        max-width: 400px;
+        min-width: 350px;
+        height: 500px;
+    }
+}
+
+.card {
+    display: inline-block;
+}
+
+/* iphone X , XS, 11 Pro, 12 Mini */
+@media only screen
+and (min-width : 375px)
+and (min-height : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+    .notebook {
+        width: 90%;
+        max-width: 360px;
+        min-width: 350px;
+        height: 600px;
+    }
+}
+
+/* iphone 12, 12 Pro */
+@media only screen
+and (min-width: 390px)
+and (min-height: 844px)
+and (-webkit-device-pixel-ratio: 3) {
+    .notebook {
+        width: 90%;
+        max-width: 380px;
+        min-width: 350px;
+        height: 600px;
+    }
+}
+
+@media screen and (min-width:411px) {
+    .notebook {
+        width: 90%;
+        max-width: 400px;
+        min-width: 350px;
+        height: 500px;
+    }
 }
 
 
@@ -199,8 +273,8 @@ img.user-profile-picture {
 }
 
 img.user-profile-avatar {
-    width: 50px;
-    height: 50px;
+    width: 10px;
+    height: 10px;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
@@ -383,7 +457,6 @@ a.nav-link:hover {
 }
 
 
-
 /*SIGN UP AND LOGIN PAGE STYLING*/
 /*------------------------------------------------------------------------------------*/
 .login-container,
@@ -552,3 +625,105 @@ main.login-content {
     vertical-align: middle;
     width: 100% !important;
 }
+
+
+/*Gratitude Card Styling*/
+/*------------------------------------------------------------------------------------*/
+ .card-profile-picture {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+#gratitude-card{
+    margin: auto;
+    width: 25rem;
+}
+
+/*Fancy Bootstrap cards*/
+
+/*----  Main Style  ----*/
+/*#cards_landscape_wrap-2{*/
+/*    text-align: center;*/
+/*    background: #F7F7F7;*/
+/*}*/
+/*#cards_landscape_wrap-2 .container{*/
+/*    padding-top: 80px;*/
+/*    padding-bottom: 100px;*/
+/*}*/
+/*#cards_landscape_wrap-2 a{*/
+/*    text-decoration: none;*/
+/*    outline: none;*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer {*/
+/*    border-radius: 5px;*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer .image-box{*/
+/*    background: #ffffff;*/
+/*    overflow: hidden;*/
+/*    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);*/
+/*    border-radius: 5px;*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer .image-box img{*/
+/*    -webkit-transition:all .9s ease;*/
+/*    -moz-transition:all .9s ease;*/
+/*    -o-transition:all .9s ease;*/
+/*    -ms-transition:all .9s ease;*/
+/*    width: 100%;*/
+/*    height: 200px;*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer:hover .image-box img{*/
+/*    opacity: 0.7;*/
+/*    -webkit-transform:scale(1.15);*/
+/*    -moz-transform:scale(1.15);*/
+/*    -ms-transform:scale(1.15);*/
+/*    -o-transform:scale(1.15);*/
+/*    transform:scale(1.15);*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer .text-box{*/
+/*    text-align: center;*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer .text-box .text-container{*/
+/*    padding: 30px 18px;*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer{*/
+/*    background: #FFFFFF;*/
+/*    margin-top: 50px;*/
+/*    -webkit-transition: all 0.2s ease-in;*/
+/*    -moz-transition: all 0.2s ease-in;*/
+/*    -ms-transition: all 0.2s ease-in;*/
+/*    -o-transition: all 0.2s ease-in;*/
+/*    transition: all 0.2s ease-in;*/
+/*    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer:hover{*/
+/*    background: #fff;*/
+/*    box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);*/
+/*    -webkit-transition: all 0.2s ease-in;*/
+/*    -moz-transition: all 0.2s ease-in;*/
+/*    -ms-transition: all 0.2s ease-in;*/
+/*    -o-transition: all 0.2s ease-in;*/
+/*    transition: all 0.2s ease-in;*/
+/*    margin-top: 50px;*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer .text-box p{*/
+/*    margin-top: 10px;*/
+/*    margin-bottom: 0px;*/
+/*    padding-bottom: 0px;*/
+/*    font-size: 14px;*/
+/*    letter-spacing: 1px;*/
+/*    color: #000000;*/
+/*}*/
+/*#cards_landscape_wrap-2 .card-flyer .text-box h6{*/
+/*    margin-top: 0px;*/
+/*    margin-bottom: 4px;*/
+/*    font-size: 18px;*/
+/*    font-weight: bold;*/
+/*    text-transform: uppercase;*/
+/*    font-family: 'Roboto Black', sans-serif;*/
+/*    letter-spacing: 1px;*/
+/*    color: #00acc1;*/
+/*}*/
+
+/*------------------------------------------------------------------------------------*/
