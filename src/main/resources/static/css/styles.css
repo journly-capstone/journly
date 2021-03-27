@@ -1,81 +1,108 @@
+/*VARIABLES*/
+/*------------------------------------------------------------------------------------*/
 :root{
     /*Variables that can be applied to any html file within the application*/
     --default-font-family:'Nunito', sans-serif;
-    --blush-color: #ff5e93;
-    --dark-blush-color: #ed3478;
-    --default-pink-btn-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
-
-    --grey-color: #52514e;
-    --default-navbar-link-color: #232931;
     --hamburger-icon-color: #3d3e40;
     --default-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    --error-msg-color: #f9748f;
-    --default-background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 
-    /*Landing Page Specific Variables */
-    --feature-heading-font-family: 'Work Sans', sans-serif;
-    --landing-page-background: url("../svg/landing-page-background.svg") no-repeat;
-    --landing-page-avatar-border: 3px solid #F7A09E;
-    /*--giving-thanks-font-family: 'Nunito', sans-serif;*/
-    --giving-thanks-font-family: 'Work Sans', sans-serif;
-    --gratitude-for-teachers-font: 'Work Sans', sans-serif;
-    /*--gratitude-for-teachers-font: 'Nunito', sans-serif;*/
-    /*--nav-signup-btn-color: background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);*/
-    /*--nav-signup-btn-color: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);*/
+    /*App Colors*/
+    /*--blush-color: #ff5e93;*/
+    /*--blush-color: #fc628c;*/
+    --blush-color: #fc6d93;;
+    --dark-blush-color: #ed3478;
+    --error-msg-color: #f9748f;
+    --purple-blue-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+
+    --pink-yellow-gradient: linear-gradient(60deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
+
+    --default-pink-gradient-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+
+    /*Button Colors */
+    --default-pink-btn-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+    --default-pink-btn-gradient-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+    --default-background: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+
+    /*Navbar Variables*/
+    --default-navbar-link-color: #232931;
+    --navbar-brand-font: 'Satisfy', cursive;
+    --nav-journly-logo-default-hover-color: var(--blush-color);
+    --nav-journly-logo-hover-login-color: var(--blush-color);
+    --nav-journly-logo-hover-sign-up-color: var(--blush-color);
+    --default-a-nav-link-font-family: 'Karla', sans-serif; /*navbar font*/
+    --sign-up-nav-brand-color: var(--default-navbar-link-color);
+    --sign-up-a-nav-link-color: var(--default-navbar-link-color);
+    --sign-up-hamburger-icon-color: var(--hamburger-icon-color);
+
+    /*Navbar Signup button colors */
+    --nav-signup-btn-color: var(--blush-color);
+    --nav-signup-btn-hover-color: #ed3478;
+
+    /*Navbar Login button colors */
+    --nav-login-btn-color: white;
+    --nav-login-btn-hover-color: lightgray;
+
+    /*Navbar Logout button colors*/
+    --nav-logout-btn-color: var(--blush-color);
+    --nav-logout-btn-hover-color: var(--default-navbar-link-color);
 
     /*About Us Page Variables*/
     --meet-the-team-header-font: 'Work Sans', sans-serif;
     --developer-names-font: 'Nunito', sans-serif;
     --developer-title-font: 'Open Sans', sans-serif;
+    --about-us-avatar-border: 3px solid #F7A09E;
 
-    /*Sign Up Variables*/
-    --sign-up-btn-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
-    --sign-up-btn-hover-color: #ed3478;
+    /*Sign Up Page Variables*/
     --sign-up-page-font: 'Work Sans', sans-serif;
 }
 
 
-html, body {
+/*CODE TO PREVENT GRADIENT BACKGROUNDS FROM REPEATING*/
+/*------------------------------------------------------------------------------------*/
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+    font-family: var(--feature-heading-font-family);
+
+
+}
+body {
     height: 100%;
     margin: 0;
-    /*font-family: var(--default-font-family);*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    scroll-behavior: smooth; /* smooth scroll */
     font-family: var(--feature-heading-font-family);
-    scroll-behavior: smooth;
 }
 
-/* LANDING PAGE (INDEX.HTML) STYLING */
-#gratitude-for-teachers-header {
-    font-family: var(--gratitude-for-teachers-font);
-}
-.giving-thanks-text {
-    font-family: var(--giving-thanks-font-family);
-}
+/*html, body {*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    !*font-family: var(--default-font-family);*!*/
+/*    font-family: var(--feature-heading-font-family);*/
+/*    scroll-behavior: smooth;*/
+/*    !*background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*!*/
+/*}*/
 
-/*Default XS Screen Landing Page Background Styling*/
-#index-html, #index-body {
-    height:105vh !important;
-    margin: 0 !important;
-}
 
-#index-body {
-    background: var(--landing-page-background);
-    background-size: cover;
-    padding-bottom: 500px;
-}
-
-#left-svg {
+/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
+/*------------------------------------------------------------------------------------*/
+.about-us-left-svg {
     position: absolute;
     top: 60%;
+    z-index: -1;
 }
 
-#right-svg {
+.about-us-right-svg {
     position: absolute;
-    top: 20%;
+    top: 30%;
     right: 0;
+    z-index: -1;
 }
+
 
 /* NOTEBOOK STYLING */
-
+/*------------------------------------------------------------------------------------*/
 .notebook {
     position: relative;
     width: 90%;
@@ -127,7 +154,7 @@ html, body {
 }
 
 /* FOOTER STYLING */
-
+/*------------------------------------------------------------------------------------*/
 .footer-style {
     width: 100vw;
     background: var(--blush-color);
@@ -148,12 +175,10 @@ html, body {
     align-content: center;
 }
 
-/*MEDIA QUERIES FOR LANDING PAGE*/
+
+/*MEDIA QUERIES*/
+/*------------------------------------------------------------------------------------*/
 @media screen and (min-width:375px) {
-    #index-html, #index-body {
-        height:100vh !important;
-        margin: 0 !important;
-    }
     .notebook {
         width: 90%;
         max-width: 400px;
@@ -171,10 +196,6 @@ html, body {
 and (min-width : 375px)
 and (min-height : 812px)
 and (-webkit-device-pixel-ratio : 3) {
-    #index-html, #index-body {
-        height:80vh !important;
-        margin: 0 !important;
-    }
     .notebook {
         width: 90%;
         max-width: 360px;
@@ -188,10 +209,6 @@ and (-webkit-device-pixel-ratio : 3) {
 and (min-width: 390px)
 and (min-height: 844px)
 and (-webkit-device-pixel-ratio: 3) {
-    #index-html, #index-body {
-        height:80vh !important;
-        margin: 0 !important;
-    }
     .notebook {
         width: 90%;
         max-width: 380px;
@@ -201,11 +218,6 @@ and (-webkit-device-pixel-ratio: 3) {
 }
 
 @media screen and (min-width:411px) {
-    #index-html, #index-body {
-        height:100vh !important;
-        margin: 0 !important;
-    }
-
     .notebook {
         width: 90%;
         max-width: 400px;
@@ -214,58 +226,19 @@ and (-webkit-device-pixel-ratio: 3) {
     }
 }
 
-/* Medium Screen Landing Page Background Styling (tablets, 768px and up) */
-@media screen and (min-width:768px) {
-    #index-html, #index-body {
-        height:35vh !important;
-        margin: 0 !important;
-    }
-
-    /*Adding dropdown hover feature*/
-    .navbar .nav-item:not(:last-child) {
-        margin-right: 35px;
-    }
-
-    .dropdown-toggle::after {
-        transition: transform 0.15s linear;
-    }
-
-    .show.dropdown .dropdown-toggle::after {
-        transform: translateY(3px);
-    }
+/* SIGN UP PAGE SVG */
+/*------------------------------------------------------------------------------------*/
+.sign-up-pg-right-svg {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    z-index: -1;
 }
 
-/* !*Large devices (desktops, 992px and up) *!*/
-/*@media screen and (min-width:992px) {*/
-/*    #index-html, #index-body {*/
-/*        height:100vh !important;*/
-/*        !*height:5vh !important;*!*/
-/*        margin: 0 !important;*/
-/*    }*/
-
-/*    .landing-pg-avatar {*/
-/*        vertical-align: middle;*/
-/*        width: 110px !important;*/
-/*        height: 110px !important;*/
-/*        border: var(--landing-page-avatar-border);*/
-/*        border-radius: 50%;*/
-/*    }*/
-/*}*/
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media screen and (min-width:1200px) {
-    #index-html, #index-body {
-        height:100vh !important;
-        margin: 0 !important;
-    }
-
-    #landing-page-msg {
-        height: 40vh;
-    }
-}
-
-/* Buttons */
-.btn, input {
+/* BUTTONS */
+/*------------------------------------------------------------------------------------*/
+.btn,
+input {
     border-radius: 28px !important;
 }
 
@@ -275,66 +248,45 @@ and (-webkit-device-pixel-ratio: 3) {
 
 /*Navbar Login Button*/
 #nav-login-btn {
-    background-color: white;
+    background-color: var(--nav-login-btn-color);
     font-weight: bold;
     color: var(--default-navbar-link-color);
 }
 
 #nav-login-btn:hover {
-    background-color: lightgray;
+    background-color: var(--nav-login-btn-hover-color);
     font-weight: bold;
 }
 
 
 #nav-logout-btn {
-    color: var(--blush-color);
+    color: var(--nav-logout-btn-color);
 }
 
 #nav-logout-btn:hover {
-    color: var(--default-navbar-link-color);
+    color: var(--nav-logout-btn-hover-color);
 }
 
 /*Navbar Sign Up and Join Today Buttons*/
-#nav-signup-btn, .join-today-btn, .pink-btn {
-    background-color: var(--blush-color) !important;
-    color: white !important;
+#nav-signup-btn,
+.pink-btn {
+    background-image: var(--default-pink-btn-gradient-color);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
     font-weight: bold;
 }
-#nav-signup-btn:hover, .join-today-btn:hover, .pink-btn:hover {
-    background-color: var(--dark-blush-color) !important;
+
+#nav-signup-btn:hover,
+.pink-btn:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: white;
     font-weight: bold;
 }
 
-#join-today-top-btn, .join-today-btn {
-    width: 200px;
-}
 
-#join-today-top-btn {
-    background: white !important;
-    color: var(--blush-color) !important;
-}
-
-#join-today-top-btn:hover {
-    background: var(--blush-color) !important;
-    color: white !important;
-}
-
-
-/*Styling for Feature Headings on index.html*/
-.feature-headings {
-    font-family: var(--feature-heading-font-family)
-}
-
-/*Avatars (Styling User Images to Display as Circles on Landing Page)*/
-.landing-pg-avatar {
-    vertical-align: middle;
-    width: 100px;
-    height: 100px;
-    border: var(--landing-page-avatar-border);
-    border-radius: 50%;
-}
-
-
+/*PROFILE PICTURE STYLING */
+/*------------------------------------------------------------------------------------*/
 img.user-profile-picture {
     width: 150px;
     height: 150px;
@@ -343,20 +295,23 @@ img.user-profile-picture {
     border-radius: 50%;
 }
 
+/*Profile Avatar Styling (navbar profile picture) */
 img.user-profile-avatar {
-    width: 10px;
-    height: 10px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
 }
 
+
 /* ABOUT US PAGE STYLING */
+/*------------------------------------------------------------------------------------*/
 .about-us-avatar {
     vertical-align: middle;
     width: 200px;
     height: 200px;
-    border: var(--landing-page-avatar-border);
+    border: var(--about-us-avatar-border);
     border-radius: 50%;
 }
 
@@ -373,7 +328,9 @@ img.user-profile-avatar {
     font-family: var(--developer-title-font);
 }
 
+
 /*ERROR PAGE STYLING*/
+/*------------------------------------------------------------------------------------*/
 .error-container, .error-404-container, .error-4xx-container {
     height: 50vh;
     width: 100%;
@@ -393,7 +350,9 @@ img.user-profile-avatar {
     background-position:center;
 }
 
+
 /*STYLING THAT GOES ACROSS THE APPLICATION*/
+/*------------------------------------------------------------------------------------*/
 .error-msg {
     color: var(--error-msg-color);
     font-weight: bold;
@@ -410,14 +369,32 @@ img.user-profile-avatar {
     padding-left: 10px;
 }
 
+
+/* NAVBAR STYLING*/
+/*------------------------------------------------------------------------------------*/
+
+/* Journly Brand Logo Styling on Navbar*/
+.navbar-brand-font {
+    font-family: var(--navbar-brand-font);
+    color: #3d3e40;
+    font-size: 2rem;
+}
+
+.navbar-brand-font:hover {
+    color: var(--nav-journly-logo-default-hover-color);
+}
+
 /*Styling nav link anchor tags*/
 a.nav-link {
     color: var(--default-navbar-link-color);
-    /*font-weight: bold;*/
+    font-family: var(--default-a-nav-link-font-family);
+    font-weight: 300 !important;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 a.nav-link:hover {
-    color: var(--blush-color);
+    text-decoration: underline;
 }
 
 /*Dropdown Menu Stying*/
@@ -434,7 +411,9 @@ a.nav-link:hover {
     box-shadow: none;
 }
 
-/* Navbar Hamburger Styling */
+
+/* NAVBAR HAMBURGER STYLING */
+/*------------------------------------------------------------------------------------*/
 .hamburger-animated-icon {
     width: 30px;
     height: 20px;
@@ -522,64 +501,107 @@ a.nav-link:hover {
     left: 8px;
 }
 
+
+/*SIGN UP AND LOGIN PAGE STYLING*/
+/*------------------------------------------------------------------------------------*/
 .login-container,
 .sign-up-container {
     padding: 2em;
     border: none;
     border-radius: 28px !important;
     background-color: white;
-    /*margin: auto 1em;*/
     box-shadow: var(--default-box-shadow);
 }
 
-/*SIGN UP AND LOGIN PAGE STYLING*/
 main.sign-up-main-container,
 main.login-content {
     font-family: var(--sign-up-page-font);
     font-weight: 400 !important;
 }
 
-.login-card,
-.sign-up-container {
-    /*padding: 0 !important;*/
-    border: none;
-    border-radius: 28px !important;
-    background-color: white;
-    /*margin: auto 1em;*/
-    box-shadow: var(--default-box-shadow);
-}
-
-/*SIGN UP STYLING*/
-.sign-up-bg {
-    background-image: var(--default-background);
-}
-
-.welcome-video {
-    border-radius: 20px;
-}
-
+/*Sign Up and Login Buttons on Login and Sign Up pages*/
 .sign-up-btn,
-.login-btn {
-    background: var(--blush-color);
+.login-btn{
+    background-image: var(--default-pink-btn-gradient-color);
+    transition: 0.5s;
+    background-size: 200% auto;
     color: white;
     font-weight: bold;
 }
 
 .sign-up-btn:hover,
 .login-btn:hover {
-    background-color: var(--dark-blush-color);
+    background-position: right center; /* change the direction of the change here */
     color: white;
+    font-weight: bold;
 }
 
-.sign-up-input {
-    background-color: #eaeaea;
-    border: none;
+
+/*!*SIGN UP STYLING*!*/
+/*------------------------------------------------------------------------------------*/
+.sign-up-bg html{
+    height: 100%;
 }
 
+.sign-up-bg body {
+    height: 100%;
+    margin: 0;
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.welcome-video {
+    border-radius: 20px;
+}
+
+/*Sign Up Nav Links*/
+.sign-up-wrapper .navbar-brand-font {
+    color: var(--sign-up-nav-brand-color);
+}
+
+.sign-up-wrapper .navbar-brand-font:hover {
+    color: var(--blush-color);
+}
+
+.sign-up-wrapper a.nav-link {
+    color: var(--sign-up-a-nav-link-color);
+}
+
+.sign-up-wrapper a.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Sign Up and Login Navbar Hamburger Styling */
+.sign-up-wrapper .hamburger-animated-icon span {
+    background: var(--sign-up-hamburger-icon-color);
+}
 
 
 /*LOGIN PAGE STYLING*/
+/*------------------------------------------------------------------------------------*/
+
+/*!*Login Gradient Background Code*/
+/*.login-bg html{*/
+/*    height: 100%;*/
+/*}*/
+/*.login-bg body {*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    background: var(--purple-blue-gradient);*/
+/*    background-repeat: no-repeat;*/
+/*    background-attachment: fixed;*/
+/*}*/
+
 /*Login Nav Links*/
+.login-wrapper .navbar-brand-font {
+    color: white;
+}
+
+.login-wrapper .navbar-brand-font:hover {
+    color: var(--blush-color);
+}
+
 .login-wrapper a.nav-link {
     color: white;
 }
@@ -588,13 +610,19 @@ main.login-content {
     text-decoration: underline;
 }
 
-/* Login Navbar Hamburger Styling */
 .login-wrapper .hamburger-animated-icon span {
     background: white !important;
 }
 
+.login-card {
+    border: none;
+    border-radius: 28px !important;
+    background-color: white;
+    box-shadow: var(--default-box-shadow);
+}
+
 /*Login Overlay*/
-#overlay {
+.overlay {
     position: fixed; /* Sit on top of the page content */
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
@@ -672,6 +700,7 @@ main.login-content {
 
 
 /*Gratitude Card Styling*/
+/*------------------------------------------------------------------------------------*/
  .card-profile-picture {
     width: 50px;
     height: 50px;
@@ -768,3 +797,5 @@ main.login-content {
 /*    letter-spacing: 1px;*/
 /*    color: #00acc1;*/
 /*}*/
+
+/*------------------------------------------------------------------------------------*/

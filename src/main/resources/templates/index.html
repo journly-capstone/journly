@@ -1,57 +1,105 @@
 <!doctype html>
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/head :: head"></head>
+<head th:replace="partials/head :: head-landing-pg"></head>
 
-<body id="index-body" class="guest-view-body">
-<img src="/svg/left-landing-page.svg" id="left-svg">
-<img src="/svg/right-landing-page.svg" id="right-svg">
+<body id="index-body" class="landing-pg-body guest-view-body">
 
-<nav th:replace="partials/navbar :: navbar"></nav>
 
-<main class="container">
-    <div id="landing-page-msg" class="row text-center align-items-center">
-        <div class="col-12 col-md-6">
-            <h1 id="gratitude-for-teachers-header">Gratitude<br> for Teachers</h1>
-            <a id="join-today-top-btn" class="btn btn-lg" th:href="@{/sign-up}" role="button">Join Today</a>
+<div class="jumbotron landing-pg-jumbotron header p-0">
+    <!--Content before waves-->
+    <nav th:replace="partials/navbar :: landing-pg-navbar"></nav>
+
+    <div class="inner-header flex">
+        <div class="container">
+            <h1 class="display-4">Gratitude for <br>Teachers</h1>
+            <p class="lead">Where giving thanks and reflecting daily is easy.</p>
+
+            <div class="text-center mx-auto join-today-top-container">
+                <a class="btn btn-lg btn-block btn-light" th:href="@{/sign-up}" role="button">Join Today</a>
+            </div>
         </div>
 
-        <div class="col-12 col-md-6 mb-5">
-            <img src="/img/icons-landing-pg.png" width="100%" alt="Gratitude for Teachers"/>
-        </div>
     </div>
 
-<!--    <div id="about" class="row mt-5 mb-5">-->
+    <!--Waves Container-->
+    <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+    </div>
+    <!--Waves end-->
+</div>
+<!--Header ends-->
+
+
+
+<main class="container">
     <div id="about" class="row mb-5">
-        <div class="col-12 col-md-12 col-lg-6 mt-md-2 mt-lg-0">
-            <h2 class="mt-xl-5 giving-thanks-text">Giving thanks and reflecting daily</h2>
-        </div>
         <div class="col-12">
-            <p>With the rapidly changing environment and increasingly high demands of the profession, many teachers have found themselves over stressed and in search of ways to prevent teacher burnout. That’s where Journly comes in. With Journly, teachers can practice gratitude, be inspired by daily affirmations, and browse through our library of mindfulness books.</p>
+            <p>With the rapidly changing environment and increasingly high demands of the profession, many teachers have found themselves over stressed and in search of ways to prevent teacher burnout. That’s where Journly comes in. With Journly, teachers can practice gratitude, be inspired by daily affirmations, and browse through our library of books.</p>
         </div>
     </div>
 
     <div id="features">
         <div class="row">
+            <!-- Journaling Section -->
             <div class="col-sm mb-5">
-                <h4 class="feature-headings"><strong>Daily Journaling</strong></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi cupiditate dolorum ducimus est eum eveniet excepturi fugit nesciunt, optio qui recusandae sed sequi totam voluptates! Architecto consequatur provident totam.</p>
+                <!-- Journal Icon -->
+                <div class="landing-page-journaling-feature-icon-container landing-page-feature-icon-container container d-flex justify-content-center align-items-center mb-2">
+                    <h4 class="text-center mb-0"><i class="fas fa-pen"></i></h4>
+                </div>
+
+                <!-- Daily Journaling Text -->
+                <h4 class="feature-headings text-center"><strong>Daily Journaling</strong></h4>
+                <p class="text-center">Create a springboard for recovery by honing in on what your are most grateful for daily</p>
             </div>
 
-            <div class="col-sm mb-5">
+            <!-- Affirmations Section -->
+            <div class="col-sm mb-5 text-center">
+                <!-- Quote Icon -->
+                <div class="landing-page-affirmations-feature-icon-container landing-page-feature-icon-container container d-flex justify-content-center align-items-center mb-2">
+                    <h4 class="text-center mb-0"><i class="fas fa-quote-right"></i></h4>
+                </div>
+
+                <!-- Positive Affirmations Text -->
                 <h4 class="feature-headings"><strong>Positive Affirmations</strong></h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi cupiditate dolorum ducimus est eum eveniet excepturi fugit nesciunt, optio qui recusandae sed sequi totam voluptates! Architecto consequatur provident totam.</p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-sm mb-5">
+
+            <!-- Community Section -->
+            <div class="col-sm mb-5 text-center">
+                <!-- Community Icon -->
+                <div class="landing-page-community-feature-icon-container landing-page-feature-icon-container container d-flex justify-content-center align-items-center mb-2">
+                    <h4 class="text-center mb-0"><i class="fas fa-users"></i></h4>
+                </div>
+
+                <!-- Community Text -->
                 <h4 class="feature-headings"><strong>Community</strong></h4>
                 <p>We are committed to cultivating a community of educators that support each other along their journey to end the teacher burnout crisis and foster gratitude. That’s why we’ve created the community gratitude board. On this board, users can share gratitude entries with others in the Journly Community. Users can then show their support and appreciation for the post by giving it a "like."
                 </p>
                 <a class="btn btn-outline-dark learn-more-btn" th:href="@{/gratitude-board}" role="button">Learn more</a>
             </div>
 
-            <div class="col-sm mb-5">
+            <!-- Books Section -->
+            <div class="col-sm mb-5 text-center">
+                <!-- Book Icon -->
+                <div class="landing-page-book-feature-icon-container landing-page-feature-icon-container container d-flex justify-content-center align-items-center mb-2">
+                    <h4 class="text-center mb-0"><i class="fas fa-book"></i></h4>
+                </div>
+
+                <!-- Books Text -->
                 <h4 class="feature-headings"><strong>Books</strong></h4>
                 <p>Another feature Journly provides teachers is the ability to search through a library of mindfulness books and save them to a bookshelf for personal use or use in the classroom.
                 </p>
@@ -59,20 +107,19 @@
             </div>
         </div>
 
-        <div class="row mb-5">
+        <hr class="first-hr-landing-pg">
+
+        <div class="row mt-5 mb-5">
             <div class="col text-center">
                 <h1 class="mb-2">Crafted for teachers just like you.</h1>
             </div>
         </div>
 
-        <div class="row pb-5 justify-content-center text-center">
+        <hr class="second-hr-landing-pg">
+
+        <div class="row mt-5 pb-5 justify-content-center text-center">
             <div class="col-6 col-md-4 text-center">
                 <img src="/img/community-member-one.png" alt="Community Member" class="landing-pg-avatar m-3">
-                <!--                    <img th:src="${(firstUser.imgFilePath == null) ? firstUser.imgFilePath : '/img/community-member-one.png'}" th:alt="${firstUser.imgFilePath}"/>-->
-
-                <!--                    <img th:if="${firstUser.getImgFilePath() == null}" src="/uploads/community-member-one.png" alt="Community Member" class="landing-pg-avatar m-3"/>-->
-                <!--                    <img th:unless="${firstUser.getImgFilePath() == null}" th:src="${firstUser.getImgFilePath().imgFilePath}" alt="Community Member" class="landing-pg-avatar m-3">-->
-
             </div>
 
             <div class="col-6 col-md-4 text-center">
@@ -84,9 +131,9 @@
             </div>
         </div>
 
-        <div class="row pb-5">
-            <div class="col-12 text-center">
-                <a class="btn btn-lg join-today-btn" th:href="@{/sign-up}" role="button">Join Today</a>
+        <div class="row pb-5 d-flex justify-content-center">
+            <div class="col-12 text-center join-today-bottom-container">
+                <a class="btn btn-lg join-today-bottom-btn btn-block" th:href="@{/sign-up}" role="button">Join Today</a>
             </div>
         </div>
     </div>
