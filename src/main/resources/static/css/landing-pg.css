@@ -23,6 +23,9 @@
     /*BACKGROUND COLOR*/
     --landing-pg-background-color: linear-gradient(to top, #ffa3b3, #fff7cf);
 
+    /*FEATURE ICON COLOR*/
+    --feature-icon-container-color: #f5c0c0;
+
     /*JOIN TODAY TOP BUTTON*/
     --join-today-top-btn-color: white;
     --join-today-top-btn-hover-color: #fc628c;
@@ -194,6 +197,16 @@
     font-family: var(--feature-heading-font-family)
 }
 
+
+/*FEATURE ICON CONTAINER STYLING*/
+/*------------------------------------------------------------------------------------*/
+.landing-page-feature-icon-container {
+    background: var(--feature-icon-container-color);
+    color: white;
+    height: 50px;
+    width: 50px;
+    border-radius: 30%;"
+}
 
 /*HORIZONTAL RULES*/
 /*------------------------------------------------------------------------------------*/
