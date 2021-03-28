@@ -123,20 +123,17 @@ Journly is a web application for teachers, where teachers can create daily posts
 * As a user, I can view and navigate the entire web application on a mobile-sized device.
 * As a user, I can log out.
 
----
 
 ### Wireframes
 As the project planning process began, we found it important to have a general guide for how we wanted the application to look at the end of the process. For this reason, we used Figma to create our wireframes.
 
 Check out our Figma Wireframes [HERE](https://www.figma.com/file/szq7vmqTiNfGC3VwUYWrAr/Journly-Wireframe).
 
----
 
 ### Database Design
 
 Coming Soon 😊
 
----
 
 ### Project Management
 For this project, we utilized a Kanban Board to stay organized and manage our daily tasks as developers. We created a list of "todos" and organized them into multiple columns. Because of this, we were easily able to assign ownership and track progress through various phases of development. Our go-to project planning resource was Trello.
