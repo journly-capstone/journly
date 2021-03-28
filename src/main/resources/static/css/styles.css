@@ -14,7 +14,7 @@
     --error-msg-color: #f9748f;
     --purple-blue-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
 
-    --pink-yellow-gradient: linear-gradient(60deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
+    --pink-yellow-gradient: linear-gradient(360deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
 
     --default-pink-gradient-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
 
@@ -33,6 +33,8 @@
     --sign-up-nav-brand-color: var(--default-navbar-link-color);
     --sign-up-a-nav-link-color: var(--default-navbar-link-color);
     --sign-up-hamburger-icon-color: var(--hamburger-icon-color);
+    --login-pg-login-nav-btn-color: #69f0ea;
+    --login-pg-login-nav-btn-hover-color: #5dd9d3;
 
     /*Navbar Signup button colors */
     --nav-signup-btn-color: var(--blush-color);
@@ -47,13 +49,16 @@
     --nav-logout-btn-hover-color: var(--default-navbar-link-color);
 
     /*About Us Page Variables*/
-    --meet-the-team-header-font: 'Work Sans', sans-serif;
-    --developer-names-font: 'Nunito', sans-serif;
+    --about-us-background-color: white;
+    --about-us-card-border-color: #faf3e0;
+
+    --meet-the-team-header-font: 'Karla', sans-serif;
+    --developer-names-font: 'Karla', sans-serif;
     --developer-title-font: 'Open Sans', sans-serif;
     --about-us-avatar-border: 3px solid #F7A09E;
 
     /*Sign Up Page Variables*/
-    --sign-up-page-font: 'Work Sans', sans-serif;
+    --sign-up-page-font: 'Karla', sans-serif;
 }
 
 
@@ -83,22 +88,6 @@ body {
 /*    scroll-behavior: smooth;*/
 /*    !*background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*!*/
 /*}*/
-
-
-/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
-/*------------------------------------------------------------------------------------*/
-.about-us-left-svg {
-    position: absolute;
-    top: 60%;
-    z-index: -1;
-}
-
-.about-us-right-svg {
-    position: absolute;
-    top: 30%;
-    right: 0;
-    z-index: -1;
-}
 
 
 /* NOTEBOOK STYLING */
@@ -312,11 +301,15 @@ img.user-profile-avatar {
 
 /* ABOUT US PAGE STYLING */
 /*------------------------------------------------------------------------------------*/
+.about-us-pg-body {
+    background: var(--about-us-background-color);
+}
+
 .about-us-avatar {
     vertical-align: middle;
-    width: 200px;
-    height: 200px;
-    border: var(--about-us-avatar-border);
+    width: 150px;
+    height: 150px;
+    /*border: var(--about-us-avatar-border);*/
     border-radius: 50%;
 }
 
@@ -324,13 +317,64 @@ img.user-profile-avatar {
     font-family: var(--meet-the-team-header-font);
 }
 
-.developer-names {
-    font-family: var(--developer-names-font);
-    font-weight: bolder;
-}
+/*.developer-names {*/
+/*    font-family: var(--developer-names-font);*/
+/*    font-weight: bolder;*/
+/*}*/
 
 .software-developer-title {
     font-family: var(--developer-title-font);
+}
+
+.about-us-pg-icons {
+    font-size: 2em;
+    margin: 10px;
+    color: black;
+}
+
+.about-us-pg-icons:hover {
+    color: var(--blush-color);
+}
+
+.about-us-card {
+    border-radius: 20px !important;
+    transition: 0.3s;
+    max-width: 400px;
+    /*border-color: var(--about-us-card-border-color);*/
+
+    /*Mobile Responsive Centering of the cards in the card deck*/
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+
+/* ABOUT US PAGE MEDIA QUERIES */
+/*------------------------------------------------------------------------------------*/
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) {
+    .about-us-card-deck {
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+
+
+/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
+/*------------------------------------------------------------------------------------*/
+.about-us-left-svg {
+    position: absolute;
+    top: 60%;
+    z-index: -1;
+}
+
+.about-us-right-svg {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    z-index: -1;
 }
 
 
@@ -551,9 +595,10 @@ main.login-content {
 .sign-up-bg body {
     height: 100%;
     margin: 0;
-    background: var(--pink-yellow-gradient);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /*background: var(--pink-yellow-gradient);*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    background: white;
 }
 
 .welcome-video {
@@ -597,6 +642,14 @@ main.login-content {
 /*    background-repeat: no-repeat;*/
 /*    background-attachment: fixed;*/
 /*}*/
+
+.login-pg-login-nav-btn {
+    background: var(--login-pg-login-nav-btn-color);
+}
+
+.login-pg-login-nav-btn:hover {
+    background: var(--login-pg-login-nav-btn-hover-color);
+}
 
 /*Login Nav Links*/
 .login-wrapper .navbar-brand-font {
