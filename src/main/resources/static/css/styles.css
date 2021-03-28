@@ -5,6 +5,7 @@
     --default-font-family:'Nunito', sans-serif;
     --hamburger-icon-color: #3d3e40;
     --default-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    --default-card-border-radius: 10px;
 
     /*App Colors*/
     /*--blush-color: #ff5e93;*/
@@ -785,20 +786,21 @@ main.login-content {
 
 /* }*/
 
-#gratitude-card {
+.gratitude-card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    border-radius: 20px; /* 5px rounded corners */
     /*border: none;*/
+    border-radius: var(--default-card-border-radius);
     width: 100%;
     margin-bottom: 1em;
+
 }
 /* Add rounded corners to the top left and the top right corner of the image */
 img {
-    border-radius: 20px 20px 0 0;
+    border-radius: 10px 10px 0 0;
 }
 /* On mouse-over, add a deeper shadow */
-#gratitude-card:hover {
+.gratitude-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
