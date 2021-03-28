@@ -28,7 +28,7 @@ public class GratitudeEntry {
     @Value("${file-upload-path}")
     private String imgFilePath;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1200)
     private String body;
 
     @ManyToOne

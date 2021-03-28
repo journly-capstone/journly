@@ -1,51 +1,91 @@
 <!doctype html>
-<html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html id="about-us-html" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
 
-<body class="guest-view-body">
-    <img src="/svg/left-landing-page.svg" id="left-svg">
-    <img src="/svg/right-landing-page.svg" id="right-svg">
+<body class="guest-view-body about-us-pg-body">
+    <img src="/svg/left-landing-page.svg" class="about-us-left-svg">
+    <img src="/svg/right-landing-page.svg" class="about-us-right-svg">
 
     <nav th:replace="partials/navbar :: navbar"></nav>
 
-    <div class="container justify-content-center text-center">
+    <main class="container justify-content-center text-center">
         <div class="row mb-5">
             <div class="col text-center">
                 <h1 id="meet-the-team-header" class="mb-2">Meet the Team</h1>
             </div>
         </div>
 
-        <div class="row pb-5 justify-content-center text-center">
-            <div class="col-12 col-md-6">
-                <img src="/img/elvira-valadez.jpg" alt="Elvira Valadez" class="about-us-avatar m-3">
-                <h2 class="developer-names">Elvira Valadez</h2>
-                <p class="software-developer-title">Software Developer</p>
-                <p class="quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at consectetur cumque cupiditate deleniti.</p>
+        <!-- Card Container -->
+        <div class="container">
+            <!-- Card Deck -->
+            <div class="card-deck about-us-card-deck mb-3">
+
+                <!--Elvira's Card-->
+                <div class="card about-us-card">
+                    <div class="card-body about-us-card-body">
+                        <img src="/img/elvira-valadez.jpg" alt="Elvira Valadez" class="about-us-avatar m-3">
+                        <h5 class="card-title developer-names">Elvira Valadez</h5>
+                        <p>
+                            <em>"Strive not to be a success, but rather to be of value."
+                                <br>-Albert Einstein
+                            </em>
+                        </p>
+                        <a href="https://github.com/elviravaladez" target="_blank" class="about-us-pg-icons"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/elviravaladez/" target="_blank" class="about-us-pg-icons"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <!--Ethan's Card-->
+                <div class="card about-us-card">
+                    <div class="card-body">
+                        <img src="/img/ethan-tumbocon.jpg" alt="Ethan Tumbocon" class="about-us-avatar m-3">
+                        <h5 class="card-title developer-names">Ethan Tumbocon</h5>
+                        <p>
+                            <em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernat."
+                                <br>-Author
+                            </em>
+                        </p>
+                        <a href="https://github.com/EthanTumbocon" target="_blank" class="about-us-pg-icons"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ethan-tumbocon-662344208/" target="_blank" class="about-us-pg-icons"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="col-12 col-md-6">
-                <img src="/img/ethan-tumbocon.jpg" alt="Ethan Tumbocon" class="about-us-avatar m-3">
-                <h2 class="developer-names">Ethan Tumbocon</h2>
-                <p class="software-developer-title">Software Developer</p>
-                <p class="quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at consectetur cumque cupiditate deleniti.</p>
-            </div>
+            <div class="card-deck about-us-card-deck pb-5">
 
-            <div class="col-12 col-md-6">
-                <img src="/img/ryan-phillips.jpg" alt="Ryan Phillips" class="about-us-avatar m-3">
-                <h2 class="developer-names">Ryan Phillips</h2>
-                <p class="software-developer-title">Software Developer</p>
-                <p class="quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at consectetur cumque cupiditate deleniti.</p>
-            </div>
+                <!-- Ryan's Card -->
+                <div class="card about-us-card">
+                    <div class="card-body">
+                        <img src="/img/ryan-phillips.jpg" alt="Ryan Phillips" class="about-us-avatar m-3">
+                        <h5 class="card-title developer-names">Ryan Phillips</h5>
+                        <p>
+                            <em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernat."
+                                <br>-Author
+                            </em>
+                        </p>
+                        <a href="https://github.com/RyanPhillipsJ92" target="_blank" class="about-us-pg-icons"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ryanphillipsj92/" target="_blank" class="about-us-pg-icons"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
 
-            <div class="col-12 col-md-6">
-                <img src="https://via.placeholder.com/150" alt="Kristen Collier" class="about-us-avatar m-3">
-<!--                <img src="/img/kristen-collier.jpg" alt="Kristen Collier" class="about-us-avatar m-3">-->
-                <h2 class="developer-names">Kristen Collier</h2>
-                <p class="software-developer-title">Software Developer</p>
-                <p class="quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at consectetur cumque cupiditate deleniti.</p>
+                <!-- Kristen's Card -->
+                <div class="card about-us-card">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/150" alt="Kristen Collier" class="about-us-avatar m-3">
+                        <h5 class="card-title developer-names">Kristen Collier</h5>
+                        <p>
+                            <em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernat."
+                                <br>-Author
+                            </em>
+                        </p>
+                        <a href="https://github.com/kcollier10" target="_blank" class="about-us-pg-icons"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/kris10-collier/" target="_blank" class="about-us-pg-icons"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
 
     <div th:replace="partials/scripts :: assets"></div>

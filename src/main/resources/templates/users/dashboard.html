@@ -29,6 +29,7 @@
                 <p th:if="${entry.isPublic}">Public</p>
                 <p th:if="${!entry.isPublic}">Private</p>
 
+<<<<<<< HEAD
                 <div sec:authorize="isAuthenticated()">
                     <a class="btn btn-primary" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
                     <form class="btn" th:action="@{|/dashboard/${entry.id}/update/|}" method="get"><i class="icon-edit"></i>
@@ -41,6 +42,20 @@
                         <input type="submit" value="Delete Entry">
                     </form>
                 </div>
+=======
+            <div sec:authorize="isAuthenticated()">
+                <a class="btn btn-primary" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
+                <form class="btn" th:action="@{|/dashboard/${entry.id}/update/|}" method="get"><i class="icon-edit"></i>
+<!--                <form th:action="@{|/dashboard/${entry.id}/update/|}" method="get">Edit Entry-->
+
+                    <input type="hidden" name="entryId" th:value="${entry.id}">
+                    <input type="submit" value="Edit Entry">
+                </form>
+                <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
+                    <input type="hidden" name="entryId" th:value="${entry.id}">
+                    <input type="submit" value="Delete Entry">
+                </form>
+>>>>>>> 44b6b7da04c553b2fd069587aa2bf796650dba46
             </div>
         </div>
     </div>

@@ -69,11 +69,16 @@ public class BookController {
             @RequestParam("bookThumbnail")String bookThumbnail,
             @RequestParam("id")String id,
             @RequestParam("author")String author,
+            @RequestParam("readMore")String readMore,
             @RequestParam("title")String title){
-        System.out.println(id);
+
+//        if (userService.getLoggedInUser().getUsername() == null){
+//            return"redirect:/login";
+//        }
         User user = userService.getLoggedInUser();
         Bookshelf bookshelf = bookshelfDao.findByUser(user);
         Book book = new Book();
+        book.setReadMore(readMore);
         book.setApi_id(id);
         book.setAuthor(author);
         book.setTitle(title);
