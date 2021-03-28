@@ -12,10 +12,7 @@
     --blush-color: #fc6d93;;
     --dark-blush-color: #ed3478;
     --error-msg-color: #f9748f;
-    --purple-blue-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
-
     --pink-yellow-gradient: linear-gradient(360deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
-
     --default-pink-gradient-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
 
     /*Button Colors */
@@ -59,6 +56,10 @@
 
     /*Sign Up Page Variables*/
     --sign-up-page-font: 'Karla', sans-serif;
+
+    /*footer*/
+    --footer-background-color: #f2f2f2;
+    --footer-link-color: var(--default-navbar-link-color);
 }
 
 
@@ -155,11 +156,11 @@ body {
 /*------------------------------------------------------------------------------------*/
 .footer-style {
     width: 100vw;
-    background: var(--blush-color);
+    background: var(--footer-background-color);
 }
 
 .footer-link a {
-    color: white;
+    color: var(--footer-link-color);
     padding: 0;
 }
 
