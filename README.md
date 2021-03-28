@@ -52,6 +52,8 @@ Journly is a web application for teachers, where teachers can create daily posts
 * Create a gratitude board index page that includes a link that will redirect to each of the individual gratitude entry’s page
 * Allow a gratitude entry to have an image
 * Allow a user to “like” a gratitude entry
+* Integrate password validation
+* Provide user authentication via the Spring Framework
 * Lock down the profile page so that it is only available for the logged-in user
 * Display a dynamic navbar
     * The Guest Navbar Includes:
