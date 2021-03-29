@@ -3,23 +3,22 @@
 <head th:replace="partials/head :: head"></head>
 <body class="sign-up-wrapper sign-up-bg">
 
-<!--<img src="/svg/left-landing-page.svg" class="sign-up-pg-left-svg">-->
-<!--<img src="/svg/right-landing-page.svg" class="sign-up-pg-right-svg">-->
+<img src="/svg/left-landing-page.svg" class="sign-up-pg-left-svg">
+<img src="/svg/right-landing-page.svg" class="sign-up-pg-right-svg">
 
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<!--<div class="overlay"></div>-->
-
 <main class="sign-up-main-container container pb-5">
-    <div class="card sign-up-card sign-up-container p-3 p-md-4 p-lg-5">
+
+    <div class="card sign-up-card sign-up-container mb-3" style="height: 100%;">
         <div class="row d-flex no-gutters">
             <div class="col-md-6">
-                <div class="card-body p-0 pb-3 pr-md-4">
+                <div class="card-body p-lg-5">
                     <h1 class="text-center"><strong>Sign Up</strong></h1>
 
                     <h6 class="text-center">Already a member?<br><a class="text-center pt-0" href="/login">Login</a></h6>
 
-                    <form class="container p-0" th:action="@{/sign-up}" method="post" th:object="${user}">
+                    <form class="container p-1" th:action="@{/sign-up}" method="post" th:object="${user}">
                         <div class="form-group">
                             <input class="form-control sign-up-input" type="text" id="username" th:field="*{username}" placeholder="Username" />
                             <p class="error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
@@ -47,17 +46,15 @@
                 </div>
             </div>
 
-            <div class="col-md-6 welcome-card-col sign-up-col-2">
-                <video class="img-fluid welcome-video pb-0" playsinline autoplay muted loop>
-                    <source src="/video/welcome.mp4" type="video/mp4">
-                </video>
+            <div class="col-md-6">
+                <img src="/img/make-gratitude-a-habit.jpg" class="card-img sign-up-img" alt="Make Gratitude a Habit">
             </div>
         </div>
     </div>
 </main>
 
 
-<!--<footer th:replace="partials/footer :: header-links"></footer>-->
+<!--<footer th:replace="partials/footer :: footer"></footer>-->
 
 
 <div th:replace="partials/scripts :: assets"></div>

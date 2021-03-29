@@ -14,7 +14,6 @@
     --dark-blush-color: #ed3478;
     --error-msg-color: #f9748f;
     --pink-yellow-gradient: linear-gradient(360deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
-    --default-pink-gradient-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
 
     /*Button Colors */
     --default-pink-btn-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
@@ -57,6 +56,7 @@
 
     /*Sign Up Page Variables*/
     --sign-up-page-font: 'Karla', sans-serif;
+    --sign-up-page-background-color: var(--pink-yellow-gradient);
 
     /*footer*/
     --footer-background-color: #f2f2f2;
@@ -222,14 +222,6 @@ and (-webkit-device-pixel-ratio: 3) {
     }
 }
 
-/* SIGN UP PAGE SVG */
-/*------------------------------------------------------------------------------------*/
-.sign-up-pg-right-svg {
-    position: absolute;
-    top: 30%;
-    right: 0;
-    z-index: -1;
-}
 
 /* BUTTONS */
 /*------------------------------------------------------------------------------------*/
@@ -589,11 +581,10 @@ a.nav-link:hover {
 
 /*SIGN UP AND LOGIN PAGE STYLING*/
 /*------------------------------------------------------------------------------------*/
-.login-container,
-.sign-up-container {
+.login-container {
     padding: 2em;
     border: none;
-    border-radius: 28px !important;
+    border-radius: 20px !important;
     background-color: white;
     box-shadow: var(--default-box-shadow);
 }
@@ -631,14 +622,36 @@ main.login-content {
 .sign-up-bg body {
     height: 100%;
     margin: 0;
-    /*background: var(--pink-yellow-gradient);*/
-    /*background-repeat: no-repeat;*/
-    /*background-attachment: fixed;*/
-    background: white;
+    background: var(--sign-up-page-background-color);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-.welcome-video {
-    border-radius: 20px;
+/*represents sign up card*/
+.sign-up-container {
+    border: none;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+
+    /* Add shadows to create the "card" effect */
+    transition: 0.3s
+}
+
+.sign-up-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* SIGN UP PAGE SVG */
+.sign-up-pg-left-svg,
+.sign-up-pg-right-svg {
+    display: none;
+}
+
+.sign-up-img {
+    border-radius: 0 0 20px 20px;
 }
 
 /*Sign Up Nav Links*/
@@ -663,18 +676,100 @@ main.login-content {
     background: var(--sign-up-hamburger-icon-color);
 }
 
+/*MEDIA QUERIES FOR SIGN UP PAGE*/
+/*------------------------------------------------------------------------------------*/
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) {
+    .sign-up-img {
+        border-radius: 0 20px 20px 0;
+    }
+
+    /* SIGN UP PAGE SVG */
+    .sign-up-pg-left-svg {
+        display: flex;
+        position: absolute;
+        top: 30%;
+        z-index: -1;
+    }
+
+    .sign-up-pg-right-svg {
+        display: flex;
+        position: absolute;
+        top: 60%;
+        right: 0;
+        z-index: -1;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width:992px) {
+    /* SIGN UP PAGE SVG */
+    .sign-up-pg-left-svg {
+        display: flex;
+        position: absolute;
+        top: 20%;
+        z-index: -1;
+    }
+
+    .sign-up-pg-right-svg {
+        display: flex;
+        position: absolute;
+        top: 80%;
+        right: 0;
+        z-index: -1;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    /* SIGN UP PAGE SVG */
+    .sign-up-pg-left-svg {
+        display: flex;
+        position: absolute;
+        top: 10%;
+        z-index: -1;
+    }
+
+    .sign-up-pg-right-svg {
+        display: flex;
+        position: absolute;
+        top: 65%;
+        right: 0;
+        z-index: -1;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) {
+    /* SIGN UP PAGE SVG */
+    .sign-up-pg-left-svg {
+        display: flex;
+        position: absolute;
+        top: 60%;
+        z-index: -1;
+    }
+
+    .sign-up-pg-right-svg {
+        display: flex;
+        position: absolute;
+        top: 10%;
+        right: 0;
+        z-index: -1;
+    }
+}
+
 
 /*LOGIN PAGE STYLING*/
 /*------------------------------------------------------------------------------------*/
 
-/*!*Login Gradient Background Code*/
+/*!*Login Gradient Background Code*!*/
 /*.login-bg html{*/
 /*    height: 100%;*/
 /*}*/
 /*.login-bg body {*/
 /*    height: 100%;*/
 /*    margin: 0;*/
-/*    background: var(--purple-blue-gradient);*/
+/*    background: var(--pink-yellow-gradient);*/
 /*    background-repeat: no-repeat;*/
 /*    background-attachment: fixed;*/
 /*}*/

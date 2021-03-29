@@ -26,12 +26,15 @@
     /*FEATURE ICON COLOR*/
     --journaling-feature-icon-container-color: #ffa59e;
     --affirmations-feature-icon-container-color: #fcd19d;
-    --community-feature-icon-container-color: #fccfb1;
-    --book-feature-icon-container-color: #fab498;
+    --community-feature-icon-container-color: #fab498;
+    --book-feature-icon-container-color: #fccfb1;
 
     /*JOIN TODAY BOTTOM BUTTON*/
-    --join-today-bottom-btn-color: var(--landing-pg-blush-color);
-    --join-today-bottom-btn-hover-color: #ed3478;
+    --join-today-bottom-btn-color: #ff8297;
+    --join-today-bottom-btn-hover-color: #ff6982;
+
+    /*--join-today-bottom-btn-color: #ff8098;*/
+    /*--join-today-bottom-btn-hover-color: #f7637f;*/
     --join-today-bottom-btn-font-color: white;
 
     /*FONTS*/
@@ -43,7 +46,7 @@
     --gratitude-for-teachers-font-color: #020205;
 
     /*Border for avatars on the page*/
-    --landing-page-avatar-border: 3px solid #F7A09E;
+    --landing-page-avatar-border: none;
 }
 
 /*NAVBAR*/
