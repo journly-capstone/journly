@@ -5,6 +5,7 @@
     --default-font-family:'Nunito', sans-serif;
     --hamburger-icon-color: #3d3e40;
     --default-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    --default-card-border-radius: 10px;
 
     /*App Colors*/
     /*--blush-color: #ff5e93;*/
@@ -12,11 +13,7 @@
     --blush-color: #fc6d93;;
     --dark-blush-color: #ed3478;
     --error-msg-color: #f9748f;
-    --purple-blue-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
-
-    --pink-yellow-gradient: linear-gradient(60deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
-
-    --default-pink-gradient-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+    --pink-yellow-gradient: linear-gradient(360deg, rgba(255, 163, 179, 1) 0%, rgba(255, 247, 207, 1) 100%);
 
     /*Button Colors */
     --default-pink-btn-color: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
@@ -33,6 +30,8 @@
     --sign-up-nav-brand-color: var(--default-navbar-link-color);
     --sign-up-a-nav-link-color: var(--default-navbar-link-color);
     --sign-up-hamburger-icon-color: var(--hamburger-icon-color);
+    --login-pg-login-nav-btn-color: #69f0ea;
+    --login-pg-login-nav-btn-hover-color: #5dd9d3;
 
     /*Navbar Signup button colors */
     --nav-signup-btn-color: var(--blush-color);
@@ -47,13 +46,21 @@
     --nav-logout-btn-hover-color: var(--default-navbar-link-color);
 
     /*About Us Page Variables*/
-    --meet-the-team-header-font: 'Work Sans', sans-serif;
-    --developer-names-font: 'Nunito', sans-serif;
+    --about-us-background-color: var(--pink-yellow-gradient);
+    --about-us-card-border-color: #faf3e0;
+
+    --meet-the-team-header-font: 'Karla', sans-serif;
+    --developer-names-font: 'Karla', sans-serif;
     --developer-title-font: 'Open Sans', sans-serif;
-    --about-us-avatar-border: 3px solid #F7A09E;
+    --about-us-img-border: 3px solid #F7A09E;
 
     /*Sign Up Page Variables*/
-    --sign-up-page-font: 'Work Sans', sans-serif;
+    --sign-up-page-font: 'Karla', sans-serif;
+    --sign-up-page-background-color: var(--pink-yellow-gradient);
+
+    /*footer*/
+    --footer-background-color: #f2f2f2;
+    --footer-link-color: var(--default-navbar-link-color);
 }
 
 
@@ -83,22 +90,6 @@ body {
 /*    scroll-behavior: smooth;*/
 /*    !*background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*!*/
 /*}*/
-
-
-/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
-/*------------------------------------------------------------------------------------*/
-.about-us-left-svg {
-    position: absolute;
-    top: 60%;
-    z-index: -1;
-}
-
-.about-us-right-svg {
-    position: absolute;
-    top: 30%;
-    right: 0;
-    z-index: -1;
-}
 
 
 /* NOTEBOOK STYLING */
@@ -153,15 +144,24 @@ body {
     text-align: center;
 }
 
+/* MISC CARD STYLING */
+/*------------------------------------------------------------------------------------*/
+
+.view-more-bg {
+    background-color: var(--default-pink-btn-gradient-color);
+    color: black;
+}
+
+
 /* FOOTER STYLING */
 /*------------------------------------------------------------------------------------*/
 .footer-style {
     width: 100vw;
-    background: var(--blush-color);
+    background: var(--footer-background-color);
 }
 
 .footer-link a {
-    color: white;
+    color: var(--footer-link-color);
     padding: 0;
 }
 
@@ -185,10 +185,6 @@ body {
         min-width: 350px;
         height: 500px;
     }
-}
-
-.card {
-    display: inline-block;
 }
 
 /* iphone X , XS, 11 Pro, 12 Mini */
@@ -226,14 +222,6 @@ and (-webkit-device-pixel-ratio: 3) {
     }
 }
 
-/* SIGN UP PAGE SVG */
-/*------------------------------------------------------------------------------------*/
-.sign-up-pg-right-svg {
-    position: absolute;
-    top: 30%;
-    right: 0;
-    z-index: -1;
-}
 
 /* BUTTONS */
 /*------------------------------------------------------------------------------------*/
@@ -307,12 +295,17 @@ img.user-profile-avatar {
 
 /* ABOUT US PAGE STYLING */
 /*------------------------------------------------------------------------------------*/
-.about-us-avatar {
-    vertical-align: middle;
-    width: 200px;
-    height: 200px;
-    border: var(--about-us-avatar-border);
+.about-us-pg-body {
+    background: var(--about-us-background-color);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.about-us-img {
+    margin-top: 20px;
     border-radius: 50%;
+    max-width: 50%;
+    max-height: 50%;
 }
 
 #meet-the-team-header {
@@ -321,13 +314,97 @@ img.user-profile-avatar {
 
 .developer-names {
     font-family: var(--developer-names-font);
-    font-weight: bolder;
+    font-weight: bolder !important;
 }
 
 .software-developer-title {
     font-family: var(--developer-title-font);
 }
 
+.about-us-pg-icons {
+    font-size: 2em;
+    margin: 10px;
+    color: black;
+}
+
+.about-us-pg-icons:hover {
+    color: var(--blush-color);
+}
+
+.about-us-card {
+    max-width: 320px;
+
+    background: rgba( 255, 255, 255, 0.90 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+
+    /*Mobile Responsive Centering of the cards in the card deck*/
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+.about-us-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.about-us-hr {
+    width: 30%;
+}
+
+.about-us-quote {
+    font-weight: 300;
+}
+
+.about-us-card-footer {
+    background: none;
+    border: none;
+}
+
+/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
+.about-us-left-svg {
+    position: absolute;
+    top: 60%;
+    z-index: -1;
+}
+
+.about-us-right-svg {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    z-index: -1;
+}
+
+
+/* ABOUT US PAGE MEDIA QUERIES */
+/*------------------------------------------------------------------------------------*/
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) {
+    .about-us-card-deck {
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) {
+    /*Adjusting the display of the about us card container to allow cards to display in one row of four cards */
+    .about-us-card-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    /*Adjusting card deck margin and padding to about the cards to all display as the same size */
+    .about-us-card-deck {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
 
 /*ERROR PAGE STYLING*/
 /*------------------------------------------------------------------------------------*/
@@ -504,15 +581,6 @@ a.nav-link:hover {
 
 /*SIGN UP AND LOGIN PAGE STYLING*/
 /*------------------------------------------------------------------------------------*/
-.login-container,
-.sign-up-container {
-    padding: 2em;
-    border: none;
-    border-radius: 28px !important;
-    background-color: white;
-    box-shadow: var(--default-box-shadow);
-}
-
 main.sign-up-main-container,
 main.login-content {
     font-family: var(--sign-up-page-font);
@@ -546,13 +614,36 @@ main.login-content {
 .sign-up-bg body {
     height: 100%;
     margin: 0;
-    background: var(--pink-yellow-gradient);
+    background: var(--sign-up-page-background-color);
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-.welcome-video {
-    border-radius: 20px;
+/*represents sign up card*/
+.sign-up-container {
+    border: none;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+
+    /* Add shadows to create the "card" effect */
+    transition: 0.3s
+}
+
+.sign-up-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* SIGN UP PAGE SVG */
+.sign-up-pg-left-svg,
+.sign-up-pg-right-svg {
+    display: none;
+}
+
+.sign-up-img {
+    border-radius: 0 0 20px 20px;
 }
 
 /*Sign Up Nav Links*/
@@ -577,21 +668,119 @@ main.login-content {
     background: var(--sign-up-hamburger-icon-color);
 }
 
+/*MEDIA QUERIES FOR SIGN UP PAGE*/
+/*------------------------------------------------------------------------------------*/
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width:768px) {
+    .sign-up-img {
+        border-radius: 0 20px 20px 0;
+    }
+
+    /* SIGN UP PAGE SVG */
+    .sign-up-pg-left-svg {
+        display: flex;
+        position: absolute;
+        top: 30%;
+        z-index: -1;
+    }
+
+    .sign-up-pg-right-svg {
+        display: flex;
+        position: absolute;
+        top: 60%;
+        right: 0;
+        z-index: -1;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width:992px) {
+    /* SIGN UP PAGE SVG */
+    .sign-up-pg-left-svg {
+        display: flex;
+        position: absolute;
+        top: 20%;
+        z-index: -1;
+    }
+
+    .sign-up-pg-right-svg {
+        display: flex;
+        position: absolute;
+        top: 80%;
+        right: 0;
+        z-index: -1;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    /* SIGN UP PAGE SVG */
+    .sign-up-pg-left-svg {
+        display: flex;
+        position: absolute;
+        top: 10%;
+        z-index: -1;
+    }
+
+    .sign-up-pg-right-svg {
+        display: flex;
+        position: absolute;
+        top: 65%;
+        right: 0;
+        z-index: -1;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) {
+    /* SIGN UP PAGE SVG */
+    .sign-up-pg-left-svg {
+        display: flex;
+        position: absolute;
+        top: 60%;
+        z-index: -1;
+    }
+
+    .sign-up-pg-right-svg {
+        display: flex;
+        position: absolute;
+        top: 10%;
+        right: 0;
+        z-index: -1;
+    }
+}
+
 
 /*LOGIN PAGE STYLING*/
 /*------------------------------------------------------------------------------------*/
 
-/*!*Login Gradient Background Code*/
+/*!*Login Gradient Background Code*!*/
 /*.login-bg html{*/
 /*    height: 100%;*/
 /*}*/
 /*.login-bg body {*/
 /*    height: 100%;*/
 /*    margin: 0;*/
-/*    background: var(--purple-blue-gradient);*/
+/*    background: var(--pink-yellow-gradient);*/
 /*    background-repeat: no-repeat;*/
 /*    background-attachment: fixed;*/
 /*}*/
+
+.login-container {
+    padding: 2em;
+    border: none;
+    border-radius: 20px !important;
+    background-color: white;
+    box-shadow: var(--default-box-shadow);
+}
+
+.login-pg-login-nav-btn {
+    background: var(--login-pg-login-nav-btn-color);
+}
+
+.login-pg-login-nav-btn:hover {
+    background: var(--login-pg-login-nav-btn-hover-color);
+}
 
 /*Login Nav Links*/
 .login-wrapper .navbar-brand-font {
@@ -708,106 +897,131 @@ main.login-content {
     object-position: center;
     border-radius: 50%;
 }
-#gratitude-card{
-    margin: auto;
-    width: 25rem;
+
+
+
+
+
+/*!* Medium devices (tablets, 768px and up) *!*/
+/*@media screen and (min-width:768px) {*/
+
+/*}*/
+/*!* Large devices (desktops, 992px and up) *!*/
+/*@media screen and (min-width:992px) {*/
+
+/*}*/
+/*!* Extra large devices (large desktops, 1200px and up) *!*/
+/*@media screen and (min-width:1200px) {*/
+
+/* }*/
+
+.gratitude-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    /*border: none;*/
+    border-radius: var(--default-card-border-radius);
+    width: 100%;
+    margin-bottom: 1em;
+
+}
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+    border-radius: 10px 10px 0 0;
+}
+/* On mouse-over, add a deeper shadow */
+.gratitude-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+/*PROFILE SETTINGS STYLING*/
+/*------------------------------------------------------------------------------------*/
+#profile-settings-body {
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/*Mobile Responsive Nav Tabs*/
+#nav-tab {
+    border: none !important;
+}
+
+.nav-tabs {
+    display:none;
+    border: none;
+}
+
+/*Profile Setting Cards */
+.profile-settings-card {
+    border-radius: 20px !important;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.profile-settings-ul {
+    border: none;
+    border-radius: 20px !important;
+}
+
+.profile-settings-card-header {
+    border: none;
+    border-radius: 20px !important;
+}
+
+
+.profile-settings-nav-tab-link {
+    border: none !important;
+    border-top-right-radius: 1em !important;
+    border-top-left-radius: 1em !important;
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+    transition: 0.3s
+}
+
+.nav-tabs #nav-account-information-tab:hover, .nav-tabs #nav-account-information-tab.active {
+    background: #78dfe3;
+}
+
+.nav-tabs #nav-update-profile-information-tab:hover, .nav-tabs #nav-update-profile-information-tab.active {
+    background: #fff98f;
+}
+
+.nav-tabs #nav-change-password-tab:hover, .nav-tabs #nav-change-password-tab.active {
+    background: #ff8faf;
 }
 
 
 
-/*Bookshelf styling for users books being displayed*/
-.bookshelf-card{
-    margin: auto;
-    width: 25rem;
+/* MEDIA QUERIES FOR PROFILE SETTINGS PAGE */
+/*------------------------------------------------------------------------------------*/
+@media(min-width:768px) {
+    .nav-tabs {
+        display: flex;
+    }
+
+    .profile-settings-card {
+        border: none;
+    }
+
+    .profile-settings-card .profile-settings-card-header {
+        display:none;
+    }
+
+    .profile-settings-card .collapse{
+        display:block;
+    }
 }
 
-.bookshelf-button{
-    margin: auto;
-
+@media(max-width:767px){
+    .tab-content .tab-pane {
+        display: block !important;
+        opacity: 1;
+    }
 }
-/*Fancy Bootstrap cards*/
-
-/*----  Main Style  ----*/
-/*#cards_landscape_wrap-2{*/
-/*    text-align: center;*/
-/*    background: #F7F7F7;*/
-/*}*/
-/*#cards_landscape_wrap-2 .container{*/
-/*    padding-top: 80px;*/
-/*    padding-bottom: 100px;*/
-/*}*/
-/*#cards_landscape_wrap-2 a{*/
-/*    text-decoration: none;*/
-/*    outline: none;*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer {*/
-/*    border-radius: 5px;*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer .image-box{*/
-/*    background: #ffffff;*/
-/*    overflow: hidden;*/
-/*    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);*/
-/*    border-radius: 5px;*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer .image-box img{*/
-/*    -webkit-transition:all .9s ease;*/
-/*    -moz-transition:all .9s ease;*/
-/*    -o-transition:all .9s ease;*/
-/*    -ms-transition:all .9s ease;*/
-/*    width: 100%;*/
-/*    height: 200px;*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer:hover .image-box img{*/
-/*    opacity: 0.7;*/
-/*    -webkit-transform:scale(1.15);*/
-/*    -moz-transform:scale(1.15);*/
-/*    -ms-transform:scale(1.15);*/
-/*    -o-transform:scale(1.15);*/
-/*    transform:scale(1.15);*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer .text-box{*/
-/*    text-align: center;*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer .text-box .text-container{*/
-/*    padding: 30px 18px;*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer{*/
-/*    background: #FFFFFF;*/
-/*    margin-top: 50px;*/
-/*    -webkit-transition: all 0.2s ease-in;*/
-/*    -moz-transition: all 0.2s ease-in;*/
-/*    -ms-transition: all 0.2s ease-in;*/
-/*    -o-transition: all 0.2s ease-in;*/
-/*    transition: all 0.2s ease-in;*/
-/*    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer:hover{*/
-/*    background: #fff;*/
-/*    box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);*/
-/*    -webkit-transition: all 0.2s ease-in;*/
-/*    -moz-transition: all 0.2s ease-in;*/
-/*    -ms-transition: all 0.2s ease-in;*/
-/*    -o-transition: all 0.2s ease-in;*/
-/*    transition: all 0.2s ease-in;*/
-/*    margin-top: 50px;*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer .text-box p{*/
-/*    margin-top: 10px;*/
-/*    margin-bottom: 0px;*/
-/*    padding-bottom: 0px;*/
-/*    font-size: 14px;*/
-/*    letter-spacing: 1px;*/
-/*    color: #000000;*/
-/*}*/
-/*#cards_landscape_wrap-2 .card-flyer .text-box h6{*/
-/*    margin-top: 0px;*/
-/*    margin-bottom: 4px;*/
-/*    font-size: 18px;*/
-/*    font-weight: bold;*/
-/*    text-transform: uppercase;*/
-/*    font-family: 'Roboto Black', sans-serif;*/
-/*    letter-spacing: 1px;*/
-/*    color: #00acc1;*/
-/*}*/
 
 /*------------------------------------------------------------------------------------*/
