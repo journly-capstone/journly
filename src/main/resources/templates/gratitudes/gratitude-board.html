@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <div class="like_button">
                             <button id="like_button" value="Like" >Like</button>
-                            <span class="count" th:text="${numOfLikes}"></span>
+                            <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                         </div>
                     </div>
                 </div>
