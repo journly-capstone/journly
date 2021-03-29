@@ -713,6 +713,18 @@ main.login-content {
     width: 25rem;
 }
 
+
+
+/*Bookshelf styling for users books being displayed*/
+.bookshelf-card{
+    margin: auto;
+    width: 25rem;
+}
+
+.bookshelf-button{
+    margin: auto;
+
+}
 /*Fancy Bootstrap cards*/
 
 /*----  Main Style  ----*/

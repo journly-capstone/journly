@@ -4,25 +4,25 @@
 <body>
 <nav th:replace="partials/navbar :: navbar"></nav>
 <h1 class="text-center">My Bookshelf</h1>
-<div class="container bookshelf-card">
-    <div class="row" id="bookshelf">
-        <div class="col-4" th:each="book : ${books}">
-            <img class="aligning card z-depth-5" id="dynamic" alt="image" th:src="${book.getBookThumbnail()}"></img>
-            <h3 th:text="${book.getTitle()}"></h3>
-            <h5>Author:</h5>
-            <p th:text="${book.getAuthor()}"></p>
-
-            <!--    ^^^^^ This will show each book stored in the users bookshelf will need to edit the ${} with proper path-->
-            <!--    \/ this may need the  title or ID added at the end of the API for a more info button pull
-                    A POSSIBLE CLICK EVENT TO PING API WITH BOOK DETAILS-->
-            <a target="_blank" class="btn btn-info btn-sm" th:href="@{${book.readMore}} ">View more info.</a>
-            <!--    NEED the remove funtionality for current book on shelf
-                    A POSSIBLE CLICK EVENT DELETING BOOK FROM SHELF-->
-            <!--    <a class="btn btn-danger btn-sm" th:href="@{}">Remove from bookshelf</a>-->
-            <a class="btn btn-danger btn-sm deleteBook" th:attr="data-deleteID=${book.id}">Remove from bookshelf</a>
+<div class="form-inline justify-content-center">
+    <div class="bookshelf-card mb-3" th:each="book : ${books}">
+        <div class="row no-gutters">
+            <div class="col-4">
+                <img class="card-img" id="dynamic" alt="image" th:src="${book.getBookThumbnail()}"></img>
+            </div>
+            <div class="col">
+                <div class="card-body">
+                    <h5 th:text="${book.getTitle()}"></h5>
+                    <h6>Author:</h6>
+                    <p th:text="${book.getAuthor()}"></p>
+                    <a target="_blank" class="btn btn-info btn-sm bookshelf-button bookshelf-readmore-button" th:href="@{${book.readMore}} ">More info.</a>
+                    <a class="btn btn-danger btn-sm deleteBook bookshelf-button bookshelf-delete-button" th:attr="data-deleteID=${book.id}">Remove</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
     <!--<footer th:replace="partials/footer :: header-links"></footer>-->
     <div th:replace="partials/scripts :: assets"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
