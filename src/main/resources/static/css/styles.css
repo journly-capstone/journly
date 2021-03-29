@@ -46,13 +46,13 @@
     --nav-logout-btn-hover-color: var(--default-navbar-link-color);
 
     /*About Us Page Variables*/
-    --about-us-background-color: white;
+    --about-us-background-color: var(--pink-yellow-gradient);
     --about-us-card-border-color: #faf3e0;
 
     --meet-the-team-header-font: 'Karla', sans-serif;
     --developer-names-font: 'Karla', sans-serif;
     --developer-title-font: 'Open Sans', sans-serif;
-    --about-us-avatar-border: 3px solid #F7A09E;
+    --about-us-img-border: 3px solid #F7A09E;
 
     /*Sign Up Page Variables*/
     --sign-up-page-font: 'Karla', sans-serif;
@@ -304,24 +304,25 @@ img.user-profile-avatar {
 /*------------------------------------------------------------------------------------*/
 .about-us-pg-body {
     background: var(--about-us-background-color);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-.about-us-avatar {
-    vertical-align: middle;
-    width: 150px;
-    height: 150px;
-    /*border: var(--about-us-avatar-border);*/
+.about-us-img {
+    margin-top: 20px;
     border-radius: 50%;
+    max-width: 50%;
+    max-height: 50%;
 }
 
 #meet-the-team-header {
     font-family: var(--meet-the-team-header-font);
 }
 
-/*.developer-names {*/
-/*    font-family: var(--developer-names-font);*/
-/*    font-weight: bolder;*/
-/*}*/
+.developer-names {
+    font-family: var(--developer-names-font);
+    font-weight: bolder !important;
+}
 
 .software-developer-title {
     font-family: var(--developer-title-font);
@@ -338,15 +339,51 @@ img.user-profile-avatar {
 }
 
 .about-us-card {
-    border-radius: 20px !important;
+    max-width: 320px;
+
+    background: rgba( 255, 255, 255, 0.90 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    max-width: 400px;
-    /*border-color: var(--about-us-card-border-color);*/
 
     /*Mobile Responsive Centering of the cards in the card deck*/
     margin: 0 auto; /* Added */
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
+}
+
+.about-us-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.about-us-hr {
+    width: 30%;
+}
+
+.about-us-quote {
+    font-weight: 300;
+}
+
+.about-us-card-footer {
+    background: none;
+    border: none;
+}
+
+/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
+.about-us-left-svg {
+    position: absolute;
+    top: 60%;
+    z-index: -1;
+}
+
+.about-us-right-svg {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    z-index: -1;
 }
 
 
@@ -361,23 +398,20 @@ img.user-profile-avatar {
     }
 }
 
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width:1200px) {
+    /*Adjusting the display of the about us card container to allow cards to display in one row of four cards */
+    .about-us-card-container {
+        display: flex;
+        justify-content: center;
+    }
 
-
-/*ABOUT US CIRCLE SVGs FOR BACKGROUND*/
-/*------------------------------------------------------------------------------------*/
-.about-us-left-svg {
-    position: absolute;
-    top: 60%;
-    z-index: -1;
+    /*Adjusting card deck margin and padding to about the cards to all display as the same size */
+    .about-us-card-deck {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 }
-
-.about-us-right-svg {
-    position: absolute;
-    top: 30%;
-    right: 0;
-    z-index: -1;
-}
-
 
 /*ERROR PAGE STYLING*/
 /*------------------------------------------------------------------------------------*/
