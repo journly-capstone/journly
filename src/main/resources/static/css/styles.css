@@ -580,14 +580,6 @@ a.nav-link:hover {
 
 /*SIGN UP AND LOGIN PAGE STYLING*/
 /*------------------------------------------------------------------------------------*/
-.login-container {
-    padding: 2em;
-    border: none;
-    border-radius: 20px !important;
-    background-color: white;
-    box-shadow: var(--default-box-shadow);
-}
-
 main.sign-up-main-container,
 main.login-content {
     font-family: var(--sign-up-page-font);
@@ -773,6 +765,14 @@ main.login-content {
 /*    background-attachment: fixed;*/
 /*}*/
 
+.login-container {
+    padding: 2em;
+    border: none;
+    border-radius: 20px !important;
+    background-color: white;
+    box-shadow: var(--default-box-shadow);
+}
+
 .login-pg-login-nav-btn {
     background: var(--login-pg-login-nav-btn-color);
 }
@@ -932,5 +932,95 @@ img {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-/*------------------------------------------------------------------------------------*/
 
+/*PROFILE SETTINGS STYLING*/
+/*------------------------------------------------------------------------------------*/
+#profile-settings-body {
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/*Mobile Responsive Nav Tabs*/
+#nav-tab {
+    border: none !important;
+}
+
+.nav-tabs {
+    display:none;
+    border: none;
+}
+
+/*Profile Setting Cards */
+.profile-settings-card {
+    border-radius: 20px !important;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.profile-settings-ul {
+    border: none;
+    border-radius: 20px !important;
+}
+
+.profile-settings-card-header {
+    border: none;
+    border-radius: 20px !important;
+}
+
+
+.profile-settings-nav-tab-link {
+    border: none !important;
+    border-top-right-radius: 1em !important;
+    border-top-left-radius: 1em !important;
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+    transition: 0.3s
+}
+
+.nav-tabs #nav-account-information-tab:hover, .nav-tabs #nav-account-information-tab.active {
+    background: #ff8aab;
+}
+
+.nav-tabs #nav-update-profile-information-tab:hover, .nav-tabs #nav-update-profile-information-tab.active {
+    background: #fff98f;
+}
+
+.nav-tabs #nav-change-password-tab:hover, .nav-tabs #nav-change-password-tab.active {
+    background: #78dfe3;
+}
+
+
+
+/* MEDIA QUERIES FOR PROFILE SETTINGS PAGE */
+/*------------------------------------------------------------------------------------*/
+@media(min-width:768px) {
+    .nav-tabs {
+        display: flex;
+    }
+
+    .profile-settings-card {
+        border: none;
+    }
+
+    .profile-settings-card .profile-settings-card-header {
+        display:none;
+    }
+
+    .profile-settings-card .collapse{
+        display:block;
+    }
+}
+
+@media(max-width:767px){
+    .tab-content .tab-pane {
+        display: block !important;
+        opacity: 1;
+    }
+}
+
+/*------------------------------------------------------------------------------------*/
