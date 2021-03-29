@@ -38,7 +38,7 @@ Journly is a web application for teachers, where teachers can create daily posts
 
 ## Features
 
-####Ability To:
+#### Ability To:
 * Display the landing page
 * Link the landing page to the register page
 * Link the landing page to the login page
