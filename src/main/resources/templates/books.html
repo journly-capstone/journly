@@ -26,8 +26,9 @@
     <h1 class="d-flex justify-content-center">Search Results:</h1>
 
 
-    <div class="container">
-        <div class="row" id="result"></div>
+<!--    <div class="form-inline justify-content-center">-->
+        <div class="form-inline justify-content-center" id="result">
+<!--    </div>-->
     </div>
 </main>
 <div th:replace="partials/scripts :: assets"></div>
@@ -64,12 +65,20 @@
                     //     $.get("https://www.googleapis.com/books/v1/volumes?q=" + search + "&key=" + $[keys], function (response){
                     let bookNumber = 1
                     for (let i = 0; i < response.items.length; i++) {
-                        html = $('<div id="book" class="col-4 book'+bookNumber+'"><img class="" id="image" alt="image" src="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'"><h5 id="title" class=""> ' + response.items[i].volumeInfo.title + '</h5>' +
-                            '<h5 id="author" class=""> By:' + response.items[i].volumeInfo.authors + '</h5>' +
-                            '<a target="_blank" href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>' +
-                            '<button id="add_book" type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" ' +
-                            'data-bookid="'+ response.items[i].id +'" data-read-more="'+ response.items[i].volumeInfo.infoLink +'" class="addBook">Add Book</button></div>');
-                        bookNumber+=1;
+                        html = $('<div id="book" class="bookshelf-card mb-3 book'+bookNumber+'">' +
+                                    '<div class="row no-gutters">' +
+                                        '<div class="col-4">' +
+                                            '<img class="card-img" id="dynamic" alt="image" src="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'"></img>' +
+                                        '</div>' +
+                                        '<div class="col">' +
+                                            '<div class="card-body">' +
+                                                '<h5 id="title" class=""> ' + response.items[i].volumeInfo.title + '</h5>' +
+                                                '<h6 id="author" class=""> By:' + response.items[i].volumeInfo.authors + '</h6>' +
+                                                '<a target="_blank" href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>' +
+                                                '<button id="add_book" type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" ' +
+                                                'data-bookid="'+ response.items[i].id +'" data-read-more="'+ response.items[i].volumeInfo.infoLink +'" class="addBook">Add Book</button>' +
+                              '</div></div></div>');
+                                 bookNumber+=1;
                         //
                         // title = $('<div class="col-4"><h5 class="center-align white-text">' + response.items[i].volumeInfo.title + '</h5>');
                         // author = $('<h5 class="center-align white-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
@@ -96,8 +105,10 @@
     })
 $(document).on("click",".addBook",function (){
     console.log("Add book clicked");
-    document.querySelector('#add_book').innerHTML = 'Added!';
-    document.getElementById('add_book').disabled = true;
+    $(this).prop("disabled", true);
+    $(this).siblings('.loading').show();
+    // document.querySelector('#add_book').innerHTML = 'Added!';
+    // document.getElementById('add_book').disabled = true;
     let bookid = $(this).attr("data-bookid");
     let author = $(this).attr("data-author");
     let title = $(this).attr("data-title");

@@ -45,7 +45,7 @@
                 type: "POST",
                 data: requestData
             }).done(function (fragment){
-                // window.location.reload();
+                window.location.reload();
                 console.log("done")
                 $("#bookshelf").replaceWith(fragment)
             }).fail(function (jqXhr, status, error){
