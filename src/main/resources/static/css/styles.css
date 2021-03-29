@@ -1024,4 +1024,14 @@ img {
     }
 }
 
+/*Book shelf styling*/
+.bookshelf-card{
+    margin: auto;
+    width: 25rem;
+}
+
+.bookshelf-button{
+    margin: auto;
+
+}
 /*------------------------------------------------------------------------------------*/
