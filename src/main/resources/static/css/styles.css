@@ -983,7 +983,7 @@ img {
 }
 
 .nav-tabs #nav-account-information-tab:hover, .nav-tabs #nav-account-information-tab.active {
-    background: #ff8aab;
+    background: #78dfe3;
 }
 
 .nav-tabs #nav-update-profile-information-tab:hover, .nav-tabs #nav-update-profile-information-tab.active {
@@ -991,7 +991,7 @@ img {
 }
 
 .nav-tabs #nav-change-password-tab:hover, .nav-tabs #nav-change-password-tab.active {
-    background: #78dfe3;
+    background: #ff8faf;
 }
 
 
