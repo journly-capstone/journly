@@ -157,7 +157,7 @@ body {
 /*------------------------------------------------------------------------------------*/
 .footer-style {
     width: 100vw;
-    background: var(--footer-background-color);
+    background: transparent;
 }
 
 .footer-link a {
@@ -173,6 +173,7 @@ body {
 .footer-label {
     text-align: center;
     align-content: center;
+    height: 2rem;
 }
 
 
