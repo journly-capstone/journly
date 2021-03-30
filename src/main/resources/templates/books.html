@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-<body>
+<body id="books-body">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <!--<nav th:replace="partials/navbar :: navbar"></nav>-->
 
@@ -74,9 +74,9 @@
                                             '<div class="card-body">' +
                                                 '<h5 id="title" class=""> ' + response.items[i].volumeInfo.title + '</h5>' +
                                                 '<h6 id="author" class=""> By:' + response.items[i].volumeInfo.authors + '</h6>' +
-                                                '<a target="_blank" href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>' +
+                                                '<a target="_blank" href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn btn-link">Read More</button></a>' +
                                                 '<button id="add_book" type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" ' +
-                                                'data-bookid="'+ response.items[i].id +'" data-read-more="'+ response.items[i].volumeInfo.infoLink +'" class="addBook">Add Book</button>' +
+                                                'data-bookid="'+ response.items[i].id +'" data-read-more="'+ response.items[i].volumeInfo.infoLink +'" class="addBook btn btn-info btn-sm">Add Book</button>' +
                               '</div></div></div>');
 
                         bookNumber+=1;
