@@ -34,7 +34,7 @@
                     </div>
                     <div class="card-body">
                         <div class="like_button">
-                            <button id="like_button" class="likeToggle" value="Like" th:text="${hasLiked.get(entry.getId())}?'unlike' : 'like'" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
+                            <button id="like_button" class="btn btn-info" value="Like" th:text="${hasLiked.get(entry.getId())}?'unlike' : 'like'" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
                             <i id="like_heart" class="fas fa-heart"></i>
                             <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                         </div>
