@@ -47,7 +47,6 @@
                             class="icon-edit"></i>
                         <input type="hidden" name="entryId" th:value="${entry.id}">
                         <button type="button" class="btn btn-info edit-btn">Edit</button>
-<!--                        <i type="button" class='btn edit-btn far fa-edit'></i>-->
 
                     </form>
                     <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
@@ -61,25 +60,13 @@
                     </div>
                 </div>
                 </div>
-                <!--            </div>-->
-                <!--            <p th:text="${entry.getPrompt().prompt}"></p>-->
-                <!--            <p th:text="${entry.body}"></p>-->
-                <!--            <p class="createdAt" th:text="${entry.createdAt}"></p>-->
-                <!--            <p th:if="${entry.isPublic}">Public</p>-->
-                <!--            <p th:if="${!entry.isPublic}">Private</p>-->
-                <!--            <div class="card-body">-->
-                <!--                <div class="like_button">-->
-                <!--                    <button id="like_button" value="Like">Like</button>-->
-                <!--                    <span class="count" th:text="${numOfLikes}"></span>-->
-                <!--                </div>-->
-                <!--            </div>-->
             </div>
         </div>
     </div>
 </div>
 
     <div th:replace="partials/scripts :: assets"></div>
-    <!--<div th:replace="partials/footer :: footer"></div>-->
+    <div th:replace="partials/footer :: footer"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
             integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
             crossorigin="anonymous"></script>
