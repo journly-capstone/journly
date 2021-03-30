@@ -40,12 +40,19 @@ public class GratitudeEntryController {
     @GetMapping("/gratitude-board")
     public String gratitudeBoard(Model model) {
         List<GratitudeEntry> entries = gratitudeEntryDao.findAll();
+        User user = userService.getLoggedInUser();
         HashMap<Long, Integer> numOfLikes = new HashMap<Long, Integer>();
+        HashMap<Long, Boolean> hasLiked = new HashMap<Long, Boolean>();
+
         for (GratitudeEntry entry : entries) {
 
             List<Like> likes = likeDao.findByGratitudeEntry(entry);
             numOfLikes.put(entry.getId(), likes.size());
+
+            List<Like> UserhasLiked = likeDao.findAllByGratitudeEntryAndUser(entry, user);
+            hasLiked.put(entry.getId(), UserhasLiked.size() > 0);
         }
+        model.addAttribute("hasLiked", hasLiked);
         model.addAttribute("entries", entries);
         model.addAttribute("numOfLikes", numOfLikes);
         return "gratitudes/gratitude-board";
