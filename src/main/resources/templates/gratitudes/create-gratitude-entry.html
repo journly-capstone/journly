@@ -6,7 +6,7 @@
 <!--<div class="jumbotron text-center mb-2 pink-btn">-->
 <!--</div>-->
 
-<div class="container w-75 gratitude-entry-form px-3 text-center">
+<div class="container w-75 gratitude-entry-form px-3 text-center pb-3">
     <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${gratitudeEntry}" enctype="multipart/form-data">
         <div class="form-group col justify-content-center" id="gratitude-entry-prompt-header">
             <h4 th:text="${prompt.prompt}"></h4>

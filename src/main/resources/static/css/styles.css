@@ -98,7 +98,7 @@ body {
     position: relative;
     width: 90%;
     max-width: 800px;
-    min-width: 400px;
+    /*min-width: 400px;*/
     height: 300px;
     margin: 0 auto;
     background: #fafafa;
@@ -181,10 +181,8 @@ body {
 /*------------------------------------------------------------------------------------*/
 @media screen and (min-width:375px) {
     .notebook {
-        width: 90%;
-        max-width: 400px;
-        min-width: 350px;
-        height: 500px;
+        width: 350px;
+        height: 550px;
     }
 }
 
@@ -195,7 +193,7 @@ and (min-height : 812px)
 and (-webkit-device-pixel-ratio : 3) {
     .notebook {
         width: 90%;
-        max-width: 360px;
+        max-width: 350px;
         min-width: 350px;
         height: 600px;
     }
@@ -217,8 +215,8 @@ and (-webkit-device-pixel-ratio: 3) {
 @media screen and (min-width:411px) {
     .notebook {
         width: 90%;
-        max-width: 400px;
-        min-width: 350px;
+        max-width: 350px;
+        min-width: 300px;
         height: 500px;
     }
 }
