@@ -42,7 +42,8 @@
                     </div>
                     <div class="card-body">
                         <div class="like_button">
-                            <button id="like_button" value="Like" >Like</button>
+                            <button id="like_button" value="Like" th:text="${hasLiked.get(entry.getId())}?'unlike' : 'like'" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
+                            <i id="like_heart" class="fas fa-heart"></i>
                             <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                         </div>
                     </div>
@@ -71,18 +72,26 @@
         let _csrf_token = /*[[${_csrf.token}]]*/ '';
         let _csrf_param_name =  /*[[${_csrf.parameterName}]]*/ '';
         let hasLiked = /*[[${hasLiked}]]*/ false;
-        let gratitudeEntryId = /*[[${singleEntry.id}]]*/ '';
         /*]]>*/
 
+        document.body.onload = function() {
+            if ($(this).data("hasLiked")){
+                document.querySelector('#like_button').innerHTML = 'Unlike!';
+                document.getElementById('like_heart').style.color = "red";
+                // document.querySelector('#unlike_button').hidden = false;
+            }}
+
         $(".like_button button").on("click", function () {
-            if (hasLiked === true) {
-                // document.querySelector('#like_button').innerHTML = 'Already Liked!';
+            if ($(this).data("hasLiked")) {
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 - 1);
+                $(this).data("hasLiked")
                 document.querySelector('#like_button').innerHTML = 'Like!';
+                document.getElementById('like_heart').style.color = "gray";
+
                 console.log("unLike button clicked");
                 let requestData = {
-                    "gratitudeId": gratitudeEntryId
+                    "gratitudeId": $(this).data("id")
                 }
                 requestData[_csrf_param_name] = _csrf_token; // Adds the token
                 $.ajax("/unlike_gratitude_entry", {
@@ -93,7 +102,7 @@
                 }).fail(function (jqXhr, status, error) {
                     console.log(status + error)
                 })
-                hasLiked = false;
+                $(this).data("hasLiked", false);
                 return;
             } else {
                 // document.querySelector('#like_button').innerHTML = 'Already Liked!';
@@ -102,7 +111,7 @@
                 document.querySelector('#like_button').innerHTML = 'Unlike!';
                 console.log("Like button clicked");
                 let requestData = {
-                    "gratitudeId": gratitudeEntryId
+                    "gratitudeId": $(this).data("id")
                 }
                 requestData[_csrf_param_name] = _csrf_token; // Adds the token
                 $.ajax("/like_gratitude_entry", {
@@ -113,12 +122,11 @@
                 }).fail(function (jqXhr, status, error) {
                     console.log(status + error)
                 })
-                hasLiked = true;
+                $(this).data("hasLiked", true);
                 return;
             }
-        });
-    });
-    });
+        })
+    })
 </script>
 </body>
 </html>
