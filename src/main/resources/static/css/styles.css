@@ -1076,7 +1076,12 @@ main.login-content {
     background: #ff8faf;
 }
 
-
+/*BOOKSHELF AND BOOKS CSS*/
+#books-body {
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
 /* MEDIA QUERIES FOR PROFILE SETTINGS PAGE */
 /*------------------------------------------------------------------------------------*/
