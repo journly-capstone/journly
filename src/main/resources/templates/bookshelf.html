@@ -8,7 +8,7 @@
     <div class="bookshelf-card mb-3" th:each="book : ${books}">
         <div class="row no-gutters">
             <div class="col-4">
-                <img class="card-img" id="dynamic" alt="image" th:src="${book.getBookThumbnail()}"></img>
+                <img class="card-img bookshelf-card-img mx-auto d-block rounded " id="bookshelf-card" alt="image" th:src="${book.getBookThumbnail()}"></img>
             </div>
             <div class="col">
                 <div class="card-body">
