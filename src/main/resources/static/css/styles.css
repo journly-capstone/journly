@@ -1119,5 +1119,12 @@ main.login-content {
     margin: auto;
 
 }
+#like-heart{
+    background-color: #ff005c;
+
+}
+.like-container{
+    align-items: center;
+}
 
 /*------------------------------------------------------------------------------------*/
