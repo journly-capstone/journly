@@ -898,22 +898,69 @@ main.login-content {
     border-radius: 50%;
 }
 
+.gratitude-card {
+    background: rgba( 255, 255, 255, 0.90 ) !important;
+    backdrop-filter: blur( 20.0px ) !important;
+    -webkit-backdrop-filter: blur( 20.0px ) !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
+    transition: 0.3s !important;
+}
+.gratitude-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
+}
+.gratitude-card-title {
+    font-weight: 500;
+}
+.gratitude-card-text {
+    font-weight: 300;
+}
+.delete-btn{
+    background-color: #ec5858;
+    display: inline-block !important;
+}
+.delete-btn:hover{
+    background-color: #AA3A3A;
+}
+.edit-btn{
+    display: inline-block !important;
+}
+.btn-container{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 
+/* On mouse-over, add a deeper shadow */
+.gratitude-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 
-/*!* Medium devices (tablets, 768px and up) *!*/
-/*@media screen and (min-width:768px) {*/
+.dashboard-body{
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-/*}*/
-/*!* Large devices (desktops, 992px and up) *!*/
-/*@media screen and (min-width:992px) {*/
+.dashboard-jumbotron {
+    background-size: cover;
+    background-position: center;
+    color: white;
 
-/*}*/
-/*!* Extra large devices (large desktops, 1200px and up) *!*/
-/*@media screen and (min-width:1200px) {*/
 
-/* }*/
+}
+
+.dashboard-hr{
+    width: 20%;
+    background-color: #FFF;
+}
+
+.dashboard-quote, .dashboard-author{
+    text-decoration-color: #FFF;
+    font-style: italic;
 
 
 /*GRATITUDE BOARD STYLING*/
@@ -931,6 +978,7 @@ main.login-content {
 /* On mouse-over, add a deeper shadow */
 .gratitude-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
 }
 
 #gratitude-board-body {
@@ -964,6 +1012,7 @@ main.login-content {
 .gratitude-board-card-image {
     border-radius: 20px !important;
 }
+
 
 
 /*PROFILE SETTINGS STYLING*/
@@ -1066,4 +1115,5 @@ main.login-content {
     margin: auto;
 
 }
+
 /*------------------------------------------------------------------------------------*/
