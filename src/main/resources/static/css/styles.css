@@ -898,40 +898,71 @@ main.login-content {
     border-radius: 50%;
 }
 
-
-
-
-
-/*!* Medium devices (tablets, 768px and up) *!*/
-/*@media screen and (min-width:768px) {*/
-
-/*}*/
-/*!* Large devices (desktops, 992px and up) *!*/
-/*@media screen and (min-width:992px) {*/
-
-/*}*/
-/*!* Extra large devices (large desktops, 1200px and up) *!*/
-/*@media screen and (min-width:1200px) {*/
-
-/* }*/
-
 .gratitude-card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    /*border: none;*/
-    border-radius: var(--default-card-border-radius);
-    width: 100%;
-    margin-bottom: 1em;
+    background: rgba( 255, 255, 255, 0.90 ) !important;
+    backdrop-filter: blur( 20.0px ) !important;
+    -webkit-backdrop-filter: blur( 20.0px ) !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
+    transition: 0.3s !important;
+}
+.gratitude-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
+}
+.gratitude-card-title {
+    font-weight: 500;
+}
+.gratitude-card-text {
+    font-weight: 300;
+}
+.delete-btn{
+    background-color: #ec5858;
+    display: inline-block !important;
+}
+.delete-btn:hover{
+    background-color: #AA3A3A;
+}
+.edit-btn{
+    display: inline-block !important;
+}
+.btn-container{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 
-}
-/* Add rounded corners to the top left and the top right corner of the image */
-img {
-    border-radius: 10px 10px 0 0;
-}
+
+
 /* On mouse-over, add a deeper shadow */
 .gratitude-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
+.dashboard-body{
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.dashboard-jumbotron {
+    background-size: cover;
+    background-position: center;
+    color: white;
+
+
+}
+
+.dashboard-hr{
+    width: 20%;
+    background-color: #FFF;
+}
+
+.dashboard-quote, .dashboard-author{
+    text-decoration-color: #FFF;
+    font-style: italic;
+}
+
 
 
 /*PROFILE SETTINGS STYLING*/
@@ -1034,4 +1065,5 @@ img {
     margin: auto;
 
 }
+
 /*------------------------------------------------------------------------------------*/
