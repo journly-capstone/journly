@@ -1,7 +1,7 @@
 <!doctype html>
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-<body class="sign-up-bg">
+<body id="gratitude-board-body" class="sign-up-bg">
 <script>
 
     document.body.onload = function() {
@@ -17,25 +17,25 @@
     <h1>Welcome to the Gratitude Board!</h1>
     <p>Looking for a pick-me-up, or maybe some inspiration? Read through gratitude entries created by other members of Journly.</p>
 </div>
-<div class="form-inline justify-content-center px-3 pb-1">
+<div class="form-inline justify-content-center container px-3 pb-5">
     <div class="col-md card-columns">
         <div th:each="entry : ${entries}">
             <div th:if="${entry.isPublic}">
-                <div class="card shadow p-3 mb-5 rounded">
+                <div class="card gratitude-board-card shadow p-3 mb-3 rounded">
                     <div class="row align-items-center px-3 pb-1">
                         <img th:src="@{'' + ${entry.user.getImgFilePath()}}"  class="card-profile-picture"/>
-                        <p class="align-items-center" th:text="${entry.user.getUsername()}"></p>
+                        <p class="align-items-center pl-2" th:text="${entry.user.getUsername()}"></p>
                     </div>
                     <div>
-                        <div th:if="${entry.imgFilePath != null}">
-                            <img class="card-img-top" th:src="${entry.imgFilePath}">
+                        <div class="gratitude-image-card-container" th:if="${entry.imgFilePath != null}">
+                            <img class="card-img-top gratitude-board-card-image mt-3" th:src="${entry.imgFilePath}">
                         </div>
                         <div th:unless="${entry.imgFilePath != null}">
                         </div>
                     </div>
-                    <div class="card-body">
-                        <p class="card-title" th:text="${entry.getPrompt().prompt}"></p>
-                        <p class="card-text" th:text="${entry.body}"></p>
+                    <div class="card-body" style="overflow: hidden;">
+                        <h5 class="gratitude-board-card-title card-title mb-0" th:text="${entry.getPrompt().prompt}"></h5>
+                        <h5 class="card-text gratitude-card-text" th:text="${entry.body}"></h5>
                     </div>
                     <div class="card-body align-items-center py-0 text-center justify-content-center view-more-bg">
                         <a class="card-link text-center justify-content-center" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <div class="like_button">
                             <button id="like_button" value="Like" >Like</button>
-                            <span class="count" th:text="${numOfLikes}"></span>
+                            <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                         </div>
                     </div>
                 </div>

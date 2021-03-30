@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "gratitude_entry")

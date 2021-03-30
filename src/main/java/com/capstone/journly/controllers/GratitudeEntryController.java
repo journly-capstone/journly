@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -39,7 +40,14 @@ public class GratitudeEntryController {
     @GetMapping("/gratitude-board")
     public String gratitudeBoard(Model model) {
         List<GratitudeEntry> entries = gratitudeEntryDao.findAll();
+        HashMap<Long, Integer> numOfLikes = new HashMap<Long, Integer>();
+        for (GratitudeEntry entry : entries) {
+
+            List<Like> likes = likeDao.findByGratitudeEntry(entry);
+            numOfLikes.put(entry.getId(), likes.size());
+        }
         model.addAttribute("entries", entries);
+        model.addAttribute("numOfLikes", numOfLikes);
         return "gratitudes/gratitude-board";
     }
 
