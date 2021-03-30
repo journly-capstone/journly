@@ -2,15 +2,7 @@
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
 <body id="gratitude-board-body" class="sign-up-bg">
-<script>
 
-    document.body.onload = function() {
-    if (hasLiked === true){
-    document.querySelector('#like_button').innerHTML = 'Unlike!';
-    // document.querySelector('#unlike_button').hidden = false;
-}}
-
-</script>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="jumbotron flex-box justify-content-center text-center">
@@ -42,7 +34,7 @@
                     </div>
                     <div class="card-body">
                         <div class="like_button">
-                            <button id="like_button" value="Like" th:text="${hasLiked.get(entry.getId())}?'unlike' : 'like'" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
+                            <button id="like_button" class="likeToggle" value="Like" th:text="${hasLiked.get(entry.getId())}?'unlike' : 'like'" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
                             <i id="like_heart" class="fas fa-heart"></i>
                             <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                         </div>
@@ -67,7 +59,6 @@
             date.innerText = moment(date.innerText).format("LLLL");
         }
 
-
         /*<![CDATA[*/
         let _csrf_token = /*[[${_csrf.token}]]*/ '';
         let _csrf_param_name =  /*[[${_csrf.parameterName}]]*/ '';
@@ -75,20 +66,20 @@
         /*]]>*/
 
         document.body.onload = function() {
-            if ($(this).data("hasLiked")){
-                document.querySelector('#like_button').innerHTML = 'Unlike!';
-                document.getElementById('like_heart').style.color = "red";
-                // document.querySelector('#unlike_button').hidden = false;
-            }}
+            $(".like_button button").each(function () {
+                if($(this).data("hasliked")){
+                    $(this).siblings('.fa-heart').css("color", "red");
+                }else {
+                    $(this).siblings('.fa-heart').css("color", "gray");
+                }
+            })}
 
         $(".like_button button").on("click", function () {
-            if ($(this).data("hasLiked")) {
+            if ($(this).data("hasliked")) {
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 - 1);
-                $(this).data("hasLiked")
-                document.querySelector('#like_button').innerHTML = 'Like!';
-                document.getElementById('like_heart').style.color = "gray";
-
+                $(this).text('Like');
+                $(this).siblings('.fa-heart').css("color", "gray");
                 console.log("unLike button clicked");
                 let requestData = {
                     "gratitudeId": $(this).data("id")
@@ -102,14 +93,15 @@
                 }).fail(function (jqXhr, status, error) {
                     console.log(status + error)
                 })
-                $(this).data("hasLiked", false);
+                $(this).data("hasliked", false);
                 return;
             } else {
                 // document.querySelector('#like_button').innerHTML = 'Already Liked!';
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 + 1);
-                document.querySelector('#like_button').innerHTML = 'Unlike!';
+                $(this).text('Unlike');
                 console.log("Like button clicked");
+                $(this).siblings('.fa-heart').css("color", "red");
                 let requestData = {
                     "gratitudeId": $(this).data("id")
                 }
@@ -122,7 +114,7 @@
                 }).fail(function (jqXhr, status, error) {
                     console.log(status + error)
                 })
-                $(this).data("hasLiked", true);
+                $(this).data("hasliked", true);
                 return;
             }
         })
