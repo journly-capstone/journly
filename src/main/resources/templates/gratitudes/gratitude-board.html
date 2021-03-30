@@ -2,15 +2,7 @@
 <html id="index-html" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
 <body id="gratitude-board-body" class="sign-up-bg">
-<script>
 
-    document.body.onload = function() {
-    if (hasLiked === true){
-    document.querySelector('#like_button').innerHTML = 'Unlike!';
-    // document.querySelector('#unlike_button').hidden = false;
-}}
-
-</script>
 <nav th:replace="partials/navbar :: navbar"></nav>
 
 <div class="jumbotron flex-box justify-content-center text-center">
@@ -42,7 +34,8 @@
                     </div>
                     <div class="card-body">
                         <div class="like_button">
-                            <button id="like_button" value="Like" >Like</button>
+                            <button id="like_button" class="likeToggle" value="Like" th:text="${hasLiked.get(entry.getId())}?'unlike' : 'like'" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
+                            <i id="like_heart" class="fas fa-heart"></i>
                             <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                         </div>
                     </div>
@@ -66,23 +59,30 @@
             date.innerText = moment(date.innerText).format("LLLL");
         }
 
-
         /*<![CDATA[*/
         let _csrf_token = /*[[${_csrf.token}]]*/ '';
         let _csrf_param_name =  /*[[${_csrf.parameterName}]]*/ '';
         let hasLiked = /*[[${hasLiked}]]*/ false;
-        let gratitudeEntryId = /*[[${singleEntry.id}]]*/ '';
         /*]]>*/
 
+        document.body.onload = function() {
+            $(".like_button button").each(function () {
+                if($(this).data("hasliked")){
+                    $(this).siblings('.fa-heart').css("color", "red");
+                }else {
+                    $(this).siblings('.fa-heart').css("color", "gray");
+                }
+            })}
+
         $(".like_button button").on("click", function () {
-            if (hasLiked === true) {
-                // document.querySelector('#like_button').innerHTML = 'Already Liked!';
+            if ($(this).data("hasliked")) {
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 - 1);
-                document.querySelector('#like_button').innerHTML = 'Like!';
+                $(this).text('Like');
+                $(this).siblings('.fa-heart').css("color", "gray");
                 console.log("unLike button clicked");
                 let requestData = {
-                    "gratitudeId": gratitudeEntryId
+                    "gratitudeId": $(this).data("id")
                 }
                 requestData[_csrf_param_name] = _csrf_token; // Adds the token
                 $.ajax("/unlike_gratitude_entry", {
@@ -93,16 +93,17 @@
                 }).fail(function (jqXhr, status, error) {
                     console.log(status + error)
                 })
-                hasLiked = false;
+                $(this).data("hasliked", false);
                 return;
             } else {
                 // document.querySelector('#like_button').innerHTML = 'Already Liked!';
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 + 1);
-                document.querySelector('#like_button').innerHTML = 'Unlike!';
+                $(this).text('Unlike');
                 console.log("Like button clicked");
+                $(this).siblings('.fa-heart').css("color", "red");
                 let requestData = {
-                    "gratitudeId": gratitudeEntryId
+                    "gratitudeId": $(this).data("id")
                 }
                 requestData[_csrf_param_name] = _csrf_token; // Adds the token
                 $.ajax("/like_gratitude_entry", {
@@ -113,12 +114,11 @@
                 }).fail(function (jqXhr, status, error) {
                     console.log(status + error)
                 })
-                hasLiked = true;
+                $(this).data("hasliked", true);
                 return;
             }
-        });
-    });
-    });
+        })
+    })
 </script>
 </body>
 </html>
