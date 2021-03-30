@@ -162,7 +162,7 @@ body {
 
 .footer-link a {
     color: var(--footer-link-color);
-    padding: 0;
+    padding-bottom: 10px;
 }
 
 .footer-links {
