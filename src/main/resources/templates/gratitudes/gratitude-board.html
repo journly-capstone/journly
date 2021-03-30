@@ -33,9 +33,9 @@
                         <a class="card-link text-center justify-content-center" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
                     </div>
                     <div class="card-body">
-                        <div class="like_button">
-                            <button id="like_button" class="btn btn-info" value="Like" th:text="${hasLiked.get(entry.getId())}?'unlike' : 'like'" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
-                            <i id="like_heart" class="fas fa-heart"></i>
+                        <div class="like_button text-right">
+                            <button id="like_button" class="fas fa-heart" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
+<!--                            <i id="like_heart" class="fas fa-heart"></i>-->
                             <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                         </div>
                     </div>
@@ -68,9 +68,9 @@
         document.body.onload = function() {
             $(".like_button button").each(function () {
                 if($(this).data("hasliked")){
-                    $(this).siblings('.fa-heart').css("color", "red");
+                    $(this).css("color", "red");
                 }else {
-                    $(this).siblings('.fa-heart').css("color", "gray");
+                    $(this).css("color", "gray");
                 }
             })}
 
@@ -78,8 +78,7 @@
             if ($(this).data("hasliked")) {
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 - 1);
-                $(this).text('Like');
-                $(this).siblings('.fa-heart').css("color", "gray");
+                $(this).css("color", "gray");
                 console.log("unLike button clicked");
                 let requestData = {
                     "gratitudeId": $(this).data("id")
@@ -99,9 +98,9 @@
                 // document.querySelector('#like_button').innerHTML = 'Already Liked!';
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 + 1);
-                $(this).text('Unlike');
                 console.log("Like button clicked");
-                $(this).siblings('.fa-heart').css("color", "red");
+                $(this).css("color", "red");
+
                 let requestData = {
                     "gratitudeId": $(this).data("id")
                 }

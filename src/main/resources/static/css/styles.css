@@ -1124,6 +1124,12 @@ main.login-content {
     margin: auto;
 
 }
+#like_button{
+    outline: none;
+    border: none;
+    font-size: 1.5em;
+}
+
 #like-heart{
     background-color: #ff005c;
 

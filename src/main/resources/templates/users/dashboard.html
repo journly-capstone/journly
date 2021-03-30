@@ -37,19 +37,19 @@
                     <h5 class="gratitude-board-card-title card-title mb-0" th:text="${entry.getPrompt().prompt}"></h5>
                     <h5 class="card-text gratitude-card-text" th:text="${entry.body}"></h5>
                 </div>
-                <div class="card-body like-container py-0  view-more-bg">
-                    <i id="like_heart" class="fas fa-heart"></i>
+                <div class="card-body like-container py-0  view-more-bg text-right">
+                    <i id="like_heart" class="fas fa-heart" style="color: red"></i>
                     <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                 </div>
                 <div class="btn-container" sec:authorize="isAuthenticated()">
                     <form class="btn" th:action="@{|/dashboard/${entry.id}/update/|}" method="get"><i
                             class="icon-edit"></i>
                         <input type="hidden" name="entryId" th:value="${entry.id}">
-                        <button type="submit" value="Edit" class="btn btn-info edit-btn">Edit</button>
+                        <button type="submit" value="Edit" class="btn btn-outline-info edit-btn">Edit</button>
                     </form>
                     <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
                         <input type="hidden" name="entryId" th:value="${entry.id}">
-                        <button type="submit" value="Delete" class="btn delete-btn">Delete</button>
+                        <button type="submit" value="Delete" class="btn btn-outline-danger">Delete</button>
                     </form>
                 </div>
             </div>
