@@ -949,6 +949,7 @@ main.login-content {
     background-size: cover;
     background-position: center;
     color: white;
+    border-radius: 0;
 
 
 }
@@ -958,10 +959,10 @@ main.login-content {
     background-color: #FFF;
 }
 
-.dashboard-quote, .dashboard-author{
+.dashboard-quote, .dashboard-author {
     text-decoration-color: #FFF;
     font-style: italic;
-
+}
 
 /*GRATITUDE BOARD STYLING*/
 /*------------------------------------------------------------------------------------*/

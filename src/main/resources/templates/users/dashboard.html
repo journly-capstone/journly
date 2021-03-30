@@ -6,7 +6,7 @@
 
 
 <div class="jumbotron dashboard-jumbotron bg-cover"
-     style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(img/beach-waves.jpg)">
+     style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(img/calming.jpg)">
     <div class="text-center">
         <h1 class="display-4 dashboard-header">Welcome, <span th:text="${user.getUsername()}"></span>!</h1>
         <hr class="dashboard-hr mx-auto">
@@ -52,7 +52,7 @@
                     </form>
                     <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
                         <input type="hidden" name="entryId" th:value="${entry.id}">
-                        <button type="button" class="btn delete-btn ">Delete</button>
+                        <button type="button" class="btn delete-btn">Delete</button>
                     </form>
                 <div class="btn">
                     <div class="like_button">
