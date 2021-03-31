@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-<body>
+<body id="books-body">
 <nav th:replace="partials/navbar :: navbar"></nav>
 <!--<nav th:replace="partials/navbar :: navbar"></nav>-->
 
@@ -11,7 +11,7 @@
     <div class="form">
         <div id="search">
             <form id="myform">
-                <div class="input-field">
+                <div class="input-field d-flex justify-content-center">
                     <input type="search" id="books">
                     <label for="search"></label>
                     <button class="btn">Search Books</button>
@@ -74,31 +74,19 @@
                                             '<div class="card-body">' +
                                                 '<h5 id="title" class=""> ' + response.items[i].volumeInfo.title + '</h5>' +
                                                 '<h6 id="author" class=""> By:' + response.items[i].volumeInfo.authors + '</h6>' +
-                                                '<a target="_blank" href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>' +
+                                                '<a target="_blank" href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn btn-link">Read More</button></a>' +
                                                 '<button id="add_book" type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" ' +
-                                                'data-bookid="'+ response.items[i].id +'" data-read-more="'+ response.items[i].volumeInfo.infoLink +'" class="addBook">Add Book</button>' +
+                                                'data-bookid="'+ response.items[i].id +'" data-read-more="'+ response.items[i].volumeInfo.infoLink +'" class="addBook btn btn-info btn-sm">Add Book</button>' +
                               '</div></div></div>');
-                                 bookNumber+=1;
-                        //
-                        // title = $('<div class="col-4"><h5 class="center-align white-text">' + response.items[i].volumeInfo.title + '</h5>');
-                        // author = $('<h5 class="center-align white-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
-                        // img = $('<img class="aligning card z-depth-5" id="dynamic" alt="image"><br><a href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class="btn red aligning">Read More</button></a>');
-                        // button = $('<button type="submit" data-thumbnail="'+ response.items[i].volumeInfo.imageLinks.thumbnail +'" data-title="'+ response.items[i].volumeInfo.title +'" data-author="'+ response.items[i].volumeInfo.authors +'" data-bookid="'+ response.items[i].id +'" class="addBook">Add Book</button></div>');
+
+                        bookNumber+=1;
+
                         url = response.items[i].volumeInfo.imageLinks.thumbnail;
-                        // col = $('<div id="bookResult" class="col-4">');
-                        // col.appendTo('#result')
                         html.attr('src', url);
                         html.appendTo('#result');
-                        // title.appendTo('#result');
-                        // author.appendTo('#result');
-                        // img.appendTo('#result');
-                        // button.appendTo('#result');
-                        // colClose = $('</div>')
-                        // colClose.appendTo('#result');
                         console.log(response.items[i])
                     }
                 });
-
             }
             return false;
         })
@@ -107,8 +95,6 @@ $(document).on("click",".addBook",function (){
     console.log("Add book clicked");
     $(this).prop("disabled", true);
     $(this).siblings('.loading').show();
-    // document.querySelector('#add_book').innerHTML = 'Added!';
-    // document.getElementById('add_book').disabled = true;
     let bookid = $(this).attr("data-bookid");
     let author = $(this).attr("data-author");
     let title = $(this).attr("data-title");
@@ -124,10 +110,10 @@ $(document).on("click",".addBook",function (){
         type: "POST",
         data: requestData
     }).done(function (data, status, jqXhr){
-        console.log("done")
+
     }).fail(function (jqXhr, status, error){
-        console.log(error)
-        window.location.replace("https://journly.org/login")
+
+        // window.location.replace("https://journly.org/login")
     })
 })
 </script>

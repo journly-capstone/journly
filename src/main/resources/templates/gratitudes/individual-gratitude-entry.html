@@ -2,43 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
 <body>
-<script>
-    document.body.onload = function() {
-        if (hasLiked === true){
-            document.querySelector('#like_button').innerHTML = 'Unlike!';
-            // document.querySelector('#unlike_button').hidden = false;
-    }}
-</script>
 <div th:replace="partials/navbar :: navbar"></div>
 
-<div class="container">
-
-
-    <div class="col-md-6">
-        <img class="img-thumbnail img-fluid" th:src="${singleEntry.getImgFilePath()}"></img>
-        <h1 th:text="${singleEntry.getPrompt().prompt}"></h1>
-        <h1 th:text="${singleEntry.body}"></h1>
-        <h1 class="createdAt" th:text="${singleEntry.createdAt}"></h1>
-        <h1 th:text="${singleEntry.user.getUsername()}"></h1>
+<div class="mx-auto justify-content-center container px-3 py-5">
+    <div class="row">
+        <div class="col-4">
+            <img class="img-thumbnail img-fluid" th:src="${singleEntry.getImgFilePath()}"></img>
+        </div>
+        <div class="col-8">
+            <h4 th:text="${singleEntry.getPrompt().prompt}"></h4>
+            <h4 th:text="${singleEntry.body}"></h4>
+        </div>
     </div>
-    <div class="like_button">
-        <button id="like_button" value="Like" >Like</button>
-        <span class="count" th:text="${numOfLikes}"></span>
-<!--        <button id="unlike_button" value="unlike" >UnLike</button>-->
+    <div class="row">
+        <div class="col-8">
+            <img th:src="@{'' + ${singleEntry.user.getImgFilePath()}}"  class="card-profile-picture"/>
+            <h5 th:text="${singleEntry.user.getUsername()}"></h5>
+            <h5 class="createdAt" th:text="${singleEntry.createdAt}"></h5>
+        </div>
+        <div class="like_button col-4">
+            <button type="button" class="btn btn-link" id="like_button" value="Like" >Like</button>
+            <i id="like_heart" class="fas fa-heart"></i>
+            <span class="count" th:text="${numOfLikes}"></span>
+            <!--        <button id="unlike_button" value="unlike" >UnLike</button>-->
+        </div>
     </div>
-    <!--<div th:replace="partials/footer :: footer"></div>-->
 </div>
+<div th:replace="partials/footer :: footer"></div>
 <div th:replace="partials/scripts :: assets"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script th:inline="javascript">
 
     "use strict";
     $(function() {
-
-        const dates = document.querySelectorAll(".createdAt");
-        for (let date of dates) {
-            date.innerText = moment(date.innerText).format("LLLL");
-        }
 
         /*<![CDATA[*/
         let _csrf_token = /*[[${_csrf.token}]]*/ '';
@@ -47,12 +43,26 @@
         let gratitudeEntryId = /*[[${singleEntry.id}]]*/ '';
         /*]]>*/
 
+        document.body.onload = function() {
+            if (hasLiked === true){
+                document.querySelector('#like_button').innerHTML = 'Unlike!';
+                document.getElementById('like_heart').style.color = "red";
+                // document.querySelector('#unlike_button').hidden = false;
+            }}
+
+
+        const dates = document.querySelectorAll(".createdAt");
+        for (let date of dates) {
+            date.innerText = moment(date.innerText).format("LLLL");
+        }
+
         $(".like_button button").on("click", function () {
             if (hasLiked === true) {
                 // document.querySelector('#like_button').innerHTML = 'Already Liked!';
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 - 1);
                 document.querySelector('#like_button').innerHTML = 'Like!';
+                document.getElementById('like_heart').style.color = "grey";
                 console.log("unLike button clicked");
                 let requestData = {
                     "gratitudeId": gratitudeEntryId
@@ -73,6 +83,7 @@
                 var $count = $(this).parent().find('.count');
                 $count.html($count.html() * 1 + 1);
                 document.querySelector('#like_button').innerHTML = 'Unlike!';
+                document.getElementById('like_heart').style.color = "red";
                 console.log("Like button clicked");
                 let requestData = {
                     "gratitudeId": gratitudeEntryId
