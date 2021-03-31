@@ -22,10 +22,11 @@
         </div>
         <hr>
         <div class="row text-center">
-            <div class="col form-group justify-content-center">
-                <p class="text-center font-weight-bold">Image for Gratitude Entry (optional):</p>
+            <div class="col-sm gratitude-entry-image-upload form-group justify-content-center">
+                <label for="image" class="text-center font-weight-bold">Image for Gratitude Entry (optional):</label>
                 <br>
-                <input type="file" class="manual-center" name="image">
+                <input class="" type="hidden" name="image" th:field="*{imgFilePath}">
+                <input id="image" class="text-center form-control-file" name="image" type="file">
             </div>
             <div class="col form-group justify-content-center">
                 <p class="font-weight-bold">Post to public Gratitude Board?</p>
@@ -34,7 +35,7 @@
             </div>
         </div>
 
-        <input type="submit" placeholder="Update Gratitude Entry">
+        <button type="submit" class="btn btn-info">Submit</button>
     </form>
 </div>
 
