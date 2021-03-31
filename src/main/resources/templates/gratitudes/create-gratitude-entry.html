@@ -3,16 +3,14 @@
 <head th:replace="partials/head :: head"></head>
 <body class="sign-up-bg d-flex flex-column min-vh-100" id="create-update-body">
 <nav th:replace="partials/navbar :: navbar"></nav>
-<!--<div class="jumbotron text-center mb-2 pink-btn">-->
-<!--</div>-->
 
 <div class="flex-fill container w-75 gratitude-entry-form px-3 text-center pb-3">
     <form th:action="@{/gratitude-board/create}" th:method="post" th:object="${gratitudeEntry}" enctype="multipart/form-data">
         <div class="form-group col justify-content-center" id="gratitude-entry-prompt-header">
-            <h4 th:text="${prompt.prompt}"></h4>
+            <h2 th:text="${prompt.prompt}"></h2>
             <input type="hidden" name="promptId" th:value="${prompt.id}">
             <br>
-            <p>(Writer's block? Refresh the page for a new prompt!)</p>
+            <h5>(Writer's block? Refresh the page for a new prompt!)</h5>
         </div>
         <div class="form-group row" id="gratitude-entry-body">
             <div class="notebook">
@@ -23,20 +21,21 @@
         </div>
         <hr>
         <div class="row text-center privacy-and-upload">
-            <div class="col gratitude-entry-image-upload form-group justify-content-center">
+            <div class="col-sm gratitude-entry-image-upload form-group justify-content-center">
                 <label for="image" class="text-center font-weight-bold">Image for Gratitude Entry (optional):</label>
                 <br>
                 <input class="" type="hidden" name="image" th:field="*{imgFilePath}">
-                <input id="image" class="manual-center form-control-file" name="image" type="file">
+                <input id="image" class="text-center form-control-file" name="image" type="file">
             </div>
-            <div class="col gratitude-entry-privacy form-group justify-content-center" id="gratitude-entry-privacy">
+            <div class="col-sm gratitude-entry-privacy form-group justify-content-center" id="gratitude-entry-privacy">
                 <p class="font-weight-bold">Post to public Gratitude Board?</p>
-                <input type="checkbox" id="privacyCheckbox" name="isPublic" th:field="*{isPublic}"/>
+                <input type="checkbox" id="privacyCheckbox" name="isPublic" th:field="*{isPublic}" style="height:25px; width: 25px;"/>
                 <label for="privacyCheckbox">Yes</label>
             </div>
         </div>
-        <hr>
-        <input type="submit" placeholder="Submit New Gratitude Entry">
+
+        <button type="button" class="btn btn-info">Submit</button>
+
     </form>
 </div>
 
