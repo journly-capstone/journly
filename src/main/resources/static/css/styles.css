@@ -1256,5 +1256,9 @@ main.login-content {
     font-weight: normal;
 }
 
+.search-btn {
+    outline: none;
+    border:none;
+}
 /*------------------------------------------------------------------------------------*/
 

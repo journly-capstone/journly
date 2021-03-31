@@ -5,8 +5,15 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <!--<nav th:replace="partials/navbar :: navbar"></nav>-->
 
-<main>
-    <h1 class="d-flex justify-content-center">Search for Career-Related Books</h1>
+
+<div class="flex-box justify-content-center text-center">
+    <br>
+    <hr class="first-hr-landing-pg">
+    <br>
+    <h1>Books</h1>
+    <br>
+    <hr class="second-hr-landing-pg">
+    <br>
 
     <div class="form">
         <div id="search">
@@ -14,21 +21,16 @@
                 <div class="input-field d-flex justify-content-center">
                     <input type="search" id="books">
                     <label for="search"></label>
-                    <button class="btn">Search Books</button>
+                    <button class="btn btn-info search-btn">Search Books</button>
                 </div>
-<!--                            <button class="btn red">Search Books</button>-->
             </form>
         </div>
     </div>
-    <br>
-    <hr>
-    <br>
+</div>
+
+<main class="container">
     <h1 class="d-flex justify-content-center">Search Results:</h1>
-
-
-<!--    <div class="form-inline justify-content-center">-->
         <div class="form-inline justify-content-center" id="result">
-<!--    </div>-->
     </div>
 </main>
 <div th:replace="partials/scripts :: assets"></div>
