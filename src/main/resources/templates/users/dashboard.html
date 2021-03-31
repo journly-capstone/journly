@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head"></head>
-<body class="dashboard-body">
+<body class="dashboard-body d-flex flex-column min-vh-100">
 <div th:replace="partials/navbar :: navbar"></div>
 
 
@@ -14,48 +14,51 @@
         <p class="dashboard-author"> -<span th:text="${quotes.author}"></span></p>
     </div>
 </div>
-<div class="form-inline mb-4 justify-content-center">
-    <a th:href="@{/gratitude-board/create}">
-        <button type="button" class="btn btn-primary my-2 my-sm-0">Create Gratitude Entry</button>
-    </a>
-</div>
+
+<main class="flex-fill container dashboard-container pb-5">
+    <div class="form-inline pt-3 mb-3 justify-content-center">
+        <a th:href="@{/gratitude-board/create}">
+            <button type="button" class="btn create-gratitude-entry-btn my-2 my-sm-0"><i class="font-awesome-circle-plus fas fa-plus"></i></button>
+        </a>
+    </div>
 
 
-<div class="form-inline justify-content-center px-1 container">
-    <div class="row">
-        <div class="col-md-4" th:each="entry : ${user.userGratitudeEntries}">
-            <div class="card shadow p-3 mb-3 gratitude-card rounded">
-                <div class="row align-items-center px-3 pb-1">
-                    <img th:src="@{'' + ${entry.user.getImgFilePath()}}" class="card-profile-picture"/>
-                    <p class="align-items-center pl-2" th:text="${entry.user.getUsername()}"></p>
-                </div>
-                <div class="gratitude-card-container" th:if="${entry.imgFilePath != null}">
-                    <img class="card-img-top gratitude-board-card-image mt-3" th:src="${entry.imgFilePath}">
-                </div>
-                <div th:unless="${entry.imgFilePath != null}"></div>
-                <div class="card-body" style="overflow:hidden;">
-                    <h5 class="gratitude-board-card-title card-title mb-0" th:text="${entry.getPrompt().prompt}"></h5>
-                    <h5 class="card-text gratitude-card-text" th:text="${entry.body}"></h5>
-                </div>
-                <div class="card-body like-container py-0  view-more-bg text-right">
-                    <i id="like_heart" class="fas fa-heart" style="color: red"></i>
-                    <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
-                </div>
-                <div class="btn-container" sec:authorize="isAuthenticated()">
-                    <form class="btn" th:action="@{|/dashboard/${entry.id}/update/|}" method="get"><i
-                            class="icon-edit"></i>
-                        <input type="hidden" name="entryId" th:value="${entry.id}">
-                        <button type="submit" value="Edit" class="btn btn-outline-info edit-btn">Edit</button>
-                    </form>
-                    <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
-                        <input type="hidden" name="entryId" th:value="${entry.id}">
-                        <button type="submit" value="Delete" class="btn btn-outline-danger">Delete</button>
-                    </form>
+    <div class="form-inline justify-content-center px-1 container">
+        <div class="row">
+            <div class="col-md-4" th:each="entry : ${user.userGratitudeEntries}">
+                <div class="card shadow p-3 mb-3 gratitude-card rounded">
+                    <div class="row align-items-center px-3 pb-1">
+                        <img th:src="@{'' + ${entry.user.getImgFilePath()}}" class="card-profile-picture"/>
+                        <p class="align-items-center pl-2" th:text="${entry.user.getUsername()}"></p>
+                    </div>
+                    <div class="gratitude-card-container" th:if="${entry.imgFilePath != null}">
+                        <img class="card-img-top gratitude-board-card-image mt-3" th:src="${entry.imgFilePath}">
+                    </div>
+                    <div th:unless="${entry.imgFilePath != null}"></div>
+                    <div class="card-body" style="overflow:hidden;">
+                        <h5 class="gratitude-board-card-title card-title mb-0" th:text="${entry.getPrompt().prompt}"></h5>
+                        <h5 class="card-text gratitude-card-text" th:text="${entry.body}"></h5>
+                    </div>
+                    <div class="card-body like-container py-0  view-more-bg text-right">
+                        <i id="like_heart" class="fas fa-heart" style="color: red"></i>
+                        <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
+                    </div>
+                    <div class="btn-container" sec:authorize="isAuthenticated()">
+                        <form class="btn" th:action="@{|/dashboard/${entry.id}/update/|}" method="get"><i
+                                class="icon-edit"></i>
+                            <input type="hidden" name="entryId" th:value="${entry.id}">
+                            <button type="submit" value="Edit" class="btn btn-outline-info edit-btn">Edit</button>
+                        </form>
+                        <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
+                            <input type="hidden" name="entryId" th:value="${entry.id}">
+                            <button type="submit" value="Delete" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 
     <div th:replace="partials/scripts :: assets"></div>
     <div th:replace="partials/footer :: footer"></div>
