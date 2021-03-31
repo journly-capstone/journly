@@ -25,7 +25,7 @@
 
     <div class="form-inline justify-content-center px-1 container">
         <div class="row">
-            <div class="col-md-4" th:each="entry : ${user.userGratitudeEntries}">
+            <div class="col-md-4  col-lg-4" th:each="entry : ${user.userGratitudeEntries}">
                 <div class="card shadow p-3 mb-3 gratitude-card rounded">
                     <div class="row align-items-center px-3 pb-1">
                         <img th:src="@{'' + ${entry.user.getImgFilePath()}}" class="card-profile-picture"/>
