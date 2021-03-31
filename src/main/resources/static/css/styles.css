@@ -96,8 +96,8 @@ body {
 /*------------------------------------------------------------------------------------*/
 .notebook {
     position: relative;
-    width: 90%;
-    max-width: 800px;
+    width: 30%;
+    /*width: 1000px;*/
     /*min-width: 400px;*/
     height: 300px;
     margin: 0 auto;
@@ -139,10 +139,6 @@ body {
     z-index: 1;
 }
 
-.manual-center {
-    margin: auto;
-    text-align: center;
-}
 
 /* MISC CARD STYLING */
 /*------------------------------------------------------------------------------------*/
@@ -218,9 +214,13 @@ and (-webkit-device-pixel-ratio: 3) {
 @media screen and (min-width:411px) {
     .notebook {
         width: 90%;
-        max-width: 350px;
-        min-width: 300px;
         height: 500px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    #notebook {
+        width: 1000px;
     }
 }
 
