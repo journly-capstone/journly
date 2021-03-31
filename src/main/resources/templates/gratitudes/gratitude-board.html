@@ -37,9 +37,6 @@
                             <h5 class="gratitude-board-card-title card-title mb-0" th:text="${entry.getPrompt().prompt}"></h5>
                             <h5 class="card-text gratitude-card-text" th:text="${entry.body}"></h5>
                         </div>
-                        <div class="card-body align-items-center py-0 text-center justify-content-center view-more-bg">
-                            <a class="card-link text-center justify-content-center" th:href="@{|/gratitude-board/${entry.id}|}">View Entry</a>
-                        </div>
                         <div class="card-body">
                             <div class="like_button text-right">
                                 <button id="like_button" class="fas fa-heart" th:attr="data-id=${entry.id}, data-hasLiked=${hasLiked.get(entry.getId())}"></button>
