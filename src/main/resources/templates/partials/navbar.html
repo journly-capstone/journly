@@ -141,9 +141,12 @@
                         <a class="dropdown-item" th:href="@{/bookshelf}">View Bookshelf</a>
                     </div>
                 </div>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link text-center" th:href="@{/gratitude-board/create}">
+                        Create
+                    </a>
+                </li>
             </ul>
-
-            <a sec:authorize="isAuthenticated()" class="nav-link plus-sign-circle text-secondary" th:href="@{/gratitude-board/create}"><i class="fas fa-plus-circle"></i></a>
 
             <div sec:authorize="isAuthenticated()" class="dropdown mr-1">
                 <a class="dropdown-toggle text-secondary" href="#" role="button" id="landingPageDropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20" >
