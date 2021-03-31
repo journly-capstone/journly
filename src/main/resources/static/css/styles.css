@@ -974,6 +974,20 @@ main.login-content {
     background-attachment: fixed;
 }
 
+.profile-settings-jumbotron-background {
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.profile-settings-main-container {
+    border: none;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+}
+
 
 /*Mobile Responsive Nav Tabs*/
 #nav-tab {
@@ -983,6 +997,14 @@ main.login-content {
 .nav-tabs {
     display:none;
     border: none;
+}
+
+.update-profile-information-form, .change-password-form-container {
+    max-width: 400px;
+}
+
+.profile-information-username-email {
+    color: var(--blush-color);
 }
 
 /*Profile Setting Cards */
@@ -997,11 +1019,26 @@ main.login-content {
     border-radius: 20px !important;
 }
 
-.profile-settings-card-header {
-    border: none;
-    border-radius: 20px !important;
+.profile-settings-card-header-account-information {
+    background: linear-gradient(to right, #ff2992, #ff6a00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
 }
 
+.profile-settings-card-header-update-profile-information {
+    background: linear-gradient(to right, #00b09b, #96c93d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.profile-settings-card-header-change-password {
+    background: linear-gradient(to right, #4e54c8, #8f94fb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
 
 .profile-settings-nav-tab-link {
     border: none !important;
@@ -1016,15 +1053,23 @@ main.login-content {
 }
 
 .nav-tabs #nav-account-information-tab:hover, .nav-tabs #nav-account-information-tab.active {
-    background: #78dfe3;
+    background: grey;
 }
 
 .nav-tabs #nav-update-profile-information-tab:hover, .nav-tabs #nav-update-profile-information-tab.active {
-    background: #fff98f;
+    background: grey;
 }
 
 .nav-tabs #nav-change-password-tab:hover, .nav-tabs #nav-change-password-tab.active {
-    background: #ff8faf;
+    background: grey;
+}
+
+.profile-settings-content-href {
+    color: white;
+}
+
+.profile-settings-content-href:hover {
+    color: white;
 }
 
 
@@ -1047,6 +1092,29 @@ main.login-content {
     .profile-settings-card .collapse{
         display:block;
     }
+
+    .profile-settings-content-href {
+        font-weight: bold;
+    }
+
+    .nav-tabs #nav-account-information-tab:hover, .nav-tabs #nav-account-information-tab.active {
+        background: linear-gradient(to right, #ff2992, #ff6a00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: white;
+        text-decoration: none;
+    }
+
+    .nav-tabs #nav-update-profile-information-tab:hover, .nav-tabs #nav-update-profile-information-tab.active {
+        background: linear-gradient(to right, #00b09b, #96c93d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: white;
+        text-decoration: none;
+    }
+
+    .nav-tabs #nav-change-password-tab:hover, .nav-tabs #nav-change-password-tab.active {
+        background: linear-gradient(to right, #4e54c8, #8f94fb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: white;
+        text-decoration: none;
+    }
+
 }
 
 @media(max-width:767px){

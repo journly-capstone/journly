@@ -22,11 +22,6 @@ public class HomeController {
         this.userService = userService;
         this.gratitudeEntryDao = gratitudeEntryDao;
     }
-//    private final PasswordEncoder encoder;
-//    public HomeController(UserRepository userDao, PasswordEncoder encoder) {
-//        this.userDao = userDao;
-//        this.encoder = encoder;
-//    }
 
     @GetMapping("/")
     public String index(Model model){
@@ -59,11 +54,4 @@ public class HomeController {
         model.addAttribute("userEntries", currentUser.getUserGratitudeEntries());
         return "users/dashboard";
     }
-
-
-
-//    @GetMapping("/books")
-//    public String booksSearchPage() {
-//        return "books";
-//    }
 }
