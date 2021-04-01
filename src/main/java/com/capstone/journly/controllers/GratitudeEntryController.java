@@ -7,6 +7,9 @@ import com.capstone.journly.repositories.PromptRepository;
 import com.capstone.journly.repositories.UserRepository;
 import com.capstone.journly.services.UserService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,22 +42,39 @@ public class GratitudeEntryController {
 
     @GetMapping("/gratitude-board")
     public String gratitudeBoard(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         List<GratitudeEntry> entries = gratitudeEntryDao.findAll();
-        User user = userService.getLoggedInUser();
-        HashMap<Long, Integer> numOfLikes = new HashMap<Long, Integer>();
-        HashMap<Long, Boolean> hasLiked = new HashMap<Long, Boolean>();
 
-        for (GratitudeEntry entry : entries) {
+        if (authentication instanceof AnonymousAuthenticationToken) {
+            HashMap<Long, Integer> numOfLikes = new HashMap<Long, Integer>();
+            HashMap<Long, Boolean> hasLiked = new HashMap<Long, Boolean>();
 
-            List<Like> likes = likeDao.findByGratitudeEntry(entry);
-            numOfLikes.put(entry.getId(), likes.size());
+            for (GratitudeEntry entry : entries) {
+                List<Like> likes = likeDao.findByGratitudeEntry(entry);
+                numOfLikes.put(entry.getId(), likes.size());
+            }
 
-            List<Like> UserhasLiked = likeDao.findAllByGratitudeEntryAndUser(entry, user);
-            hasLiked.put(entry.getId(), UserhasLiked.size() > 0);
+            model.addAttribute("hasLiked", hasLiked);
+            model.addAttribute("entries", entries);
+            model.addAttribute("numOfLikes", numOfLikes);
+        } else {
+            User user = userService.getLoggedInUser();
+            HashMap<Long, Integer> numOfLikes = new HashMap<Long, Integer>();
+            HashMap<Long, Boolean> hasLiked = new HashMap<Long, Boolean>();
+
+            for (GratitudeEntry entry : entries) {
+
+                List<Like> likes = likeDao.findByGratitudeEntry(entry);
+                numOfLikes.put(entry.getId(), likes.size());
+
+                List<Like> UserhasLiked = likeDao.findAllByGratitudeEntryAndUser(entry, user);
+                hasLiked.put(entry.getId(), UserhasLiked.size() > 0);
+            }
+            model.addAttribute("hasLiked", hasLiked);
+            model.addAttribute("entries", entries);
+            model.addAttribute("numOfLikes", numOfLikes);
         }
-        model.addAttribute("hasLiked", hasLiked);
-        model.addAttribute("entries", entries);
-        model.addAttribute("numOfLikes", numOfLikes);
+
         return "gratitudes/gratitude-board";
     }
 

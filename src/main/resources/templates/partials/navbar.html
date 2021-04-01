@@ -51,18 +51,20 @@
                 <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" th:href="@{/about-us}">About Us</a>
                 </li>
-                <div sec:authorize="isAuthenticated()" class="dropdown">
-                    <a class="nav-link dropdown-toggle text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link text-center" th:href="@{/books}">
+                        <i class="fas fa-search"></i>
+                        <br>
+                        Search Books
+                    </a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link text-center" th:href="@{/bookshelf}">
                         <i class="fas fa-book-open"></i>
                         <br>
-                        Books
+                        Bookshelf
                     </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                        <a class="dropdown-item" th:href="@{/books}">Search Books</a>
-                        <a class="dropdown-item" th:href="@{/bookshelf}">View Bookshelf</a>
-                    </div>
-                </div>
+                </li>
 
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link text-center" th:href="@{/gratitude-board/create}">
@@ -196,15 +198,11 @@
             <ul class="navbar-nav mx-auto">
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link text-center" th:href="@{/dashboard}">
-                        <i class="fas fa-home"></i>
-                        <br>
                         Home
                     </a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link text-center" th:href="@{/gratitude-board}">
-                        <i class="far fa-newspaper"></i>
-                        <br>
                         Gratitude Board
                     </a>
                 </li>
@@ -219,8 +217,6 @@
                 </li>
                 <div sec:authorize="isAuthenticated()" class="dropdown">
                     <a class="nav-link dropdown-toggle text-center" href="#" role="button" id="loginDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-book-open"></i>
-                        <br>
                         Books
                     </a>
 
@@ -229,11 +225,8 @@
                         <a class="dropdown-item" th:href="@{/bookshelf}">View Bookshelf</a>
                     </div>
                 </div>
-
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link text-center" th:href="@{/gratitude-board/create}">
-                        <i class="far fa-plus-square"></i>
-                        <br>
                         Create
                     </a>
                 </li>
