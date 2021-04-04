@@ -971,7 +971,7 @@ main.login-content {
 
 }
 
-.dashboard-container, .gratitude-board-container {
+.dashboard-container, .gratitude-board-container, .search-books-container {
     border: none;
     border-radius: 20px !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -992,22 +992,6 @@ main.login-content {
 
 /*GRATITUDE BOARD STYLING*/
 /*------------------------------------------------------------------------------------*/
-/*.gratitude-card {*/
-/*    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
-/*    transition: 0.3s;*/
-/*    !*border: none;*!*/
-/*    border-radius: var(--default-card-border-radius);*/
-/*    width: 100%;*/
-/*    margin-bottom: 1em;*/
-
-/*}*/
-
-/*!* On mouse-over, add a deeper shadow *!*/
-/*.gratitude-card:hover {*/
-/*    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
-
-/*}*/
-
 #gratitude-board-body {
     background: var(--pink-yellow-gradient);
     background-repeat: no-repeat;
@@ -1148,19 +1132,6 @@ main.login-content {
     color: white;
 }
 
-/*BOOKSHELF AND BOOKS CSS*/
-#books-body {
-    background: var(--pink-yellow-gradient);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-#create-update-body {
-    background: var(--pink-yellow-gradient);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
 /* MEDIA QUERIES FOR PROFILE SETTINGS PAGE */
 /*------------------------------------------------------------------------------------*/
 @media(min-width:768px) {
@@ -1201,7 +1172,6 @@ main.login-content {
         color: white;
         text-decoration: none;
     }
-
 }
 
 @media(max-width:767px){
@@ -1211,26 +1181,81 @@ main.login-content {
     }
 }
 
+/*BOOKSHELF AND BOOKS CSS*/
+/*------------------------------------------------------------------------------------*/
+#books-body {
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#create-update-body {
+    background: var(--pink-yellow-gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 /*Book shelf styling*/
+/*------------------------------------------------------------------------------------*/
 .bookshelf-card{
+    background: white;
     margin: auto;
     width: 25rem;
     border: none;
     border-radius: 20px !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background: rgba( 255, 255, 255, 0.15 );
+    /*background: rgba( 255, 255, 255, 0.15 );*/
     backdrop-filter: blur( 20.0px );
     -webkit-backdrop-filter: blur( 20.0px );
-
 }
+
 .bookshelf-card-img{
     max-height: 100%;
 }
+
 .bookshelf-button{
     margin: auto;
-
 }
 
+/*SEARCH BOOKS STYLING*/
+/*------------------------------------------------------------------------------------*/
+#search-books-form-container {
+    max-width: 800px;
+}
+
+.search-btn {
+    background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%);
+    border: none;
+}
+
+.search-btn {
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 10px 16px;
+    border-radius: 35px !important;
+    font-size: 12px;
+    text-align: center;
+}
+
+.search-btn:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.searched-book-images {
+    border-radius: 20px;
+}
+
+
+/*LIKE BUTTON STYLING*/
+/*------------------------------------------------------------------------------------*/
 #like_button, .dashboard-like-div{
     outline: none;
     border: none;
@@ -1254,11 +1279,6 @@ main.login-content {
 .count {
     font-size: 1em;
     font-weight: normal;
-}
-
-.search-btn {
-    outline: none;
-    border:none;
 }
 /*------------------------------------------------------------------------------------*/
 
