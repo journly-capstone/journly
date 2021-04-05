@@ -8,8 +8,6 @@
     --default-card-border-radius: 10px;
 
     /*App Colors*/
-    /*--blush-color: #ff5e93;*/
-    /*--blush-color: #fc628c;*/
     --blush-color: #fc6d93;;
     --dark-blush-color: #ed3478;
     --error-msg-color: #f9748f;
@@ -73,6 +71,7 @@ html {
 
 
 }
+
 body {
     height: 100%;
     margin: 0;
@@ -81,15 +80,6 @@ body {
     scroll-behavior: smooth; /* smooth scroll */
     font-family: var(--feature-heading-font-family);
 }
-
-/*html, body {*/
-/*    height: 100%;*/
-/*    margin: 0;*/
-/*    !*font-family: var(--default-font-family);*!*/
-/*    font-family: var(--feature-heading-font-family);*/
-/*    scroll-behavior: smooth;*/
-/*    !*background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*!*/
-/*}*/
 
 
 /* NOTEBOOK STYLING */
@@ -967,8 +957,6 @@ main.login-content {
     background-position: center;
     color: white;
     border-radius: 0;
-
-
 }
 
 .dashboard-container, .gratitude-board-container, .search-books-container {
@@ -1204,7 +1192,6 @@ main.login-content {
     border: none;
     border-radius: 20px !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    /*background: rgba( 255, 255, 255, 0.15 );*/
     backdrop-filter: blur( 20.0px );
     -webkit-backdrop-filter: blur( 20.0px );
 }

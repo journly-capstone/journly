@@ -39,12 +39,6 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/home")
-    public String welcome(Model model) {
-        model.addAttribute("title", "Home");
-        return "home";
-    }
-
     @GetMapping("/about-us")
     public String aboutUs(Model model) {
         model.addAttribute("title", "About Us");

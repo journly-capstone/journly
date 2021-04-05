@@ -88,7 +88,7 @@ public class AuthenticationController {
         model.addAttribute("title", user.getUsername());
         String subject = "Welcome " + user.getUsername() + "!";
         String body = "Dear " + user.getUsername()
-                + ". Thank you for sigining up with us.";
+                + ". Thank you for signing up with us.";
 
         emailService.prepareAndSend(user, subject, body);
         return "redirect:/login";
