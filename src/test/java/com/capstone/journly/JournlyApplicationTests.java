@@ -15,17 +15,14 @@ class JournlyApplicationTests {
 
     @Test
     public void testCreateUser () {
-        User testUser = new User(1L, "user");
     }
 
     @Test
     public void testCreateGratitudeEntry () {
-
     }
 
     @Test
     public void testLike () {
-
     }
 
     @Test
