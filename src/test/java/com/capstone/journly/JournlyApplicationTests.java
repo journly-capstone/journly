@@ -13,10 +13,37 @@ class JournlyApplicationTests {
     void contextLoads() {
     }
 
-//    @Test
-//    public void testCreateUser () {
-//        User testUser = new User(1L, "user");
-//    }
+    @Test
+    public void testCreateUser () {
+        User testUser = new User(1L, "user");
+    }
+
+    @Test
+    public void testCreateGratitudeEntry () {
+
+    }
+
+    @Test
+    public void testLike () {
+
+    }
+
+    @Test
+    public void testDeleteGratitudeEntry () {
+
+    }
+
+    @Test
+    public void addBook () {
+
+    }
+
+    @Test
+    public void deleteBook () {
+
+    }
+
+
 
 
 
