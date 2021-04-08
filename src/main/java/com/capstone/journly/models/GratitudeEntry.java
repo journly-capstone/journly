@@ -2,15 +2,10 @@ package com.capstone.journly.models;
 
 
 
-import net.bytebuddy.implementation.bind.annotation.Default;
 import org.springframework.beans.factory.annotation.Value;
 
-import javax.mail.Multipart;
 import javax.persistence.*;
-import java.io.File;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "gratitude_entry")
@@ -18,6 +13,17 @@ public class GratitudeEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "prompt_id")
+    private Prompt prompt;
+
+    @Column(nullable = false, length = 1200)
+    private String body;
 
     @Column(nullable = false)
     private Date createdAt;
@@ -29,27 +35,27 @@ public class GratitudeEntry {
     @Value("${file-upload-path}")
     private String imgFilePath;
 
-    @Column(nullable = false, length = 1200)
-    private String body;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "prompt_id")
-    private Prompt prompt;
 
     public GratitudeEntry() {
     }
 
-    public GratitudeEntry(Date createdAt, String body, long id, User user,Boolean isPublic) {
-        this.createdAt = createdAt;
-        this.body = body;
+    public GratitudeEntry(long id, User user, Prompt prompt, Date createdAt, Boolean isPublic, String imgFilePath, String body) {
         this.id = id;
         this.user = user;
+        this.prompt = prompt;
+        this.createdAt = createdAt;
         this.isPublic = isPublic;
+        this.imgFilePath = imgFilePath;
+        this.body = body;
+    }
+
+    public GratitudeEntry(Prompt prompt, String body, Date createdAt, Boolean isPublic, String imgFilePath) {
+        this.body = body;
+        this.prompt = prompt;
+        this.createdAt = createdAt;
+        this.isPublic = isPublic;
+        this.imgFilePath = imgFilePath;
     }
 
     public User getUser() {
