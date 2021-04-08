@@ -36,10 +36,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GratitudeEntry> userGratitudeEntries;
 
-
-    public User(){
-
-    }
+    public User(){}
 
     public User(User copy) {
         this.id = copy.id;
@@ -47,7 +44,6 @@ public class User {
         this.password = copy.password;
         this.email = copy.email;
         this.imgFilePath = copy.imgFilePath;
-
     }
 
     public long getId() {

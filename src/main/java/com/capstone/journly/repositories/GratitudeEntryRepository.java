@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface GratitudeEntryRepository extends JpaRepository<GratitudeEntry, Long> {
         List<GratitudeEntry> findAll();
+        GratitudeEntry findGratitudeEntriesById(long id);
 }
