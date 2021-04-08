@@ -119,6 +119,8 @@ public class JournlyCoverageTesting {
     public void createGratitudeEntryTest() throws Exception {
         this.mvc.perform(MockMvcRequestBuilders.post("/dashboard/" + entry.getId()).with(csrf())
                 .session((MockHttpSession) http)
+                .param("id", String.valueOf(1L))
+                .param("user", String.valueOf(user))
                 .param("prompt", String.valueOf(new Prompt()))
                 .param("body", "Placeholder body")
                 .param("createdAt", String.valueOf(new Date()))
