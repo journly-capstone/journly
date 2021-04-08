@@ -40,7 +40,6 @@ public class UserController {
     @Value("${file-upload-path}")
     private String uploadPath;
 
-    //Show Profile Settings to User
     @GetMapping("/profile-settings")
     public String showProfileSettings(Model model) {
         User sessionUser = userService.getLoggedInUser();
@@ -52,7 +51,6 @@ public class UserController {
         return "users/profile-settings";
     }
 
-    //Allow Users to Update Profile Information (username, email, profile picture)
     @PostMapping("/profile-settings/update-profile-information")
     public String updateProfileInformation(@ModelAttribute User user,
                                            @RequestParam(name = "update-user-profile-picture", required = false) MultipartFile uploadedFile,
@@ -95,7 +93,6 @@ public class UserController {
         return "redirect:/profile-settings/#account-information";
     }
 
-    //Allow Users to Update Password
     @PostMapping("/profile-settings/change-password")
     public String changePassword(@ModelAttribute User user,
                                  Errors validation,
@@ -140,6 +137,5 @@ public class UserController {
         request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.PERMANENT_REDIRECT);
 
         return "redirect:/logout";
-
     }
 }
