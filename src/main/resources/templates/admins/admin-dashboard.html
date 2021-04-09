@@ -43,8 +43,7 @@
                         <i id="like_heart" class="fas fa-heart" style="color: red"></i>
                         <span class="count" th:text="${numOfLikes.get(entry.getId())}"></span>
                     </div>
-                    <div class="btn-container">
-<!--                        sec:authorize="isAuthenticated()"-->
+                    <div class="btn-container" sec:authorize="hasRole('ADMIN')">
                         <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
                             <input type="hidden" name="entryId" th:value="${entry.id}">
                             <button type="submit" value="Delete" class="btn btn-outline-danger">Delete</button>

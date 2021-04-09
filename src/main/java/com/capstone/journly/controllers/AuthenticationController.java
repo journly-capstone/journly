@@ -60,6 +60,7 @@ public class AuthenticationController {
             );
         }
 
+
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("user", user);
@@ -104,10 +105,11 @@ public class AuthenticationController {
     }
 
     @PostMapping("/admin-sign-up")
-    public String saveAdmin(Model model, @Valid @ModelAttribute User user, Errors validation, @RequestParam(name = "confirm") String confirm){
+    public String saveAdmin(Model model, @Valid @ModelAttribute User user, Errors validation, @RequestParam(name = "confirm") String confirm, @RequestParam("adminCode") String adminCode) {
+
         String hash = encoder.encode(user.getPassword());
 
-        if(!user.getPassword().equals(confirm)){
+        if (!user.getPassword().equals(confirm)) {
             validation.rejectValue(
                     "password",
                     "user.password",
@@ -131,8 +133,15 @@ public class AuthenticationController {
             return "admins/admin-sign-up";
         }
 
-
         user.setPassword(hash);
+
+        if (!adminCode.equals("CODEUPROX")) {
+            validation.rejectValue(
+                    "adminCode",
+                    "Invalid administrator code.");
+            return "error/4xx";
+            // using 4xx as placeholder, will be red popup text
+        }
 
         Role adminRole = roleDao.findRoleById(2L);
         user.setUserRole(adminRole);
