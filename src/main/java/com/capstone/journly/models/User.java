@@ -36,8 +36,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GratitudeEntry> userGratitudeEntries;
 
-    public User(){}
-
     public User(User copy) {
         this.id = copy.id;
         this.username = copy.username;
@@ -92,6 +90,14 @@ public class User {
 
     public void setUserGratitudeEntries(List<GratitudeEntry> userGratitudeEntries) {
         this.userGratitudeEntries = userGratitudeEntries;
+    }
+
+    public Role getUserRole() {
+        return role;
+    }
+
+    public void setUserRole(Role role) {
+        this.role = role;
     }
 
 }
