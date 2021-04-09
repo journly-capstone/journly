@@ -60,6 +60,7 @@ public class AuthenticationController {
             );
         }
 
+
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("user", user);
@@ -104,8 +105,18 @@ public class AuthenticationController {
     }
 
     @PostMapping("/admin-sign-up")
-    public String saveAdmin(Model model, @Valid @ModelAttribute User user, Errors validation, @RequestParam(name = "confirm") String confirm){
+    public String saveAdmin(Model model, @Valid @ModelAttribute User user, Errors validation, @RequestParam(name = "confirm") String confirm, @RequestParam(name = "adminCode") String adminCode){
         String hash = encoder.encode(user.getPassword());
+
+        String correctCode = "CODEUPROX";
+        if(!correctCode.equals(adminCode)){
+            validation.rejectValue(
+                    "adminCode",
+                    "Invalid administrator code.");
+        } else {
+            model.addAttribute("adminCode", adminCode);
+            return "admins/admin-sign-up";
+        }
 
         if(!user.getPassword().equals(confirm)){
             validation.rejectValue(
@@ -130,7 +141,6 @@ public class AuthenticationController {
             model.addAttribute("email", user.getEmail());
             return "admins/admin-sign-up";
         }
-
 
         user.setPassword(hash);
 
