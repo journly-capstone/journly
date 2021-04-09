@@ -36,12 +36,29 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GratitudeEntry> userGratitudeEntries;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    public User(){}
+
+    public User(long id, @Size(min = 3, message = "Username must be at least 3 characters in length") @NotBlank(message = "*Required") String username, @Email(message = "Invalid email address") @NotBlank(message = "*Required") String email, @Size(min = 8, message = "Password must be at least 8 characters in length") @NotBlank(message = "*Required") String password, String imgFilePath, List<GratitudeEntry> userGratitudeEntries, Role role) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.imgFilePath = imgFilePath;
+        this.userGratitudeEntries = userGratitudeEntries;
+        this.role = role;
+    }
+
     public User(User copy) {
         this.id = copy.id;
         this.username = copy.username;
         this.password = copy.password;
         this.email = copy.email;
         this.imgFilePath = copy.imgFilePath;
+        this.role = copy.role;
     }
 
     public long getId() {

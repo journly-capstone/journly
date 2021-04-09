@@ -136,5 +136,4 @@ public class JournlyCoverageTesting {
                 .andExpect(content().string(containsString(entry.getBody())));
     }
 
-
 }

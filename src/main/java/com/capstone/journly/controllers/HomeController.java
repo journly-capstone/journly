@@ -7,6 +7,7 @@ import com.capstone.journly.repositories.LikeRepository;
 import com.capstone.journly.repositories.QuoteRepository;
 import com.capstone.journly.repositories.UserRepository;
 import com.capstone.journly.services.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,4 +69,27 @@ public class HomeController {
         return "users/dashboard";
 
     }
+
+    @GetMapping("/admin-dashboard")
+    public String adminDashboard (Model model) {
+
+        List<GratitudeEntry> entries = gratitudeEntryDao.findAll();
+        HashMap<Long, Integer> numOfLikes = new HashMap<Long, Integer>();
+        User user = userService.getLoggedInUser();
+        User currentUser = userDao.getOne(user.getId());
+
+        for (GratitudeEntry entry : entries) {
+            List<Like> likes = likeDao.findByGratitudeEntry(entry);
+            numOfLikes.put(entry.getId(), likes.size());
+        }
+
+        model.addAttribute("numOfLikes", numOfLikes);
+        model.addAttribute("user", currentUser);
+        model.addAttribute("title", "Dashboard");
+        model.addAttribute("quotes", quoteDao.findRandomQuote());
+        model.addAttribute("allGratitudeEntries", entries);
+
+        return "admins/admin-dashboard";
+    }
+
 }
