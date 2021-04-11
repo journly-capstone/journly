@@ -49,7 +49,7 @@
                             <input type="hidden" name="entryId" th:value="${entry.id}">
                             <button type="submit" value="Edit" class="btn btn-outline-info edit-btn">Edit</button>
                         </form>
-                        <form th:action="@{|/dashboard/${id}/delete/|}" method="post">
+                        <form th:action="@{|/dashboard/${entry.id}/delete/|}" method="post">
                             <input type="hidden" name="entryId" th:value="${entry.id}">
                             <button type="submit" value="Delete" class="btn btn-outline-danger">Delete</button>
                         </form>
