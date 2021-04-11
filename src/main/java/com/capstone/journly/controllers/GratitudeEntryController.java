@@ -129,9 +129,6 @@ public class GratitudeEntryController {
     }
     @PostMapping("/like_gratitude_entry")
     public String likeEntry(@RequestParam("gratitudeId")long gratitudeId){
-        System.out.println("***************************");
-        System.out.println(gratitudeId);
-        System.out.println("***************************");
         User user = userService.getLoggedInUser();
         GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(gratitudeId);
         Like like = new Like();
@@ -144,9 +141,6 @@ public class GratitudeEntryController {
     @PostMapping("/unlike_gratitude_entry")
     public String unlikeEntry(@RequestParam("gratitudeId")long gratitudeId,
                               Model model){
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-        System.out.println(gratitudeId);
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         User user = userService.getLoggedInUser();
         GratitudeEntry gratitudeEntry = gratitudeEntryDao.getOne(gratitudeId);
         Like like = likeDao.findByGratitudeEntryAndUser(gratitudeEntry, user);

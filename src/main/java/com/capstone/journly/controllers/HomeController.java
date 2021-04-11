@@ -74,16 +74,10 @@ public class HomeController {
     public String adminDashboard (Model model) {
 
         List<GratitudeEntry> entries = gratitudeEntryDao.findAll();
-        HashMap<Long, Integer> numOfLikes = new HashMap<Long, Integer>();
         User user = userService.getLoggedInUser();
         User currentUser = userDao.getOne(user.getId());
 
-        for (GratitudeEntry entry : entries) {
-            List<Like> likes = likeDao.findByGratitudeEntry(entry);
-            numOfLikes.put(entry.getId(), likes.size());
-        }
 
-        model.addAttribute("numOfLikes", numOfLikes);
         model.addAttribute("user", currentUser);
         model.addAttribute("title", "Dashboard");
         model.addAttribute("quotes", quoteDao.findRandomQuote());

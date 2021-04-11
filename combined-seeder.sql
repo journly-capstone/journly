@@ -191,3 +191,5 @@ VALUES ('Today I am grateful for...'),
 insert into roles (id, role) values
 (1, 'USER'),
 (2, 'ADMIN');
+
+SELECT * FROM gratitude_entry;
