@@ -988,8 +988,6 @@ main.login-content {
 
 .gratitude-board-card, .gratitude-card {
     background: rgba( 255, 255, 255, 0.90 ) !important;
-    backdrop-filter: blur( 20.0px ) !important;
-    -webkit-backdrop-filter: blur( 20.0px ) !important;
     border-radius: 20px !important;
     border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
