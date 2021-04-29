@@ -1,10 +1,10 @@
 package com.capstone.journly.controllers;
 
 import com.capstone.journly.models.Bookshelf;
-import com.capstone.journly.models.Role;
+//import com.capstone.journly.models.Role;
 import com.capstone.journly.models.User;
 import com.capstone.journly.repositories.BookshelfRepository;
-import com.capstone.journly.repositories.RoleRepository;
+//import com.capstone.journly.repositories.RoleRepository;
 import com.capstone.journly.repositories.UserRepository;
 import com.capstone.journly.services.EmailService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,14 +24,14 @@ public class AuthenticationController {
     private final PasswordEncoder encoder;
     private final BookshelfRepository bookshelfDao;
     private final EmailService emailService;
-    private final RoleRepository roleDao;
+//    private final RoleRepository roleDao;
 
-    public AuthenticationController(UserRepository userDao, PasswordEncoder encoder, BookshelfRepository bookshelfDao, EmailService emailService, RoleRepository roleDao) {
+    public AuthenticationController(UserRepository userDao, PasswordEncoder encoder, BookshelfRepository bookshelfDao, EmailService emailService) {
         this.userDao = userDao;
         this.encoder = encoder;
         this.bookshelfDao = bookshelfDao;
         this.emailService = emailService;
-        this.roleDao = roleDao;
+//        this.roleDao = roleDao;
     }
 
     @GetMapping("/login")
@@ -77,8 +77,8 @@ public class AuthenticationController {
             return "users/sign-up";
         }
 
-        Role userRole = roleDao.findRoleById(1L);
-        user.setUserRole(userRole);
+//        Role userRole = roleDao.findRoleById(1L);
+//        user.setUserRole(userRole);
 
         user.setPassword(hash);
         user.setImgFilePath("/uploads/default-profile-picture.png");
@@ -143,9 +143,8 @@ public class AuthenticationController {
             // using 4xx as placeholder, will be red popup text
         }
 
-        Role adminRole = roleDao.findRoleById(2L);
-        user.setUserRole(adminRole);
-        System.out.println(adminRole);
+//        Role adminRole = roleDao.findRoleById(2L);
+//        user.setUserRole(adminRole);
         user.setImgFilePath("/uploads/default-profile-picture.png");
         userDao.save(user);
 
