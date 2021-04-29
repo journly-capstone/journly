@@ -186,10 +186,3 @@ VALUES ('Today I am grateful for...'),
        ('One way I incorporated gratitude into my teaching today was...'),
        ('One song I enjoyed listening to today was...'),
        ('One positive habit I incorporated into my day today was...');
-
-
-insert into roles (id, role) values
-(1, 'USER'),
-(2, 'ADMIN');
-
-SELECT * FROM gratitude_entry;
