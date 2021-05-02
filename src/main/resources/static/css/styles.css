@@ -873,11 +873,8 @@ main.login-content {
     border-radius: 20px !important;
     border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
-    /*transition: 0.3s !important;*/
 }
-/*.gratitude-card:hover {*/
-/*    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;*/
-/*}*/
+
 .gratitude-card-title {
     font-weight: 500;
 }
@@ -927,12 +924,6 @@ main.login-content {
     color: #fff;
     text-decoration: none;
 }
-
-
-/* On mouse-over, add a deeper shadow */
-/*.gratitude-card:hover {*/
-/*    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
-/*}*/
 
 .dashboard-body{
     background: var(--pink-yellow-gradient);
