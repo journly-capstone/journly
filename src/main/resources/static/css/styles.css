@@ -333,16 +333,11 @@ img.user-profile-avatar {
     border-radius: 20px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
 
     /*Mobile Responsive Centering of the cards in the card deck*/
     margin: 0 auto; /* Added */
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
-}
-
-.about-us-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .about-us-hr {
@@ -620,13 +615,6 @@ main.login-content {
     background: rgba( 255, 255, 255, 0.15 );
     backdrop-filter: blur( 20.0px );
     -webkit-backdrop-filter: blur( 20.0px );
-
-    /* Add shadows to create the "card" effect */
-    transition: 0.3s
-}
-
-.sign-up-container:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 /* SIGN UP PAGE SVG */
@@ -885,11 +873,8 @@ main.login-content {
     border-radius: 20px !important;
     border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
-    transition: 0.3s !important;
 }
-.gratitude-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
-}
+
 .gratitude-card-title {
     font-weight: 500;
 }
@@ -940,12 +925,6 @@ main.login-content {
     text-decoration: none;
 }
 
-
-/* On mouse-over, add a deeper shadow */
-.gratitude-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
 .dashboard-body{
     background: var(--pink-yellow-gradient);
     background-repeat: no-repeat;
@@ -991,11 +970,6 @@ main.login-content {
     border-radius: 20px !important;
     border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
-    transition: 0.3s !important;
-}
-
-.gratitude-board-card:hover, .gratitude-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
 }
 
 .gratitude-board-card-title {
@@ -1196,6 +1170,7 @@ main.login-content {
 
 .bookshelf-card-img{
     max-height: 100%;
+    border-radius: 20px !important;
 }
 
 .bookshelf-button{
